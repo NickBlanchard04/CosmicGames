@@ -23,7 +23,6 @@
   @keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(120%)}}
   a{color:var(--accent)}
 
-  /* layout */
   .topbar{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;background:linear-gradient(180deg,rgba(10,12,32,.8),rgba(10,12,32,.4));border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:saturate(140%) blur(8px)}
   .brand{display:flex;align-items:center;gap:.7rem;font-weight:900;letter-spacing:.6px}
   .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,#8ef5ff,transparent 45%),radial-gradient(circle at 70% 70%,#7aa2ff,transparent 45%),#141a44;box-shadow:0 0 20px #7aa2ff50 inset,0 0 0 1px #334;overflow:hidden}
@@ -38,21 +37,17 @@
   @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.1)}100%{transform:scale(1)}}
   .flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
-  /* backdrop */
   canvas.bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
   #nebula{filter:blur(36px);opacity:.55;mix-blend-mode:screen}
   #planet{position:fixed;right:-140px;bottom:-160px;width:420px;height:420px;z-index:0;opacity:.18;background:radial-gradient(circle at 35% 35%, #8ef, #59f 40%, #203070 60%, transparent 62%);filter:blur(1px) saturate(120%);border-radius:50%;box-shadow:0 0 90px rgba(80,120,255,.25), inset -30px -40px 120px rgba(20,30,80,.55)}
 
-  /* sections */
   .stage-viewport{position:relative;z-index:1;border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden}
   .section{padding:16px}
 
-  /* Customize avatars */
   .avatar-tile{width:92px;height:92px;border-radius:14px;border:2px solid transparent;cursor:pointer;background:#0b0e2b;display:grid;place-items:center;overflow:hidden}
   .avatar-tile img{width:100%;height:100%;object-fit:cover}
   .avatar-tile.active{border-color:#7aa2ff;box-shadow:0 0 0 3px rgba(122,162,255,.25)}
 
-  /* Blackjack */
   .bj-wrap{display:grid;gap:12px}
   .bj-table{
     position:relative; border-radius:18px;
@@ -82,13 +77,11 @@
   .card.black{color:#111}
   .card.back{background:repeating-linear-gradient(45deg,#102255 0 8px,#0c1a44 8px 16px),radial-gradient(600px 600px at 10% 10%, rgba(255,255,255,.08), transparent 60%);border-color:#20337a}
 
-  /* card animations */
   @keyframes dealSlide{from{transform:translateY(-12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
   @keyframes flipIn{from{transform:rotateY(-90deg)}to{transform:rotateY(0)}}
   .card.deal-in{animation:dealSlide .22s ease-out both;will-change:transform,opacity}
   .card.flip-in{animation:flipIn .25s ease-out both;transform-style:preserve-3d;backface-visibility:hidden}
 
-  /* Emoji chips */
   .rack{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
   .chip-emoji{
     width:56px;height:56px;min-width:56px;min-height:56px;display:grid;place-items:center;border-radius:14px;
@@ -101,7 +94,6 @@
   .chip-label{font-size:12px;font-weight:800;color:#fff;margin-top:4px;text-align:center}
   .chip-wrap{display:grid;justify-items:center}
 
-  /* chip color glow */
   .chip-emoji[data-val="10"], .bet-token[data-val="10"]{box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 0 1px rgba(120,255,160,.25) inset,0 0 24px rgba(80,255,160,.18)}
   .chip-emoji[data-val="25"], .bet-token[data-val="25"]{box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 0 1px rgba(120,180,255,.25) inset,0 0 24px rgba(120,180,255,.18)}
   .chip-emoji[data-val="50"], .bet-token[data-val="50"]{box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 0 1px rgba(255,120,140,.25) inset,0 0 24px rgba(255,120,140,.18)}
@@ -109,11 +101,9 @@
   .chip-emoji[data-val="500"], .bet-token[data-val="500"]{box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 0 1px rgba(210,140,255,.25) inset,0 0 24px rgba(190,120,255,.18)}
   .chip-emoji[data-val="1000"], .bet-token[data-val="1000"]{box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 0 1px rgba(255,225,120,.25) inset,0 0 24px rgba(255,225,120,.18)}
 
-  /* tiny press ripple */
   .chip-emoji:active::after{content:"";position:absolute;inset:-6px;border-radius:16px;box-shadow:0 0 0 6px rgba(255,255,255,.08);animation:chipRipple .25s ease-out}
   @keyframes chipRipple{from{opacity:.9;transform:scale(.96)}to{opacity:0;transform:scale(1.12)}}
 
-  /* Bet tray */
   .bet-tray{min-height:60px;min-width:280px;padding:10px;border-radius:14px;border:1px dashed rgba(255,255,255,.25);background:rgba(12,16,48,.35);display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   .bet-token{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(180deg,#14194a,#0d1238);border:1px solid #2a3180;font-size:22px;cursor:pointer;position:relative;transform:translateZ(0);animation:chipDrop .18s ease-out}
   .bet-token::after{content:attr(data-label);position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
@@ -245,15 +235,15 @@
 
 <script>
 /* ---------- tiny helpers & store ---------- */
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return document.querySelectorAll(s); };
 
-const store = {
-  k:'cosmic.games.v4',
-  load(){ try{return JSON.parse(localStorage.getItem(this.k))||{}}catch{return{}} },
-  save(x){ localStorage.setItem(this.k, JSON.stringify(x)) }
+var store = {
+  k:'cosmic.games.v5',
+  load:function(){ try{return JSON.parse(localStorage.getItem(this.k))||{}}catch(e){return{}} },
+  save:function(x){ localStorage.setItem(this.k, JSON.stringify(x)); }
 };
-const state = Object.assign({
+var state = Object.assign({
   user:'', bank:1000, hi:{bankroll:1000},
   selectedAvatar:0, selectedAvatarData:null, mute:false
 }, store.load());
@@ -262,78 +252,95 @@ function renderProfile(){
   $('#username').value = state.user || '';
   $('#bjUser').textContent = state.user || 'Player';
   $('#playerNameUnder').textContent = state.user || 'Player';
-  $('#bal').textContent = $('#bjBal').textContent = `$${state.bank.toLocaleString()}`;
+  $('#bal').textContent = '$' + state.bank.toLocaleString();
+  $('#bjBal').textContent = '$' + state.bank.toLocaleString();
   $('#muteToggle').textContent = state.mute ? '🔇' : '🔊';
 }
-$('#saveUser').onclick=()=>{ state.user = ($('#username').value||'').trim() || 'Player'; store.save(state); renderProfile(); };
-$('#resetBank').onclick=()=>{ if(confirm('Reset balance to $1,000?')){ state.bank=1000; state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); }};
-$('#muteToggle').onclick=()=>{ state.mute=!state.mute; store.save(state); renderProfile(); };
+$('#saveUser').onclick=function(){ state.user = ($('#username').value||'').trim() || 'Player'; store.save(state); renderProfile(); };
+$('#resetBank').onclick=function(){ if(confirm('Reset balance to $1,000?')){ state.bank=1000; state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); }};
+$('#muteToggle').onclick=function(){ state.mute=!state.mute; store.save(state); renderProfile(); };
 
-/* ---------- backdrop (nebula + stars + planet drift) ---------- */
+/* ---------- backdrop (no template strings) ---------- */
 (function(){
-  const neb = $('#nebula'), nctx = neb.getContext('2d');
-  const stars = $('#stars'), sctx = stars.getContext('2d');
-  let W,H,pts=[];
+  var neb = $('#nebula'), nctx = neb.getContext('2d');
+  var stars = $('#stars'), sctx = stars.getContext('2d');
+  var W,H,pts=[];
   function resize(){
-    W=neb.width=stars.width=innerWidth; H=neb.height=stars.height=innerHeight;
-    const count=Math.min(700, Math.floor(W*H/2500));
-    pts=[...Array(count)].map(()=>({x:Math.random()*W,y:Math.random()*H,z:[.25,.6,1.2][Math.floor(Math.random()*3)],r:Math.random()*1.6+.2,t:Math.random()*6.28}));
+    W = neb.width = stars.width = window.innerWidth;
+    H = neb.height = stars.height = window.innerHeight;
+    var count = Math.min(700, Math.floor(W*H/2500));
+    pts = Array.from({length:count}).map(function(){
+      return { x:Math.random()*W, y:Math.random()*H,
+               z:[0.25,0.6,1.2][Math.floor(Math.random()*3)],
+               r:Math.random()*1.6+0.2, t:Math.random()*6.28 };
+    });
   }
-  addEventListener('resize',resize); resize();
+  window.addEventListener('resize',resize); resize();
   function drawNeb(t){
     nctx.clearRect(0,0,W,H);
-    const g=nctx.createRadialGradient(W*.3+Math.sin(t*.0002)*120,H*.25+Math.cos(t*.00015)*80,50,W*.5,H*.6,Math.max(W,H)*.9);
-    g.addColorStop(0,'rgba(122,162,255,.25)'); g.addColorStop(.3,'rgba(142,245,255,.22)'); g.addColorStop(.7,'rgba(80,100,210,.15)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    var g = nctx.createRadialGradient(
+      W*0.3+Math.sin(t*0.0002)*120, H*0.25+Math.cos(t*0.00015)*80, 50,
+      W*0.5, H*0.6, Math.max(W,H)*0.9
+    );
+    g.addColorStop(0,'rgba(122,162,255,.25)');
+    g.addColorStop(0.3,'rgba(142,245,255,.22)');
+    g.addColorStop(0.7,'rgba(80,100,210,.15)');
+    g.addColorStop(1,'rgba(0,0,0,0)');
     nctx.fillStyle=g; nctx.fillRect(0,0,W,H);
   }
   function drawStars(){
     sctx.clearRect(0,0,W,H);
-    for(const p of pts){
-      p.x -= p.z*.15; if(p.x<-5){ p.x=W+5; p.y=Math.random()*H }
-      p.t += .05*p.z; const a=.6+Math.sin(p.t)*.4;
-      sctx.fillStyle=`rgba(220,235,255,${a})`; sctx.beginPath(); sctx.arc(p.x,p.y,p.r*p.z,0,6.28); sctx.fill();
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      p.x -= p.z*0.15; if(p.x<-5){ p.x=W+5; p.y=Math.random()*H; }
+      p.t += 0.05*p.z; var a=0.6+Math.sin(p.t)*0.4;
+      sctx.fillStyle='rgba(220,235,255,'+a+')';
+      sctx.beginPath(); sctx.arc(p.x,p.y,p.r*p.z,0,6.28); sctx.fill();
     }
   }
   function loop(t){
     drawNeb(t); drawStars();
-    const pl = document.getElementById('planet');
-    if(pl){ pl.style.transform = `translate(${Math.sin(t*0.00015)*10}px, ${Math.cos(t*0.00012)*8}px)`; }
+    var pl = document.getElementById('planet');
+    if(pl){
+      pl.style.transform =
+        'translate(' + (Math.sin(t*0.00015)*10) + 'px, ' + (Math.cos(t*0.00012)*8) + 'px)';
+    }
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
 
 /* ---------- Avatars (procedural) + Customize ---------- */
-const AVATAR_SEEDS = Array.from({length:24},(_,i)=>i+1);
-function makeAvatar(seed,size=256){
-  const c=document.createElement('canvas'); c.width=c.height=size; const ctx=c.getContext('2d');
-  const rnd=n=>Math.abs(Math.sin(seed*9973+n*37));
-  ctx.fillStyle=`hsl(${Math.floor(rnd(1)*360)},60%,18%)`; ctx.fillRect(0,0,size,size);
-  const g=16, cell=size/g;
-  function dot(x,y,h,s,l){ ctx.fillStyle=`hsl(${h},${s}%,${l}%)`; ctx.fillRect(x*cell,y*cell,cell,cell); }
-  const skinL=55+Math.floor(rnd(2)*20), hairH=Math.floor(rnd(3)*360);
-  for(let y=4;y<12;y++)for(let x=4;x<12;x++) if((x-8)**2+(y-8)**2<=16) dot(x,y,30,35,skinL);
+var AVATAR_SEEDS = Array.from({length:24},function(_,i){return i+1;});
+function makeAvatar(seed,size){
+  size = size || 256;
+  var c=document.createElement('canvas'); c.width=c.height=size; var ctx=c.getContext('2d');
+  var rnd=function(n){ return Math.abs(Math.sin(seed*9973+n*37)); };
+  ctx.fillStyle='hsl('+Math.floor(rnd(1)*360)+',60%,18%)'; ctx.fillRect(0,0,size,size);
+  var g=16, cell=size/g;
+  function dot(x,y,h,s,l){ ctx.fillStyle='hsl('+h+','+s+'%,'+l+'%)'; ctx.fillRect(x*cell,y*cell,cell,cell); }
+  var skinL=55+Math.floor(rnd(2)*20), hairH=Math.floor(rnd(3)*360);
+  for(var y=4;y<12;y++)for(var x=4;x<12;x++) if((x-8)*(x-8)+(y-8)*(y-8)<=16) dot(x,y,30,35,skinL);
   dot(6,8,220,20,90); dot(9,8,220,20,90); dot(6,8,220,80,15); dot(9,8,220,80,15); dot(7,10,0,0,10); dot(8,10,0,0,10);
-  for(let x=4;x<12;x++) if(rnd(x)>.25) dot(x,4,hairH,65,25);
-  for(let x=5;x<11;x++) if(rnd(x+1)>.35) dot(x,5,hairH,65,25);
+  for(var x2=4;x2<12;x2++) if(rnd(x2)>.25) dot(x2,4,hairH,65,25);
+  for(var x3=5;x3<11;x3++) if(rnd(x3+1)>.35) dot(x3,5,hairH,65,25);
   return c.toDataURL('image/png');
 }
 (function setupCustomize(){
-  const grid=$('#avatarGrid'), preview=$('#avatarPreview'), saveBtn=$('#saveAvatar']);
-  const AVS=AVATAR_SEEDS.map(s=>makeAvatar(s,256));
-  grid.innerHTML=''; AVS.forEach((src,i)=>{ const d=document.createElement('div'); d.className='avatar-tile'; d.dataset.i=i; const im=new Image(); im.src=src; d.appendChild(im);
-    d.onclick=()=>{ [...grid.children].forEach(n=>n.classList.remove('active')); d.classList.add('active'); preview.src=src; preview.dataset.i=i; }; grid.appendChild(d);
+  var grid=$('#avatarGrid'), preview=$('#avatarPreview'), saveBtn=$('#saveAvatar');
+  var AVS=AVATAR_SEEDS.map(function(s){ return makeAvatar(s,256); });
+  grid.innerHTML='';
+  AVS.forEach(function(src,i){
+    var d=document.createElement('div'); d.className='avatar-tile'; d.dataset.i=i; var im=new Image(); im.src=src; d.appendChild(im);
+    d.onclick=function(){ [].forEach.call(grid.children,function(n){ n.classList.remove('active'); }); d.classList.add('active'); preview.src=src; preview.dataset.i=i; };
+    grid.appendChild(d);
   });
-  const saved=state.selectedAvatar??0; preview.src=AVS[saved]; preview.dataset.i=saved; grid.children[saved]?.classList.add('active');
-  saveBtn.onclick=()=>{ state.selectedAvatar=parseInt(preview.dataset.i||'0',10); state.selectedAvatarData=preview.src; store.save(state); renderProfile();
-    mountLogoAvatar();
-    const pA=$('#playerAvatar'); if(pA) pA.src=state.selectedAvatarData;
-    alert('Saved!');
-  };
+  var saved=state.selectedAvatar||0; preview.src=AVS[saved]; preview.dataset.i=saved; if(grid.children[saved]) grid.children[saved].classList.add('active');
+  saveBtn.onclick=function(){ state.selectedAvatar=parseInt(preview.dataset.i||'0',10); state.selectedAvatarData=preview.src; store.save(state); renderProfile(); mountLogoAvatar(); var pA=$('#playerAvatar'); if(pA) pA.src=state.selectedAvatarData; alert('Saved!'); };
 })();
 function mountLogoAvatar(){
-  const logo=$('#logo'); if(!logo) return; logo.innerHTML='';
-  const img=new Image(); img.alt='avatar'; img.style.width='28px'; img.style.height='28px'; img.style.borderRadius='6px';
+  var logo=$('#logo'); if(!logo) return; logo.innerHTML='';
+  var img=new Image(); img.alt='avatar'; img.style.width='28px'; img.style.height='28px'; img.style.borderRadius='6px';
   img.src = state.selectedAvatarData || makeAvatar(1,128); logo.appendChild(img);
 }
 mountLogoAvatar();
@@ -341,62 +348,60 @@ renderProfile();
 
 /* ---------- Blackjack ---------- */
 (function(){
-  const suits=['♠','♥','♦','♣'], colors={'♠':'black','♣':'black','♥':'red','♦':'red'}, ranks=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
-  let deck=[], dealer=[], player=[], hidden=true, dealing=false;
+  var suits=['♠','♥','♦','♣'], colors={'♠':'black','♣':'black','♥':'red','♦':'red'}, ranks=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+  var deck=[], dealer=[], player=[], hidden=true, dealing=false;
 
-  const msg=$('#bjMsg'), dealerHand=$('#dealerHand'), playerHand=$('#playerHand');
-  const betLbl=$('#bjBet'), balLbl=$('#bjBal');
-  const btnDeal=$('#btnDeal'), btnHit=$('#btnHit'), btnStand=$('#btnStand'), btnDouble=$('#btnDouble'), btnNew=$('#btnNewRound');
-  const dealerVal=$('#dealerVal'), playerVal=$('#playerVal');
-  const dealerAvatar=$('#dealerAvatar'), playerAvatar=$('#playerAvatar'); const playerNameUnder=$('#playerNameUnder');
-  const rack=$('#chipRack'), tray=$('#betTray'), bin=$('#chipBin');
-  const fsBtn=$('#bjFullscreen'), exitFsBtn=$('#bjExitFs'), tableEl=$('#bjTable');
+  var msg=$('#bjMsg'), dealerHand=$('#dealerHand'), playerHand=$('#playerHand');
+  var betLbl=$('#bjBet'), balLbl=$('#bjBal');
+  var btnDeal=$('#btnDeal'), btnHit=$('#btnHit'), btnStand=$('#btnStand'), btnDouble=$('#btnDouble'), btnNew=$('#btnNewRound');
+  var dealerVal=$('#dealerVal'), playerVal=$('#playerVal');
+  var dealerAvatar=$('#dealerAvatar'), playerAvatar=$('#playerAvatar'); var playerNameUnder=$('#playerNameUnder');
+  var rack=$('#chipRack'), tray=$('#betTray');
+  var fsBtn=$('#bjFullscreen'), exitFsBtn=$('#bjExitFs'), tableEl=$('#bjTable');
 
   /* sounds */
-  const AC=new (window.AudioContext||window.webkitAudioContext)();
-  function beep(seq){ if(state.mute) return; let t=AC.currentTime; seq.forEach(s=>{const o=AC.createOscillator(), g=AC.createGain();o.type=s.type||'sine';o.frequency.value=s.f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+s.d/1000);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+s.d/1000);t+=s.d/1000+.02;});}
-  const sfx={ blackjack:()=>beep([{f:880,d:120},{f:1320,d:140},{f:1760,d:160,type:'triangle'}]),
-              lose:()=>beep([{f:330,d:180},{f:246,d:220,type:'sawtooth'}]),
-              win:()=>beep([{f:392,d:90},{f:523,d:90},{f:659,d:140,type:'square'}]),
-              deal:()=>beep([{f:320,d:25,type:'square'}]) };
+  var AC=new (window.AudioContext||window.webkitAudioContext)();
+  function beep(seq){ if(state.mute) return; var t=AC.currentTime; seq.forEach(function(s){var o=AC.createOscillator(), g=AC.createGain();o.type=s.type||'sine';o.frequency.value=s.f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+s.d/1000);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+s.d/1000);t+=s.d/1000+.02;});}
+  var sfx={ blackjack:function(){beep([{f:880,d:120},{f:1320,d:140},{f:1760,d:160,type:'triangle'}]);},
+            lose:function(){beep([{f:330,d:180},{f:246,d:220,type:'sawtooth'}]);},
+            win:function(){beep([{f:392,d:90},{f:523,d:90},{f:659,d:140,type:'square'}]);},
+            deal:function(){beep([{f:320,d:25,type:'square'}]);} };
 
-  function buildDeck(){ deck=[]; for(const s of suits) for(const r of ranks) deck.push({s,r});
-    for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
-  }
-  function cardValue(c){ if(c.r==='A') return 11; if(['K','Q','J'].includes(c.r)) return 10; return +c.r; }
-  function handValue(a){ let t=a.reduce((s,c)=>s+cardValue(c),0), aces=a.filter(c=>c.r==='A').length; while(t>21 && aces>0){t-=10;aces--} return t; }
+  function buildDeck(){ deck=[]; for(var s=0;s<suits.length;s++) for(var r=0;r<ranks.length;r++) deck.push({s:suits[s],r:ranks[r]}); for(var i=deck.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=deck[i];deck[i]=deck[j];deck[j]=tmp;}}
+  function cardValue(c){ if(c.r==='A') return 11; if(c.r==='K'||c.r==='Q'||c.r==='J') return 10; return +c.r; }
+  function handValue(a){ var t=a.reduce(function(s,c){return s+cardValue(c);},0), aces=a.filter(function(c){return c.r==='A';}).length; while(t>21 && aces>0){t-=10;aces--} return t; }
 
-  function renderHand(el,arr,hideFirst=false){
-    el.innerHTML=''; arr.forEach((c,i)=>{
-      const d=document.createElement('div'); d.className='card '+(colors[c.s]==='red'?'red':'black');
+  function renderHand(el,arr,hideFirst){
+    hideFirst = !!hideFirst;
+    el.innerHTML=''; arr.forEach(function(c,i){
+      var d=document.createElement('div'); d.className='card '+(colors[c.s]==='red'?'red':'black');
       if(hideFirst&&i===0){ d.className+=' back'; el.appendChild(d); return; }
-      const t=document.createElement('div'); t.className='rank'; t.textContent=c.r;
-      const s=document.createElement('div'); s.className='suit'; s.textContent=c.s;
-      const p=document.createElement('div'); p.className='pips'; p.textContent=c.s;
+      var t=document.createElement('div'); t.className='rank'; t.textContent=c.r;
+      var s=document.createElement('div'); s.className='suit'; s.textContent=c.s;
+      var p=document.createElement('div'); p.className='pips'; p.textContent=c.s;
       d.appendChild(t); d.appendChild(s); d.appendChild(p); el.appendChild(d);
-      requestAnimationFrame(()=> d.classList.add('deal-in'));
-      if(!hideFirst || i>0) requestAnimationFrame(()=> d.classList.add('flip-in'));
+      requestAnimationFrame(function(){ d.classList.add('deal-in'); if(!hideFirst || i>0) d.classList.add('flip-in'); });
     });
   }
 
-  function setMsg(t,cls=''){ msg.className='banner'+(cls?(' '+cls):''); msg.textContent=t; }
+  function setMsg(t,cls){ msg.className='banner'+(cls?(' '+cls):''); msg.textContent=t; }
   function bump(el){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
   function updateVals(){ playerVal.textContent=handValue(player); dealerVal.textContent=hidden?'??':handValue(dealer); bump(playerVal); if(!hidden)bump(dealerVal); }
 
   /* confetti */
-  const confettiCanvas = document.getElementById('confetti'); const cctx = confettiCanvas.getContext('2d');
+  var confettiCanvas = document.getElementById('confetti'); var cctx = confettiCanvas.getContext('2d');
   function confettiBurst(){
-    const w = confettiCanvas.width = tableEl.clientWidth;
-    const h = confettiCanvas.height = tableEl.clientHeight;
-    const pieces = Array.from({length:120},()=>({
+    var w = confettiCanvas.width = tableEl.clientWidth;
+    var h = confettiCanvas.height = tableEl.clientHeight;
+    var pieces = Array.from({length:120}).map(function(){ return {
       x: Math.random()*w, y: -10-Math.random()*40, r: 2+Math.random()*3,
       vx: -1+Math.random()*2, vy: 1+Math.random()*2.5,
       c: ['#8ef','#7af','#f78','#7f7','#ffd75e'][Math.floor(Math.random()*5)],
       a: 1
-    }));
-    let t=0; (function loop(){
+    };});
+    var t=0; (function loop(){
       cctx.clearRect(0,0,w,h);
-      pieces.forEach(p=>{
+      pieces.forEach(function(p){
         p.x+=p.vx; p.y+=p.vy; p.vy+=0.02; p.a-=0.008;
         cctx.globalAlpha=Math.max(p.a,0); cctx.fillStyle=p.c;
         cctx.beginPath(); cctx.arc(p.x,p.y,p.r,0,6.28); cctx.fill();
@@ -407,34 +412,34 @@ renderProfile();
   }
 
   /* betting */
-  const chipStack=[]; // track placed chips for Undo
-  function sumBet(){ return chipStack.reduce((s,n)=>s+n,0); }
-  function refreshBet(){ $('#bjBet').textContent = `$${sumBet().toLocaleString()}`; bump($('#betBadge')); }
+  var chipStack=[];
+  function sumBet(){ return chipStack.reduce(function(s,n){return s+n;},0); }
+  function refreshBet(){ $('#bjBet').textContent = '$' + sumBet().toLocaleString(); bump($('#betBadge')); }
   function addChip(val, emoji){
-    const t=document.createElement('div'); t.className='bet-token'; t.textContent=emoji; t.dataset.val=val; t.dataset.label=`$${val}`;
+    var t=document.createElement('div'); t.className='bet-token'; t.textContent=emoji; t.dataset.val=val; t.dataset.label='$'+val;
     t.title='Click or press Delete to remove'; t.tabIndex=0;
-    t.onclick=()=>{ const v=Number(t.dataset.val); const i=chipStack.lastIndexOf(v); if(i>-1) chipStack.splice(i,1); t.remove(); refreshBet(); };
-    t.onkeydown=(e)=>{ if(e.key==='Delete' || e.key==='Backspace'){ t.click(); } };
+    t.onclick=function(){ var v=Number(t.dataset.val); var i=chipStack.lastIndexOf(v); if(i>-1) chipStack.splice(i,1); t.remove(); refreshBet(); };
+    t.onkeydown=function(e){ if(e.key==='Delete' || e.key==='Backspace'){ t.click(); } };
     $('#betTray').appendChild(t); chipStack.push(val); refreshBet();
   }
+  var pressTimer=null, lastChip=null;
   function handleChipPress(btn){
-    const v=Number(btn.dataset.val), emoji=btn.dataset.emoji;
-    addChip(v,emoji); lastChip = {v,emoji};
-    clearInterval(pressTimer); pressTimer = setInterval(()=> addChip(v,emoji), 220);
+    var v=Number(btn.dataset.val), emoji=btn.dataset.emoji;
+    addChip(v,emoji); lastChip = {v:v,emoji:emoji};
+    clearInterval(pressTimer); pressTimer = setInterval(function(){ addChip(v,emoji); }, 220);
   }
   function endPress(){ clearInterval(pressTimer); }
-  let pressTimer=null, lastChip=null;
 
-  $('#chipRack').addEventListener('click',e=>{ const btn=e.target.closest('.chip-emoji'); if(!btn) return; handleChipPress(btn); endPress(); });
-  $('#chipRack').addEventListener('mousedown',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
+  $('#chipRack').addEventListener('click',function(e){ var btn=e.target.closest('.chip-emoji'); if(!btn) return; handleChipPress(btn); endPress(); });
+  $('#chipRack').addEventListener('mousedown',function(e){ var b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
   $('#chipRack').addEventListener('mouseup',endPress);
   $('#chipRack').addEventListener('mouseleave',endPress);
-  $('#chipRack').addEventListener('touchstart',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
+  $('#chipRack').addEventListener('touchstart',function(e){ var b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
   $('#chipRack').addEventListener('touchend',endPress);
-  $('#chipRack').addEventListener('keydown',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; if(e.key==='Enter' || e.key===' '){ e.preventDefault(); handleChipPress(b); endPress(); }});
+  $('#chipRack').addEventListener('keydown',function(e){ var b=e.target.closest('.chip-emoji'); if(!b) return; if(e.key==='Enter' || e.key===' '){ e.preventDefault(); handleChipPress(b); endPress(); }});
 
-  $('#undoBet').onclick=()=>{ if(chipStack.length===0) return; const v=chipStack.pop(); const tray=$('#betTray'); for(let i=tray.children.length-1;i>=0;i--){ if(Number(tray.children[i].dataset.val)===v){ tray.children[i].remove(); break; } } refreshBet(); };
-  $('#clearBet').onclick=()=>{ chipStack.length=0; $('#betTray').innerHTML=''; refreshBet(); };
+  $('#undoBet').onclick=function(){ if(chipStack.length===0) return; var v=chipStack.pop(); var tray=$('#betTray'); for(var i=tray.children.length-1;i>=0;i--){ if(Number(tray.children[i].dataset.val)===v){ tray.children[i].remove(); break; } } refreshBet(); };
+  $('#clearBet').onclick=function(){ chipStack.length=0; $('#betTray').innerHTML=''; refreshBet(); };
 
   function resetRound(){
     dealer=[]; player=[]; hidden=true; dealing=false;
@@ -449,7 +454,7 @@ renderProfile();
   buildDeck(); resetRound();
 
   function ensureDeck(){ if(deck.length<15) buildDeck(); }
-  const wait = ms => new Promise(r=>setTimeout(r,ms));
+  var wait = function(ms){ return new Promise(function(r){ setTimeout(r,ms); }); };
 
   async function dealSequence(){
     dealing=true;
@@ -460,19 +465,19 @@ renderProfile();
   }
 
   async function deal(){
-    const bet=sumBet();
+    var bet=sumBet();
     if(bet<=0){ setMsg('Select chips first (you can mix).'); return; }
     if(state.bank<bet){ setMsg('Insufficient balance.','lose'); return; }
     ensureDeck(); dealer=[]; player=[]; hidden=true;
-    state.bank -= bet; store.save(state); renderProfile(); balLbl.textContent=`$${state.bank.toLocaleString()}`;
+    state.bank -= bet; store.save(state); renderProfile(); balLbl.textContent='$'+state.bank.toLocaleString();
     renderHand(dealerHand,dealer,true); renderHand(playerHand,player,false);
     btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnDeal.disabled=true; btnNew.disabled=true;
     setMsg('Dealing...'); await dealSequence();
-    const pVal=handValue(player); updateVals();
+    var pVal=handValue(player); updateVals();
     if(pVal===21){ hidden=false; renderHand(dealerHand,dealer,false); updateVals();
-      const dVal=handValue(dealer);
+      var dVal=handValue(dealer);
       if(dVal===21){ setMsg('Push. Blackjack vs Blackjack.'); state.bank+=bet; }
-      else { const win=Math.floor(bet*1.5)+bet; state.bank+=win; setMsg('Blackjack! Paid 3:2','win'); sfx.blackjack(); confettiBurst(); }
+      else { var win=Math.floor(bet*1.5)+bet; state.bank+=win; setMsg('Blackjack! Paid 3:2','win'); sfx.blackjack(); confettiBurst(); }
       state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); btnNew.disabled=false; return;
     }
     setMsg('Your move.'); btnHit.disabled=btnStand.disabled=btnDouble.disabled=false;
@@ -482,10 +487,10 @@ renderProfile();
     if(dealing) return; ensureDeck(); dealing=true;
     player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); updateVals(); await wait(220);
     dealing=false;
-    const v=handValue(player);
+    var v=handValue(player);
     if(v===21){
       hidden=false; renderHand(dealerHand,dealer,false); updateVals();
-      const bet=sumBet(); state.bank += bet*2; setMsg('21! You win instantly.','win'); sfx.win(); confettiBurst();
+      var bet=sumBet(); state.bank += bet*2; setMsg('21! You win instantly.','win'); sfx.win(); confettiBurst();
       state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile();
       btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnNew.disabled=false; return;
     }
@@ -497,7 +502,7 @@ renderProfile();
     btnHit.disabled=btnStand.disabled=btnDouble.disabled=true;
     hidden=false; renderHand(dealerHand,dealer,false); updateVals();
     while(handValue(dealer)<17){ ensureDeck(); dealing=true; dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,false); updateVals(); await wait(280); }
-    const bet=sumBet(), p=handValue(player), d=handValue(dealer);
+    var bet=sumBet(), p=handValue(player), d=handValue(dealer);
     if(d>21 || p>d){ state.bank+=bet*2; setMsg('You win!','win'); sfx.win(); confettiBurst(); }
     else if(p===d){ state.bank+=bet; setMsg('Push.'); }
     else { setMsg('Dealer wins.','lose'); sfx.lose(); }
@@ -505,10 +510,10 @@ renderProfile();
   }
 
   function dbl(){
-    const bet=sumBet(); if(state.bank<bet){ setMsg('Not enough balance to double.','lose'); return; }
-    const tokens=[...$('#betTray').children]; tokens.forEach(tok=>{ const v=Number(tok.dataset.val), emoji=tok.textContent; addChip(v,emoji); });
+    var bet=sumBet(); if(state.bank<bet){ setMsg('Not enough balance to double.','lose'); return; }
+    var tokens=[].slice.call($('#betTray').children); tokens.forEach(function(tok){ var v=Number(tok.dataset.val), emoji=tok.textContent; addChip(v,emoji); });
     state.bank -= bet; store.save(state); renderProfile(); refreshBet();
-    hit().then(()=>{ if(handValue(player)<=21) stand(); });
+    hit().then(function(){ if(handValue(player)<=21) stand(); });
   }
 
   btnDeal.onclick=deal; btnHit.onclick=hit; btnStand.onclick=stand; btnDouble.onclick=dbl; btnNew.onclick=resetRound;
@@ -517,12 +522,12 @@ renderProfile();
   function inFS(){ return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement; }
   function reqFS(el){ if(el.requestFullscreen) return el.requestFullscreen(); if(el.webkitRequestFullscreen) return el.webkitRequestFullscreen(); if(el.msRequestFullscreen) return el.msRequestFullscreen(); return Promise.resolve(); }
   function exitFS(){ if(document.exitFullscreen) return document.exitFullscreen(); if(document.webkitExitFullscreen) return document.webkitExitFullscreen(); if(document.msExitFullscreen) return document.msExitFullscreen(); return Promise.resolve(); }
-  function onFSChange(){ const is=inFS(); $('#bjFullscreen').style.display = is ? 'none':'inline-block'; $('#bjExitFs').style.display = is ? 'inline-block':'none'; }
+  function onFSChange(){ var is=inFS(); $('#bjFullscreen').style.display = is ? 'none':'inline-block'; $('#bjExitFs').style.display = is ? 'inline-block':'none'; }
   document.addEventListener('fullscreenchange', onFSChange);
   document.addEventListener('webkitfullscreenchange', onFSChange);
   document.addEventListener('MSFullscreenChange', onFSChange);
-  $('#bjFullscreen').onclick=()=>{ reqFS(tableEl).catch(()=>{}); };
-  $('#bjExitFs').onclick=()=>{ exitFS().catch(()=>{}); };
+  $('#bjFullscreen').onclick=function(){ reqFS(tableEl).catch(function(){}); };
+  $('#bjExitFs').onclick=function(){ exitFS().catch(function(){}); };
 
   dealerAvatar.src = makeAvatar(Math.floor(Math.random()*999)+100,128);
   playerAvatar.src = state.selectedAvatarData || makeAvatar(1,128);
