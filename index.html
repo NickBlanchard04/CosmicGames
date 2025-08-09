@@ -211,54 +211,70 @@
         </section>
 
         <!-- Blackjack -->
-        <section class="stage-inner" id="blackjack" style="display:none">
-          <div class="bj-wrap">
-            <div class="banner" id="bjMsg">Place your bet to begin.</div>
-            <div class="bj-table">
-              <div class="flex" style="justify-content:space-between">
-                <div class="kv">Dealer</div>
-              </div>
+       <section class="stage-inner" id="blackjack" style="display:none">
+  <div class="bj-wrap">
+    <div class="flex" style="justify-content:space-between;align-items:center">
+      <div class="banner" id="bjMsg">Place your bet to begin.</div>
+      <div class="flex" style="gap:8px">
+        <button id="bjFullscreen" class="ghost">⤢ Fullscreen</button>
+        <button id="bjExitFs" class="ghost" style="display:none">⤡ Exit</button>
+      </div>
+    </div>
 
-              <div class="hand" style="justify-content:center;align-items:center;margin-top:8px;gap:12px">
-                <img id="dealerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
-                <div id="dealerHand" class="hand"></div>
-                <span class="badge" id="dealerVal">—</span>
-              </div>
+    <div class="bj-table">
+      <div class="flex" style="justify-content:space-between">
+        <div class="kv">Dealer</div>
+        <!-- (deck counter removed) -->
+      </div>
 
-              <div class="flex" style="justify-content:space-between;margin-top:6px">
-                <div class="kv">Player: <b id="bjUser">—</b></div>
-                <div class="kv">Balance: <b id="bjBal">$0</b></div>
-              </div>
+      <!-- Dealer row with avatar + value -->
+      <div class="hand" style="justify-content:center;align-items:center;margin-top:8px;gap:12px">
+        <img id="dealerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
+        <div id="dealerHand" class="hand"></div>
+        <span class="badge" id="dealerVal">—</span>
+      </div>
 
-              <div class="hand" style="justify-content:center;align-items:center;margin-top:6px;gap:12px">
-                <img id="playerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
-                <div id="playerHand" class="hand"></div>
-                <span class="badge" id="playerVal">—</span>
-              </div>
+      <div class="flex" style="justify-content:space-between;margin-top:6px">
+        <div class="kv">Player: <b id="bjUser">—</b></div>
+        <div class="kv">Balance: <b id="bjBal">$0</b></div>
+      </div>
 
-              <div class="controls" style="justify-content:center;margin-top:8px">
-                <button id="btnDeal" class="accent">Deal</button>
-                <button id="btnHit">Hit</button>
-                <button id="btnStand">Stand</button>
-                <button id="btnDouble">Double</button>
-                <button id="btnNewRound" class="ghost">New Round</button>
-              </div>
-
-              <div class="flex" style="justify-content:center;margin-top:10px">
-                <div class="rack" id="chipRack" style="gap:14px">
-                  <button class="chip chip-blue"   data-bet="10"><span>$10</span></button>
-                  <button class="chip chip-green"  data-bet="25"><span>$25</span></button>
-                  <button class="chip chip-red"    data-bet="50"><span>$50</span></button>
-                  <button class="chip chip-black"  data-bet="100"><span>$100</span></button>
-                  <button class="chip chip-purple" data-bet="500"><span>$500</span></button>
-                  <button class="chip chip-yellow" data-bet="1000"><span>$1k</span></button>
-                  <span class="kv">Bet: <b id="bjBet">$0</b></span>
-                </div>
-              </div>
-            </div>
+      <!-- Player row with avatar + bet tray + value -->
+      <div class="hand" style="justify-content:center;align-items:flex-start;margin-top:6px;gap:14px">
+        <img id="playerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div id="playerHand" class="hand" style="justify-content:center"></div>
+          <div id="betTray" class="bet-tray" title="Drag chips here; drag to bin to remove"></div>
+          <div class="flex" style="gap:8px;align-items:center">
+            <span class="kv">Bet: <b id="bjBet">$0</b></span>
+            <span class="badge" id="playerVal">—</span>
           </div>
-        </section>
+        </div>
+      </div>
 
+      <div class="controls" style="justify-content:center;margin-top:8px">
+        <button id="btnDeal" class="accent">Deal</button>
+        <button id="btnHit">Hit</button>
+        <button id="btnStand">Stand</button>
+        <button id="btnDouble">Double</button>
+        <button id="btnNewRound" class="ghost">New Round</button>
+      </div>
+
+      <!-- Chip rack (click to add; you can add mixed chips) -->
+      <div class="flex" style="justify-content:center;margin-top:10px">
+        <div class="rack" id="chipRack">
+          <button class="chip-img" data-val="10"  style="--img:url('assets/bj/chip-green.png')"><span>$10</span></button>
+          <button class="chip-img" data-val="25"  style="--img:url('assets/bj/chip-blue.png')"><span>$25</span></button>
+          <button class="chip-img" data-val="50"  style="--img:url('assets/bj/chip-red.png')"><span>$50</span></button>
+          <button class="chip-img" data-val="100" style="--img:url('assets/bj/chip-black.png')"><span>$100</span></button>
+        </div>
+      </div>
+
+      <!-- Remove target appears while dragging -->
+      <div id="chipBin" class="chip-bin" aria-hidden="true">🗑 Remove chip</div>
+    </div>
+  </div>
+</section>
         <!-- TicTacToe -->
         <section class="stage-inner" id="tictactoe" style="display:none">
           <div class="flex" style="margin-bottom:8px">
