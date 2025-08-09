@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cosmic Games</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<style>
+  :root{
+    --bg-deep:#070814;
+    --ink:#dfe7ff; --ink-dim:#a7b0d9;
+    --accent:#7aa2ff; --accent2:#8ef5ff;
+    --win:#43f57a; --lose:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg-deep);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+  button{background:#12183f;color:var(--ink);border:1px solid #26317e;border-radius:12px;padding:.65rem 1rem;font-weight:700;cursor:pointer;transition:.15s}
+  button:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(122,162,255,.16)}
+  button:disabled{opacity:.55;cursor:not-allowed}
+  .ghost{background:transparent}
+  .accent{background:linear-gradient(180deg,#3344ad,#202b8e);border-color:#4857cc}
+  a{color:var(--accent)}
+
+  /* layout */
+  .topbar{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;background:linear-gradient(180deg,rgba(10,12,32,.8),rgba(10,12,32,.4));border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:saturate(140%) blur(8px)}
+  .brand{display:flex;align-items:center;gap:.7rem;font-weight:900;letter-spacing:.6px}
+  .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,#8ef5ff,transparent 45%),radial-gradient(circle at 70% 70%,#7aa2ff,transparent 45%),#141a44;box-shadow:0 0 20px #7aa2ff50 inset,0 0 0 1px #334;overflow:hidden}
+  .pill{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .7rem;border:1px solid #2a3180;border-radius:999px;background:#0c1033}
+  input{background:#0b0f31;border:1px solid #2a3180;color:var(--ink);padding:.55rem .7rem;border-radius:10px}
+
+  .grid{max-width:1100px;margin:18px auto;padding:0 16px;display:grid;gap:16px}
+  .panel{background:linear-gradient(180deg,rgba(12,16,51,.96),rgba(7,8,20,.96));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(10,12,30,.35)}
+  .muted{color:var(--ink-dim)}
+  .badge{padding:.25rem .55rem;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:#0f1440;font-size:.86rem}
+  .flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+  /* backdrop */
+  canvas.bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
+  #nebula{filter:blur(36px);opacity:.55;mix-blend-mode:screen}
+
+  /* sections */
+  .stage-viewport{position:relative;z-index:1;border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden}
+  .section{padding:16px}
+
+  /* Customize avatars */
+  .avatar-tile{width:92px;height:92px;border-radius:14px;border:2px solid transparent;cursor:pointer;background:#0b0e2b;display:grid;place-items:center;overflow:hidden}
+  .avatar-tile img{width:100%;height:100%;object-fit:cover}
+  .avatar-tile.active{border-color:#7aa2ff;box-shadow:0 0 0 3px rgba(122,162,255,.25)}
+
+  /* Blackjack */
+  .bj-wrap{display:grid;gap:12px}
+  .bj-table{
+    position:relative;border-radius:16px;border:1px solid rgba(255,255,255,.08);padding:18px;min-height:520px;
+    background:
+      radial-gradient(900px 500px at 20% 10%, rgba(122,162,255,.12), transparent 60%),
+      radial-gradient(900px 500px at 80% 90%, rgba(142,245,255,.10), transparent 60%),
+      radial-gradient(1200px 700px at 50% 40%, rgba(20,30,60,.8), rgba(8,12,28,.9));
+  }
+  .rules-note{font-size:.85rem;color:#cfe0ff9c}
+  .banner{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.45rem .8rem;border-radius:999px;background:#0e153f;border:1px solid #2a3180}
+  .banner.win{color:var(--win);border-color:#2f6f4f;background:#0b2e1a}
+  .banner.lose{color:var(--lose);border-color:#6f2f2f;background:#2e0b0b}
+
+  .hand{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .card{width:74px;height:104px;border-radius:10px;background:#f4f7ff;border:1px solid #ccd5ff;box-shadow:0 6px 18px rgba(0,0,0,.25);display:grid;grid-template-rows:auto 1fr auto;position:relative;overflow:hidden}
+  .card .rank{font-weight:900;font-size:18px;padding:6px 8px}
+  .card .suit{font-size:20px;padding:0 8px}
+  .card .pips{display:grid;place-items:center;font-size:28px;color:#111;margin-bottom:6px}
+  .card.red{color:#b10c2b}
+  .card.black{color:#111}
+  .card.back{background:repeating-linear-gradient(45deg,#102255 0 8px,#0c1a44 8px 16px),radial-gradient(600px 600px at 10% 10%, rgba(255,255,255,.08), transparent 60%);border-color:#20337a}
+
+  /* Emoji chips */
+  .rack{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .chip-emoji{
+    width:56px;height:56px;min-width:56px;min-height:56px;display:grid;place-items:center;border-radius:14px;
+    background:#14194a;border:1px solid #2a3180;color:#fff;font-size:22px;line-height:1;user-select:none;
+    transition:transform .12s ease; outline:2px solid transparent;
+  }
+  .chip-emoji:active{transform:scale(.95)}
+  .chip-emoji:focus{outline-color:#3f5cff}
+  .chip-label{font-size:12px;font-weight:800;color:#fff;margin-top:4px;text-align:center}
+  .chip-wrap{display:grid;justify-items:center}
+
+  /* Bet tray */
+  .bet-tray{min-height:60px;min-width:280px;padding:10px;border-radius:14px;border:1px dashed rgba(255,255,255,.25);background:rgba(12,16,48,.35);display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .bet-token{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:#0f1440;border:1px solid #2a3180;font-size:22px;cursor:pointer;position:relative;transform:translateZ(0);animation:chipDrop .18s ease-out}
+  .bet-token::after{content:attr(data-label);position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+  @keyframes chipDrop{from{transform:translateY(-12px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+  .chip-actions{display:flex;gap:8px;justify-content:center;margin-top:8px}
+  .chip-bin{display:none;margin:10px auto 0;width:220px;text-align:center;padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#2a0f16;color:#ffd0d0;font-weight:700}
+  .chip-bin.show{display:block}
+</style>
+</head>
+<body>
+<canvas id="nebula" class="bg"></canvas>
+<canvas id="stars" class="bg"></canvas>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="logo" id="logo"></div>
+    <div>Cosmic Games</div>
+  </div>
+  <div class="flex">
+    <div class="pill">
+      <span>👤</span>
+      <input id="username" placeholder="Enter username" style="width:180px" />
+      <button id="saveUser" class="ghost">Save</button>
+    </div>
+    <div class="pill">💰 Balance: <b id="bal">$0</b></div>
+    <button id="resetBank" class="ghost" title="Reset balance to $1,000">Reset Balance</button>
+    <button id="muteToggle" class="ghost" title="Mute/unmute sounds">🔊</button>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="panel stage-viewport section" id="landing">
+    <h1>Welcome to <span style="color:var(--accent)">Cosmic Games</span> ✨</h1>
+    <p class="muted">Pick an avatar in Customize, then try Blackjack. Your data is saved locally.</p>
+  </section>
+
+  <!-- Customize -->
+  <section class="panel stage-viewport section" id="customize">
+    <h2>Customize</h2>
+    <div class="flex" style="align-items:center">
+      <div>
+        <div class="muted" style="margin-bottom:6px">Your avatar</div>
+        <img id="avatarPreview" alt="avatar" style="width:96px;height:96px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#0c1033;object-fit:cover" />
+      </div>
+      <button id="saveAvatar" class="accent">Save Selection</button>
+    </div>
+    <div class="muted" style="margin:12px 0 8px">Choose an avatar:</div>
+    <div id="avatarGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px"></div>
+  </section>
+
+  <!-- Blackjack -->
+  <section class="panel stage-viewport section" id="blackjack">
+    <div class="bj-wrap">
+      <div class="flex" style="justify-content:space-between;align-items:center">
+        <div class="banner" id="bjMsg">Select a bet first.</div>
+        <div class="flex" style="gap:8px">
+          <span class="rules-note">Instant win at 21 • Dealer stands on 17</span>
+          <button id="bjFullscreen" class="ghost">⤢ Fullscreen</button>
+          <button id="bjExitFs" class="ghost" style="display:none">⤡ Exit</button>
+        </div>
+      </div>
+
+      <div class="bj-table" id="bjTable">
+        <div class="flex" style="justify-content:space-between">
+          <div class="badge">Dealer</div>
+        </div>
+
+        <!-- Dealer row -->
+        <div class="hand" style="justify-content:center;align-items:center;margin-top:8px;gap:12px">
+          <img id="dealerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
+          <div id="dealerHand" class="hand"></div>
+          <span class="badge" id="dealerVal">—</span>
+        </div>
+
+        <div class="flex" style="justify-content:space-between;margin-top:6px">
+          <div class="badge">Player: <b id="bjUser">—</b></div>
+          <div class="badge">Balance: <b id="bjBal">$0</b></div>
+        </div>
+
+        <!-- Player row -->
+        <div class="hand" style="justify-content:center;align-items:flex-start;margin-top:6px;gap:14px">
+          <div style="display:grid;justify-items:center;gap:6px">
+            <img id="playerAvatar" style="width:56px;height:56px;border-radius:12px;border:1px solid rgba(255,255,255,.15);object-fit:cover" />
+            <div class="muted" id="playerNameUnder" style="font-size:.85rem"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+            <div id="playerHand" class="hand" style="justify-content:center"></div>
+            <div id="betTray" class="bet-tray" title="Click chips to add; click a chip here to remove"></div>
+            <div class="flex" style="gap:8px;align-items:center">
+              <span class="badge">Bet: <b id="bjBet">$0</b></span>
+              <span class="badge" id="playerVal">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex" style="justify-content:center;margin-top:8px">
+          <button id="btnDeal" class="accent">Deal</button>
+          <button id="btnHit">Hit</button>
+          <button id="btnStand">Stand</button>
+          <button id="btnDouble">Double</button>
+          <button id="btnNewRound" class="ghost">New Round</button>
+        </div>
+
+        <!-- Emoji chips -->
+        <div class="flex" style="justify-content:center;margin-top:10px">
+          <div class="rack" id="chipRack">
+            <div class="chip-wrap"><button class="chip-emoji" data-val="10"  data-emoji="🟢" tabindex="0">🟢</button><div class="chip-label">$10</div></div>
+            <div class="chip-wrap"><button class="chip-emoji" data-val="25"  data-emoji="🔵" tabindex="0">🔵</button><div class="chip-label">$25</div></div>
+            <div class="chip-wrap"><button class="chip-emoji" data-val="50"  data-emoji="🔴" tabindex="0">🔴</button><div class="chip-label">$50</div></div>
+            <div class="chip-wrap"><button class="chip-emoji" data-val="100" data-emoji="⚫" tabindex="0">⚫</button><div class="chip-label">$100</div></div>
+            <div class="chip-wrap"><button class="chip-emoji" data-val="500" data-emoji="🟣" tabindex="0">🟣</button><div class="chip-label">$500</div></div>
+            <div class="chip-wrap"><button class="chip-emoji" data-val="1000" data-emoji="🟡" tabindex="0">🟡</button><div class="chip-label">$1000</div></div>
+          </div>
+        </div>
+
+        <div class="chip-actions">
+          <button id="undoBet" class="ghost">Undo</button>
+          <button id="clearBet" class="ghost">Clear bet</button>
+        </div>
+
+        <div id="chipBin" class="chip-bin" aria-hidden="true">🗑 Remove chip</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* ---------- tiny helpers & store ---------- */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+const store = {
+  k:'cosmic.games.v3',
+  load(){ try{return JSON.parse(localStorage.getItem(this.k))||{}}catch{return{}} },
+  save(x){ localStorage.setItem(this.k, JSON.stringify(x)) }
+};
+const state = Object.assign({
+  user:'', bank:1000, hi:{bankroll:1000},
+  selectedAvatar:0, selectedAvatarData:null, mute:false
+}, store.load());
+
+function renderProfile(){
+  $('#username').value = state.user || '';
+  $('#bjUser').textContent = state.user || 'Player';
+  $('#playerNameUnder').textContent = state.user || 'Player';
+  $('#bal').textContent = $('#bjBal').textContent = `$${state.bank.toLocaleString()}`;
+  $('#muteToggle').textContent = state.mute ? '🔇' : '🔊';
+}
+$('#saveUser').onclick=()=>{ state.user = ($('#username').value||'').trim() || 'Player'; store.save(state); renderProfile(); };
+$('#resetBank').onclick=()=>{ if(confirm('Reset balance to $1,000?')){ state.bank=1000; state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); }};
+$('#muteToggle').onclick=()=>{ state.mute=!state.mute; store.save(state); renderProfile(); };
+
+/* ---------- backdrop (nebula + stars) ---------- */
+(function(){
+  const neb = $('#nebula'), nctx = neb.getContext('2d');
+  const stars = $('#stars'), sctx = stars.getContext('2d');
+  let W,H,pts=[];
+  function resize(){
+    W=neb.width=stars.width=innerWidth; H=neb.height=stars.height=innerHeight;
+    const count=Math.min(700, Math.floor(W*H/2500));
+    pts=[...Array(count)].map(()=>({x:Math.random()*W,y:Math.random()*H,z:[.25,.6,1.2][Math.floor(Math.random()*3)],r:Math.random()*1.6+.2,t:Math.random()*6.28}));
+  }
+  addEventListener('resize',resize); resize();
+  function drawNeb(t){
+    nctx.clearRect(0,0,W,H);
+    const g=nctx.createRadialGradient(W*.3+Math.sin(t*.0002)*120,H*.25+Math.cos(t*.00015)*80,50,W*.5,H*.6,Math.max(W,H)*.9);
+    g.addColorStop(0,'rgba(122,162,255,.25)'); g.addColorStop(.3,'rgba(142,245,255,.22)'); g.addColorStop(.7,'rgba(80,100,210,.15)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    nctx.fillStyle=g; nctx.fillRect(0,0,W,H);
+  }
+  function drawStars(){
+    sctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      p.x -= p.z*.15; if(p.x<-5){ p.x=W+5; p.y=Math.random()*H }
+      p.t += .05*p.z; const a=.6+Math.sin(p.t)*.4;
+      sctx.fillStyle=`rgba(220,235,255,${a})`; sctx.beginPath(); sctx.arc(p.x,p.y,p.r*p.z,0,6.28); sctx.fill();
+    }
+  }
+  function loop(t){ drawNeb(t); drawStars(); requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- Avatars (procedural) + Customize ---------- */
+const AVATAR_SEEDS = Array.from({length:24},(_,i)=>i+1);
+function makeAvatar(seed,size=256){
+  const c=document.createElement('canvas'); c.width=c.height=size; const ctx=c.getContext('2d');
+  const rnd=n=>Math.abs(Math.sin(seed*9973+n*37));
+  ctx.fillStyle=`hsl(${Math.floor(rnd(1)*360)},60%,18%)`; ctx.fillRect(0,0,size,size);
+  const g=16, cell=size/g;
+  function dot(x,y,h,s,l){ ctx.fillStyle=`hsl(${h},${s}%,${l}%)`; ctx.fillRect(x*cell,y*cell,cell,cell); }
+  const skinL=55+Math.floor(rnd(2)*20), hairH=Math.floor(rnd(3)*360);
+  for(let y=4;y<12;y++)for(let x=4;x<12;x++) if((x-8)**2+(y-8)**2<=16) dot(x,y,30,35,skinL);
+  dot(6,8,220,20,90); dot(9,8,220,20,90); dot(6,8,220,80,15); dot(9,8,220,80,15); dot(7,10,0,0,10); dot(8,10,0,0,10);
+  for(let x=4;x<12;x++) if(rnd(x)>.25) dot(x,4,hairH,65,25);
+  for(let x=5;x<11;x++) if(rnd(x+1)>.35) dot(x,5,hairH,65,25);
+  return c.toDataURL('image/png');
+}
+(function setupCustomize(){
+  const grid=$('#avatarGrid'), preview=$('#avatarPreview'), saveBtn=$('#saveAvatar');
+  const AVS=AVATAR_SEEDS.map(s=>makeAvatar(s,256));
+  grid.innerHTML=''; AVS.forEach((src,i)=>{ const d=document.createElement('div'); d.className='avatar-tile'; d.dataset.i=i; const im=new Image(); im.src=src; d.appendChild(im);
+    d.onclick=()=>{ [...grid.children].forEach(n=>n.classList.remove('active')); d.classList.add('active'); preview.src=src; preview.dataset.i=i; }; grid.appendChild(d);
+  });
+  const saved=state.selectedAvatar??0; preview.src=AVS[saved]; preview.dataset.i=saved; grid.children[saved]?.classList.add('active');
+  saveBtn.onclick=()=>{ state.selectedAvatar=parseInt(preview.dataset.i||'0',10); state.selectedAvatarData=preview.src; store.save(state); renderProfile();
+    // update top-left logo
+    mountLogoAvatar();
+    // live update blackjack avatar if visible
+    const pA=$('#playerAvatar'); if(pA) pA.src=state.selectedAvatarData;
+    alert('Saved!');
+  };
+})();
+function mountLogoAvatar(){
+  const logo=$('#logo'); if(!logo) return; logo.innerHTML='';
+  const img=new Image(); img.alt='avatar'; img.style.width='28px'; img.style.height='28px'; img.style.borderRadius='6px';
+  img.src = state.selectedAvatarData || makeAvatar(1,128); logo.appendChild(img);
+}
+mountLogoAvatar();
+renderProfile();
+
+/* ---------- Blackjack ---------- */
+(function(){
+  const suits=['♠','♥','♦','♣'], colors={'♠':'black','♣':'black','♥':'red','♦':'red'}, ranks=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+  let deck=[], dealer=[], player=[], hidden=true, dealing=false;
+
+  const msg=$('#bjMsg'), dealerHand=$('#dealerHand'), playerHand=$('#playerHand');
+  const betLbl=$('#bjBet'), balLbl=$('#bjBal');
+  const btnDeal=$('#btnDeal'), btnHit=$('#btnHit'), btnStand=$('#btnStand'), btnDouble=$('#btnDouble'), btnNew=$('#btnNewRound');
+  const dealerVal=$('#dealerVal'), playerVal=$('#playerVal');
+  const dealerAvatar=$('#dealerAvatar'), playerAvatar=$('#playerAvatar'); const playerNameUnder=$('#playerNameUnder');
+  const rack=$('#chipRack'), tray=$('#betTray'), bin=$('#chipBin');
+  const fsBtn=$('#bjFullscreen'), exitFsBtn=$('#bjExitFs'), tableEl=$('#bjTable');
+
+  // Sounds (WebAudio)
+  const AC=new (window.AudioContext||window.webkitAudioContext)();
+  function beep(seq){ if(state.mute) return; let t=AC.currentTime; seq.forEach(s=>{const o=AC.createOscillator(), g=AC.createGain();o.type=s.type||'sine';o.frequency.value=s.f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+s.d/1000);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+s.d/1000);t+=s.d/1000+.02;});}
+  const sfx={ blackjack:()=>beep([{f:880,d:120},{f:1320,d:140},{f:1760,d:160,type:'triangle'}]),
+              lose:()=>beep([{f:330,d:180},{f:246,d:220,type:'sawtooth'}]),
+              win:()=>beep([{f:392,d:90},{f:523,d:90},{f:659,d:140,type:'square'}]),
+              deal:()=>beep([{f:320,d:25,type:'square'}]) };
+
+  function buildDeck(){ deck=[]; for(const s of suits) for(const r of ranks) deck.push({s,r});
+    for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  }
+  function cardValue(c){ if(c.r==='A') return 11; if(['K','Q','J'].includes(c.r)) return 10; return +c.r; }
+  function handValue(a){ let t=a.reduce((s,c)=>s+cardValue(c),0), aces=a.filter(c=>c.r==='A').length; while(t>21 && aces>0){t-=10;aces--} return t; }
+  function renderHand(el,arr,hideFirst=false){
+    el.innerHTML=''; arr.forEach((c,i)=>{
+      const d=document.createElement('div'); d.className='card '+(colors[c.s]==='red'?'red':'black');
+      if(hideFirst&&i===0){ d.className+=' back'; el.appendChild(d); return; }
+      const t=document.createElement('div'); t.className='rank'; t.textContent=c.r;
+      const s=document.createElement('div'); s.className='suit'; s.textContent=c.s;
+      const p=document.createElement('div'); p.className='pips'; p.textContent=c.s;
+      d.appendChild(t); d.appendChild(s); d.appendChild(p); el.appendChild(d);
+    });
+  }
+  function setMsg(t,cls=''){ msg.className='banner'+(cls?(' '+cls):''); msg.textContent=t; }
+  function updateVals(){ playerVal.textContent=handValue(player); dealerVal.textContent=hidden?'??':handValue(dealer); }
+
+  // Betting (mix chips; click in tray to remove; Undo/Clear; long-press repeat)
+  const chipStack=[]; // track placed chips for Undo
+  function sumBet(){ return chipStack.reduce((s,n)=>s+n,0); }
+  function refreshBet(){ betLbl.textContent=`$${sumBet().toLocaleString()}`; }
+  function addChip(val, emoji){
+    const t=document.createElement('div'); t.className='bet-token'; t.textContent=emoji; t.dataset.val=val; t.dataset.label=`$${val}`;
+    t.title='Click or press Delete to remove'; t.tabIndex=0;
+    t.onclick=()=>{ const v=Number(t.dataset.val); const i=chipStack.lastIndexOf(v); if(i>-1) chipStack.splice(i,1); t.remove(); refreshBet(); };
+    t.onkeydown=(e)=>{ if(e.key==='Delete' || e.key==='Backspace'){ t.click(); } };
+    tray.appendChild(t); chipStack.push(val); refreshBet();
+  }
+  function handleChipPress(btn){
+    const v=Number(btn.dataset.val), emoji=btn.dataset.emoji;
+    addChip(v,emoji); // first add
+    lastChip = {v,emoji};
+    // long-press repeat
+    clearInterval(pressTimer);
+    pressTimer = setInterval(()=> addChip(v,emoji), 220);
+  }
+  function endPress(){ clearInterval(pressTimer); }
+  let pressTimer=null, lastChip=null;
+
+  rack.addEventListener('click',e=>{
+    const btn=e.target.closest('.chip-emoji'); if(!btn) return;
+    handleChipPress(btn); endPress(); // click = single add
+  });
+  // long-press (mouse + touch), keyboard Enter
+  rack.addEventListener('mousedown',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
+  rack.addEventListener('mouseup',endPress);
+  rack.addEventListener('mouseleave',endPress);
+  rack.addEventListener('touchstart',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; handleChipPress(b); });
+  rack.addEventListener('touchend',endPress);
+  rack.addEventListener('keydown',e=>{ const b=e.target.closest('.chip-emoji'); if(!b) return; if(e.key==='Enter' || e.key===' '){ e.preventDefault(); handleChipPress(b); endPress(); }});
+
+  $('#undoBet').onclick=()=>{
+    if(chipStack.length===0) return;
+    const v=chipStack.pop();
+    for(let i=tray.children.length-1;i>=0;i--){ if(Number(tray.children[i].dataset.val)===v){ tray.children[i].remove(); break; } }
+    refreshBet();
+  };
+  $('#clearBet').onclick=()=>{ chipStack.length=0; tray.innerHTML=''; refreshBet(); };
+
+  function resetRound(){
+    dealer=[]; player=[]; hidden=true; dealing=false;
+    renderHand(dealerHand,dealer,false); renderHand(playerHand,player,false);
+    dealerVal.textContent='—'; playerVal.textContent='—';
+    btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnDeal.disabled=false; btnNew.disabled=true;
+    setMsg('Select a bet first.');
+    dealerAvatar.src = makeAvatar(Math.floor(Math.random()*999)+100,128);
+    playerAvatar.src = state.selectedAvatarData || makeAvatar(1,128);
+    playerNameUnder.textContent = state.user || 'Player';
+  }
+  buildDeck(); resetRound();
+
+  function ensureDeck(){ if(deck.length<15) buildDeck(); }
+  const wait = ms => new Promise(r=>setTimeout(r,ms));
+
+  async function dealSequence(){
+    dealing=true;
+    player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); updateVals(); await wait(250);
+    dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,true);  updateVals(); await wait(250);
+    player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); updateVals(); await wait(250);
+    dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,true);  updateVals(); dealing=false;
+  }
+
+  async function deal(){
+    const bet=sumBet();
+    if(bet<=0){ setMsg('Select chips first (you can mix).'); return; }
+    if(state.bank<bet){ setMsg('Insufficient balance.','lose'); return; }
+    ensureDeck(); dealer=[]; player=[]; hidden=true;
+    state.bank -= bet; store.save(state); renderProfile(); balLbl.textContent=`$${state.bank.toLocaleString()}`;
+    renderHand(dealerHand,dealer,true); renderHand(playerHand,player,false);
+    btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnDeal.disabled=true; btnNew.disabled=true;
+    setMsg('Dealing...'); await dealSequence();
+    const pVal=handValue(player); updateVals();
+    if(pVal===21){ hidden=false; renderHand(dealerHand,dealer,false); updateVals();
+      const dVal=handValue(dealer);
+      if(dVal===21){ setMsg('Push. Blackjack vs Blackjack.'); state.bank+=bet; }
+      else { const win=Math.floor(bet*1.5)+bet; state.bank+=win; setMsg('Blackjack! Paid 3:2','win'); sfx.blackjack(); }
+      state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); btnNew.disabled=false; return;
+    }
+    setMsg('Your move.'); btnHit.disabled=btnStand.disabled=btnDouble.disabled=false;
+  }
+
+  async function hit(){
+    if(dealing) return; ensureDeck(); dealing=true;
+    player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); updateVals(); await wait(220);
+    dealing=false;
+    const v=handValue(player);
+    if(v===21){
+      hidden=false; renderHand(dealerHand,dealer,false); updateVals();
+      const bet=sumBet(); state.bank += bet*2; setMsg('21! You win instantly.','win'); sfx.win();
+      state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile();
+      btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnNew.disabled=false; return;
+    }
+    if(v>21){ hidden=false; renderHand(dealerHand,dealer,false); updateVals(); setMsg('Busted. Dealer wins.','lose'); sfx.lose();
+      btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnNew.disabled=false; }
+  }
+
+  async function stand(){
+    btnHit.disabled=btnStand.disabled=btnDouble.disabled=true;
+    hidden=false; renderHand(dealerHand,dealer,false); updateVals();
+    while(handValue(dealer)<17){ ensureDeck(); dealing=true; dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,false); updateVals(); await wait(280); }
+    const bet=sumBet(), p=handValue(player), d=handValue(dealer);
+    if(d>21 || p>d){ state.bank+=bet*2; setMsg('You win!','win'); sfx.win(); }
+    else if(p===d){ state.bank+=bet; setMsg('Push.'); }
+    else { setMsg('Dealer wins.','lose'); sfx.lose(); }
+    state.hi.bankroll=Math.max(state.hi.bankroll||0,state.bank); store.save(state); renderProfile(); btnNew.disabled=false;
+  }
+
+  function dbl(){
+    const bet=sumBet(); if(state.bank<bet){ setMsg('Not enough balance to double.','lose'); return; }
+    const tokens=[...tray.children]; tokens.forEach(tok=>{ const v=Number(tok.dataset.val), emoji=tok.textContent; addChip(v,emoji); });
+    state.bank -= bet; store.save(state); renderProfile(); refreshBet();
+    hit().then(()=>{ if(handValue(player)<=21) stand(); });
+  }
+
+  btnDeal.onclick=deal; btnHit.onclick=hit; btnStand.onclick=stand; btnDouble.onclick=dbl; btnNew.onclick=resetRound;
+
+  // Fullscreen
+  function inFS(){ return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement; }
+  function reqFS(el){
+    if(el.requestFullscreen) return el.requestFullscreen();
+    if(el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+    if(el.msRequestFullscreen) return el.msRequestFullscreen();
+    return Promise.resolve();
+  }
+  function exitFS(){
+    if(document.exitFullscreen) return document.exitFullscreen();
+    if(document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    if(document.msExitFullscreen) return document.msExitFullscreen();
+    return Promise.resolve();
+  }
+  function onFSChange(){
+    const is=inFS();
+    $('#bjFullscreen').style.display = is ? 'none':'inline-block';
+    $('#bjExitFs').style.display = is ? 'inline-block':'none';
+  }
+  document.addEventListener('fullscreenchange', onFSChange);
+  document.addEventListener('webkitfullscreenchange', onFSChange);
+  document.addEventListener('MSFullscreenChange', onFSChange);
+  $('#bjFullscreen').onclick=()=>{ reqFS(tableEl).catch(()=>{}); };
+  $('#bjExitFs').onclick=()=>{ exitFS().catch(()=>{}); };
+
+  dealerAvatar.src = makeAvatar(Math.floor(Math.random()*999)+100,128);
+  playerAvatar.src = state.selectedAvatarData || makeAvatar(1,128);
+  playerNameUnder.textContent = state.user || 'Player';
+})();
+</script>
+</body>
+</html>
