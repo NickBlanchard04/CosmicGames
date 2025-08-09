@@ -1,47 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Cosmic Games</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
 :root{
-  --bg:#070814; --panel:#0c1133; --edge:#2a3180; --ink:#dfe7ff; --mut:#a7b0d9;
+  --bg:#070814; --panel:#0c1133; --edge:#2a3180; --ink:#e8eeff; --mut:#a7b0d9;
   --acc:#7aa2ff; --acc2:#8ef5ff; --win:#43f57a; --lose:#ff6b6b;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
-a{color:var(--acc);text-decoration:none}
-button{background:#12183f;border:1px solid var(--edge);color:var(--ink);border-radius:12px;padding:.65rem 1rem;font-weight:700;cursor:pointer;transition:.15s}
-button:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(122,162,255,.16)}
+button{background:#12183f;border:1px solid var(--edge);color:var(--ink);border-radius:12px;padding:.6rem 1rem;font-weight:700;cursor:pointer;transition:.15s}
+button:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(122,162,255,.18)}
 button:disabled{opacity:.55;cursor:not-allowed}
 .ghost{background:transparent}
-.accent{background:linear-gradient(180deg,#3344ad,#202b8e);border-color:#4857cc;position:relative;overflow:hidden}
-.accent:after{content:"";position:absolute;inset:-200% -40%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent);transform:translateX(-100%);animation:shine 6s linear infinite}
-@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(120%)}}
-
+.accent{background:linear-gradient(180deg,#3344ad,#202b8e);border-color:#4857cc}
 .top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;background:linear-gradient(180deg,rgba(10,12,32,.85),rgba(10,12,32,.55));border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:saturate(140%) blur(8px)}
 .brand{display:flex;align-items:center;gap:.7rem;font-weight:900;letter-spacing:.6px}
 .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;overflow:hidden}
 .pill{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .7rem;border:1px solid var(--edge);border-radius:999px;background:#0c1033}
 input,select{background:#0b0f31;border:1px solid var(--edge);color:var(--ink);padding:.55rem .7rem;border-radius:10px}
+
 .grid{max-width:1100px;margin:18px auto;padding:0 16px;display:grid;gap:16px}
 .panel{background:linear-gradient(180deg,rgba(12,16,51,.96),rgba(7,8,20,.96));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(10,12,30,.35)}
 .stage{position:relative;border-radius:16px;border:1px solid rgba(255,255,255,.06);overflow:hidden}
 h1,h2{margin:.2rem 0 1rem}
 .muted{color:var(--mut)}
 .badge{padding:.25rem .55rem;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:#0f1440;font-size:.86rem}
-.badge.bump{animation:b .22s ease}
-@keyframes b{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
-.flex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .hidden{display:none}
 
-/* BACKDROP (solar system) */
+/* BACKDROP */
 canvas.bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
-#solarsys{filter:saturate(120%)}
+#solarsys{filter:saturate(118%)}
 
-/* Landing list vertical */
+/* Landing vertical list */
 .nav-list{display:grid;grid-template-columns:1fr;gap:14px}
 .tile{display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#12183f,#0b0f31);border:1px solid var(--edge);border-radius:14px;padding:14px}
 .tile h3{margin:.25rem 0}
@@ -69,14 +63,13 @@ canvas.bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
 .card .rank{font-weight:900;font-size:18px;padding:6px 8px}
 .card .suit{font-size:20px;padding:0 8px}
 .card .pips{display:grid;place-items:center;font-size:28px;color:currentColor;margin-bottom:6px}
-.card.red{color:#b10c2b}
-.card.black{color:#111}
+.card.red{color:#b10c2b}.card.black{color:#111}
 .card.back{background:repeating-linear-gradient(45deg,#102255 0 8px,#0c1a44 8px 16px),radial-gradient(600px 600px at 10% 10%, rgba(255,255,255,.08), transparent 60%);border-color:#20337a}
 @keyframes dealIn{from{transform:translateY(-12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
 @keyframes flipIn{from{transform:rotateY(-90deg)}to{transform:rotateY(0)}}
 .card.deal-in{animation:dealIn .22s ease-out both}
 .card.flip-in{animation:flipIn .25s ease-out both;transform-style:preserve-3d;backface-visibility:hidden}
-.controls{display:flex;gap:16px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.controls{display:flex;gap:18px;justify-content:center;margin-top:10px;flex-wrap:wrap}
 
 /* Chips */
 .rack{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap}
@@ -100,8 +93,8 @@ canvas.bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block}
 .help-card{max-width:680px;background:#0c1133;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px}
 .help-close{position:absolute;top:8px;right:12px;cursor:pointer}
 
-/* Fullscreen adjustments */
-body.fs-bj #blackjack .panel{max-width:min(1400px,92vw);margin-inline:auto}
+/* Fullscreen tweaks */
+body.fs-bj #blackjack .panel{max-width:min(1400px,95vw);margin-inline:auto}
 body.fs-bj #blackjack .hand{gap:18px}
 </style>
 </head>
@@ -111,6 +104,7 @@ body.fs-bj #blackjack .hand{gap:18px}
 <header class="top">
   <div class="brand"><div class="logo" id="logo"></div>Cosmic Games</div>
   <div class="flex">
+    <button id="openCustomize" class="accent">Customization</button>
     <div class="pill">👤 <input id="username" placeholder="Enter username" style="width:170px"><button id="saveUser" class="ghost">Save</button></div>
     <div class="pill">💰 Balance: <b id="bal">$0</b></div>
     <button id="resetBank" class="ghost">Reset Balance</button>
@@ -142,8 +136,8 @@ body.fs-bj #blackjack .hand{gap:18px}
     </div>
   </section>
 
-  <!-- Customization with tabs -->
-  <section id="customize" class="panel stage">
+  <!-- Customization -->
+  <section id="customize" class="panel stage hidden">
     <h2>Customization</h2>
     <div class="tabs">
       <div class="tab active" data-tab="tAv">Avatars</div>
@@ -181,6 +175,7 @@ body.fs-bj #blackjack .hand{gap:18px}
         <button id="saveCard" class="accent">Save Card</button>
       </div>
     </div>
+    <div class="controls"><button class="ghost go" data-go="landing">Back</button></div>
   </section>
 
   <!-- Blackjack -->
@@ -219,7 +214,7 @@ body.fs-bj #blackjack .hand{gap:18px}
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
           <div id="playerHand" class="hand" style="justify-content:center"></div>
-          <div id="betTray" class="bet-tray" title="Click chips to add; click a chip here to remove"></div>
+          <div id="betTray" class="bet-tray"></div>
           <div class="flex" style="gap:8px;align-items:center">
             <span class="badge" id="betBadge">Bet: <b id="bjBet">$0</b></span>
             <span class="badge" id="playerVal">—</span>
@@ -283,7 +278,7 @@ body.fs-bj #blackjack .hand{gap:18px}
   </section>
 </main>
 
-<!-- Help Bubble (only for Pool) -->
+<!-- Help Bubble -->
 <div id="helpWrap" class="help-pop" aria-hidden="true">
   <div class="help-card" role="dialog" aria-modal="true">
     <div class="help-close" id="helpClose">✕</div>
@@ -299,52 +294,65 @@ body.fs-bj #blackjack .hand{gap:18px}
 </div>
 
 <script>
-/* ===== utilities + persistence ===== */
-var $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-var store={k:'cosmic.games.v9',load(){try{return JSON.parse(localStorage.getItem(this.k))||{}}catch(e){return{}}},save(x){localStorage.setItem(this.k,JSON.stringify(x))}};
-var state=Object.assign({user:'',bank:1000,selectedAvatar:0,selectedAvatarData:null,cardText:'—',cardColor:'#7aa2ff',mute:false},store.load());
-function show(id){['landing','customize','blackjack','pool'].forEach(n=>$('#'+n).classList.toggle('hidden',n!==id)); if(id!=='pool') hideHelp(); }
-$('.grid').addEventListener('click',e=>{const b=e.target.closest('.go'); if(b) show(b.dataset.go);});
+/* ===== util + persistence ===== */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const store={k:'cosmic.games.v10',load(){try{return JSON.parse(localStorage.getItem(this.k))||{}}catch(e){return{}}},save(x){localStorage.setItem(this.k,JSON.stringify(x))}};
+let state=Object.assign({user:'',bank:1000,selectedAvatar:0,selectedAvatarData:null,cardText:'—',cardColor:'#7aa2ff',mute:false},store.load());
 function renderProfile(){ $('#username').value=state.user||''; $('#bal').textContent='$'+state.bank.toLocaleString(); $('#muteToggle').textContent=state.mute?'🔇':'🔊'; $('#bjBal').textContent='$'+state.bank.toLocaleString(); $('#bjUser').textContent=state.user||'Player'; $('#playerNameUnder').textContent=state.user||'Player'; $('#playerCardBadge').textContent=state.cardText||'—'; $('#playerCardBadge').style.color=state.cardColor; $('#playerCardBadge').style.borderColor=state.cardColor; }
 $('#saveUser').onclick=()=>{state.user=($('#username').value||'').trim()||'Player';store.save(state);renderProfile();}
 $('#resetBank').onclick=()=>{if(confirm('Reset balance to $1,000?')){state.bank=1000;store.save(state);renderProfile();}}
 $('#muteToggle').onclick=()=>{state.mute=!state.mute;store.save(state);renderProfile();}
+$('#openCustomize').onclick=()=>show('customize');
 
-/* ===== Solar-system backdrop (landing) ===== */
+function show(id){
+  // Prevent call before pool help exists
+  if(window.hideHelp) window.hideHelp();
+  ['landing','customize','blackjack','pool'].forEach(n=>$('#'+n).classList.toggle('hidden',n!==id));
+}
+
+/* ===== Solar system backdrop (better planets/rings/craters) ===== */
 (function(){
   const c=$('#solarsys'),x=c.getContext('2d'); let W,H,stars=[],planets=[];
   function R(){W=c.width=innerWidth;H=c.height=innerHeight;
-    stars=Array.from({length:Math.min(900,Math.floor(W*H/2500))},()=>({x:Math.random()*W,y:Math.random()*H,z:.2+.8*Math.random()}));
-    planets=[ // drifting right->left
-      {r:70,y:H*0.8,s:.08,clr:'#2e73ff'}, {r:46,y:H*0.3,s:.12,clr:'#ffb86b'}, {r:24,y:H*0.6,s:.18,clr:'#7afff2'}
-    ].map((p,i)=>Object.assign(p,{x:W+200+i*260}));
+    stars=Array.from({length:Math.min(1100,Math.floor(W*H/2200))},()=>({x:Math.random()*W,y:Math.random()*H,z:.2+.9*Math.random()}));
+    planets=[
+      {r:80,y:H*0.82,s:.07,base:'#2e73ff',rings:true,ringTilt:.45},
+      {r:50,y:H*0.33,s:.11,base:'#ffb86b',rings:false},
+      {r:34,y:H*0.58,s:.16,base:'#7afff2',rings:true,ringTilt:-.25}
+    ].map((p,i)=>Object.assign(p,{x:W+200+i*260,seed:Math.random()*1000}));
   }
   addEventListener('resize',R); R();
+  function crater(gx,gy,r){x.beginPath();x.arc(gx,gy,r,0,6.28);x.fill();}
   function loop(t){
     x.clearRect(0,0,W,H);
-    // stars
     x.fillStyle='#cfe7ff';
-    stars.forEach(s=>{s.x-=s.z*0.5; if(s.x<-2) s.x=W+2; x.globalAlpha=.5*s.z; x.fillRect(s.x,s.y,2*s.z,2*s.z);});
+    stars.forEach(s=>{s.x-=s.z*.55; if(s.x<-2) s.x=W+2; x.globalAlpha=.5*s.z; x.fillRect(s.x,s.y,2*s.z,2*s.z);});
     x.globalAlpha=1;
-    // planets
-    planets.forEach(p=>{p.x-=p.s*1.5; if(p.x<-p.r) p.x=W+p.r+200; let g=x.createRadialGradient(p.x-p.r*.3,p.y-p.r*.3,2,p.x,p.y,p.r); g.addColorStop(0,'#fff'); g.addColorStop(.15,p.clr); g.addColorStop(1,'#0a0f2a'); x.fillStyle=g; x.beginPath(); x.arc(p.x,p.y,p.r,0,6.28); x.fill();});
+    planets.forEach(p=>{
+      p.x-=p.s*1.5; if(p.x<-p.r) p.x=W+p.r+220;
+      let g=x.createRadialGradient(p.x-p.r*.35,p.y-p.r*.35,2,p.x,p.y,p.r);
+      g.addColorStop(0,'#fff'); g.addColorStop(.12,p.base); g.addColorStop(1,'#0a0f2a');
+      x.fillStyle=g; x.beginPath(); x.arc(p.x,p.y,p.r,0,6.28); x.fill();
+      // craters
+      x.globalAlpha=.22; x.fillStyle='#000'; for(let i=0;i<8;i++){let ang=(i*0.78+t*0.0002+p.seed)%6.28, rr=3+(i%3)*1.6; crater(p.x+Math.cos(ang)*p.r*.6,p.y+Math.sin(ang)*p.r*.45,rr); } x.globalAlpha=1;
+      // ring
+      if(p.rings){ x.save(); x.translate(p.x,p.y); x.rotate(p.ringTilt); let rg=x.createRadialGradient(0,0, p.r*0.9, 0,0,p.r*1.25); rg.addColorStop(0,'rgba(255,255,255,.05)'); rg.addColorStop(1,'rgba(180,210,255,.18)'); x.fillStyle=rg; x.beginPath(); x.ellipse(0,0,p.r*1.35,p.r*.55,0,0,6.28); x.fill(); x.restore(); }
+    });
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
 
-/* ===== Customization (tabs) ===== */
+/* ===== Customization (tabs) & avatars ===== */
 (function(){
   const tabs=$$('.tab'); tabs.forEach(t=>t.onclick=()=>{tabs.forEach(a=>a.classList.remove('active')); t.classList.add('active'); ['tAv','tCard'].forEach(id=>$('#'+id).classList.toggle('hidden',id!==t.dataset.tab));});
 })();
-
-/* Avatars (5) */
 function svgData(svg){return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);}
-var AVS=[
+const AVS=[
   svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><circle cx="64" cy="64" r="44" fill="#0a0a0a"/><circle cx="64" cy="64" r="24" fill="#fff"/><text x="64" y="74" font-family="Arial Black,Arial" font-weight="900" font-size="28" text-anchor="middle" fill="#111">8</text></svg>'),
-  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#b10c2b">K</text><text x="94" y="108" font-size="24" font-family="Georgia" fill="#b10c2b">K</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#b10c2b">♛</text></svg>'),
-  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#b10c2b">Q</text><text x="94" y="108" font-size="24" font-family="Georgia" fill="#b10c2b">Q</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#b10c2b">♦</text></svg>'),
-  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#111">J</text><text x="94" y="108" font-size="24" font-family="Georgia" fill="#111">J</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#111">♣</text></svg>'),
+  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#b10c2b">K</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#b10c2b">♛</text></svg>'),
+  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#b10c2b">Q</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#b10c2b">♦</text></svg>'),
+  svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><rect x="20" y="12" width="88" height="104" rx="10" fill="#fff"/><text x="34" y="38" font-size="24" font-family="Georgia" fill="#111">J</text><text x="64" y="74" text-anchor="middle" font-size="64" font-family="Georgia" fill="#111">♣</text></svg>'),
   svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="18" fill="#0b0e2b"/><circle cx="64" cy="52" r="28" fill="#9fd3ff"/><circle cx="64" cy="52" r="18" fill="#1f2a5f"/><rect x="28" y="84" width="72" height="24" rx="12" fill="#1f2a5f"/></svg>')
 ];
 function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image(); i.style.width='28px'; i.style.height='28px'; i.style.borderRadius='6px'; i.src=state.selectedAvatarData||AVS[state.selectedAvatar||0]; l.appendChild(i);}
@@ -362,11 +370,18 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
   const suits=['♠','♥','♦','♣'], red={'♥':1,'♦':1};
   const ranks=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
   let deck=[], dealer=[], player=[], hidden=true, dealing=false;
+
+  // --- BET STATE FIRST (fix TDZ) ---
+  let stack=[];                         // all chip values
+  const sumBet=()=>stack.reduce((s,n)=>s+n,0);
+  const betLbl=$('#bjBet'), tray=$('#betTray');
+  function refreshBet(){ betLbl.textContent='$'+sumBet().toLocaleString(); }
+  function clearBet(){ stack.length=0; tray.innerHTML=''; refreshBet(); }
+
   const msg=$('#bjMsg'), dealerHand=$('#dealerHand'), playerHand=$('#playerHand');
-  const betLbl=$('#bjBet'), balLbl=$('#bjBal'); const dealerVal=$('#dealerVal'), playerVal=$('#playerVal');
+  const balLbl=$('#bjBal'); const dealerVal=$('#dealerVal'), playerVal=$('#playerVal');
   const btnDeal=$('#btnDeal'), btnHit=$('#btnHit'), btnStand=$('#btnStand'), btnDouble=$('#btnDouble'), btnNew=$('#btnNewRound');
-  const tray=$('#betTray'), rack=$('#chipRack');
-  const dealerAvatar=$('#dealerAvatar'); const playerAvatar=$('#playerAvatar');
+  const dealerAvatar=$('#dealerAvatar'), playerAvatar=$('#playerAvatar');
   const evil=svgData('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="22" fill="#190c2f"/><circle cx="64" cy="64" r="46" fill="#5d1a8b"/><circle cx="46" cy="56" r="9" fill="#fff"/><circle cx="82" cy="56" r="9" fill="#fff"/><path d="M40 84c8 8 40 8 48 0" stroke="#fff" stroke-width="6" fill="none"/></svg>');
   dealerAvatar.src=evil; playerAvatar.src=state.selectedAvatarData||AVS[state.selectedAvatar||0];
 
@@ -379,36 +394,30 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
   function handVal(a){ let t=a.reduce((s,c)=>s+cardVal(c),0), ac=a.filter(c=>c.r==='A').length; while(t>21&&ac--) t-=10; return t; }
   function renderHand(el,arr,hideFirst){ el.innerHTML=''; arr.forEach((c,i)=>{const d=document.createElement('div'); if(hideFirst&&i===0){d.className='card back'; el.appendChild(d); return;} d.className='card '+(red[c.s]?'red':'black'); const t=document.createElement('div'); t.className='rank'; t.textContent=c.r; const s=document.createElement('div'); s.className='suit'; s.textContent=c.s; const p=document.createElement('div'); p.className='pips'; p.textContent=c.s; d.append(t,s,p); el.appendChild(d); requestAnimationFrame(()=>{d.classList.add('deal-in','flip-in')});});}
   const setMsg=(t,cls)=>{msg.className='banner'+(cls?(' '+cls):''); msg.textContent=t;}
-  function bump(el){el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');}
   const ensureDeck=_=>{if(deck.length<15) buildDeck();}
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  function reset(){ dealer=[]; player=[]; hidden=true; dealing=false; renderHand(dealerHand,dealer,false); renderHand(playerHand,player,false); $('#dealerVal').textContent='—'; $('#playerVal').textContent='—'; setMsg('Select a bet first.'); btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnDeal.disabled=false; btnNew.disabled=true; clearBet(); dealerAvatar.src=evil; playerAvatar.src=state.selectedAvatarData||AVS[state.selectedAvatar||0]; }
+  buildDeck(); reset();
+
+  // bet handling (debounce + delayed repeat)
+  function addChip(v,e){const t=document.createElement('div'); t.className='bet-token'; t.dataset.val=v; t.dataset.label='$'+v; t.textContent=e; t.onclick=()=>{const i=stack.lastIndexOf(v); if(i>-1) stack.splice(i,1); t.remove(); refreshBet();}; t.tabIndex=0; t.onkeydown=ev=>{if(ev.key==='Delete'||ev.key==='Backspace') t.click();}; tray.appendChild(t); stack.push(v); refreshBet();}
+  let clickLock=false, holdTimer=null, repeatTimer=null;
+  function safeAdd(fn){ if(clickLock) return; clickLock=true; fn(); setTimeout(()=>clickLock=false,280); } // longer click debounce
+  $('#chipRack').addEventListener('click',e=>{const b=e.target.closest('.chip-emoji'); if(!b) return; safeAdd(()=>addChip(+b.dataset.val,b.dataset.emoji));});
+  function startHold(btn){ holdTimer=setTimeout(()=>{ repeatTimer=setInterval(()=>addChip(+btn.dataset.val,btn.dataset.emoji),220); },420);}
+  function stopHold(){ clearTimeout(holdTimer); clearInterval(repeatTimer); }
+  $('#chipRack').addEventListener('mousedown',e=>{const b=e.target.closest('.chip-emoji'); if(b) startHold(b);}); ['mouseup','mouseleave'].forEach(ev=>$('#chipRack').addEventListener(ev,stopHold));
+  $('#chipRack').addEventListener('touchstart',e=>{const b=e.target.closest('.chip-emoji'); if(b) startHold(b);}); $('#chipRack').addEventListener('touchend',stopHold);
+  $('#undoBet').onclick=function(){if(!stack.length) return; const v=stack.pop(); const list=tray.children; for(let i=list.length-1;i>=0;i--){if(+list[i].dataset.val===v){list[i].remove();break;}} refreshBet();}
+  $('#clearBet').onclick=clearBet;
+
   async function dealSeq(){dealing=true;
     player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); upd(); await wait(260);
     dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,true);  upd(); await wait(260);
     player.push(deck.pop()); sfx.deal(); renderHand(playerHand,player,false); upd(); await wait(260);
     dealer.push(deck.pop()); sfx.deal(); renderHand(dealerHand,dealer,true);  upd(); dealing=false;
   }
-  const upd=_=>{ $('#playerVal').textContent=handVal(player); $('#dealerVal').textContent=hidden?'??':handVal(dealer); bump($('#playerVal')); if(!hidden) bump($('#dealerVal')); }
-  const wait=ms=>new Promise(r=>setTimeout(r,ms));
-
-  function reset(){ dealer=[]; player=[]; hidden=true; dealing=false; renderHand(dealerHand,dealer,false); renderHand(playerHand,player,false); $('#dealerVal').textContent='—'; $('#playerVal').textContent='—'; setMsg('Select a bet first.'); btnHit.disabled=btnStand.disabled=btnDouble.disabled=true; btnDeal.disabled=false; btnNew.disabled=true; clearBet(); dealerAvatar.src=evil; playerAvatar.src=state.selectedAvatarData||AVS[state.selectedAvatar||0]; }
-  buildDeck(); reset();
-
-  // bet handling with stronger debounce + delayed auto-repeat
-  let stack=[]; const sumBet=_=>stack.reduce((s,n)=>s+n,0); const refreshBet=_=>{$('#bjBet').textContent='$'+sumBet().toLocaleString(); bump($('#betBadge'));};
-  function addChip(v,e){const t=document.createElement('div'); t.className='bet-token'; t.dataset.val=v; t.dataset.label='$'+v; t.textContent=e; t.onclick=()=>{const i=stack.lastIndexOf(v); if(i>-1) stack.splice(i,1); t.remove(); refreshBet();}; t.tabIndex=0; t.onkeydown=ev=>{if(ev.key==='Delete'||ev.key==='Backspace') t.click();}; $('#betTray').appendChild(t); stack.push(v); refreshBet();}
-  function clearBet(){stack.length=0; $('#betTray').innerHTML=''; refreshBet();}
-  let clickLock=false, holdTimer=null, repeatTimer=null;
-  function safeAdd(fn){ if(clickLock) return; clickLock=true; fn(); setTimeout(()=>clickLock=false,280); } // longer single-click debounce
-  $('#chipRack').addEventListener('click',e=>{const b=e.target.closest('.chip-emoji'); if(!b) return; safeAdd(()=>addChip(+b.dataset.val,b.dataset.emoji));});
-  function startHold(btn){ holdTimer=setTimeout(()=>{ repeatTimer=setInterval(()=>addChip(+btn.dataset.val,btn.dataset.emoji),220); },420);} // hold must be ~0.4s before repeating
-  function stopHold(){ clearTimeout(holdTimer); clearInterval(repeatTimer); }
-  $('#chipRack').addEventListener('mousedown',e=>{const b=e.target.closest('.chip-emoji'); if(b) startHold(b);});
-  ['mouseup','mouseleave'].forEach(ev=>$('#chipRack').addEventListener(ev,stopHold));
-  $('#chipRack').addEventListener('touchstart',e=>{const b=e.target.closest('.chip-emoji'); if(b) startHold(b);});
-  $('#chipRack').addEventListener('touchend',stopHold);
-
-  $('#undoBet').onclick=function(){if(!stack.length) return; const v=stack.pop(); const list=$('#betTray').children; for(let i=list.length-1;i>=0;i--){if(+list[i].dataset.val===v){list[i].remove();break;}} refreshBet();}
-  $('#clearBet').onclick=clearBet;
+  function upd(){ $('#playerVal').textContent=handVal(player); $('#dealerVal').textContent=hidden?'??':handVal(dealer); }
 
   btnDeal.onclick=async function(){
     const bet=sumBet(); if(bet<=0){setMsg('Select chips first (you can mix).');return;} if(state.bank<bet){setMsg('Insufficient balance.','lose');return;}
@@ -438,11 +447,12 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
   };
 
   btnDouble.onclick=function(){ const bet=sumBet(); if(state.bank<bet){setMsg('Not enough balance to double.','lose');return;}
-    [...$('#betTray').children].forEach(t=>addChip(+t.dataset.val,t.textContent)); state.bank-=bet; store.save(state); renderProfile(); refreshBet(); btnHit.click();
+    [...tray.children].forEach(t=>{addChip(+t.dataset.val,t.textContent)});
+    state.bank-=bet; store.save(state); renderProfile(); refreshBet(); btnHit.click();
   };
   btnNew.onclick=reset;
 
-  // fullscreen (space out elements a bit more)
+  // fullscreen
   const bjFs=$('#bjFullscreen'), bjExit=$('#bjExitFs'), table=$('#blackjack');
   const inFs=()=>document.fullscreenElement||document.webkitFullscreenElement||document.msFullscreenElement;
   const reqFs=el=>el.requestFullscreen?el.requestFullscreen():el.webkitRequestFullscreen?el.webkitRequestFullscreen():el.msRequestFullscreen&&el.msRequestFullscreen();
@@ -455,13 +465,14 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
 /* ===== 8-Ball Pool ===== */
 (function(){
   const cvs=$('#poolCanvas'), ctx=cvs.getContext('2d'), outer=$('#poolOuter'), frame=$('#poolFrame');
-  const fsIn=$('#poolFullscreen'), fsOut=$('#poolExitFs'), section=$('#pool'), restart=$('#poolRestart'), levelSel=$('#aiLevel');
+  const fsIn=$('#poolFullscreen'), fsOut=$('#poolExitFs'), restart=$('#poolRestart'), levelSel=$('#aiLevel');
   const powerFill=$('#powerFill'); const turnBadge=$('#poolTurn');
-  const help=$('#helpWrap'); $('#poolHelp').onclick=()=>{help.style.display='flex'; help.setAttribute('aria-hidden','false');}; const hideHelp=()=>{help.style.display='none'; help.setAttribute('aria-hidden','true');}; $('#helpClose').onclick=hideHelp; window.hideHelp=hideHelp;
+  const help=$('#helpWrap'); $('#poolHelp').onclick=()=>{help.style.display='flex'; help.setAttribute('aria-hidden','false');}; window.hideHelp=()=>{help.style.display='none'; help.setAttribute('aria-hidden','true');}; $('#helpClose').onclick=window.hideHelp;
 
   let W=cvs.width, H=cvs.height, R=11, F=0.992, REST=0.02, POCKET=20, rail=18;
-  let balls=[], pockets=[], aiming=false, aimStart=null, pulling=false, power=0, turn='player', groups={player:null, ai:null}, eightIn=false;
+  let balls=[], pockets=[], power=0, turn='player', groups={player:null, ai:null}, eightIn=false;
   const aiLevels={easy:{aimErr:.16,powVar:.35}, normal:{aimErr:.09,powVar:.22}, hard:{aimErr:.05,powVar:.14}, pro:{aimErr:.02,powVar:.08}};
+
   function setTurn(t){turn=t; turnBadge.textContent=(t==='player'?'Your turn':'AI turn');}
 
   function newBall(x,y,color,id,type){return {x,y,vx:0,vy:0,r:R,color,id:id||0,type:type||'neutral',in:false};}
@@ -491,19 +502,12 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
   function drawBalls(){
     balls.forEach(b=>{ if(b.in) return; const sh=ctx.createRadialGradient(b.x-b.r*0.4,b.y-b.r*0.4,b.r*0.2,b.x,b.y,b.r); sh.addColorStop(0,'#fff'); sh.addColorStop(.2,b.color); sh.addColorStop(1,b.color); ctx.fillStyle=sh; ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fill(); if(b.type==='stripe'){ ctx.fillStyle='#fff'; ctx.fillRect(b.x-b.r,b.y-4,b.r*2,8);} if(b.id===8){ ctx.fillStyle='#111'; ctx.beginPath(); ctx.arc(b.x,b.y,6,0,6.28); ctx.fill(); ctx.fillStyle='#fff'; ctx.font='9px Arial Black'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('8',b.x,b.y+.2);} });
   }
-  function drawCue(){
-    if(turn!=='player') return; // never while AI or rolling
-    if(rolling()) return;       // not while balls move
-    const cb=cueBall(); if(cb.in) return;
-    const mx=mouse.x,my=mouse.y, dx=mx-cb.x, dy=my-cb.y, ang=Math.atan2(dy,dx);
-    const len=160+power*2; const tipX=cb.x-Math.cos(ang)*cb.r, tipY=cb.y-Math.sin(ang)*cb.r; const backX=tipX-Math.cos(ang)*len, backY=tipY-Math.sin(ang)*len;
-    ctx.lineWidth=8; ctx.strokeStyle='#a67c52'; ctx.beginPath(); ctx.moveTo(backX,backY); ctx.lineTo(tipX,tipY); ctx.stroke();
-    ctx.lineWidth=10; ctx.strokeStyle='#2a7bd3'; ctx.beginPath(); ctx.moveTo(tipX,tipY); ctx.lineTo(tipX+Math.cos(ang)*8,tipY+Math.sin(ang)*8); ctx.stroke();
-  }
 
+  // physics
+  const REST=0.02;
   function physics(){
     let move=false;
-    balls.forEach(b=>{ if(b.in) return; if(Math.abs(b.vx)>REST||Math.abs(b.vy)>REST) move=true; b.x+=b.vx; b.y+=b.vy; b.vx*=F; b.vy*=F; if(Math.abs(b.vx)<REST) b.vx=0; if(Math.abs(b.vy)<REST) b.vy=0; });
+    balls.forEach(b=>{ if(b.in) return; if(Math.abs(b.vx)>REST||Math.abs(b.vy)>REST) move=true; b.x+=b.vx; b.y+=b.vy; b.vx*=0.992; b.vy*=0.992; if(Math.abs(b.vx)<REST) b.vx=0; if(Math.abs(b.vy)<REST) b.vy=0; });
     // cushions
     balls.forEach(b=>{ if(b.in) return; if(b.x-b.r<rail){b.x=rail+b.r;b.vx=Math.abs(b.vx);} if(b.x+b.r>W-rail){b.x=W-rail-b.r;b.vx=-Math.abs(b.vx);} if(b.y-b.r<rail){b.y=rail+b.r;b.vy=Math.abs(b.vy);} if(b.y+b.r>H-rail){b.y=H-rail-b.r;b.vy=-Math.abs(b.vy);} });
     // collisions
@@ -532,12 +536,13 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
   }
   const rolling=()=>balls.some(b=>!b.in&&(Math.abs(b.vx)>REST||Math.abs(b.vy)>REST));
 
-  function endRound(who,msg){ turnBadge.textContent=(who==='player'?'You win! ':'AI wins! ')+msg; setTimeout(()=>rack(),1800); }
+  function endRound(who,msg){ turnBadge.textContent=(who==='player'?'You win! ':'AI wins! ')+msg; setTimeout(()=>rack(),1600); }
 
   // input + power
   const mouse={x:W/2,y:H/2};
   cvs.addEventListener('mousemove',e=>{const r=cvs.getBoundingClientRect(); mouse.x=(e.clientX-r.left)*cvs.width/r.width; mouse.y=(e.clientY-r.top)*cvs.height/r.height; if(pulling){ power=Math.min(100, Math.hypot(mouse.x-aimStart.x, mouse.y-aimStart.y)/2); powerFill.style.width=power+'%'; }});
-  cvs.addEventListener('mousedown',e=>{ if(turn!=='player'||rolling()) return; const cb=cueBall(); aiming=true; pulling=true; aimStart={x:cb.x,y:cb.y}; power=0; powerFill.style.width='0%'; });
+  let pulling=false, aimStart=null;
+  cvs.addEventListener('mousedown',e=>{ if(turn!=='player'||rolling()) return; const cb=cueBall(); pulling=true; aimStart={x:cb.x,y:cb.y}; power=0; powerFill.style.width='0%'; });
   cvs.addEventListener('mouseup',e=>{ if(turn!=='player'||!pulling) return; pulling=false; const cb=cueBall(); const dx=cb.x-mouse.x, dy=cb.y-mouse.y; const len=Math.hypot(dx,dy)||1; const force=(power/8); cb.vx+=(dx/len)*force; cb.vy+=(dy/len)*force; power=0; powerFill.style.width='0%'; });
 
   // AI
@@ -554,21 +559,32 @@ function mountLogoAvatar(){const l=$('#logo'); l.innerHTML=''; const i=new Image
 
   // loop
   (function loop(){
-    drawTable(); drawBalls(); drawCue(); physics();
+    // draw
+    ctx.clearRect(0,0,W,H);
+    // table & balls
+    drawTable(); drawBalls();
+    // cue (only when still)
+    if(turn==='player' && !rolling()){
+      const cb=cueBall(); const dx=mouse.x-cb.x, dy=mouse.y-cb.y, ang=Math.atan2(dy,dx), tipX=cb.x+Math.cos(ang)*cb.r, tipY=cb.y+Math.sin(ang)*cb.r, len=160+power*2;
+      ctx.lineWidth=8; ctx.strokeStyle='#a67c52'; ctx.beginPath(); ctx.moveTo(tipX-Math.cos(ang)*len, tipY-Math.sin(ang)*len); ctx.lineTo(tipX,tipY); ctx.stroke();
+      ctx.lineWidth=10; ctx.strokeStyle='#2a7bd3'; ctx.beginPath(); ctx.moveTo(tipX,tipY); ctx.lineTo(tipX+Math.cos(ang)*8, tipY+Math.sin(ang)*8); ctx.stroke();
+    }
+    physics();
     if(!rolling() && turn==='ai'){ aiShoot(); setTurn('player'); }
     requestAnimationFrame(loop);
   })();
 
   restart.onclick=()=>rack();
 
-  // fullscreen — occupy the screen ambitiously but keep aspect
+  // fullscreen
   const inFs=()=>document.fullscreenElement||document.webkitFullscreenElement||document.msFullscreenElement;
   const reqFs=el=>el.requestFullscreen?el.requestFullscreen():el.webkitRequestFullscreen?el.webkitRequestFullscreen():el.msRequestFullscreen&&el.msRequestFullscreen();
   const exitFs=_=>document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen?document.webkitExitFullscreen():document.msExitFullscreen&&document.msExitFullscreen();
-  function ch(){const is=inFs(); fsIn.classList.toggle('hidden',is); fsOut.classList.toggle('hidden',!is); if(is){ frame.style.maxWidth='96vw'; frame.style.aspectRatio='2/1'; }else{ frame.style.maxWidth='1100px'; frame.style.aspectRatio='2/1'; } }
+  function ch(){const is=inFs(); fsIn.classList.toggle('hidden',is); fsOut.classList.toggle('hidden',!is); if(is){ frame.style.maxWidth='96vw'; }else{ frame.style.maxWidth='1100px'; } }
   document.addEventListener('fullscreenchange',ch); document.addEventListener('webkitfullscreenchange',ch); document.addEventListener('MSFullscreenChange',ch);
   fsIn.onclick=()=>reqFs(outer); fsOut.onclick=()=>exitFs();
 })();
+
 </script>
 </body>
 </html>
