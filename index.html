@@ -1,103 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mr. Backsplash 518</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mr. Backsplash 518 — David LaFaver Jr.</title>
+<meta name="description" content="Backsplash & tile installation across Saratoga County and the Adirondacks. Call or text 518-650-4248."/>
+<meta name="theme-color" content="#234d2c"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background-color: #f9f9f4;
-        color: #222;
-    }
-    header {
-        background-color: #234d2c;
-        color: white;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    header h1 {
-        margin: 0;
-    }
-    header p {
-        margin: 4px 0 0 0;
-        font-size: 0.9em;
-    }
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    main {
-        padding: 20px;
-        text-align: center;
-    }
-    .contact {
-        font-size: 1.2em;
-        margin: 10px 0;
-    }
-    .contact a {
-        color: #234d2c;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .services {
-        text-align: left;
-        max-width: 600px;
-        margin: 40px auto;
-    }
-    footer {
-        background-color: #234d2c;
-        color: white;
-        padding: 10px;
-        text-align: center;
-        font-size: 0.9em;
-    }
+  :root{
+    --bg:#f6f5f2; --ink:#1f2b22; --muted:#5a6a60; --accent:#234d2c; --ring:#d6e1d9;
+    --card:#ffffff; --radius:14px; --shadow:0 2px 10px rgba(0,0,0,.06),0 12px 28px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:16px 20px}
+
+  /* Header */
+  header{background:var(--accent);color:#fff}
+  .heroRow{display:grid;grid-template-columns:1.2fr 220px;align-items:center;gap:18px}
+  .brand h1{margin:0;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800}
+  .brand small{color:#dfe7e2}
+  .portrait{
+    width:180px;height:180px;border-radius:50%;object-fit:cover;border:5px solid #fff;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);justify-self:end;background:#fff;
+  }
+  @media (max-width:720px){
+    .heroRow{grid-template-columns:1fr;justify-items:center;text-align:center}
+    .portrait{width:140px;height:140px;justify-self:center;margin-top:6px}
+  }
+
+  /* Top card */
+  .topcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--ring);padding:20px;margin-top:14px}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:10px;font-weight:700}
+  .btn.call{background:var(--accent);color:#fff}
+  .btn.ghost{background:#fff;border:1px solid var(--ring);color:var(--accent)}
+
+  /* Sections */
+  section{padding:26px 0}
+  h2{margin:.2rem 0 1rem;color:var(--accent)}
+  ul{margin:0;padding-left:1.2rem}
+
+  /* Tabs + gallery */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+  .tab{border:1px solid var(--ring);background:#fff;color:var(--accent);padding:.5rem .9rem;border-radius:999px;cursor:pointer;font-weight:600}
+  .tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .tile{background:#fff;border:1px solid var(--ring);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);cursor:zoom-in}
+  .tile img{width:100%;height:auto;display:block}
+  .empty{padding:16px;border:1px dashed var(--ring);border-radius:12px;color:var(--muted);background:#fff}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:92vw;max-height:84vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .lightbox button{position:absolute;top:16px;right:16px;background:#fff;border:0;border-radius:8px;padding:.55rem .7rem;font-weight:700;cursor:pointer}
+
+  footer{background:var(--accent);color:#dfe7e2;text-align:center;padding:26px 20px;margin-top:28px}
+  footer a{color:#fff;text-decoration:underline}
 </style>
 </head>
 <body>
-
-<header>
-    <div>
+  <header>
+    <div class="wrap heroRow">
+      <div class="brand">
         <h1>Mr. Backsplash 518</h1>
-        <p>David LaFaver Jr. — Serving Saratoga County &amp; the Adirondacks</p>
+        <small>David LaFaver Jr. — Serving Saratoga County & the Adirondacks</small>
+      </div>
+      <!-- Use your exact GitHub file name (no renaming needed) -->
+      <img class="portrait" src="https://raw.githubusercontent.com/NickBlanchard04/CosmicGames/main/images/david.jpg.jpg" alt="Portrait of David LaFaver Jr.">
     </div>
-    <img src="images/david.jpg" alt="David LaFaver Jr." class="profile-pic">
-</header>
+  </header>
 
-<main>
-    <p>Professional backsplash & tile installation — quality work, local service.</p>
-
-    <div class="contact">
-        📞 Call or Text: <a href="tel:5186504248">518-650-4248</a>
+  <div class="wrap topcard">
+    <p style="margin:0;color:var(--muted)">Professional backsplash & tile installation — quality work, local service.</p>
+    <div class="cta" role="group" aria-label="Primary actions">
+      <a class="btn call" href="tel:+15186504248">📞 Call or Text: <span style="font-variant-numeric:tabular-nums">518-650-4248</span></a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/mr.backsplash518?igsh=eHQ1ZWdvazhsY21v">📷 Visit Mr. Backsplash on Instagram</a>
     </div>
-    <p>
-        <a href="https://www.instagram.com/mr.backsplash518?igsh=eHQ1ZWdvazhsY21v" 
-           style="background-color:#234d2c;color:white;padding:10px 20px;border-radius:5px;text-decoration:none;">
-           📷 Visit Mr. Backsplash on Instagram
-        </a>
-    </p>
+  </div>
 
-    <section class="services">
-        <h2>Services</h2>
-        <ul>
-            <li>Kitchen backsplash installation</li>
-            <li>Tile repairs & regrouting</li>
-            <li>Bathroom wall & floor tile</li>
-            <li>Custom tile design</li>
-        </ul>
+  <main class="wrap">
+    <section>
+      <h2>Services</h2>
+      <ul>
+        <li>Kitchen backsplash installation</li>
+        <li>Tile repairs &amp; regrouting</li>
+        <li>Bathroom wall &amp; floor tile</li>
+        <li>Custom tile design</li>
+      </ul>
     </section>
-</main>
 
-<footer>
-    © 2025 Mr. Backsplash 518 — Saratoga County & Adirondacks
-</footer>
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div id="tabs" class="tabs" role="tablist" aria-label="Portfolio categories"></div>
+      <div id="gallery" class="grid" aria-live="polite">
+        <div class="empty">Choose a category to view photos…</div>
+      </div>
+      <p style="color:var(--muted);margin-top:8px">
+        Add/replace photos by uploading them to the folders below in the repo. The page updates on reload.
+      </p>
+      <ul style="color:var(--muted)">
+        <li><code>davids portfolio 1</code></li>
+        <li><code>davids portfolio 2</code></li>
+      </ul>
+    </section>
+  </main>
 
+  <footer>
+    © <span id="yr"></span> Mr. Backsplash 518 — Saratoga County & Adirondacks • <a href="tel:+15186504248">518-650-4248</a>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button aria-label="Close">Close ✕</button>
+    <img alt="" id="lbimg"><div id="lbmeta" style="position:absolute;bottom:16px;left:16px;right:16px;color:#fff"></div>
+  </div>
+
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Your repo + folder names (with spaces) — no renaming needed
+  const USER = "NickBlanchard04";
+  const REPO = "CosmicGames";
+  const FOLDERS = [
+    { label: "David’s Portfolio 1", path: "davids portfolio 1" },
+    { label: "David’s Portfolio 2", path: "davids portfolio 2" }
+  ];
+  const API_BASE = `https://api.github.com/repos/${USER}/${REPO}/contents/`;
+
+  // Build tabs
+  const tabs = document.getElementById('tabs');
+  const gallery = document.getElementById('gallery');
+  FOLDERS.forEach((f,i)=>{
+    const b = document.createElement('button');
+    b.className='tab'; b.role='tab'; b.textContent=f.label;
+    b.setAttribute('aria-selected', i===0 ? 'true' : 'false');
+    b.addEventListener('click', ()=>selectFolder(i));
+    tabs.appendChild(b);
+  });
+
+  async function selectFolder(i){
+    [...tabs.children].forEach((el,idx)=>el.setAttribute('aria-selected', idx===i ? 'true' : 'false'));
+    gallery.innerHTML = '<div class="empty">Loading photos…</div>';
+    await loadFolder(FOLDERS[i].path);
+  }
+
+  async function loadFolder(path){
+    try{
+      // encodeURIComponent lets us use folder names with spaces safely
+      const res = await fetch(API_BASE + encodeURIComponent(path), { headers:{ "Accept":"application/vnd.github+json" }});
+      if(!res.ok) throw new Error('GitHub API ' + res.status);
+      const files = await res.json();
+      const imgs = (Array.isArray(files)?files:[]).filter(f=>{
+        if(f.type!=='file') return false;
+        const n = f.name.toLowerCase();
+        return n.endsWith('.jpg')||n.endsWith('.jpeg')||n.endsWith('.png')||n.endsWith('.webp');
+      });
+      if(!imgs.length){ gallery.innerHTML = '<div class="empty">No images in this folder yet.</div>'; return; }
+      imgs.sort((a,b)=> a.name.localeCompare(b.name, undefined, {numeric:true}));
+      gallery.innerHTML = '';
+      imgs.forEach(file=>{
+        const fig = document.createElement('figure'); fig.className='tile';
+        const img = document.createElement('img'); img.loading='lazy'; img.src=file.download_url; img.alt=file.name;
+        fig.appendChild(img);
+        fig.addEventListener('click', ()=>openLB(file.download_url, file.name));
+        gallery.appendChild(fig);
+      });
+    }catch(err){
+      console.error(err);
+      gallery.innerHTML = '<div class="empty">Couldn’t load this folder. Confirm the repo is public and the path exists.</div>';
+    }
+  }
+
+  // Lightbox
+  const lb = document.getElementById('lightbox'), lbimg = document.getElementById('lbimg'), lbmeta = document.getElementById('lbmeta');
+  function openLB(src, cap){ lbimg.src=src; lbmeta.textContent=cap||''; lb.classList.add('open'); }
+  function closeLB(){ lb.classList.remove('open'); lbimg.src=''; lbmeta.textContent=''; }
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  lb.querySelector('button').addEventListener('click', closeLB);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
+
+  // Auto-load first folder
+  if(FOLDERS.length) selectFolder(0);
+</script>
 </body>
 </html>
