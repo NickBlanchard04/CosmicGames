@@ -1,451 +1,476 @@
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Athletic Director Skill Tree</title>
 
-// Athletic Director Skill Tree — Interactive (JavaScript/React)
-// - Click any category to open details
-// - Each bullet has an explanation + action plan
-// - Includes hero banner, connectors, and added branches: Academic & Student Support, Fundraising & Finance
+  <!-- Favicon (keep favicon.png next to this file) -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="theme-color" content="#12185C" />
 
-export default function AthleticDirectorSkillTree() {
-  const [openIdx, setOpenIdx] = useState(null);
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  const categories = [
-    {
-      title: "Program Management",
-      icon: "🗂️",
-      color: "from-emerald-400 to-emerald-600",
-      bullets: [
-        {
-          title: "Scheduling & referee assignments",
-          why: "Clear calendars reduce conflicts and last‑minute scrambles.",
-          action: [
-            "Build a master schedule (games/practices/gyms) in Google Sheets; share with coaches.",
-            "Create a referee contact list + backups. Confirm two weeks out; reconfirm 48 hrs.",
-            "Write a weather/cancellation protocol with notification order (coaches → AD → parents)."
-          ]
-        },
-        {
-          title: "Budget tracking",
-          why: "Keeps spending aligned with goals and enables better fundraising asks.",
-          action: [
-            "Set up a simple ledger (income/expense categories: refs, uniforms, equipment, travel).",
-            "Log receipts weekly; review monthly with admin; publish season-end summary.",
-            "Use per-sport spend caps and pre-approval for large purchases."
-          ]
-        },
-        {
-          title: "Coach access (keys, codes, protocols)",
-          why: "Ensures safe, reliable access to facilities and emergency readiness.",
-          action: [
-            "Issue keys and alarm codes via an Access Log (name, date issued, return date).",
-            "Distribute Emergency Action Plan & concussion protocol; collect e-sign acknowledgments.",
-            "Annual access audit before first practice; rotate codes when coaches change."
-          ]
-        },
-        {
-          title: "Facility prep & field painting",
-          why: "Game-ready spaces communicate excellence and prevent delays.",
-          action: [
-            "Preseason walkthrough: paint, nets, anchors, first-aid, AED location signage.",
-            "Create a line-paint schedule (week 0 heavy lines, weekly touch-ups).",
-            "Assign a paint crew; stock paint/liners; build a game‑day setup checklist."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Coaching & Player Development",
-      icon: "🏑",
-      color: "from-sky-400 to-blue-600",
-      bullets: [
-        {
-          title: "Coach onboarding & support",
-          why: "Aligned coaches create consistent culture and better athlete experiences.",
-          action: [
-            "Provide an onboarding packet (philosophy, expectations, communication norms).",
-            "Pair new coaches with a veteran mentor; 15‑minute weekly check‑ins first month.",
-            "Share drill libraries and season planning templates."
-          ]
-        },
-        {
-          title: "Medical & safety training emails",
-          why: "Compliance protects athletes and the school.",
-          action: [
-            "Build a coaches@ mailing list; send links for concussion & CPR courses.",
-            "Collect completion certificates in a shared Drive; track with a simple dashboard.",
-            "Set auto‑reminders at 30/7/1 days before deadlines."
-          ]
-        },
-        {
-          title: "Player mentorship & clinics",
-          why: "Varsity-to-Modified pipeline improves retention and leadership.",
-          action: [
-            "Run seasonal skills clinics; feature varsity captains as station leads.",
-            "Create a buddy system (varsity ↔ modified) with monthly skill goals.",
-            "Collect feedback surveys to refine drills."
-          ]
-        },
-        {
-          title: "Practice plans & drills",
-          why: "Good reps beat long reps; plans maximize gym/field time.",
-          action: [
-            "Adopt a weekly template (warm‑up → skill → small‑sided → compete → cooldown).",
-            "Differentiate by level (Modified vs Varsity) with non‑negotiables listed.",
-            "Store plans in a shared folder; coaches post plans 24 hrs before practice."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Media & Communications",
-      icon: "📣",
-      color: "from-fuchsia-400 to-purple-600",
-      bullets: [
-        {
-          title: "Social media templates",
-          why: "Consistency grows recognition with parents and students.",
-          action: [
-            "Create branded Canva templates for score finals, Player of the Match, and schedules.",
-            "Build a content calendar (FB for parents, IG for students); schedule posts after games.",
-            "Add alt text and brief prayer/values notes when appropriate."
-          ]
-        },
-        {
-          title: "Newspaper stat reports",
-          why: "Earned media validates athletes and raises school profile.",
-          action: [
-            "Keep a live stat sheet; use a game‑night email template with scorers, saves, quotes.",
-            "Submit within 60 minutes post‑game to local outlets; cc coaches and admin.",
-            "Track pickups; repost clippings on school channels."
-          ]
-        },
-        {
-          title: "Highlight features",
-          why: "Spotlights drive engagement and sponsor value.",
-          action: [
-            "Post Player of the Match with short bio and coach quote.",
-            "Rotate teacher/volunteer spotlights to reinforce community.",
-            "Compile weekly recap with top plays and sportsmanship moments."
-          ]
-        },
-        {
-          title: "Video content",
-          why: "Short-form video is the highest‑reach format for teens.",
-          action: [
-            "Capture 15–30s vertical clips; edit to one highlight reel per game.",
-            "Organize footage by date/team in Drive; secure media permissions.",
-            "Post next‑day with captions and simple graphics."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Community & Culture",
-      icon: "🤝",
-      color: "from-amber-400 to-orange-600",
-      bullets: [
-        {
-          title: "Spirit nights & fan engagement",
-          why: "Big crowds energize teams and attract future students.",
-          action: [
-            "Plan 3 theme nights per season (Senior, Community, Youth Clinic).",
-            "Create a student section leaders chat; provide chants/standards.",
-            "Add halftime recognitions for service and academics."
-          ]
-        },
-        {
-          title: "Volunteer coordination",
-          why: "Reliable help keeps games on time and professional.",
-          action: [
-            "Use a SignUpGenius for clock, book, concessions; confirm assignments weekly.",
-            "Offer quick role cards and 10‑minute pregame huddles.",
-            "Track service hours for student volunteers."
-          ]
-        },
-        {
-          title: "Sponsorship packages",
-          why: "Structured offers make it easy for businesses to say yes.",
-          action: [
-            "Create tiered packages (Bronze/Silver/Gold) with deliverables and pricing.",
-            "Include banner placement, shout‑outs, and sponsored social posts.",
-            "Invoice promptly; send end‑of‑season impact reports."
-          ]
-        },
-        {
-          title: "School pride initiatives",
-          why: "Athletics should reflect mission and character.",
-          action: [
-            "Open/close with team prayer or reflection; uphold sportsmanship pledge.",
-            "Schedule service projects per team each season.",
-            "Celebrate academic honors alongside athletic awards."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Academic & Student Support",
-      icon: "📚",
-      color: "from-cyan-400 to-teal-600",
-      bullets: [
-        {
-          title: "Eligibility monitoring",
-          why: "Academic first ensures athletes succeed beyond the court/field.",
-          action: [
-            "Run weekly grade checks; set threshold for probation and ineligibility.",
-            "Notify students/parents with a clear improvement plan and deadlines.",
-            "Coordinate with teachers for make‑up work opportunities."
-          ]
-        },
-        {
-          title: "Study hall & tutoring",
-          why: "Structured time removes barriers for busy student‑athletes.",
-          action: [
-            "Offer team study halls on practice days; recruit volunteer tutors.",
-            "Track attendance and assignments completed; reward consistency.",
-            "Provide quiet spaces before away games to finish work."
-          ]
-        },
-        {
-          title: "Attendance & conduct",
-          why: "Consistency builds discipline and reduces eligibility issues.",
-          action: [
-            "Publish an athlete code of conduct; review with teams each season.",
-            "Log infractions and restorative actions; communicate transparently.",
-            "Partner with counselors for behavior supports if needed."
-          ]
-        },
-        {
-          title: "College & next steps",
-          why: "Guidance demystifies recruiting and post‑HS options.",
-          action: [
-            "Host an annual info night on NAIA/NCAA eligibility basics.",
-            "Help athletes build a simple highlight reel and resume.",
-            "Write template recommendation letters; track deadlines."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Fundraising & Finance",
-      icon: "💵",
-      color: "from-lime-400 to-green-600",
-      bullets: [
-        {
-          title: "Annual revenue plan",
-          why: "A plan replaces hope with predictable cash flow.",
-          action: [
-            "Forecast income (passes, concessions, merch, sponsors) vs expenses by sport.",
-            "Set monthly targets; publish a scoreboard graphic with progress.",
-            "Review quarterly and reallocate to priorities."
-          ]
-        },
-        {
-          title: "Sponsored social posts & stat ads",
-          why: "Monetize attention with low lift and high visibility.",
-          action: [
-            "Sell ad slots on Player of the Match posts (e.g., $25–$100 per post or monthly).",
-            "Include logo, thank‑you line, and link; cap sponsors per week to protect feed.",
-            "Report impressions/engagement to sponsors monthly to retain them."
-          ]
-        },
-        {
-          title: "Community partnerships",
-          why: "Local businesses want to support local kids.",
-          action: [
-            "Offer gym banner space and halftime shout‑outs.",
-            "Create a Sponsor Night with giveaways and table space.",
-            "Bundle packages with season passes for families."
-          ]
-        },
-        {
-          title: "Grants & donations",
-          why: "One successful grant can fund a whole season of upgrades.",
-          action: [
-            "Identify 3 local foundations and 2 corporate small‑grant programs.",
-            "Keep a ready one‑pager about athletics impact and needs.",
-            "Enable online giving page with earmarks (equipment, travel, scholarships)."
-          ]
-        }
-      ]
-    },
-    {
-      title: "Personal Growth",
-      icon: "🧭",
-      color: "from-rose-400 to-pink-600",
-      bullets: [
-        {
-          title: "Networking (Section 2)",
-          why: "Relationships unlock refs, scrimmages, and wisdom.",
-          action: [
-            "Attend AD meetings; ask for a mentor; share best‑practice docs.",
-            "Start a monthly check‑in with two nearby ADs.",
-            "Offer to host a mini‑clinic at your gym."
-          ]
-        },
-        {
-          title: "Time management systems",
-          why: "Protects family, teaching, AD work, and GCU studies.",
-          action: [
-            "Adopt weekly time blocks; batch emails and stats.",
-            "Automate reminders (schedules, trainings, sponsors).",
-            "Build a delegation matrix (coaches, captains, volunteers)."
-          ]
-        },
-        {
-          title: "Professional development",
-          why: "Keeps you current and confident.",
-          action: [
-            "Complete NFHS courses; attend one clinic/webinar each season.",
-            "Track CE credits and share summaries with admin.",
-            "Pilot one new idea each season and evaluate impact."
-          ]
-        },
-        {
-          title: "Crisis management",
-          why: "Prepared teams respond, not react.",
-          action: [
-            "Maintain an Emergency Action Plan + contact tree.",
-            "Create message templates for cancellations/injuries.",
-            "Run a tabletop drill with coaches once per season."
-          ]
-        }
-      ]
-    }
-  ];
+  <style>
+    /* Small helpers */
+    .connector { border-top: 2px dashed #d1d5db; }
+    .dot { width: 8px; height: 8px; background:#9ca3af; border-radius:9999px; }
+    .modal { position: fixed; inset: 0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.5); }
+    .modal.open { display:flex; }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+    .accordion-item.open .accordion-content { max-height: 1000px; }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900">
+  <!-- HERO -->
+  <header class="relative h-56 md:h-72 w-full flex items-center justify-center text-white"
+    style="background-image:url('https://images.unsplash.com/photo-1544918877-550a2b5cbd0d?q=80&w=1600&auto=format&fit=crop'); background-size:cover; background-position:center;">
+    <div class="absolute inset-0" style="background:rgba(18,24,92,.55)"></div>
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Athletic Director Skill Tree</h1>
+      <p class="mt-2 text-sm md:text-base opacity-90">How to become a Great A.D. · Target date: June 12, 2026</p>
+    </div>
+  </header>
 
-  return (
-    <div className="min-h-screen w-full">
-      {/* HERO BANNER */}
-      <div
-        className="relative h-56 md:h-72 w-full flex items-center justify-center text-white"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1600&auto=format&fit=crop)",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-            Athletic Director Skill Tree
-          </h1>
-          <p className="mt-2 text-sm md:text-base opacity-90">
-            How to become a Great A.D. · Target date: June 12, 2026
-          </p>
+  <!-- HUB -->
+  <section class="relative flex flex-col items-center -mt-10 md:-mt-12">
+    <div class="rounded-full bg-white shadow-2xl p-6 md:p-8 text-center w-64 border border-gray-100">
+      <div class="text-xl font-bold" style="color:#12185C">Great Athletic Director</div>
+      <div class="text-xs text-gray-500">Skill Tree Hub</div>
+    </div>
+
+    <!-- CONNECTOR -->
+    <div class="relative w-full mt-6">
+      <div class="mx-auto max-w-7xl">
+        <div class="relative h-10">
+          <div class="absolute left-4 right-4 top-1/2 -translate-y-1/2 connector"></div>
+          <div id="dots" class="absolute inset-0 flex justify-between px-6"></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      {/* HUB NODE */}
-      <div className="relative flex flex-col items-center -mt-10 md:-mt-12">
-        <motion.div
-          className="rounded-full bg-white shadow-2xl p-6 md:p-8 text-center w-64 border border-gray-100"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-        >
-          <div className="text-xl font-bold">Great Athletic Director</div>
-          <div className="text-xs text-gray-500">Skill Tree Hub</div>
-        </motion.div>
+  <!-- GRID -->
+  <main class="max-w-7xl mx-auto px-4 pb-20">
+    <div id="grid" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-8"></div>
+  </main>
 
-        {/* CONNECTOR BAR */}
-        <div className="relative w-full mt-6">
-          <div className="mx-auto max-w-7xl">
-            <div className="relative h-10">
-              <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-gray-300" />
-              <div className="absolute inset-0 flex justify-between px-6">
-                {Array.from({ length: categories.length }).map((_, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <div className="h-4 w-0.5 bg-gray-300" />
-                    <div className="h-2 w-2 rounded-full bg-gray-400" />
-                  </div>
-                ))}
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="bg-white w-[95%] max-w-3xl rounded-2xl shadow-xl p-6 md:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <h2 id="modalTitle" class="text-xl font-bold">Title</h2>
+        <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+      </div>
+      <p class="text-sm text-gray-500 mt-1">Click each skill to view the explanation and the practical action plan. Checkboxes save automatically.</p>
+      <div id="accordion" class="mt-4 divide-y divide-gray-100"></div>
+    </div>
+  </div>
+
+  <script>
+    // ------------- DATA -------------
+    const categories = [
+      {
+        title: "Program Management",
+        icon: "🗂️",
+        bullets: [
+          {
+            title: "Scheduling & referee assignments",
+            why: "Clear calendars reduce conflicts and last-minute scrambles.",
+            action: [
+              "Build a master schedule (games/practices/gyms) in Google Sheets; share with coaches.",
+              "Create a referee contact list + backups. Confirm two weeks out; reconfirm 48 hrs.",
+              "Write a weather/cancellation protocol with notification order (coaches → AD → parents)."
+            ]
+          },
+          {
+            title: "Budget tracking",
+            why: "Keeps spending aligned with goals and enables better fundraising asks.",
+            action: [
+              "Set up a ledger (income/expense: refs, uniforms, equipment, travel).",
+              "Log receipts weekly; review monthly with admin; publish season-end summary.",
+              "Use per-sport spend caps and pre-approval for large purchases."
+            ]
+          },
+          {
+            title: "Coach access (keys, codes, protocols)",
+            why: "Ensures safe, reliable access to facilities and emergency readiness.",
+            action: [
+              "Issue keys and alarm codes via an Access Log (name, date issued, return date).",
+              "Distribute Emergency Action Plan & concussion protocol; collect e-sign acknowledgments.",
+              "Annual access audit before first practice; rotate codes when coaches change."
+            ]
+          },
+          {
+            title: "Facility prep & field painting",
+            why: "Game-ready spaces communicate excellence and prevent delays.",
+            action: [
+              "Preseason walkthrough: paint, nets, anchors, first-aid, AED location signage.",
+              "Create a line-paint schedule (week 0 heavy lines, weekly touch-ups).",
+              "Assign a paint crew; stock paint/liners; build a game-day setup checklist."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Coaching & Player Development",
+        icon: "🏑",
+        bullets: [
+          {
+            title: "Coach onboarding & support",
+            why: "Aligned coaches create consistent culture and better athlete experiences.",
+            action: [
+              "Provide an onboarding packet (philosophy, expectations, communication norms).",
+              "Pair new coaches with a veteran mentor; 15-minute weekly check-ins first month.",
+              "Share drill libraries and season planning templates."
+            ]
+          },
+          {
+            title: "Medical & safety training emails",
+            why: "Compliance protects athletes and the school.",
+            action: [
+              "Build a coaches@ mailing list; send links for concussion & CPR courses.",
+              "Collect completion certificates in Drive; track via a simple dashboard.",
+              "Set auto-reminders at 30/7/1 days before deadlines."
+            ]
+          },
+          {
+            title: "Player mentorship & clinics",
+            why: "Varsity-to-Modified pipeline improves retention and leadership.",
+            action: [
+              "Run seasonal skills clinics; feature varsity captains as station leads.",
+              "Create a buddy system (varsity ↔ modified) with monthly skill goals.",
+              "Collect feedback surveys to refine drills."
+            ]
+          },
+          {
+            title: "Practice plans & drills",
+            why: "Good reps beat long reps; plans maximize gym/field time.",
+            action: [
+              "Adopt a weekly template (warm-up → skill → small-sided → compete → cooldown).",
+              "Differentiate by level with non-negotiables listed.",
+              "Store plans in a shared folder; coaches post plans 24 hrs before practice."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Media & Communications",
+        icon: "📣",
+        bullets: [
+          {
+            title: "Social media templates",
+            why: "Consistency grows recognition with parents and students.",
+            action: [
+              "Create branded Canva templates for score finals, Player of the Match, and schedules.",
+              "Build a content calendar (FB for parents, IG for students).",
+              "Add alt text and brief values notes when appropriate."
+            ]
+          },
+          {
+            title: "Newspaper stat reports",
+            why: "Earned media validates athletes and raises school profile.",
+            action: [
+              "Keep a live stat sheet; use a game-night email template with scorers, saves, quotes.",
+              "Submit within 60 minutes post-game to local outlets; cc coaches and admin.",
+              "Track pickups; repost clippings on school channels."
+            ]
+          },
+          {
+            title: "Highlight features",
+            why: "Spotlights drive engagement and sponsor value.",
+            action: [
+              "Post Player of the Match with short bio and coach quote.",
+              "Rotate teacher/volunteer spotlights to reinforce community.",
+              "Compile weekly recap with top plays and sportsmanship moments."
+            ]
+          },
+          {
+            title: "Video content",
+            why: "Short-form video is the highest-reach format for teens.",
+            action: [
+              "Capture 15–30s vertical clips; edit to one highlight reel per game.",
+              "Organize footage by date/team in Drive; secure media permissions.",
+              "Post next-day with captions and simple graphics."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Community & Culture",
+        icon: "🤝",
+        bullets: [
+          {
+            title: "Spirit nights & fan engagement",
+            why: "Big crowds energize teams and attract future students.",
+            action: [
+              "Plan 3 theme nights per season (Senior, Community, Youth Clinic).",
+              "Create a student section leaders chat; provide chants/standards.",
+              "Add halftime recognitions for service and academics."
+            ]
+          },
+          {
+            title: "Volunteer coordination",
+            why: "Reliable help keeps games on time and professional.",
+            action: [
+              "Use a SignUpGenius for clock, book, concessions; confirm assignments weekly.",
+              "Offer quick role cards and 10-minute pregame huddles.",
+              "Track service hours for student volunteers."
+            ]
+          },
+          {
+            title: "Sponsorship packages",
+            why: "Structured offers make it easy for businesses to say yes.",
+            action: [
+              "Create tiered packages (Bronze/Silver/Gold) with deliverables and pricing.",
+              "Include banner placement, shout-outs, and sponsored social posts.",
+              "Invoice promptly; send end-of-season impact reports."
+            ]
+          },
+          {
+            title: "School pride initiatives",
+            why: "Athletics should reflect mission and character.",
+            action: [
+              "Open/close with team prayer or reflection; uphold sportsmanship pledge.",
+              "Schedule service projects per team each season.",
+              "Celebrate academic honors alongside athletic awards."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Academic & Student Support",
+        icon: "📚",
+        bullets: [
+          {
+            title: "Eligibility monitoring",
+            why: "Academic first ensures athletes succeed beyond the court/field.",
+            action: [
+              "Run weekly grade checks; set threshold for probation and ineligibility.",
+              "Notify students/parents with a clear improvement plan and deadlines.",
+              "Coordinate with teachers for make-up work opportunities."
+            ]
+          },
+          {
+            title: "Study hall & tutoring",
+            why: "Structured time removes barriers for busy student-athletes.",
+            action: [
+              "Offer team study halls on practice days; recruit volunteer tutors.",
+              "Track attendance and assignments completed; reward consistency.",
+              "Provide quiet spaces before away games to finish work."
+            ]
+          },
+          {
+            title: "Attendance & conduct",
+            why: "Consistency builds discipline and reduces eligibility issues.",
+            action: [
+              "Publish an athlete code of conduct; review with teams each season.",
+              "Log infractions and restorative actions; communicate transparently.",
+              "Partner with counselors for behavior supports if needed."
+            ]
+          },
+          {
+            title: "College & next steps",
+            why: "Guidance demystifies recruiting and post‑HS options.",
+            action: [
+              "Host an annual info night on NAIA/NCAA eligibility basics.",
+              "Help athletes build a simple highlight reel and resume.",
+              "Write template recommendation letters; track deadlines."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Fundraising & Finance",
+        icon: "💵",
+        bullets: [
+          {
+            title: "Annual revenue plan",
+            why: "A plan replaces hope with predictable cash flow.",
+            action: [
+              "Forecast income (passes, concessions, merch, sponsors) vs expenses by sport.",
+              "Set monthly targets; post a progress graphic.",
+              "Review quarterly and reallocate to priorities."
+            ]
+          },
+          {
+            title: "Sponsored social posts & stat ads",
+            why: "Monetize attention with low lift and high visibility.",
+            action: [
+              "Sell ad slots on Player of the Match posts ($25–$100 per post or monthly).",
+              "Include logo, thank‑you line, and link; cap sponsors per week to protect feed.",
+              "Report impressions/engagement to sponsors monthly to retain them."
+            ]
+          },
+          {
+            title: "Community partnerships",
+            why: "Local businesses want to support local kids.",
+            action: [
+              "Offer gym banner space and halftime shout‑outs.",
+              "Create a Sponsor Night with giveaways and table space.",
+              "Bundle packages with season passes for families."
+            ]
+          },
+          {
+            title: "Grants & donations",
+            why: "One successful grant can fund a season of upgrades.",
+            action: [
+              "Identify 3 local foundations and 2 corporate small‑grant programs.",
+              "Keep a one‑pager about athletics impact and needs.",
+              "Enable online giving page with earmarks (equipment, travel, scholarships)."
+            ]
+          }
+        ]
+      },
+      {
+        title: "Personal Growth",
+        icon: "🧭",
+        bullets: [
+          {
+            title: "Networking (Section 2)",
+            why: "Relationships unlock refs, scrimmages, and wisdom.",
+            action: [
+              "Attend AD meetings; ask for a mentor; share best‑practice docs.",
+              "Start a monthly check‑in with two nearby ADs.",
+              "Offer to host a mini‑clinic at your gym."
+            ]
+          },
+          {
+            title: "Time management systems",
+            why: "Protects family, teaching, AD work, and GCU studies.",
+            action: [
+              "Adopt weekly time blocks; batch emails and stats.",
+              "Automate reminders (schedules, trainings, sponsors).",
+              "Build a delegation matrix (coaches, captains, volunteers)."
+            ]
+          },
+          {
+            title: "Professional development",
+            why: "Keeps you current and confident.",
+            action: [
+              "Complete NFHS courses; attend one clinic/webinar each season.",
+              "Track CE credits and share summaries with admin.",
+              "Pilot one new idea each season and evaluate impact."
+            ]
+          },
+          {
+            title: "Crisis management",
+            why: "Prepared teams respond, not react.",
+            action: [
+              "Maintain an Emergency Action Plan + contact tree.",
+              "Create message templates for cancellations/injuries.",
+              "Run a tabletop drill with coaches once per season."
+            ]
+          }
+        ]
+      }
+    ];
+
+    // ------------- RENDER -------------
+    const dots = document.getElementById('dots');
+    categories.forEach(() => {
+      const c = document.createElement('div');
+      c.className = 'flex flex-col items-center';
+      c.innerHTML = '<div class="h-4 w-0.5 bg-gray-300"></div><div class="dot"></div>';
+      dots.appendChild(c);
+    });
+
+    const grid = document.getElementById('grid');
+    categories.forEach((cat, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'text-left';
+      btn.innerHTML = `
+        <div class="rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 bg-white border-amber-400">
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="text-3xl">${cat.icon}</div>
+              <h3 class="font-semibold text-lg">${cat.title}</h3>
+            </div>
+            <ul class="text-sm text-gray-600 space-y-2">
+              ${cat.bullets.slice(0,4).map(b => `<li>• ${b.title}</li>`).join('')}
+            </ul>
+            <div class="mt-4 text-xs font-medium" style="color:#12185C">Click to open skill details →</div>
+          </div>
+        </div>
+      `;
+      btn.addEventListener('click', () => openModal(idx));
+      grid.appendChild(btn);
+    });
+
+    // ------------- MODAL / ACCORDION -------------
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const accordion = document.getElementById('accordion');
+
+    function openModal(idx) {
+      const cat = categories[idx];
+      modalTitle.textContent = `${cat.icon} ${cat.title}`;
+      accordion.innerHTML = '';
+      cat.bullets.forEach((b, i) => {
+        const item = document.createElement('div');
+        item.className = 'accordion-item py-3';
+        const storageKey = `skill-${cat.title}-${b.title}`;
+        const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        const done = new Set(saved);
+
+        const toggle = (sIdx) => {
+          done.has(sIdx) ? done.delete(sIdx) : done.add(sIdx);
+          localStorage.setItem(storageKey, JSON.stringify([...done]));
+          // update strikethrough live
+          const li = item.querySelector(`li[data-step="${sIdx}"] span`);
+          const cb = item.querySelector(`input[data-step="${sIdx}"]`);
+          if (li && cb) {
+            cb.checked = done.has(sIdx);
+            li.className = done.has(sIdx) ? 'line-through text-gray-400' : '';
+          }
+          // update progress label
+          const label = item.querySelector('.progress-label');
+          if (label) {
+            label.textContent = `(${Math.round((done.size / b.action.length) * 100)}% complete)`;
+          }
+        };
+
+        const percent = Math.round((done.size / b.action.length) * 100);
+
+        item.innerHTML = `
+          <button class="w-full text-left font-semibold py-2">
+            ${b.title} <span class="progress-label text-xs text-gray-500 ml-2">(${percent}% complete)</span>
+          </button>
+          <div class="accordion-content">
+            <div class="space-y-3 py-2">
+              <p class="text-sm text-gray-700"><span class="font-semibold">Why:</span> ${b.why}</p>
+              <div>
+                <div class="text-sm font-semibold mb-1">Action plan</div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  ${b.action.map((step, sIdx) => `
+                    <li class="flex items-start gap-2" data-step="${sIdx}">
+                      <input type="checkbox" class="mt-1" data-step="${sIdx}" ${done.has(sIdx) ? 'checked' : ''} />
+                      <span class="${done.has(sIdx) ? 'line-through text-gray-400' : ''}">${step}</span>
+                    </li>`).join('')}
+                </ul>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        `;
 
-      {/* CATEGORY GRID */}
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
-          {categories.map((cat, idx) => (
-            <motion.button
-              key={idx}
-              onClick={() => setOpenIdx(idx)}
-              className="text-left"
-              initial={{ y: 24, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: idx * 0.07 }}
-            >
-              <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 bg-white border-indigo-400">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`text-3xl`}>
-                      {cat.icon}
-                    </div>
-                    <h3 className="font-semibold text-lg">{cat.title}</h3>
-                  </div>
-                  <ul className="text-sm text-gray-600 space-y-2">
-                    {cat.bullets.slice(0, 4).map((b, i) => (
-                      <li key={i}>• {b.title}</li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 text-xs text-indigo-600 font-medium">
-                    Click to open skill details →
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.button>
-          ))}
-        </div>
-      </div>
+        // accordion open/close
+        const trigger = item.querySelector('button');
+        trigger.addEventListener('click', () => item.classList.toggle('open'));
 
-      {/* DETAIL MODAL */}
-      <Dialog open={openIdx !== null} onOpenChange={() => setOpenIdx(null)}>
-        <DialogContent className="max-w-2xl md:max-w-3xl">
-          {openIdx !== null && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="flex items-center gap-2">
-                  <span className="text-2xl">{categories[openIdx].icon}</span>
-                  {categories[openIdx].title}
-                </DialogTitle>
-                <DialogDescription>
-                  Click each bullet to view an explanation and a practical action plan.
-                </DialogDescription>
-              </DialogHeader>
+        // checkbox handlers
+        item.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.addEventListener('change', e => toggle(parseInt(e.target.dataset.step, 10)));
+        });
 
-              <Accordion type="single" collapsible className="w-full">
-                {categories[openIdx].bullets.map((b, i) => (
-                  <AccordionItem key={i} value={`item-${i}`}>
-                    <AccordionTrigger className="text-left text-base font-semibold">
-                      {b.title}
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="space-y-3">
-                        <p className="text-sm text-gray-700">
-                          <span className="font-semibold">Why:</span> {b.why}
-                        </p>
-                        <div>
-                          <div className="text-sm font-semibold mb-1">Action plan</div>
-                          <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                            {b.action.map((step, sIdx) => (
-                              <li key={sIdx}>{step}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
-}
+        accordion.appendChild(item);
+      });
+      modal.classList.add('open');
+    }
+
+    closeModal.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+  </script>
+</body>
+</html>
