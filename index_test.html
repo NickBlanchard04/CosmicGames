@@ -348,6 +348,7 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <div class="inner topbar-row">
 <div class="brand-sub">Faith centered. Purpose driven. Built with clarity.</div>
 <nav class="nav-bubbles" aria-label="Page navigation">
+<a class="nav-bubble active" href="#home" data-page="home">Home</a>  
 <a class="nav-bubble" href="#videos" data-page="videos">Videos</a>
 <a class="nav-bubble" href="#about" data-page="about">About</a>
 <a class="nav-bubble" href="#gallery" data-page="gallery">Gallery</a>
@@ -358,7 +359,27 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <div class="topbar-spacer" aria-hidden="true"></div>
 </div>
 </header>
+<section class="page" id="page-home" data-page="home">
+  <div class="page-inner" style="text-align:center; max-width:700px; margin:auto;">
 
+    <h1 style="font-size:clamp(2.2rem,6vw,3.2rem); line-height:1.1; margin-bottom:10px;">
+      I help people grow through discipline, faith, and real life leadership.
+    </h1>
+
+    <p style="color:var(--muted); margin-bottom:18px;">
+      This is where that journey is built.
+    </p>
+
+    <div style="cursor:pointer;" onclick="showPage('videos')">
+      <iframe 
+        class="video-embed"
+        src="https://www.tiktok.com/embed/v2/7527694624882773279"
+        style="width:100%; border-radius:16px;">
+      </iframe>
+    </div>
+
+  </div>
+</section>
 <section class="page" id="page-videos" data-page="videos">
 <div class="page-inner">
 <div class="page-crumb reveal"><a href="#videos" class="home-link" aria-label="Go to Videos home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg></a><span class="slash">/</span><span>Videos</span></div>
@@ -368,7 +389,6 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <p class="lead">Faith, discipline, and leadership lived out daily.</p>
 <div class="rotator"><span id="rotatingText"></span><span class="cursor"></span></div>
 </div>
-<div class="start-here reveal">
 <a href="#" class="start-card" data-page-link="videos"><span class="start-kicker">Start Here</span><span class="start-title">Watch Intro</span><span class="start-desc">Start with the intro.</span></a>
 <a href="#about" class="start-card" data-page-link="about"><span class="start-kicker">Next Step</span><span class="start-title">Read My Story</span><span class="start-desc">Read the story behind the work.</span></a>
 <a href="#socials" class="start-card" data-page-link="socials"><span class="start-kicker">Stay Connected</span><span class="start-title">Follow My Journey</span><span class="start-desc">Stay connected through socials.</span></a>
@@ -412,7 +432,7 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <div class="page-inner">
 <div class="page-crumb reveal"><a href="#gallery" class="home-link" aria-label="Go to Gallery home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg></a><span class="slash">/</span><span>Gallery</span></div>
 <div class="page-heading reveal"><h2>Visual Brand Gallery</h2><div class="heading-line"></div></div>
-<div class="chip-row reveal"><a class="chip active" href="#">All Photos</a><a class="chip" href="#">Portraits</a><a class="chip" href="#">Lifestyle</a><a class="chip" href="#">Leadership</a><a class="chip" href="#">Faith</a></div>
+<a class="chip active" href="#">All Photos</a><a class="chip" href="#">Portraits</a><a class="chip" href="#">Lifestyle</a><a class="chip" href="#">Leadership</a><a class="chip" href="#">Faith</a></div>
 <div class="content-grid">
 <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Portrait" data-title="Strong first impression headshot" data-desc="A polished portrait that anchors your personal brand." data-body="This lightbox is designed to make gallery images feel more premium. When you replace these placeholders with real photos, this modal can show a larger image, a short caption, and even context about the moment or message behind the shot.">
 <div class="thumb gallery">Portrait Photo Placeholder with clean personal brand framing</div>
@@ -991,9 +1011,9 @@ function showPage(page){
   setTimeout(runRevealCheck,50);
 }
 function initPage(){
-  const allowed=['videos','about','gallery','blogs','socials','skilltree'];
+  const allowed=['home','videos','about','gallery','blogs','socials','skilltree'];
   const hash=location.hash.replace('#','').toLowerCase();
-  const page=allowed.includes(hash)?hash:'videos';
+  const page=allowed.includes(hash)?hash:'home';
   showPage(page);
 }
 const words=["Faith driven","Leadership focused","Growth minded"];
