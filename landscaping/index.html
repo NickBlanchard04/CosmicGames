@@ -56,6 +56,10 @@
       text-rendering: optimizeLegibility;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     img {
       max-width: 100%;
       display: block;
@@ -64,6 +68,10 @@
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     h1, h2, h3, p {
@@ -194,7 +202,6 @@
     .contact-card,
     .service-card,
     .gallery-tile,
-    .cta-panel,
     .footer-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -312,6 +319,7 @@
       overflow: hidden;
       position: relative;
       background: linear-gradient(135deg, rgba(122, 161, 103, 0.14), rgba(255,255,255,0.96));
+      cursor: pointer;
     }
 
     .gallery-tile::before {
@@ -321,85 +329,131 @@
       border-radius: 14px;
       border: 1px dashed rgba(35, 79, 47, 0.18);
       pointer-events: none;
+      z-index: 2;
     }
 
     .gallery-inner {
       height: 100%;
       border-radius: 14px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 12px;
+      overflow: hidden;
       background: rgba(255,255,255,0.44);
-      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.28s ease;
+    }
+
+    .gallery-tile:hover .gallery-inner img {
+      transform: scale(1.03);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .service-card {
+      border-radius: 18px;
+      padding: 14px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .service-card h3 {
+      font-size: 0.98rem;
+      line-height: 1.2;
+    }
+
+    .service-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      background: rgba(122, 161, 103, 0.14);
+      border: 1px solid rgba(35, 79, 47, 0.10);
       color: var(--primary);
       font-size: 0.95rem;
+      font-weight: 800;
     }
 
-   .services-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.service-card {
-  border-radius: 18px;
-  padding: 14px;
-  min-height: 112px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.service-card h3 {
-  font-size: 0.98rem;
-  line-height: 1.2;
-}
-
-.service-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  background: rgba(122, 161, 103, 0.14);
-  border: 1px solid rgba(35, 79, 47, 0.10);
-  color: var(--primary);
-  font-size: 0.95rem;
-  font-weight: 800;
-}
-
-    .cta-panel {
-      border-radius: 28px;
-      padding: 24px;
-      display: grid;
-      gap: 16px;
-      background: linear-gradient(135deg, rgba(35,79,47,0.97), rgba(25,59,34,0.94));
-      color: #fff;
-    }
-
-    .cta-panel p {
-      color: rgba(255,255,255,0.84);
-      max-width: 48ch;
-    }
-
-    .cta-actions {
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(7, 12, 9, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
     }
 
-    .cta-panel .btn-primary {
+    .modal.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: min(100%, 1100px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: scale(0.96);
+      transition: transform 0.25s ease;
+    }
+
+    .modal.is-open .modal-dialog {
+      transform: scale(1);
+    }
+
+    .modal-image-wrap {
+      width: 100%;
+      max-height: 88vh;
+      border-radius: 22px;
+      overflow: hidden;
       background: #fff;
-      color: var(--primary-dark);
-      box-shadow: none;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
     }
 
-    .cta-panel .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border-color: rgba(255,255,255,0.18);
+    .modal-image {
+      display: block;
+      width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.96);
+      color: #122117;
+      font-size: 1.7rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
     }
 
     footer {
@@ -452,10 +506,10 @@
         aspect-ratio: 2 / 1;
       }
 
-.services-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
 
       footer {
         padding-bottom: calc(38px + env(safe-area-inset-bottom));
@@ -489,35 +543,49 @@
       }
 
       .section-head {
-    margin-bottom: 14px;
-  }
+        margin-bottom: 14px;
+      }
 
-  .section-head h2 {
-    font-size: clamp(1.7rem, 8vw, 2.3rem);
-  }
+      .section-head h2 {
+        font-size: clamp(1.7rem, 8vw, 2.3rem);
+      }
 
-  .services-grid {
-    gap: 8px;
-  }
+      .services-grid {
+        gap: 8px;
+      }
 
-  .service-card {
-    padding: 12px;
-    min-height: 96px;
-  }
+      .service-card {
+        padding: 12px;
+        min-height: 96px;
+      }
 
-  .service-card h3 {
-    font-size: 0.92rem;
-  }
+      .service-card h3 {
+        font-size: 0.92rem;
+      }
 
-  .service-icon {
-    width: 34px;
-    height: 34px;
-    margin-bottom: 8px;
-    font-size: 0.88rem;
-  }
+      .service-icon {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 8px;
+        font-size: 0.88rem;
+      }
 
-}
-    
+      .modal {
+        padding: 14px;
+      }
+
+      .modal-dialog {
+        width: 100%;
+      }
+
+      .modal-close {
+        top: -8px;
+        right: -2px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.5rem;
+      }
+
       h1 {
         font-size: clamp(1.95rem, 10vw, 3rem);
       }
@@ -617,80 +685,114 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2 id="gallery-title">What your property is missing?</h2>
+            <h2 id="gallery-title">Recent work</h2>
           </div>
         </div>
 
         <div class="gallery-grid">
-          <div class="gallery-tile"><div class="gallery-inner">Photo 1</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 2</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 3</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 4</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 5</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 6</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 7</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 8</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 9</div></div>
-          <div class="gallery-tile"><div class="gallery-inner">Photo 10</div></div>
+          <!-- Later: upload images into /assets and only replace the filenames below -->
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 1">
+            <div class="gallery-inner">
+              <img src="../assets/photo1.jpg" alt="Jasco's Landscaping work photo 1" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 2">
+            <div class="gallery-inner">
+              <img src="../assets/photo2.jpg" alt="Jasco's Landscaping work photo 2" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 3">
+            <div class="gallery-inner">
+              <img src="../assets/photo3.jpg" alt="Jasco's Landscaping work photo 3" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 4">
+            <div class="gallery-inner">
+              <img src="../assets/photo4.jpg" alt="Jasco's Landscaping work photo 4" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 5">
+            <div class="gallery-inner">
+              <img src="../assets/photo5.jpg" alt="Jasco's Landscaping work photo 5" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 6">
+            <div class="gallery-inner">
+              <img src="../assets/photo6.jpg" alt="Jasco's Landscaping work photo 6" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 7">
+            <div class="gallery-inner">
+              <img src="../assets/photo7.jpg" alt="Jasco's Landscaping work photo 7" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 8">
+            <div class="gallery-inner">
+              <img src="../assets/photo8.jpg" alt="Jasco's Landscaping work photo 8" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 9">
+            <div class="gallery-inner">
+              <img src="../assets/photo9.jpg" alt="Jasco's Landscaping work photo 9" />
+            </div>
+          </button>
+
+          <button class="gallery-tile" type="button" aria-label="Open gallery image 10">
+            <div class="gallery-inner">
+              <img src="../assets/photo10.jpg" alt="Jasco's Landscaping work photo 10" />
+            </div>
+          </button>
         </div>
       </div>
     </section>
 
-   <section aria-labelledby="services-title">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2 id="services-title">Need landscaping help?</h2>
-      </div>
-    </div>
-
-    <div class="services-grid">
-      <article class="service-card">
-        <div class="service-icon">01</div>
-        <h3>Lawn Mowing</h3>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">02</div>
-        <h3>Mulch</h3>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">03</div>
-        <h3>Cleanup</h3>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">04</div>
-        <h3>Edging</h3>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">05</div>
-        <h3>Hedge Trimming</h3>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">06</div>
-        <h3>Maintenance</h3>
-      </article>
-    </div>
-  </div>
-</section>
-
-    <section aria-labelledby="contact-title">
+    <section aria-labelledby="services-title">
       <div class="container">
-        <div class="cta-panel">
+        <div class="section-head">
           <div>
-            <h2 id="contact-title">Need landscaping help?</h2>
+            <h2 id="services-title">Need landscaping help?</h2>
           </div>
+        </div>
 
-          <p>Call or email to get started.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">01</div>
+            <h3>Lawn Mowing</h3>
+          </article>
 
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="tel:+18382025311">Call (838) 202-5311</a>
-            <a class="btn btn-secondary" href="mailto:Jacoblafaver942@gmail.com">Email</a>
-          </div>
+          <article class="service-card">
+            <div class="service-icon">02</div>
+            <h3>Mulch</h3>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">03</div>
+            <h3>Cleanup</h3>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">04</div>
+            <h3>Edging</h3>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">05</div>
+            <h3>Hedge Trimming</h3>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">06</div>
+            <h3>Maintenance</h3>
+          </article>
         </div>
       </div>
     </section>
@@ -704,5 +806,59 @@
       <a class="btn btn-secondary" href="mailto:Jacoblafaver942@gmail.com">Email</a>
     </div>
   </div>
+
+  <!-- Lightbox modal -->
+  <div class="modal" id="galleryModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" type="button" aria-label="Close gallery image">&times;</button>
+      <div class="modal-image-wrap">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const galleryTiles = document.querySelectorAll(".gallery-tile");
+    const modal = document.getElementById("galleryModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalClose = document.querySelector(".modal-close");
+
+    function openModal(img) {
+      modalImage.src = img.src;
+      modalImage.alt = img.alt;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImage.src = "";
+      modalImage.alt = "";
+      document.body.classList.remove("modal-open");
+    }
+
+    galleryTiles.forEach((tile) => {
+      tile.addEventListener("click", () => {
+        const img = tile.querySelector("img");
+        if (img) openModal(img);
+      });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
