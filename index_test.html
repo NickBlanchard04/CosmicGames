@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,12 +39,14 @@ radial-gradient(circle at 50% 0%, rgba(255,255,255,.60), transparent 30%)}
 .nav-bubble:hover{transform:translateY(-1px);border-color:rgba(227,154,44,.72);background:linear-gradient(180deg, rgba(227,154,44,.22), rgba(163,102,29,.15));box-shadow:0 0 0 8px rgba(227,154,44,.07),0 16px 30px rgba(0,0,0,.22)}
 .nav-bubble.active{background:linear-gradient(180deg, #F3BB58 0%, #E39A2C 56%, #B96F1B 100%);color:#17120A;border-color:#E39A2C;box-shadow:0 0 0 8px rgba(227,154,44,.08), inset 0 1px 0 rgba(255,255,255,.35), 0 14px 28px rgba(98,67,20,.24)}
 .topbar-spacer{width:1px;height:1px;justify-self:end}
-.page{display:none;min-height:calc(100svh - 108px)} .page.active{display:block}
+.page{display:none;min-height:calc(100svh - 108px)}
+.page.active{display:block}
 .page-inner{width:min(calc(100% - 34px), 1120px);margin:0 auto;padding:26px 0 44px}
 .page-crumb{display:flex;align-items:center;gap:12px;color:#70798A;font-size:1rem;margin-bottom:12px;opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .page.active .page-crumb.in-view{opacity:1;transform:none}
 .home-link{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;color:var(--accent);text-decoration:none}
-.home-link svg{width:18px;height:18px;display:block}.slash{color:#A0A7B4}
+.home-link svg{width:18px;height:18px;display:block}
+.slash{color:#A0A7B4}
 .page-heading{text-align:center;margin-bottom:20px;opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
 .page.active .page-heading.in-view{opacity:1;transform:none}
 .page-heading h1,.page-heading h2{margin:0;font-size:clamp(2rem,4.4vw,3.9rem);line-height:1.03;letter-spacing:-.052em}
@@ -115,7 +116,8 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 .about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
 .panel-card{border-radius:22px;padding:22px;opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .panel-card.in-view{opacity:1;transform:none}
-.panel-card p{margin:0 0 14px;color:var(--muted);line-height:1.72}.panel-card p:last-child{margin-bottom:0}
+.panel-card p{margin:0 0 14px;color:var(--muted);line-height:1.72}
+.panel-card p:last-child{margin-bottom:0}
 .role-stack{display:grid;gap:12px}
 .role-card{border-radius:18px;padding:16px;transition:transform .24s ease,box-shadow .24s ease;opacity:0;transform:translateY(22px)}
 .role-card.in-view{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease,box-shadow .24s ease}
@@ -138,208 +140,48 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 .modal-kicker{color:#8A6227;font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-bottom:10px}
 .modal-panel h3{margin:0 0 12px;font-size:1.9rem;line-height:1.15}
 .modal-panel p{margin:0 0 14px;color:var(--muted);line-height:1.72;font-size:1rem}
+.skilltree-page{width:min(calc(100% - 18px), 1280px)}
+.skilltree-shell{margin-top:16px;border-radius:28px;overflow:hidden;background:#ffffff;box-shadow:0 16px 40px rgba(17,19,24,.08);border:1px solid rgba(227,154,44,.14)}
+.skilltree-frame{width:100%;min-height:1600px;border:0;display:block;background:#fff}
 @media (max-width:1180px){.topbar-row{grid-template-columns:1fr;gap:12px}.brand-sub,.nav-bubbles,.topbar-spacer{justify-self:center;text-align:center}.brand-sub{max-width:none}}
-@media (max-width:980px){.content-grid,.social-grid,.about-layout,.feature-grid,.video-grid,.start-here{grid-template-columns:1fr}body::before,body::after{width:11vw}.video-card iframe{height:500px}.feature-copy{order:2}}
+@media (max-width:980px){.content-grid,.social-grid,.about-layout,.feature-grid,.video-grid,.start-here{grid-template-columns:1fr}body::before,body::after{width:11vw}.video-card iframe{height:500px}.feature-copy{order:2}.skilltree-page{width:min(calc(100% - 14px), 1280px)}.skilltree-frame{min-height:1750px}}
 @media (max-width:680px){.content-grid{gap:18px}.page-inner{width:min(calc(100% - 20px),1120px);padding:18px 0 30px}.page-heading{text-align:left;margin-bottom:14px}.page-heading h1,.page-heading h2{font-size:clamp(1.9rem,8vw,2.75rem)}.heading-line{margin:10px 0 0;max-width:180px}.lead,.rotator{margin:12px 0 0;text-align:left}.page-crumb{margin-bottom:14px}.brand-sub{font-size:1.14rem;line-height:1.14}.modal{padding:12px}.modal-panel{padding:18px}.video-card iframe{height:420px}.video-feature{padding:14px;margin-bottom:14px}.feature-grid{gap:14px}.feature-copy h3{font-size:1.2rem}.feature-copy p{font-size:.94rem;line-height:1.5}.chip-row{justify-content:flex-start;margin:0 0 14px}.start-here{gap:10px;margin:14px 0 16px}.start-card{padding:12px 14px;border-radius:16px}.start-title{font-size:1rem}.start-desc{font-size:.9rem;line-height:1.4}.card-body{padding:14px 14px 16px}.thumb .title-overlay{max-width:100%}.chip{min-height:40px;padding:0 14px;font-size:.95rem}.role-card,.social-card,.panel-card{padding:16px}}
-@media (max-width:560px){body::before,body::after{display:none}.shell{width:min(calc(100% - 14px), var(--outer));padding:8px 0 14px}.site-frame{border-radius:24px;min-height:calc(100svh - 16px)}.inner{width:min(calc(100% - 18px), var(--content))}.topbar-row{padding:12px 0 10px;gap:10px}.brand-sub{font-size:1rem;line-height:1.12}.nav-bubbles{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;padding-bottom:4px;gap:8px;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}.nav-bubbles::-webkit-scrollbar{display:none}.nav-bubble{min-height:48px;padding:0 18px;font-size:.96rem;flex:0 0 auto}.page{min-height:auto}.page-inner{width:min(calc(100% - 16px),1120px);padding:16px 0 24px}.page-heading h1,.page-heading h2{font-size:clamp(1.8rem,9vw,2.45rem)}.lead{font-size:.98rem;line-height:1.6}.rotator{font-size:.94rem;min-height:22px}.start-here{grid-template-columns:1fr;gap:10px;margin:12px 0 14px}.start-card{width:100%;padding:12px 14px}.video-feature{padding:12px;border-radius:18px}.feature-copy p{display:none}.feature-copy h3{margin:2px 0 0;font-size:1.1rem}.feature-kicker{margin-bottom:6px;font-size:.7rem}.video-grid{grid-template-columns:1fr;gap:14px}.video-card iframe{height:320px}.thumb.gallery{padding:16px}.chip{min-height:38px;padding:0 12px;font-size:.93rem}.chip-row{gap:8px;margin:0 0 12px}.content-grid,.social-grid,.about-layout{grid-template-columns:1fr;gap:16px}.page-crumb{font-size:.95rem;gap:10px}.modal-panel{border-radius:20px;padding:16px}.modal-panel h3{font-size:1.45rem}}
-
 @media (max-width:560px){
-  .page-crumb{display:none}
+body::before,body::after{display:none}
+.shell{width:min(calc(100% - 14px), var(--outer));padding:8px 0 14px}
+.site-frame{border-radius:24px;min-height:calc(100svh - 16px)}
+.inner{width:min(calc(100% - 18px), var(--content))}
+.topbar-row{padding:12px 0 10px;gap:10px}
+.brand-sub{font-size:1rem;line-height:1.12}
+.nav-bubbles{flex-wrap:nowrap!important;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;padding-bottom:4px;gap:10px;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav-bubbles::-webkit-scrollbar{display:none}
+.nav-bubble{min-height:44px;padding:0 16px;font-size:.95rem;flex:0 0 auto}
+.page{min-height:auto}
+.page-inner{width:min(calc(100% - 16px),1120px);padding:16px 0 24px}
+.page-heading h1,.page-heading h2{font-size:clamp(1.8rem,9vw,2.45rem);line-height:1.1}
+.lead{font-size:.98rem;line-height:1.6}
+.rotator{font-size:.9rem;min-height:22px;opacity:.75}
+.start-here{grid-template-columns:1fr;gap:10px;margin:12px 0 14px}
+.start-card{width:100%;padding:10px 12px;border-radius:14px}
+.start-title{font-size:.95rem}
+.start-desc{font-size:.85rem}
+.video-feature{padding:10px;border-radius:18px;margin-bottom:12px}
+.feature-copy p{display:none}
+.feature-copy h3{margin:2px 0 0;font-size:1.1rem}
+.feature-kicker{margin-bottom:6px;font-size:.7rem}
+.video-grid{grid-template-columns:1fr;gap:14px}
+.video-card iframe{height:320px}
+.thumb.gallery{padding:16px}
+.chip{min-height:38px;padding:0 12px;font-size:.93rem}
+.chip-row{gap:8px;margin:0 0 12px}
+.content-grid,.social-grid,.about-layout{grid-template-columns:1fr;gap:16px}
+.page-crumb{display:none}
+.modal-panel{border-radius:20px;padding:16px}
+.modal-panel h3{font-size:1.45rem}
+.skilltree-shell{margin-top:10px;border-radius:18px}
+.skilltree-frame{min-height:1850px}
 }
-
-
-/* MOBILE IMPROVEMENTS */
-@media (max-width:560px){
-
-  .nav-bubbles{
-    flex-wrap:nowrap !important;
-    overflow-x:auto;
-    overflow-y:hidden;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    gap:10px;
-    padding-bottom:4px;
-  }
-  .nav-bubbles::-webkit-scrollbar{display:none;}
-
-  .nav-bubble{
-    flex:0 0 auto;
-    min-height:44px;
-    padding:0 16px;
-    font-size:.95rem;
-  }
-
-  .page-heading h1{
-    font-size:2rem;
-    line-height:1.1;
-  }
-
-  .rotator{
-    font-size:.9rem;
-    opacity:.75;
-  }
-
-  .video-feature{
-    padding:10px;
-    margin-bottom:12px;
-  }
-
-  .start-here{
-    gap:10px;
-    margin:12px 0;
-  }
-
-  .start-card{
-    padding:10px 12px;
-    border-radius:14px;
-  }
-
-  .start-title{
-    font-size:.95rem;
-  }
-
-  .start-desc{
-    font-size:.85rem;
-  }
-
-  .card-body{
-    padding:12px;
-  }
-
-  .page-inner{
-    padding:16px 0 24px;
-  }
-
-  .content-grid,
-  .social-grid{
-    gap:16px;
-  }
-
-  .video-embed{
-    border-radius:12px;
-  }
-
-}
-
 </style>
-
-<style>
-.skilltree-page{
-  width:min(calc(100% - 18px), 1280px);
-}
-.skilltree-shell{
-  margin-top:16px;
-  border-radius:28px;
-  overflow:hidden;
-  background:#ffffff;
-  box-shadow:0 16px 40px rgba(17,19,24,.08);
-  border:1px solid rgba(227,154,44,.14);
-}
-.skilltree-frame{
-  width:100%;
-  min-height:1600px;
-  border:0;
-  display:block;
-  background:#fff;
-}
-@media (max-width:980px){
-  .skilltree-page{
-    width:min(calc(100% - 14px), 1280px);
-  }
-  .skilltree-frame{
-    min-height:1750px;
-  }
-}
-@media (max-width:560px){
-  .skilltree-shell{
-    margin-top:10px;
-    border-radius:18px;
-  }
-  .skilltree-frame{
-    min-height:1850px;
-  }
-}
-
-@media (max-width:560px){
-  .page-crumb{display:none}
-}
-
-
-/* MOBILE IMPROVEMENTS */
-@media (max-width:560px){
-
-  .nav-bubbles{
-    flex-wrap:nowrap !important;
-    overflow-x:auto;
-    overflow-y:hidden;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    gap:10px;
-    padding-bottom:4px;
-  }
-  .nav-bubbles::-webkit-scrollbar{display:none;}
-
-  .nav-bubble{
-    flex:0 0 auto;
-    min-height:44px;
-    padding:0 16px;
-    font-size:.95rem;
-  }
-
-  .page-heading h1{
-    font-size:2rem;
-    line-height:1.1;
-  }
-
-  .rotator{
-    font-size:.9rem;
-    opacity:.75;
-  }
-
-  .video-feature{
-    padding:10px;
-    margin-bottom:12px;
-  }
-
-  .start-here{
-    gap:10px;
-    margin:12px 0;
-  }
-
-  .start-card{
-    padding:10px 12px;
-    border-radius:14px;
-  }
-
-  .start-title{
-    font-size:.95rem;
-  }
-
-  .start-desc{
-    font-size:.85rem;
-  }
-
-  .card-body{
-    padding:12px;
-  }
-
-  .page-inner{
-    padding:16px 0 24px;
-  }
-
-  .content-grid,
-  .social-grid{
-    gap:16px;
-  }
-
-  .video-embed{
-    border-radius:12px;
-  }
-
-}
-
-</style>
-
 </head>
 <body>
 <div class="shell">
@@ -348,7 +190,7 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <div class="inner topbar-row">
 <div class="brand-sub">Faith centered. Purpose driven. Built with clarity.</div>
 <nav class="nav-bubbles" aria-label="Page navigation">
-<a class="nav-bubble active" href="#home" data-page="home">Home</a>  
+<a class="nav-bubble active" href="#home" data-page="home">Home</a>
 <a class="nav-bubble" href="#videos" data-page="videos">Videos</a>
 <a class="nav-bubble" href="#about" data-page="about">About</a>
 <a class="nav-bubble" href="#gallery" data-page="gallery">Gallery</a>
@@ -359,58 +201,94 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 <div class="topbar-spacer" aria-hidden="true"></div>
 </div>
 </header>
+
 <section class="page" id="page-home" data-page="home">
   <div class="page-inner" style="text-align:center; max-width:700px; margin:auto;">
-
     <h1 style="font-size:clamp(2.2rem,6vw,3.2rem); line-height:1.1; margin-bottom:10px;">
       I help people grow through discipline, faith, and real life leadership.
     </h1>
-
     <p style="color:var(--muted); margin-bottom:18px;">
       This is where that journey is built.
     </p>
-
     <div style="cursor:pointer;" onclick="showPage('videos')">
       <iframe 
         class="video-embed"
         src="https://www.tiktok.com/embed/v2/7527694624882773279"
-        style="width:100%; border-radius:16px;">
+        style="width:100%; border-radius:16px;"
+        title="Featured intro video">
       </iframe>
     </div>
-
   </div>
 </section>
-<section class="page" id="page-videos" data-page="videos">
-<div class="page-inner">
-<div class="page-crumb reveal"><a href="#videos" class="home-link" aria-label="Go to Videos home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg></a><span class="slash">/</span><span>Videos</span></div>
-<div class="page-heading reveal">
-<h1>I help people grow through discipline, faith, and real life leadership.</h1>
-<div class="heading-line"></div>
-<p class="lead">Faith, discipline, and leadership lived out daily.</p>
-<div class="rotator"><span id="rotatingText"></span><span class="cursor"></span></div>
-</div>
-<a href="#" class="start-card" data-page-link="videos"><span class="start-kicker">Start Here</span><span class="start-title">Watch Intro</span><span class="start-desc">Start with the intro.</span></a>
-<a href="#about" class="start-card" data-page-link="about"><span class="start-kicker">Next Step</span><span class="start-title">Read My Story</span><span class="start-desc">Read the story behind the work.</span></a>
-<a href="#socials" class="start-card" data-page-link="socials"><span class="start-kicker">Stay Connected</span><span class="start-title">Follow My Journey</span><span class="start-desc">Stay connected through socials.</span></a>
-</div>
-<div class="video-feature reveal">
-<div class="feature-grid">
-<iframe class="video-embed" src="https://www.tiktok.com/embed/v2/7527694624882773279" title="Featured intro TikTok"></iframe>
-<div class="feature-copy"><span class="feature-kicker">Featured Intro</span><h3>Start here</h3><p>Your intro video. Start here.</p></div>
-</div>
-</div>
 
-<div class="video-grid">
-<article class="video-card reveal">
-<iframe src="https://www.tiktok.com/embed/v2/7527329741246893342" title="How to begin a relationship with Jesus"></iframe>
-<div class="card-body"><div class="meta"><span>Faith</span><span class="time">TikTok</span></div><h3>How to begin a relationship with Jesus</h3><p>A simple and honest look at what it means to start walking with Jesus. This video points people toward faith, surrender, prayer, and taking real first steps.</p><a class="card-link" href="https://www.tiktok.com/@nick.blanchard/video/7527329741246893342" target="_blank" rel="noopener noreferrer">Open on TikTok</a></div>
-</article>
-<article class="video-card reveal">
-<iframe src="https://www.tiktok.com/embed/v2/7554446505474542878" title="Idols sabotage faith"></iframe>
-<div class="card-body"><div class="meta"><span>Faith</span><span class="time">TikTok</span></div><h3>Idols sabotage faith</h3><p>Idols can be celebrities, influencers, comfort, approval, money, attention, relationships, habits, or vices that slowly take the place only God should have.</p><a class="card-link" href="https://www.tiktok.com/@nick.blanchard/video/7554446505474542878" target="_blank" rel="noopener noreferrer">Open on TikTok</a></div>
-</article>
-</div>
-</div>
+<section class="page" id="page-videos" data-page="videos">
+  <div class="page-inner">
+    <div class="page-crumb reveal">
+      <a href="#videos" class="home-link" aria-label="Go to Videos home">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg>
+      </a>
+      <span class="slash">/</span>
+      <span>Videos</span>
+    </div>
+
+    <div class="page-heading reveal">
+      <h1>I help people grow through discipline, faith, and real life leadership.</h1>
+      <div class="heading-line"></div>
+      <p class="lead">Faith, discipline, and leadership lived out daily.</p>
+      <div class="rotator"><span id="rotatingText"></span><span class="cursor"></span></div>
+    </div>
+
+    <div class="start-here reveal">
+      <a href="#" class="start-card" data-page-link="videos">
+        <span class="start-kicker">Start Here</span>
+        <span class="start-title">Watch Intro</span>
+        <span class="start-desc">Start with the intro.</span>
+      </a>
+      <a href="#about" class="start-card" data-page-link="about">
+        <span class="start-kicker">Next Step</span>
+        <span class="start-title">Read My Story</span>
+        <span class="start-desc">Read the story behind the work.</span>
+      </a>
+      <a href="#socials" class="start-card" data-page-link="socials">
+        <span class="start-kicker">Stay Connected</span>
+        <span class="start-title">Follow My Journey</span>
+        <span class="start-desc">Stay connected through socials.</span>
+      </a>
+    </div>
+
+    <div class="video-feature reveal">
+      <div class="feature-grid">
+        <iframe class="video-embed" src="https://www.tiktok.com/embed/v2/7527694624882773279" title="Featured intro TikTok"></iframe>
+        <div class="feature-copy">
+          <span class="feature-kicker">Featured Intro</span>
+          <h3>Start here</h3>
+          <p>Your intro video. Start here.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-grid">
+      <article class="video-card reveal">
+        <iframe src="https://www.tiktok.com/embed/v2/7527329741246893342" title="How to begin a relationship with Jesus"></iframe>
+        <div class="card-body">
+          <div class="meta"><span>Faith</span><span class="time">TikTok</span></div>
+          <h3>How to begin a relationship with Jesus</h3>
+          <p>A simple and honest look at what it means to start walking with Jesus. This video points people toward faith, surrender, prayer, and taking real first steps.</p>
+          <a class="card-link" href="https://www.tiktok.com/@nick.blanchard/video/7527329741246893342" target="_blank" rel="noopener noreferrer">Open on TikTok</a>
+        </div>
+      </article>
+
+      <article class="video-card reveal">
+        <iframe src="https://www.tiktok.com/embed/v2/7554446505474542878" title="Idols sabotage faith"></iframe>
+        <div class="card-body">
+          <div class="meta"><span>Faith</span><span class="time">TikTok</span></div>
+          <h3>Idols sabotage faith</h3>
+          <p>Idols can be celebrities, influencers, comfort, approval, money, attention, relationships, habits, or vices that slowly take the place only God should have.</p>
+          <a class="card-link" href="https://www.tiktok.com/@nick.blanchard/video/7554446505474542878" target="_blank" rel="noopener noreferrer">Open on TikTok</a>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
 <section class="page" id="page-about" data-page="about">
@@ -429,25 +307,45 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
 </section>
 
 <section class="page" id="page-gallery" data-page="gallery">
-<div class="page-inner">
-<div class="page-crumb reveal"><a href="#gallery" class="home-link" aria-label="Go to Gallery home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg></a><span class="slash">/</span><span>Gallery</span></div>
-<div class="page-heading reveal"><h2>Visual Brand Gallery</h2><div class="heading-line"></div></div>
-<a class="chip active" href="#">All Photos</a><a class="chip" href="#">Portraits</a><a class="chip" href="#">Lifestyle</a><a class="chip" href="#">Leadership</a><a class="chip" href="#">Faith</a></div>
-<div class="content-grid">
-<article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Portrait" data-title="Strong first impression headshot" data-desc="A polished portrait that anchors your personal brand." data-body="This lightbox is designed to make gallery images feel more premium. When you replace these placeholders with real photos, this modal can show a larger image, a short caption, and even context about the moment or message behind the shot.">
-<div class="thumb gallery">Portrait Photo Placeholder with clean personal brand framing</div>
-<div class="card-body"><div class="meta"><span>Portrait</span><span class="time">Featured</span></div><h3>Strong first impression headshot</h3><p>A placeholder for a polished portrait that anchors your personal brand and works across multiple platforms.</p></div>
-</article>
-<article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Leadership" data-title="In the moment and serving others" data-desc="A natural image that communicates confidence, responsibility, and real presence." data-body="This is a good spot for a candid coaching, teaching, or speaking image. Images with real story behind them tend to make personal brand sites feel much more alive and believable.">
-<div class="thumb gallery">Leadership Moment Placeholder with room for candid or speaking image</div>
-<div class="card-body"><div class="meta"><span>Leadership</span><span class="time">Featured</span></div><h3>In the moment and serving others</h3><p>Use this slot for a natural photo that communicates confidence, responsibility, and real presence.</p></div>
-</article>
-<article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Faith" data-title="Mission aligned visual storytelling" data-desc="Photos that reinforce your values and the deeper reason behind your brand." data-body="Faith based imagery works best when it feels grounded and real, not staged. This lightbox gives you room to pair a photo with a short reflection or story.">
-<div class="thumb gallery">Faith Based Photo Placeholder for testimony or mission oriented visual</div>
-<div class="card-body"><div class="meta"><span>Faith</span><span class="time">Featured</span></div><h3>Mission aligned visual storytelling</h3><p>A template image space for photos that reinforce your values and the deeper reason behind your brand.</p></div>
-</article>
-</div>
-</div>
+  <div class="page-inner">
+    <div class="page-crumb reveal">
+      <a href="#gallery" class="home-link" aria-label="Go to Gallery home">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg>
+      </a>
+      <span class="slash">/</span>
+      <span>Gallery</span>
+    </div>
+
+    <div class="page-heading reveal">
+      <h2>Visual Brand Gallery</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="chip-row reveal">
+      <a class="chip active" href="#">All Photos</a>
+      <a class="chip" href="#">Portraits</a>
+      <a class="chip" href="#">Lifestyle</a>
+      <a class="chip" href="#">Leadership</a>
+      <a class="chip" href="#">Faith</a>
+    </div>
+
+    <div class="content-grid">
+      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Portrait" data-title="Strong first impression headshot" data-desc="A polished portrait that anchors your personal brand." data-body="This lightbox is designed to make gallery images feel more premium. When you replace these placeholders with real photos, this modal can show a larger image, a short caption, and even context about the moment or message behind the shot.">
+        <div class="thumb gallery">Portrait Photo Placeholder with clean personal brand framing</div>
+        <div class="card-body"><div class="meta"><span>Portrait</span><span class="time">Featured</span></div><h3>Strong first impression headshot</h3><p>A placeholder for a polished portrait that anchors your personal brand and works across multiple platforms.</p></div>
+      </article>
+
+      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Leadership" data-title="In the moment and serving others" data-desc="A natural image that communicates confidence, responsibility, and real presence." data-body="This is a good spot for a candid coaching, teaching, or speaking image. Images with real story behind them tend to make personal brand sites feel much more alive and believable.">
+        <div class="thumb gallery">Leadership Moment Placeholder with room for candid or speaking image</div>
+        <div class="card-body"><div class="meta"><span>Leadership</span><span class="time">Featured</span></div><h3>In the moment and serving others</h3><p>Use this slot for a natural photo that communicates confidence, responsibility, and real presence.</p></div>
+      </article>
+
+      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Faith" data-title="Mission aligned visual storytelling" data-desc="Photos that reinforce your values and the deeper reason behind your brand." data-body="Faith based imagery works best when it feels grounded and real, not staged. This lightbox gives you room to pair a photo with a short reflection or story.">
+        <div class="thumb gallery">Faith Based Photo Placeholder for testimony or mission oriented visual</div>
+        <div class="card-body"><div class="meta"><span>Faith</span><span class="time">Featured</span></div><h3>Mission aligned visual storytelling</h3><p>A template image space for photos that reinforce your values and the deeper reason behind your brand.</p></div>
+      </article>
+    </div>
+  </div>
 </section>
 
 <section class="page" id="page-blogs" data-page="blogs">
@@ -505,482 +403,191 @@ linear-gradient(135deg, #FAF4E7 0%, #E9D5AE 100%);color:#5F4C31;padding:20px;bor
         id="skillTreeFrame"
         class="skilltree-frame"
         title="Athletic Director Skill Tree"
-        srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot; /&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-  &lt;title&gt;Athletic Director Skill Tree&lt;/title&gt;
-
-  &lt;!-- Favicon (keep favicon.png next to this file) --&gt;
-  &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/public/favicon.png&quot; /&gt;
-  &lt;meta name=&quot;theme-color&quot; content=&quot;#12185C&quot; /&gt;
-
-  &lt;!-- Tailwind (CDN) --&gt;
-  &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
-
-  &lt;style&gt;
-    /* Small helpers */
-    .connector { border-top: 2px dashed #d1d5db; }
-    .dot { width: 8px; height: 8px; background:#9ca3af; border-radius:9999px; }
-    .modal { position: fixed; inset: 0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.5); }
-    .modal.open { display:flex; }
-    .accordion-content { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
-    .accordion-item.open .accordion-content { max-height: 1000px; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body class=&quot;min-h-screen bg-gray-50 text-gray-900&quot;&gt;
-  &lt;!-- HERO --&gt;
-  &lt;header class=&quot;relative h-56 md:h-72 w-full flex items-center justify-center text-white&quot;
-    style=&quot;background-image:url(&#x27;https://images.unsplash.com/photo-1544918877-550a2b5cbd0d?q=80&amp;w=1600&amp;auto=format&amp;fit=crop&#x27;); background-size:cover; background-position:center;&quot;&gt;
-    &lt;div class=&quot;absolute inset-0&quot; style=&quot;background:rgba(18,24,92,.55)&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;relative z-10 text-center px-4&quot;&gt;
-      &lt;h1 class=&quot;text-3xl md:text-4xl font-extrabold tracking-tight&quot;&gt;Athletic Director Skill Tree&lt;/h1&gt;
-      &lt;p class=&quot;mt-2 text-sm md:text-base opacity-90&quot;&gt;How to become a Great A.D. · Target date: June 12, 2026&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/header&gt;
-
-  &lt;!-- HUB --&gt;
-  &lt;section class=&quot;relative flex flex-col items-center -mt-10 md:-mt-12&quot;&gt;
-    &lt;div class=&quot;rounded-full bg-white shadow-2xl p-6 md:p-8 text-center w-64 border border-gray-100&quot;&gt;
-      &lt;div class=&quot;text-xl font-bold&quot; style=&quot;color:#12185C&quot;&gt;Great Athletic Director&lt;/div&gt;
-      &lt;div class=&quot;text-xs text-gray-500&quot;&gt;Skill Tree Hub&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;!-- CONNECTOR --&gt;
-    &lt;div class=&quot;relative w-full mt-6&quot;&gt;
-      &lt;div class=&quot;mx-auto max-w-7xl&quot;&gt;
-        &lt;div class=&quot;relative h-10&quot;&gt;
-          &lt;div class=&quot;absolute left-4 right-4 top-1/2 -translate-y-1/2 connector&quot;&gt;&lt;/div&gt;
-          &lt;div id=&quot;dots&quot; class=&quot;absolute inset-0 flex justify-between px-6&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-
-  &lt;!-- GRID --&gt;
-  &lt;main class=&quot;max-w-7xl mx-auto px-4 pb-20&quot;&gt;
-    &lt;div id=&quot;grid&quot; class=&quot;grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-8&quot;&gt;&lt;/div&gt;
-  &lt;/main&gt;
-
-  &lt;!-- MODAL --&gt;
-  &lt;div id=&quot;modal&quot; class=&quot;modal&quot;&gt;
-    &lt;div class=&quot;bg-white w-[95%] max-w-3xl rounded-2xl shadow-xl p-6 md:p-8&quot;&gt;
-      &lt;div class=&quot;flex items-start justify-between gap-4&quot;&gt;
-        &lt;h2 id=&quot;modalTitle&quot; class=&quot;text-xl font-bold&quot;&gt;Title&lt;/h2&gt;
-        &lt;button id=&quot;closeModal&quot; class=&quot;text-gray-500 hover:text-gray-700 text-2xl leading-none&quot;&gt;&amp;times;&lt;/button&gt;
-      &lt;/div&gt;
-      &lt;p class=&quot;text-sm text-gray-500 mt-1&quot;&gt;Click each skill to view the explanation and the practical action plan. Checkboxes save automatically.&lt;/p&gt;
-      &lt;div id=&quot;accordion&quot; class=&quot;mt-4 divide-y divide-gray-100&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;script&gt;
-    // ------------- DATA -------------
-    const categories = [
-      {
-        title: &quot;Program Management&quot;,
-        icon: &quot;🗂️&quot;,
-        bullets: [
-          {
-            title: &quot;Scheduling &amp; referee assignments&quot;,
-            why: &quot;Clear calendars reduce conflicts and last-minute scrambles.&quot;,
-            action: [
-              &quot;Build a master schedule (games/practices/gyms) in Google Sheets; share with coaches.&quot;,
-              &quot;Create a referee contact list + backups. Confirm two weeks out; reconfirm 48 hrs.&quot;,
-              &quot;Write a weather/cancellation protocol with notification order (coaches → AD → parents).&quot;
-            ]
-          },
-          {
-            title: &quot;Budget tracking&quot;,
-            why: &quot;Keeps spending aligned with goals and enables better fundraising asks.&quot;,
-            action: [
-              &quot;Set up a ledger (income/expense: refs, uniforms, equipment, travel).&quot;,
-              &quot;Log receipts weekly; review monthly with admin; publish season-end summary.&quot;,
-              &quot;Use per-sport spend caps and pre-approval for large purchases.&quot;
-            ]
-          },
-          {
-            title: &quot;Coach access (keys, codes, protocols)&quot;,
-            why: &quot;Ensures safe, reliable access to facilities and emergency readiness.&quot;,
-            action: [
-              &quot;Issue keys and alarm codes via an Access Log (name, date issued, return date).&quot;,
-              &quot;Distribute Emergency Action Plan &amp; concussion protocol; collect e-sign acknowledgments.&quot;,
-              &quot;Annual access audit before first practice; rotate codes when coaches change.&quot;
-            ]
-          },
-          {
-            title: &quot;Facility prep &amp; field painting&quot;,
-            why: &quot;Game-ready spaces communicate excellence and prevent delays.&quot;,
-            action: [
-              &quot;Preseason walkthrough: paint, nets, anchors, first-aid, AED location signage.&quot;,
-              &quot;Create a line-paint schedule (week 0 heavy lines, weekly touch-ups).&quot;,
-              &quot;Assign a paint crew; stock paint/liners; build a game-day setup checklist.&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Coaching &amp; Player Development&quot;,
-        icon: &quot;🏑&quot;,
-        bullets: [
-          {
-            title: &quot;Coach onboarding &amp; support&quot;,
-            why: &quot;Aligned coaches create consistent culture and better athlete experiences.&quot;,
-            action: [
-              &quot;Provide an onboarding packet (philosophy, expectations, communication norms).&quot;,
-              &quot;Pair new coaches with a veteran mentor; 15-minute weekly check-ins first month.&quot;,
-              &quot;Share drill libraries and season planning templates.&quot;
-            ]
-          },
-          {
-            title: &quot;Medical &amp; safety training emails&quot;,
-            why: &quot;Compliance protects athletes and the school.&quot;,
-            action: [
-              &quot;Build a coaches@ mailing list; send links for concussion &amp; CPR courses.&quot;,
-              &quot;Collect completion certificates in Drive; track via a simple dashboard.&quot;,
-              &quot;Set auto-reminders at 30/7/1 days before deadlines.&quot;
-            ]
-          },
-          {
-            title: &quot;Player mentorship &amp; clinics&quot;,
-            why: &quot;Varsity-to-Modified pipeline improves retention and leadership.&quot;,
-            action: [
-              &quot;Run seasonal skills clinics; feature varsity captains as station leads.&quot;,
-              &quot;Create a buddy system (varsity ↔ modified) with monthly skill goals.&quot;,
-              &quot;Collect feedback surveys to refine drills.&quot;
-            ]
-          },
-          {
-            title: &quot;Practice plans &amp; drills&quot;,
-            why: &quot;Good reps beat long reps; plans maximize gym/field time.&quot;,
-            action: [
-              &quot;Adopt a weekly template (warm-up → skill → small-sided → compete → cooldown).&quot;,
-              &quot;Differentiate by level with non-negotiables listed.&quot;,
-              &quot;Store plans in a shared folder; coaches post plans 24 hrs before practice.&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Media &amp; Communications&quot;,
-        icon: &quot;📣&quot;,
-        bullets: [
-          {
-            title: &quot;Social media templates&quot;,
-            why: &quot;Consistency grows recognition with parents and students.&quot;,
-            action: [
-              &quot;Create branded Canva templates for score finals, Player of the Match, and schedules.&quot;,
-              &quot;Build a content calendar (FB for parents, IG for students).&quot;,
-              &quot;Add alt text and brief values notes when appropriate.&quot;
-            ]
-          },
-          {
-            title: &quot;Newspaper stat reports&quot;,
-            why: &quot;Earned media validates athletes and raises school profile.&quot;,
-            action: [
-              &quot;Keep a live stat sheet; use a game-night email template with scorers, saves, quotes.&quot;,
-              &quot;Submit within 60 minutes post-game to local outlets; cc coaches and admin.&quot;,
-              &quot;Track pickups; repost clippings on school channels.&quot;
-            ]
-          },
-          {
-            title: &quot;Highlight features&quot;,
-            why: &quot;Spotlights drive engagement and sponsor value.&quot;,
-            action: [
-              &quot;Post Player of the Match with short bio and coach quote.&quot;,
-              &quot;Rotate teacher/volunteer spotlights to reinforce community.&quot;,
-              &quot;Compile weekly recap with top plays and sportsmanship moments.&quot;
-            ]
-          },
-          {
-            title: &quot;Video content&quot;,
-            why: &quot;Short-form video is the highest-reach format for teens.&quot;,
-            action: [
-              &quot;Capture 15–30s vertical clips; edit to one highlight reel per game.&quot;,
-              &quot;Organize footage by date/team in Drive; secure media permissions.&quot;,
-              &quot;Post next-day with captions and simple graphics.&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Community &amp; Culture&quot;,
-        icon: &quot;🤝&quot;,
-        bullets: [
-          {
-            title: &quot;Spirit nights &amp; fan engagement&quot;,
-            why: &quot;Big crowds energize teams and attract future students.&quot;,
-            action: [
-              &quot;Plan 3 theme nights per season (Senior, Community, Youth Clinic).&quot;,
-              &quot;Create a student section leaders chat; provide chants/standards.&quot;,
-              &quot;Add halftime recognitions for service and academics.&quot;
-            ]
-          },
-          {
-            title: &quot;Volunteer coordination&quot;,
-            why: &quot;Reliable help keeps games on time and professional.&quot;,
-            action: [
-              &quot;Use a SignUpGenius for clock, book, concessions; confirm assignments weekly.&quot;,
-              &quot;Offer quick role cards and 10-minute pregame huddles.&quot;,
-              &quot;Track service hours for student volunteers.&quot;
-            ]
-          },
-          {
-            title: &quot;Sponsorship packages&quot;,
-            why: &quot;Structured offers make it easy for businesses to say yes.&quot;,
-            action: [
-              &quot;Create tiered packages (Bronze/Silver/Gold) with deliverables and pricing.&quot;,
-              &quot;Include banner placement, shout-outs, and sponsored social posts.&quot;,
-              &quot;Invoice promptly; send end-of-season impact reports.&quot;
-            ]
-          },
-          {
-            title: &quot;School pride initiatives&quot;,
-            why: &quot;Athletics should reflect mission and character.&quot;,
-            action: [
-              &quot;Open/close with team prayer or reflection; uphold sportsmanship pledge.&quot;,
-              &quot;Schedule service projects per team each season.&quot;,
-              &quot;Celebrate academic honors alongside athletic awards.&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Academic &amp; Student Support&quot;,
-        icon: &quot;📚&quot;,
-        bullets: [
-          {
-            title: &quot;Eligibility monitoring&quot;,
-            why: &quot;Academic first ensures athletes succeed beyond the court/field.&quot;,
-            action: [
-              &quot;Run weekly grade checks; set threshold for probation and ineligibility.&quot;,
-              &quot;Notify students/parents with a clear improvement plan and deadlines.&quot;,
-              &quot;Coordinate with teachers for make-up work opportunities.&quot;
-            ]
-          },
-          {
-            title: &quot;Study hall &amp; tutoring&quot;,
-            why: &quot;Structured time removes barriers for busy student-athletes.&quot;,
-            action: [
-              &quot;Offer team study halls on practice days; recruit volunteer tutors.&quot;,
-              &quot;Track attendance and assignments completed; reward consistency.&quot;,
-              &quot;Provide quiet spaces before away games to finish work.&quot;
-            ]
-          },
-          {
-            title: &quot;Attendance &amp; conduct&quot;,
-            why: &quot;Consistency builds discipline and reduces eligibility issues.&quot;,
-            action: [
-              &quot;Publish an athlete code of conduct; review with teams each season.&quot;,
-              &quot;Log infractions and restorative actions; communicate transparently.&quot;,
-              &quot;Partner with counselors for behavior supports if needed.&quot;
-            ]
-          },
-          {
-            title: &quot;College &amp; next steps&quot;,
-            why: &quot;Guidance demystifies recruiting and post‑HS options.&quot;,
-            action: [
-              &quot;Host an annual info night on NAIA/NCAA eligibility basics.&quot;,
-              &quot;Help athletes build a simple highlight reel and resume.&quot;,
-              &quot;Write template recommendation letters; track deadlines.&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Fundraising &amp; Finance&quot;,
-        icon: &quot;💵&quot;,
-        bullets: [
-          {
-            title: &quot;Annual revenue plan&quot;,
-            why: &quot;A plan replaces hope with predictable cash flow.&quot;,
-            action: [
-              &quot;Forecast income (passes, concessions, merch, sponsors) vs expenses by sport.&quot;,
-              &quot;Set monthly targets; post a progress graphic.&quot;,
-              &quot;Review quarterly and reallocate to priorities.&quot;
-            ]
-          },
-          {
-            title: &quot;Sponsored social posts &amp; stat ads&quot;,
-            why: &quot;Monetize attention with low lift and high visibility.&quot;,
-            action: [
-              &quot;Sell ad slots on Player of the Match posts ($25–$100 per post or monthly).&quot;,
-              &quot;Include logo, thank‑you line, and link; cap sponsors per week to protect feed.&quot;,
-              &quot;Report impressions/engagement to sponsors monthly to retain them.&quot;
-            ]
-          },
-          {
-            title: &quot;Community partnerships&quot;,
-            why: &quot;Local businesses want to support local kids.&quot;,
-            action: [
-              &quot;Offer gym banner space and halftime shout‑outs.&quot;,
-              &quot;Create a Sponsor Night with giveaways and table space.&quot;,
-              &quot;Bundle packages with season passes for families.&quot;
-            ]
-          },
-          {
-            title: &quot;Grants &amp; donations&quot;,
-            why: &quot;One successful grant can fund a season of upgrades.&quot;,
-            action: [
-              &quot;Identify 3 local foundations and 2 corporate small‑grant programs.&quot;,
-              &quot;Keep a one‑pager about athletics impact and needs.&quot;,
-              &quot;Enable online giving page with earmarks (equipment, travel, scholarships).&quot;
-            ]
-          }
-        ]
-      },
-      {
-        title: &quot;Personal Growth&quot;,
-        icon: &quot;🧭&quot;,
-        bullets: [
-          {
-            title: &quot;Networking (Section 2)&quot;,
-            why: &quot;Relationships unlock refs, scrimmages, and wisdom.&quot;,
-            action: [
-              &quot;Attend AD meetings; ask for a mentor; share best‑practice docs.&quot;,
-              &quot;Start a monthly check‑in with two nearby ADs.&quot;,
-              &quot;Offer to host a mini‑clinic at your gym.&quot;
-            ]
-          },
-          {
-            title: &quot;Time management systems&quot;,
-            why: &quot;Protects family, teaching, AD work, and GCU studies.&quot;,
-            action: [
-              &quot;Adopt weekly time blocks; batch emails and stats.&quot;,
-              &quot;Automate reminders (schedules, trainings, sponsors).&quot;,
-              &quot;Build a delegation matrix (coaches, captains, volunteers).&quot;
-            ]
-          },
-          {
-            title: &quot;Professional development&quot;,
-            why: &quot;Keeps you current and confident.&quot;,
-            action: [
-              &quot;Complete NFHS courses; attend one clinic/webinar each season.&quot;,
-              &quot;Track CE credits and share summaries with admin.&quot;,
-              &quot;Pilot one new idea each season and evaluate impact.&quot;
-            ]
-          },
-          {
-            title: &quot;Crisis management&quot;,
-            why: &quot;Prepared teams respond, not react.&quot;,
-            action: [
-              &quot;Maintain an Emergency Action Plan + contact tree.&quot;,
-              &quot;Create message templates for cancellations/injuries.&quot;,
-              &quot;Run a tabletop drill with coaches once per season.&quot;
-            ]
-          }
-        ]
+        srcdoc="<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>Athletic Director Skill Tree</title>
+<link rel='icon' type='image/png' href='/public/favicon.png' />
+<meta name='theme-color' content='#12185C' />
+<script src='https://cdn.tailwindcss.com'></script>
+<style>
+.connector { border-top: 2px dashed #d1d5db; }
+.dot { width: 8px; height: 8px; background:#9ca3af; border-radius:9999px; }
+.modal { position: fixed; inset: 0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,.5); }
+.modal.open { display:flex; }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+.accordion-item.open .accordion-content { max-height: 1000px; }
+</style>
+</head>
+<body class='min-h-screen bg-gray-50 text-gray-900'>
+<header class='relative h-56 md:h-72 w-full flex items-center justify-center text-white' style='background-image:url(https://images.unsplash.com/photo-1544918877-550a2b5cbd0d?q=80&w=1600&auto=format&fit=crop); background-size:cover; background-position:center;'>
+<div class='absolute inset-0' style='background:rgba(18,24,92,.55)'></div>
+<div class='relative z-10 text-center px-4'>
+<h1 class='text-3xl md:text-4xl font-extrabold tracking-tight'>Athletic Director Skill Tree</h1>
+<p class='mt-2 text-sm md:text-base opacity-90'>How to become a Great A.D. · Target date: June 12, 2026</p>
+</div>
+</header>
+<section class='relative flex flex-col items-center -mt-10 md:-mt-12'>
+<div class='rounded-full bg-white shadow-2xl p-6 md:p-8 text-center w-64 border border-gray-100'>
+<div class='text-xl font-bold' style='color:#12185C'>Great Athletic Director</div>
+<div class='text-xs text-gray-500'>Skill Tree Hub</div>
+</div>
+<div class='relative w-full mt-6'>
+<div class='mx-auto max-w-7xl'>
+<div class='relative h-10'>
+<div class='absolute left-4 right-4 top-1/2 -translate-y-1/2 connector'></div>
+<div id='dots' class='absolute inset-0 flex justify-between px-6'></div>
+</div>
+</div>
+</div>
+</section>
+<main class='max-w-7xl mx-auto px-4 pb-20'>
+<div id='grid' class='grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6 mt-8'></div>
+</main>
+<div id='modal' class='modal'>
+<div class='bg-white w-[95%] max-w-3xl rounded-2xl shadow-xl p-6 md:p-8'>
+<div class='flex items-start justify-between gap-4'>
+<h2 id='modalTitle' class='text-xl font-bold'>Title</h2>
+<button id='closeModal' class='text-gray-500 hover:text-gray-700 text-2xl leading-none'>&times;</button>
+</div>
+<p class='text-sm text-gray-500 mt-1'>Click each skill to view the explanation and the practical action plan. Checkboxes save automatically.</p>
+<div id='accordion' class='mt-4 divide-y divide-gray-100'></div>
+</div>
+</div>
+<script>
+const categories = [
+{title:'Program Management',icon:'🗂️',bullets:[
+{title:'Scheduling & referee assignments',why:'Clear calendars reduce conflicts and last-minute scrambles.',action:['Build a master schedule (games/practices/gyms) in Google Sheets; share with coaches.','Create a referee contact list + backups. Confirm two weeks out; reconfirm 48 hrs.','Write a weather/cancellation protocol with notification order (coaches → AD → parents).']},
+{title:'Budget tracking',why:'Keeps spending aligned with goals and enables better fundraising asks.',action:['Set up a ledger (income/expense: refs, uniforms, equipment, travel).','Log receipts weekly; review monthly with admin; publish season-end summary.','Use per-sport spend caps and pre-approval for large purchases.']},
+{title:'Coach access (keys, codes, protocols)',why:'Ensures safe, reliable access to facilities and emergency readiness.',action:['Issue keys and alarm codes via an Access Log (name, date issued, return date).','Distribute Emergency Action Plan & concussion protocol; collect e-sign acknowledgments.','Annual access audit before first practice; rotate codes when coaches change.']},
+{title:'Facility prep & field painting',why:'Game-ready spaces communicate excellence and prevent delays.',action:['Preseason walkthrough: paint, nets, anchors, first-aid, AED location signage.','Create a line-paint schedule (week 0 heavy lines, weekly touch-ups).','Assign a paint crew; stock paint/liners; build a game-day setup checklist.']}
+]},
+{title:'Coaching & Player Development',icon:'🏑',bullets:[
+{title:'Coach onboarding & support',why:'Aligned coaches create consistent culture and better athlete experiences.',action:['Provide an onboarding packet (philosophy, expectations, communication norms).','Pair new coaches with a veteran mentor; 15-minute weekly check-ins first month.','Share drill libraries and season planning templates.']},
+{title:'Medical & safety training emails',why:'Compliance protects athletes and the school.',action:['Build a coaches@ mailing list; send links for concussion & CPR courses.','Collect completion certificates in Drive; track via a simple dashboard.','Set auto-reminders at 30/7/1 days before deadlines.']},
+{title:'Player mentorship & clinics',why:'Varsity-to-Modified pipeline improves retention and leadership.',action:['Run seasonal skills clinics; feature varsity captains as station leads.','Create a buddy system (varsity ↔ modified) with monthly skill goals.','Collect feedback surveys to refine drills.']},
+{title:'Practice plans & drills',why:'Good reps beat long reps; plans maximize gym/field time.',action:['Adopt a weekly template (warm-up → skill → small-sided → compete → cooldown).','Differentiate by level with non-negotiables listed.','Store plans in a shared folder; coaches post plans 24 hrs before practice.']}
+]},
+{title:'Media & Communications',icon:'📣',bullets:[
+{title:'Social media templates',why:'Consistency grows recognition with parents and students.',action:['Create branded Canva templates for score finals, Player of the Match, and schedules.','Build a content calendar (FB for parents, IG for students).','Add alt text and brief values notes when appropriate.']},
+{title:'Newspaper stat reports',why:'Earned media validates athletes and raises school profile.',action:['Keep a live stat sheet; use a game-night email template with scorers, saves, quotes.','Submit within 60 minutes post-game to local outlets; cc coaches and admin.','Track pickups; repost clippings on school channels.']},
+{title:'Highlight features',why:'Spotlights drive engagement and sponsor value.',action:['Post Player of the Match with short bio and coach quote.','Rotate teacher/volunteer spotlights to reinforce community.','Compile weekly recap with top plays and sportsmanship moments.']},
+{title:'Video content',why:'Short-form video is the highest-reach format for teens.',action:['Capture 15–30s vertical clips; edit to one highlight reel per game.','Organize footage by date/team in Drive; secure media permissions.','Post next-day with captions and simple graphics.']}
+]},
+{title:'Community & Culture',icon:'🤝',bullets:[
+{title:'Spirit nights & fan engagement',why:'Big crowds energize teams and attract future students.',action:['Plan 3 theme nights per season (Senior, Community, Youth Clinic).','Create a student section leaders chat; provide chants/standards.','Add halftime recognitions for service and academics.']},
+{title:'Volunteer coordination',why:'Reliable help keeps games on time and professional.',action:['Use a SignUpGenius for clock, book, concessions; confirm assignments weekly.','Offer quick role cards and 10-minute pregame huddles.','Track service hours for student volunteers.']},
+{title:'Sponsorship packages',why:'Structured offers make it easy for businesses to say yes.',action:['Create tiered packages (Bronze/Silver/Gold) with deliverables and pricing.','Include banner placement, shout-outs, and sponsored social posts.','Invoice promptly; send end-of-season impact reports.']},
+{title:'School pride initiatives',why:'Athletics should reflect mission and character.',action:['Open/close with team prayer or reflection; uphold sportsmanship pledge.','Schedule service projects per team each season.','Celebrate academic honors alongside athletic awards.']}
+]},
+{title:'Academic & Student Support',icon:'📚',bullets:[
+{title:'Eligibility monitoring',why:'Academic first ensures athletes succeed beyond the court/field.',action:['Run weekly grade checks; set threshold for probation and ineligibility.','Notify students/parents with a clear improvement plan and deadlines.','Coordinate with teachers for make-up work opportunities.']},
+{title:'Study hall & tutoring',why:'Structured time removes barriers for busy student-athletes.',action:['Offer team study halls on practice days; recruit volunteer tutors.','Track attendance and assignments completed; reward consistency.','Provide quiet spaces before away games to finish work.']},
+{title:'Attendance & conduct',why:'Consistency builds discipline and reduces eligibility issues.',action:['Publish an athlete code of conduct; review with teams each season.','Log infractions and restorative actions; communicate transparently.','Partner with counselors for behavior supports if needed.']},
+{title:'College & next steps',why:'Guidance demystifies recruiting and post-HS options.',action:['Host an annual info night on NAIA/NCAA eligibility basics.','Help athletes build a simple highlight reel and resume.','Write template recommendation letters; track deadlines.']}
+]},
+{title:'Fundraising & Finance',icon:'💵',bullets:[
+{title:'Annual revenue plan',why:'A plan replaces hope with predictable cash flow.',action:['Forecast income (passes, concessions, merch, sponsors) vs expenses by sport.','Set monthly targets; post a progress graphic.','Review quarterly and reallocate to priorities.']},
+{title:'Sponsored social posts & stat ads',why:'Monetize attention with low lift and high visibility.',action:['Sell ad slots on Player of the Match posts ($25–$100 per post or monthly).','Include logo, thank-you line, and link; cap sponsors per week to protect feed.','Report impressions/engagement to sponsors monthly to retain them.']},
+{title:'Community partnerships',why:'Local businesses want to support local kids.',action:['Offer gym banner space and halftime shout-outs.','Create a Sponsor Night with giveaways and table space.','Bundle packages with season passes for families.']},
+{title:'Grants & donations',why:'One successful grant can fund a season of upgrades.',action:['Identify 3 local foundations and 2 corporate small-grant programs.','Keep a one-pager about athletics impact and needs.','Enable online giving page with earmarks (equipment, travel, scholarships).']}
+]},
+{title:'Personal Growth',icon:'🧭',bullets:[
+{title:'Networking (Section 2)',why:'Relationships unlock refs, scrimmages, and wisdom.',action:['Attend AD meetings; ask for a mentor; share best-practice docs.','Start a monthly check-in with two nearby ADs.','Offer to host a mini-clinic at your gym.']},
+{title:'Time management systems',why:'Protects family, teaching, AD work, and GCU studies.',action:['Adopt weekly time blocks; batch emails and stats.','Automate reminders (schedules, trainings, sponsors).','Build a delegation matrix (coaches, captains, volunteers).']},
+{title:'Professional development',why:'Keeps you current and confident.',action:['Complete NFHS courses; attend one clinic/webinar each season.','Track CE credits and share summaries with admin.','Pilot one new idea each season and evaluate impact.']},
+{title:'Crisis management',why:'Prepared teams respond, not react.',action:['Maintain an Emergency Action Plan + contact tree.','Create message templates for cancellations/injuries.','Run a tabletop drill with coaches once per season.']}
+]}
+];
+const dots = document.getElementById('dots');
+categories.forEach(() => {
+  const c = document.createElement('div');
+  c.className = 'flex flex-col items-center';
+  c.innerHTML = '<div class=\"h-4 w-0.5 bg-gray-300\"></div><div class=\"dot\"></div>';
+  dots.appendChild(c);
+});
+const grid = document.getElementById('grid');
+categories.forEach((cat, idx) => {
+  const btn = document.createElement('button');
+  btn.className = 'text-left';
+  btn.innerHTML = `
+    <div class='rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 bg-white border-amber-400'>
+      <div class='p-6'>
+        <div class='flex items-center gap-3 mb-3'>
+          <div class='text-3xl'>${cat.icon}</div>
+          <h3 class='font-semibold text-lg'>${cat.title}</h3>
+        </div>
+        <ul class='text-sm text-gray-600 space-y-2'>
+          ${cat.bullets.slice(0,4).map(b => `<li>• ${b.title}</li>`).join('')}
+        </ul>
+        <div class='mt-4 text-xs font-medium' style='color:#12185C'>Click to open skill details →</div>
+      </div>
+    </div>
+  `;
+  btn.addEventListener('click', () => openModal(idx));
+  grid.appendChild(btn);
+});
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
+const modalTitle = document.getElementById('modalTitle');
+const accordion = document.getElementById('accordion');
+function openModal(idx) {
+  const cat = categories[idx];
+  modalTitle.textContent = `${cat.icon} ${cat.title}`;
+  accordion.innerHTML = '';
+  cat.bullets.forEach((b) => {
+    const item = document.createElement('div');
+    item.className = 'accordion-item py-3';
+    const storageKey = `skill-${cat.title}-${b.title}`;
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const done = new Set(saved);
+    const toggle = (sIdx) => {
+      done.has(sIdx) ? done.delete(sIdx) : done.add(sIdx);
+      localStorage.setItem(storageKey, JSON.stringify([...done]));
+      const li = item.querySelector(`li[data-step=\"${sIdx}\"] span`);
+      const cb = item.querySelector(`input[data-step=\"${sIdx}\"]`);
+      if (li && cb) {
+        cb.checked = done.has(sIdx);
+        li.className = done.has(sIdx) ? 'line-through text-gray-400' : '';
       }
-    ];
-
-    // ------------- RENDER -------------
-    const dots = document.getElementById(&#x27;dots&#x27;);
-    categories.forEach(() =&gt; {
-      const c = document.createElement(&#x27;div&#x27;);
-      c.className = &#x27;flex flex-col items-center&#x27;;
-      c.innerHTML = &#x27;&lt;div class=&quot;h-4 w-0.5 bg-gray-300&quot;&gt;&lt;/div&gt;&lt;div class=&quot;dot&quot;&gt;&lt;/div&gt;&#x27;;
-      dots.appendChild(c);
+      const label = item.querySelector('.progress-label');
+      if (label) label.textContent = `(${Math.round((done.size / b.action.length) * 100)}% complete)`;
+    };
+    const percent = Math.round((done.size / b.action.length) * 100);
+    item.innerHTML = `
+      <button class='w-full text-left font-semibold py-2'>
+        ${b.title} <span class='progress-label text-xs text-gray-500 ml-2'>(${percent}% complete)</span>
+      </button>
+      <div class='accordion-content'>
+        <div class='space-y-3 py-2'>
+          <p class='text-sm text-gray-700'><span class='font-semibold'>Why:</span> ${b.why}</p>
+          <div>
+            <div class='text-sm font-semibold mb-1'>Action plan</div>
+            <ul class='space-y-2 text-sm text-gray-700'>
+              ${b.action.map((step, sIdx) => `
+                <li class='flex items-start gap-2' data-step='${sIdx}'>
+                  <input type='checkbox' class='mt-1' data-step='${sIdx}' ${done.has(sIdx) ? 'checked' : ''} />
+                  <span class='${done.has(sIdx) ? 'line-through text-gray-400' : ''}'>${step}</span>
+                </li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+    const trigger = item.querySelector('button');
+    trigger.addEventListener('click', () => item.classList.toggle('open'));
+    item.querySelectorAll('input[type=\"checkbox\"]').forEach(cb => {
+      cb.addEventListener('change', e => toggle(parseInt(e.target.dataset.step, 10)));
     });
-
-    const grid = document.getElementById(&#x27;grid&#x27;);
-    categories.forEach((cat, idx) =&gt; {
-      const btn = document.createElement(&#x27;button&#x27;);
-      btn.className = &#x27;text-left&#x27;;
-      btn.innerHTML = `
-        &lt;div class=&quot;rounded-2xl shadow-lg hover:shadow-xl transition-shadow border-t-4 bg-white border-amber-400&quot;&gt;
-          &lt;div class=&quot;p-6&quot;&gt;
-            &lt;div class=&quot;flex items-center gap-3 mb-3&quot;&gt;
-              &lt;div class=&quot;text-3xl&quot;&gt;${cat.icon}&lt;/div&gt;
-              &lt;h3 class=&quot;font-semibold text-lg&quot;&gt;${cat.title}&lt;/h3&gt;
-            &lt;/div&gt;
-            &lt;ul class=&quot;text-sm text-gray-600 space-y-2&quot;&gt;
-              ${cat.bullets.slice(0,4).map(b =&gt; `&lt;li&gt;• ${b.title}&lt;/li&gt;`).join(&#x27;&#x27;)}
-            &lt;/ul&gt;
-            &lt;div class=&quot;mt-4 text-xs font-medium&quot; style=&quot;color:#12185C&quot;&gt;Click to open skill details →&lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      `;
-      btn.addEventListener(&#x27;click&#x27;, () =&gt; openModal(idx));
-      grid.appendChild(btn);
-    });
-
-    // ------------- MODAL / ACCORDION -------------
-    const modal = document.getElementById(&#x27;modal&#x27;);
-    const closeModal = document.getElementById(&#x27;closeModal&#x27;);
-    const modalTitle = document.getElementById(&#x27;modalTitle&#x27;);
-    const accordion = document.getElementById(&#x27;accordion&#x27;);
-
-    function openModal(idx) {
-      const cat = categories[idx];
-      modalTitle.textContent = `${cat.icon} ${cat.title}`;
-      accordion.innerHTML = &#x27;&#x27;;
-      cat.bullets.forEach((b, i) =&gt; {
-        const item = document.createElement(&#x27;div&#x27;);
-        item.className = &#x27;accordion-item py-3&#x27;;
-        const storageKey = `skill-${cat.title}-${b.title}`;
-        const saved = JSON.parse(localStorage.getItem(storageKey) || &#x27;[]&#x27;);
-        const done = new Set(saved);
-
-        const toggle = (sIdx) =&gt; {
-          done.has(sIdx) ? done.delete(sIdx) : done.add(sIdx);
-          localStorage.setItem(storageKey, JSON.stringify([...done]));
-          // update strikethrough live
-          const li = item.querySelector(`li[data-step=&quot;${sIdx}&quot;] span`);
-          const cb = item.querySelector(`input[data-step=&quot;${sIdx}&quot;]`);
-          if (li &amp;&amp; cb) {
-            cb.checked = done.has(sIdx);
-            li.className = done.has(sIdx) ? &#x27;line-through text-gray-400&#x27; : &#x27;&#x27;;
-          }
-          // update progress label
-          const label = item.querySelector(&#x27;.progress-label&#x27;);
-          if (label) {
-            label.textContent = `(${Math.round((done.size / b.action.length) * 100)}% complete)`;
-          }
-        };
-
-        const percent = Math.round((done.size / b.action.length) * 100);
-
-        item.innerHTML = `
-          &lt;button class=&quot;w-full text-left font-semibold py-2&quot;&gt;
-            ${b.title} &lt;span class=&quot;progress-label text-xs text-gray-500 ml-2&quot;&gt;(${percent}% complete)&lt;/span&gt;
-          &lt;/button&gt;
-          &lt;div class=&quot;accordion-content&quot;&gt;
-            &lt;div class=&quot;space-y-3 py-2&quot;&gt;
-              &lt;p class=&quot;text-sm text-gray-700&quot;&gt;&lt;span class=&quot;font-semibold&quot;&gt;Why:&lt;/span&gt; ${b.why}&lt;/p&gt;
-              &lt;div&gt;
-                &lt;div class=&quot;text-sm font-semibold mb-1&quot;&gt;Action plan&lt;/div&gt;
-                &lt;ul class=&quot;space-y-2 text-sm text-gray-700&quot;&gt;
-                  ${b.action.map((step, sIdx) =&gt; `
-                    &lt;li class=&quot;flex items-start gap-2&quot; data-step=&quot;${sIdx}&quot;&gt;
-                      &lt;input type=&quot;checkbox&quot; class=&quot;mt-1&quot; data-step=&quot;${sIdx}&quot; ${done.has(sIdx) ? &#x27;checked&#x27; : &#x27;&#x27;} /&gt;
-                      &lt;span class=&quot;${done.has(sIdx) ? &#x27;line-through text-gray-400&#x27; : &#x27;&#x27;}&quot;&gt;${step}&lt;/span&gt;
-                    &lt;/li&gt;`).join(&#x27;&#x27;)}
-                &lt;/ul&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        `;
-
-        // accordion open/close
-        const trigger = item.querySelector(&#x27;button&#x27;);
-        trigger.addEventListener(&#x27;click&#x27;, () =&gt; item.classList.toggle(&#x27;open&#x27;));
-
-        // checkbox handlers
-        item.querySelectorAll(&#x27;input[type=&quot;checkbox&quot;]&#x27;).forEach(cb =&gt; {
-          cb.addEventListener(&#x27;change&#x27;, e =&gt; toggle(parseInt(e.target.dataset.step, 10)));
-        });
-
-        accordion.appendChild(item);
-      });
-      modal.classList.add(&#x27;open&#x27;);
-    }
-
-    closeModal.addEventListener(&#x27;click&#x27;, () =&gt; modal.classList.remove(&#x27;open&#x27;));
-    modal.addEventListener(&#x27;click&#x27;, (e) =&gt; { if (e.target === modal) modal.classList.remove(&#x27;open&#x27;); });
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;">
+    accordion.appendChild(item);
+  });
+  modal.classList.add('open');
+}
+closeModal.addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+</script>">
       </iframe>
     </div>
   </div>
@@ -1051,9 +658,15 @@ function openModal(card){
   modalMedia.innerHTML=type==='gallery'
     ? '<div style="font-size:1.02rem;font-weight:800;max-width:32rem;line-height:1.6;">Expanded image view for your gallery with room for caption and story.</div>'
     : '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
-  modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  modal.classList.add('open'); 
+  modal.setAttribute('aria-hidden','false'); 
+  document.body.style.overflow='hidden';
 }
-function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
 document.querySelectorAll('.modal-trigger').forEach(card=>{
   card.addEventListener('click',()=>openModal(card));
   card.querySelectorAll('a').forEach(a=>a.addEventListener('click',(e)=>e.preventDefault()));
@@ -1080,7 +693,8 @@ function resizeSkillTreeFrame(){
 }
 
 window.addEventListener('load',()=>{initPage();typeLoop();runRevealCheck();resizeSkillTreeFrame();});
-const skillTreeFrame=document.getElementById('skillTreeFrame'); if(skillTreeFrame){skillTreeFrame.addEventListener('load', resizeSkillTreeFrame);} 
+const skillTreeFrame=document.getElementById('skillTreeFrame');
+if(skillTreeFrame){skillTreeFrame.addEventListener('load', resizeSkillTreeFrame);}
 </script>
 </body>
 </html>
