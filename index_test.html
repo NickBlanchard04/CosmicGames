@@ -330,23 +330,22 @@ body::before,body::after{display:none}
     </div>
 
     <div class="content-grid">
-      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Portrait" data-title="Strong first impression headshot" data-desc="A polished portrait that anchors your personal brand." data-body="This lightbox is designed to make gallery images feel more premium. When you replace these placeholders with real photos, this modal can show a larger image, a short caption, and even context about the moment or message behind the shot.">
+      <article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-crowd.jpg" data-kicker="Leadership" data-title="In the moment and serving others"
        <div class="thumb gallery" style="padding:0; background:none;">
-  <img src="assets/nick-speaking.jpg" alt="Strong first impression headshot" style="width:100%; height:100%; object-fit:cover; display:block;">
+  <img src="assets/nick-speaking.JPG" alt="Strong first impression headshot" style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
         <div class="card-body"><div class="meta"><span>Portrait</span><span class="time">Featured</span></div><h3>Strong first impression headshot</h3><p>A placeholder for a polished portrait that anchors your personal brand and works across multiple platforms.</p></div>
       </article>
 
-      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Leadership" data-title="In the moment and serving others" data-desc="A natural image that communicates confidence, responsibility, and real presence." data-body="This is a good spot for a candid coaching, teaching, or speaking image. Images with real story behind them tend to make personal brand sites feel much more alive and believable.">
-        <div class="thumb gallery" style="padding:0; background:none;">
+<article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-crowd.jpg" data-kicker="Leadership" data-title="In the moment and serving others"        <div class="thumb gallery" style="padding:0; background:none;">
   <img src="assets/kings-crowd.jpg" alt="In the moment and serving others" style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
         <div class="card-body"><div class="meta"><span>Leadership</span><span class="time">Featured</span></div><h3>In the moment and serving others</h3><p>Use this slot for a natural photo that communicates confidence, responsibility, and real presence.</p></div>
       </article>
 
-      <article class="media-card reveal modal-trigger" data-type="gallery" data-kicker="Faith" data-title="Mission aligned visual storytelling" data-desc="Photos that reinforce your values and the deeper reason behind your brand." data-body="Faith based imagery works best when it feels grounded and real, not staged. This lightbox gives you room to pair a photo with a short reflection or story.">
+      <article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-building.JPG" data-kicker="Faith" data-title="Mission aligned visual storytelling" data-desc="Photos that reinforce your values and the deeper reason behind your brand." data-body="Faith based imagery works best when it feels grounded and real, not staged. This lightbox gives you room to pair a photo with a short reflection or story.">
         <div class="thumb gallery" style="padding:0; background:none;">
-  <img src="assets/kings-building.jpg" alt="Mission aligned visual storytelling" style="width:100%; height:100%; object-fit:cover; display:block;">
+  <img src="assets/kings-building.JPG" alt="Mission aligned visual storytelling" style="width:100%; height:100%; object-fit:cover; display:block;">
 </div>
         <div class="card-body"><div class="meta"><span>Faith</span><span class="time">Featured</span></div><h3>Mission aligned visual storytelling</h3><p>A template image space for photos that reinforce your values and the deeper reason behind your brand.</p></div>
       </article>
@@ -661,9 +660,11 @@ function openModal(card){
   modalDesc.textContent=card.dataset.desc||'';
   modalBody.textContent=card.dataset.body||'';
   modalMedia.className='modal-media'+(type==='gallery'?' gallery':'');
-  modalMedia.innerHTML=type==='gallery'
-    ? '<div style="font-size:1.02rem;font-weight:800;max-width:32rem;line-height:1.6;">Expanded image view for your gallery with room for caption and story.</div>'
-    : '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
+if(type==='gallery'){
+  modalMedia.innerHTML = `<img src="${card.dataset.image}" alt="${card.dataset.title || ''}" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:18px;">`;
+} else {
+  modalMedia.innerHTML = '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
+}
   modal.classList.add('open'); 
   modal.setAttribute('aria-hidden','false'); 
   document.body.style.overflow='hidden';
