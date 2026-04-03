@@ -336,33 +336,39 @@
       font-size: 0.95rem;
     }
 
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
+   .services-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
 
-    .service-card {
-      border-radius: 22px;
-      padding: 18px;
-    }
+.service-card {
+  border-radius: 18px;
+  padding: 14px;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-    .service-card h3 {
-      font-size: 1.06rem;
-    }
+.service-card h3 {
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
 
-    .service-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      background: rgba(122, 161, 103, 0.14);
-      border: 1px solid rgba(35, 79, 47, 0.10);
-      color: var(--primary);
-      font-size: 1.08rem;
-      font-weight: 800;
-    }
+.service-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  background: rgba(122, 161, 103, 0.14);
+  border: 1px solid rgba(35, 79, 47, 0.10);
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
 
     .cta-panel {
       border-radius: 28px;
@@ -446,9 +452,10 @@
         aspect-ratio: 2 / 1;
       }
 
-      .services-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+.services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
 
       footer {
         padding-bottom: calc(38px + env(safe-area-inset-bottom));
@@ -481,6 +488,36 @@
         padding: 14px;
       }
 
+      .section-head {
+    margin-bottom: 14px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.7rem, 8vw, 2.3rem);
+  }
+
+  .services-grid {
+    gap: 8px;
+  }
+
+  .service-card {
+    padding: 12px;
+    min-height: 96px;
+  }
+
+  .service-card h3 {
+    font-size: 0.92rem;
+  }
+
+  .service-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+  }
+
+}
+    
       h1 {
         font-size: clamp(1.95rem, 10vw, 3rem);
       }
@@ -599,48 +636,47 @@
       </div>
     </section>
 
-    <section aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Services</div>
-            <h2 id="services-title">Need landscaping help?</h2>
-          </div>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">01</div>
-            <h3>Lawn Mowing</h3>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">02</div>
-            <h3>Mulch Installation</h3>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">03</div>
-            <h3>Spring and Fall Cleanup</h3>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">04</div>
-            <h3>Edging and Detail Work</h3>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">05</div>
-            <h3>Hedge Trimming</h3>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">06</div>
-            <h3>Landscape Maintenance</h3>
-          </article>
-        </div>
+   <section aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 id="services-title">Need landscaping help?</h2>
       </div>
-    </section>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon">01</div>
+        <h3>Lawn Mowing</h3>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">02</div>
+        <h3>Mulch</h3>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">03</div>
+        <h3>Cleanup</h3>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">04</div>
+        <h3>Edging</h3>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">05</div>
+        <h3>Hedge Trimming</h3>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">06</div>
+        <h3>Maintenance</h3>
+      </article>
+    </div>
+  </div>
+</section>
 
     <section aria-labelledby="contact-title">
       <div class="container">
