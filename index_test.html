@@ -389,20 +389,68 @@ body::before,body::after{display:none}
 <div class="page-crumb reveal"><a href="#blogs" class="home-link" aria-label="Go to Blogs home"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.2 4 9.7v10.1h5.4v-5.9h5.2v5.9H20V9.7L12 3.2Z"/></svg></a><span class="slash">/</span><span>Blogs</span></div>
 <div class="page-heading reveal"><h2>Thought Leadership Blog</h2><div class="heading-line"></div></div>
 <div class="chip-row reveal"><a class="chip active" href="#">All Blogs</a><a class="chip" href="#">Faith</a><a class="chip" href="#">Leadership</a><a class="chip" href="#">Personal Growth</a><a class="chip" href="#">Teaching</a><a class="chip" href="#">Athletics</a><a class="chip" href="#">Brand Building</a></div>
+
 <div class="content-grid">
-<article class="media-card reveal modal-trigger" data-type="blog" data-kicker="Leadership" data-title="Leading while still becoming" data-desc="A template post on leadership under pressure, learning in real time, and staying steady through responsibility." data-body="Leadership often asks you to carry responsibility before you feel fully ready. This preview opens as a modal so a visitor can go deeper without leaving the page. Later, this could become a full article preview with a stronger headline, featured image, and opening paragraphs.">
-<div class="thumb alt"><div class="badge">New</div><div class="title-overlay">How to lead when you are still growing yourself</div></div>
-<div class="card-body"><div class="meta"><span>Leadership</span><span class="time">12 mins</span></div><h3>Leading while still becoming</h3><p>A template post on leadership under pressure, learning in real time, and staying steady through responsibility.</p><a class="card-link" href="#">Read entry</a></div>
-</article>
-<article class="media-card reveal modal-trigger" data-type="blog" data-kicker="Personal Growth" data-title="Private habits and public influence" data-desc="A blog template on discipline, consistency, and the unseen habits that often become a person’s foundation." data-body="This card is built to open a richer preview. That makes the site feel more interactive and gives you room to test article ideas before you ever publish a full writing library.">
-<div class="thumb gold"><div class="badge">New</div><div class="title-overlay">Why your private discipline often shapes your public impact</div></div>
-<div class="card-body"><div class="meta"><span>Personal Growth</span><span class="time">14 mins</span></div><h3>Private habits and public influence</h3><p>A blog template on discipline, consistency, and the unseen habits that often become a person’s foundation.</p><a class="card-link" href="#">Read entry</a></div>
-</article>
-<article class="media-card reveal modal-trigger" data-type="blog" data-kicker="Faith" data-title="Staying faithful in quiet seasons" data-desc="A reflection template on obedience, trust, and continuing forward when there is little recognition but real purpose." data-body="Quiet seasons are where a lot of deep formation happens. This modal style lets you preview content with more depth and emotion while keeping the overall site clean and uncluttered.">
-<div class="thumb light"><div class="title-overlay" style="text-shadow:none;color:#fff;">What faithfulness looks like when nobody is clapping</div></div>
-<div class="card-body"><div class="meta"><span>Faith</span><span class="time">18 mins</span></div><h3>Staying faithful in quiet seasons</h3><p>A reflection template on obedience, trust, and continuing forward when there is little recognition but real purpose.</p><a class="card-link" href="#">Read entry</a></div>
-</article>
+  <article class="media-card reveal modal-trigger"
+    data-type="blog"
+    data-kicker="Leadership"
+    data-title="Leading while still becoming"
+    data-desc="A reflection on leadership, growth, and learning to carry responsibility while still being shaped."
+    data-content-id="blog-leading">
+
+    <div class="thumb alt">
+      <div class="badge">New</div>
+      <div class="title-overlay">How to lead when you are still growing yourself</div>
+    </div>
+
+    <div class="card-body">
+      <div class="meta"><span>Leadership</span><span class="time">12 mins</span></div>
+      <h3>Leading while still becoming</h3>
+      <p>A reflection on leadership, growth, and learning to carry responsibility while still being shaped.</p>
+      <a class="card-link" href="#">Read entry</a>
+    </div>
+  </article>
+
+  <article class="media-card reveal modal-trigger"
+    data-type="blog"
+    data-kicker="Personal Growth"
+    data-title="Private habits and public influence"
+    data-desc="The habits that shape who you are in private eventually shape how people experience you in public."
+    data-content-id="blog-private-habits">
+
+    <div class="thumb gold">
+      <div class="badge">New</div>
+      <div class="title-overlay">Why your private discipline often shapes your public impact</div>
+    </div>
+
+    <div class="card-body">
+      <div class="meta"><span>Personal Growth</span><span class="time">8 mins</span></div>
+      <h3>Private habits and public influence</h3>
+      <p>The habits that shape who you are in private eventually shape how people experience you in public.</p>
+      <a class="card-link" href="#">Read entry</a>
+    </div>
+  </article>
+
+  <article class="media-card reveal modal-trigger"
+    data-type="blog"
+    data-kicker="Faith"
+    data-title="Staying faithful in quiet seasons"
+    data-desc="A reflection on obedience, trust, and continuing forward when growth is happening quietly."
+    data-content-id="blog-quiet-seasons">
+
+    <div class="thumb light">
+      <div class="title-overlay" style="text-shadow:none;color:#fff;">What faithfulness looks like when nobody is clapping</div>
+    </div>
+
+    <div class="card-body">
+      <div class="meta"><span>Faith</span><span class="time">7 mins</span></div>
+      <h3>Staying faithful in quiet seasons</h3>
+      <p>A reflection on obedience, trust, and continuing forward when growth is happening quietly.</p>
+      <a class="card-link" href="#">Read entry</a>
+    </div>
+  </article>
 </div>
+
 </div>
 </section>
 
@@ -632,6 +680,209 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
 </div>
 </div>
 
+<div id="blog-leading" style="display:none;">
+  <p>There is a strange tension in leadership that not enough people talk about.</p>
+  <p>A lot of times, people assume leaders have already arrived. They assume that if you are in front, you must already have everything figured out. You must be polished. You must be fully confident. You must know exactly what you are doing at all times.</p>
+  <p>But that has not been my experience.</p>
+  <p>A lot of leadership is stepping into responsibility while God is still shaping you in the middle of it.</p>
+  <p>You are called to lead, but you are also still learning. You are entrusted with people, but you are still being formed yourself. You are expected to bring clarity, steadiness, and direction, while also growing through your own weaknesses, limitations, and pressure.</p>
+  <p>That is where I have found myself a lot.</p>
+  <p>In this season of life, I wear a few different hats. I serve as an Athletic Director and Physical Education teacher. I work in education. I help lead and build in real environments with real students, real families, and real expectations. I am also still pursuing my degree, still growing spiritually, still learning how to lead better, communicate better, and become more grounded as a man.</p>
+  <p>So no, I have not arrived.</p>
+  <p>But I am learning that leadership was never about arriving in the first place.</p>
+  <p>It is about being faithful in the process.</p>
+  <h4>Leadership is not perfection</h4>
+  <p>One of the biggest lies people believe about leadership is that you need to be fully polished before you can be effective.</p>
+  <p>That sounds nice in theory, but in real life, growth usually does not happen before responsibility. A lot of the time, growth happens because of responsibility.</p>
+  <p>You get stretched by what you are carrying.</p>
+  <p>You learn because you had to.</p>
+  <p>You become more disciplined because your role demanded it.</p>
+  <p>You become more prayerful because your own strength was not enough.</p>
+  <p>You become more thoughtful because people are depending on you.</p>
+  <p>Some of the greatest areas of growth in my life have not come from ideal circumstances. They came from being given opportunities that were bigger than what felt comfortable. They came from seasons where there was pressure, expectations, and the need to keep showing up.</p>
+  <p>And honestly, that is where leadership gets real.</p>
+  <p>Not when it is easy. Not when everything is calm. Not when you are getting praised.</p>
+  <p>It gets real when you still have to be steady while you are growing.</p>
+  <h4>Responsibility reveals what is really in you</h4>
+  <p>Leadership has a way of exposing what is beneath the surface.</p>
+  <p>It reveals how you handle pressure.</p>
+  <p>It reveals whether your identity is rooted in results or in Christ.</p>
+  <p>It reveals whether you can stay calm when things do not go the way you planned.</p>
+  <p>It reveals whether you are leading from insecurity, image, ego, or conviction.</p>
+  <p>That is one reason leadership can be humbling. It does not just show others who you are. It shows you who you are.</p>
+  <p>There have been moments where I felt stretched thin. Moments where I knew I needed more wisdom, more patience, more clarity, and more consistency. Moments where I realized that gifting can get you into a room, but character is what keeps you steady in it.</p>
+  <p>That has pushed me to look at leadership differently.</p>
+  <p>Leadership is not just about being able to cast vision or motivate people. It is also about learning how to carry weight well.</p>
+  <p>It is about becoming the kind of person who can be trusted with influence.</p>
+  <h4>You can lead and still be in process</h4>
+  <p>I think some people disqualify themselves too early because they know they are still in process.</p>
+  <p>They think they still have a lot to learn. They are not where they want to be yet. They do not always feel confident. They are still growing spiritually. They do not have all the answers.</p>
+  <p>But being in process does not automatically disqualify you from leadership.</p>
+  <p>It just means you need humility.</p>
+  <p>It means you need teachability.</p>
+  <p>It means you need to stay close to God and honest about where you are.</p>
+  <p>In fact, some of the strongest leaders are not the ones pretending to have it all together. They are the ones who stay grounded enough to keep growing.</p>
+  <p>That matters to me.</p>
+  <p>I do not want to become someone who is more focused on appearing strong than actually becoming strong.</p>
+  <p>I do not want to be all image and no depth.</p>
+  <p>I do not want to lead people from a place of performance.</p>
+  <p>I want my leadership to come from a real place. A place of conviction. A place of prayer. A place of discipline. A place where God is still doing work in me.</p>
+  <h4>Growth and leadership are not separate</h4>
+  <p>For a while, I think I viewed growth and leadership as two different tracks.</p>
+  <p>One was who I was becoming privately. The other was what I was doing publicly.</p>
+  <p>But the more life goes on, the more I see they are deeply connected.</p>
+  <p>Who I am becoming privately affects how I lead publicly.</p>
+  <p>If I am impatient privately, it will show up publicly.</p>
+  <p>If I am undisciplined privately, it will show up publicly.</p>
+  <p>If I am rooted privately, it will show up publicly.</p>
+  <p>If I am walking closely with God privately, it will show up publicly.</p>
+  <p>That is why leadership can never just be about outward performance. It has to be tied to inward formation.</p>
+  <p>The public role may be what people see. But the private life is what holds it up.</p>
+  <h4>The pressure can be a gift</h4>
+  <p>I would not say pressure feels good. Most of the time, it does not.</p>
+  <p>But I will say this. Pressure has often produced growth in me that comfort never would have.</p>
+  <p>Pressure has made me more dependent on God.</p>
+  <p>Pressure has shown me where I need structure.</p>
+  <p>Pressure has revealed what habits matter.</p>
+  <p>Pressure has forced me to prioritize.</p>
+  <p>Pressure has made me ask deeper questions about why I do what I do.</p>
+  <p>There are parts of me that have matured because I was asked to keep showing up in seasons where it would have been easier to shrink back.</p>
+  <p>That is part of becoming.</p>
+  <p>And that is something I think more people need to hear.</p>
+  <p>Just because leadership feels stretching does not mean you are failing. It may mean you are growing.</p>
+  <h4>Final thought</h4>
+  <p>If you are in a season where you have been given responsibility but still feel like you are becoming, you are not alone.</p>
+  <p>Some of the most meaningful leadership happens in that exact space.</p>
+  <p>Not after you have arrived. Not after you have mastered every skill. Not after every insecurity is gone. But right in the middle of becoming.</p>
+  <p>So keep showing up.</p>
+  <p>Keep learning.</p>
+  <p>Keep being honest.</p>
+  <p>Keep letting God shape your character while you carry what is in front of you.</p>
+  <p>Because leadership is not just about what you build.</p>
+  <p>It is also about who you become while building it.</p>
+</div>
+
+<div id="blog-private-habits" style="display:none;">
+  <p>A lot of people want influence. Not everyone wants the habits that sustain it.</p>
+  <p>That is the part that usually gets overlooked.</p>
+  <p>People see public moments. They see leadership, confidence, communication, presence, visibility, and impact. But most of what gives those things weight was built long before anyone noticed.</p>
+  <p>Public influence is often the overflow of private habits.</p>
+  <p>That has become clearer to me over time.</p>
+  <p>The strongest things in my life are not usually built in big public moments. They are built in the rhythm of ordinary faithfulness.</p>
+  <p>They are built in what I return to each week.</p>
+  <p>They are built in what shapes me when there is no spotlight.</p>
+  <p>For me, those rhythms matter deeply.</p>
+  <p>Every Sunday, I go to church. That is a reset for me. It brings me back to what matters. It reminds me that my life is not centered around performance, productivity, or pressure. It brings my focus back to God.</p>
+  <p>On weekends, when my girlfriend and I are both out of work, we spend time together. That matters too. Rest matters. Presence matters. Relationships matter.</p>
+  <p>On Tuesday nights, I attend a men’s group at Pine Knolls. That space has mattered more than people probably realize. There is something powerful about being around men who are honest, growing, and willing to talk about real things.</p>
+  <p>On Wednesdays, I sometimes meet with my mentor at a local coffee shop. Other times I eat dinner with friends and then go play basketball with more friends at our church.</p>
+  <p>Then Thursday comes, and I have Bible study with men. We fellowship by sharing a meal together and then getting into the Word.</p>
+  <p>That may sound simple, but simple habits done consistently shape a life.</p>
+  <p>That is the point.</p>
+  <h4>Small habits shape bigger influence</h4>
+  <p>I think we often underestimate how much daily and weekly rhythms shape who we become.</p>
+  <p>Not dramatic moments. Not random inspiration. Rhythms.</p>
+  <p>The habits that you keep returning to eventually become the structure of your life.</p>
+  <p>They shape what you think about. They shape how you respond under pressure. They shape your priorities. They shape the kind of person people experience when they are around you.</p>
+  <p>That means private habits are never really private in outcome. They eventually show up.</p>
+  <p>If your private life is scattered, it tends to show up publicly.</p>
+  <p>If your private life is rooted, that shows up publicly too.</p>
+  <p>If your habits are built around God, community, discipline, and truth, people may not always see the habits themselves, but they will feel the effect of them.</p>
+  <h4>Influence without foundation does not last</h4>
+  <p>A lot of people want the visible part of growth. They want impact. They want reach. They want leadership. They want credibility.</p>
+  <p>But if those things are not held up by something deeper, they usually become unstable.</p>
+  <p>That is why I believe influence needs a foundation.</p>
+  <p>For me, that foundation is not just hard work. It is not just ambition. It is not just wanting to do well.</p>
+  <p>It is built in a life that keeps coming back to the right things.</p>
+  <p>Church. The Word. Accountability. Mentorship. Real community. Honest conversations. Time with people who sharpen me. Time with people who remind me who I am. Time spent with God.</p>
+  <p>Those habits do not make life perfect. But they do keep me anchored.</p>
+  <h4>Community strengthens discipline</h4>
+  <p>One thing I have learned is that discipline grows stronger in the right environment.</p>
+  <p>It is one thing to say you want to grow. It is another thing to consistently place yourself in spaces that actually help you grow.</p>
+  <p>That is part of why those weekly rhythms matter so much to me.</p>
+  <p>Church reminds me of truth.</p>
+  <p>Men’s group reminds me I am not alone.</p>
+  <p>Mentorship reminds me I still need wisdom.</p>
+  <p>Bible study reminds me I need the Word.</p>
+  <p>Friendship reminds me life is meant to be shared.</p>
+  <p>Basketball, meals, coffee, and conversation may seem ordinary, but those ordinary spaces often become the place where deeper things are built.</p>
+  <h4>Final thought</h4>
+  <p>The habits you keep when nobody is watching are shaping the influence you will carry when people are.</p>
+  <p>That is why private habits matter. Not because they make you impressive. But because they make you steady.</p>
+  <p>For me, the weekly rhythms of church, time with my girlfriend, men’s group, mentorship, friendship, basketball, shared meals, and Bible study are not random extras.</p>
+  <p>They are part of the structure that keeps me grounded.</p>
+  <p>They are helping shape the kind of man I am becoming.</p>
+  <p>And if there is any real influence that comes from my life, I want it to come from that place.</p>
+</div>
+
+<div id="blog-quiet-seasons" style="display:none;">
+  <p>Not every season is loud.</p>
+  <p>Not every season is marked by visible results.</p>
+  <p>Not every season feels exciting.</p>
+  <p>Some seasons are quiet.</p>
+  <p>And if I am being honest, quiet seasons can be some of the hardest ones to walk through well.</p>
+  <p>Because in quiet seasons, there is often less affirmation. Less momentum. Less recognition. Less visible proof that what you are doing matters.</p>
+  <p>You keep showing up, but it does not always feel dramatic.</p>
+  <p>You keep being faithful, but it does not always feel noticed.</p>
+  <p>You keep doing the right things, but the outcomes do not always come quickly.</p>
+  <p>That can be discouraging if your heart is not anchored in something deeper.</p>
+  <h4>Quiet does not mean pointless</h4>
+  <p>I think one of the enemy’s easiest lies in quiet seasons is this: nothing is happening.</p>
+  <p>But that is rarely true.</p>
+  <p>A lot is happening in quiet seasons. It is just not always happening in public.</p>
+  <p>Roots are growing.</p>
+  <p>Character is deepening.</p>
+  <p>Discipline is being formed.</p>
+  <p>Faith is being tested.</p>
+  <p>Motives are being purified.</p>
+  <p>Dependence on God is being strengthened.</p>
+  <p>Quiet seasons are often productive in ways that cannot be measured right away.</p>
+  <p>That matters. Because if you only value what is visible, you will miss the kind of work God often does best.</p>
+  <h4>Faithfulness is not flashy</h4>
+  <p>Faithfulness usually does not look impressive at first.</p>
+  <p>It looks like consistency.</p>
+  <p>It looks like prayer.</p>
+  <p>It looks like doing the next right thing.</p>
+  <p>It looks like showing up when you do not feel like it.</p>
+  <p>It looks like obedience without immediate results.</p>
+  <p>It looks like trusting God when the season feels slower than you expected.</p>
+  <p>That kind of faithfulness is not always celebrated by people. But it matters deeply.</p>
+  <p>And over time, it builds something strong.</p>
+  <h4>God often develops depth before visibility</h4>
+  <p>I think a lot of us want God to open doors quickly. We want clarity fast. We want visible momentum. We want results we can point to.</p>
+  <p>But God often seems more concerned with depth than speed.</p>
+  <p>He develops depth before visibility.</p>
+  <p>He builds character before platform.</p>
+  <p>He strengthens roots before fruit becomes obvious.</p>
+  <p>And while that can feel frustrating in the moment, I am learning that it is also mercy.</p>
+  <p>Because if visibility grows faster than character, that can crush a person.</p>
+  <p>If opportunity grows faster than discipline, that can expose a person.</p>
+  <p>If responsibility grows faster than dependence on God, that can derail a person.</p>
+  <p>So sometimes quiet seasons are not delays. Sometimes they are preparation.</p>
+  <h4>The hidden work still matters</h4>
+  <p>One of the hardest things in a quiet season is continuing to believe that hidden work still matters.</p>
+  <p>It matters when you stay in the Word.</p>
+  <p>It matters when you keep praying.</p>
+  <p>It matters when you keep serving.</p>
+  <p>It matters when you keep building.</p>
+  <p>It matters when you keep becoming.</p>
+  <p>It matters when you resist the urge to chase noise just to feel like something is happening.</p>
+  <p>There is a different kind of strength that comes from hidden faithfulness.</p>
+  <p>It is not built on applause.</p>
+  <p>It is not built on validation.</p>
+  <p>It is built on conviction.</p>
+  <p>And conviction lasts longer than excitement.</p>
+  <h4>Final thought</h4>
+  <p>If you are in a quiet season, do not waste it by assuming it is empty.</p>
+  <p>Stay faithful.</p>
+  <p>Stay rooted.</p>
+  <p>Stay close to God.</p>
+  <p>Keep doing the work in front of you.</p>
+  <p>Keep becoming the kind of person who can be trusted with more.</p>
+  <p>Because quiet seasons are not meaningless.</p>
+  <p>A lot of the strongest things in a person’s life are built there first.</p>
+</div>
+
 <div class="modal" id="contentModal" aria-hidden="true">
 <div class="modal-panel">
 <button class="modal-close" type="button" aria-label="Close modal">×</button>
@@ -639,7 +890,7 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
 <div class="modal-kicker" id="modalKicker"></div>
 <h3 id="modalTitle"></h3>
 <p id="modalDesc"></p>
-<p id="modalBody"></p>
+<div id="modalBody"></div>
 </div>
 </div>
 
@@ -691,13 +942,15 @@ function openModal(card){
   modalKicker.textContent = card.dataset.kicker || '';
   modalTitle.textContent = card.dataset.title || '';
   modalDesc.textContent = card.dataset.desc || '';
-  modalBody.textContent = card.dataset.body || '';
   modalMedia.className = 'modal-media' + (type === 'gallery' ? ' gallery' : '');
 
   if(type === 'gallery'){
+    modalBody.innerHTML = `<p>${card.dataset.body || ''}</p>`;
     modalMedia.innerHTML = `<img src="${card.dataset.image || ''}" alt="${card.dataset.title || ''}" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:18px;">`;
   } else {
+    const contentId = card.dataset.contentId;
     modalMedia.innerHTML = '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
+    modalBody.innerHTML = contentId ? (document.getElementById(contentId)?.innerHTML || '') : `<p>${card.dataset.body || ''}</p>`;
   }
 
   modal.classList.add('open');
