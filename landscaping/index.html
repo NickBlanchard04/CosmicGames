@@ -235,23 +235,23 @@
     }
 
     .contact-card {
-      border-radius: 28px;
-      padding: 18px;
-      display: grid;
-      gap: 14px;
-    }
-
- .contact-logo img {
-  min-height: 180px;
-  max-width: 90%;
-  border-radius: 22px;
-  border: 1.5px solid rgba(35, 79, 47, 0.18);
-  background: linear-gradient(180deg, #f1f5ef 0%, #ffffff 100%);
+  border-radius: 28px;
+  padding: 20px;
   display: grid;
-  place-items: center;
-  padding: 16px;
-  overflow: hidden;
-  height: auto;
+  gap: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f6f1 100%);
+  border: 1px solid rgba(35, 79, 47, 0.12);
+  box-shadow: 0 20px 50px rgba(18, 33, 23, 0.08);
+}
+
+.contact-logo {
+  border-radius: 20px;
+  background: #ffffff;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(35, 79, 47, 0.08);
 }
 
     .contact-logo img {
@@ -262,6 +262,12 @@
       border-radius: 14px;
     }
 
+    .contact-logo img {
+  max-width: 85%;
+  height: auto;
+  object-fit: contain;
+}
+    
     .contact-list {
       display: grid;
       gap: 10px;
