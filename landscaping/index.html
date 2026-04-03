@@ -181,7 +181,7 @@
     }
 
     .hero {
-      padding: 34px 0 24px;
+      padding: 24px 0 18px;
     }
 
     .hero-grid {
@@ -248,17 +248,17 @@
       gap: 14px;
     }
 
-    .contact-logo {
-      min-height: 260px;
-      border-radius: 22px;
-      border: 1px dashed rgba(35, 79, 47, 0.22);
-      background: linear-gradient(180deg, rgba(122,161,103,0.14), rgba(255,255,255,0.98));
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 18px;
-      overflow: hidden;
-    }
+.contact-logo {
+  min-height: 180px;
+  border-radius: 22px;
+  border: 1px dashed rgba(35, 79, 47, 0.22);
+  background: linear-gradient(180deg, rgba(122,161,103,0.14), rgba(255,255,255,0.98));
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 18px;
+  overflow: hidden;
+}
 
     .contact-logo img {
       width: 100%;
@@ -508,24 +508,31 @@
     }
 
     @media (max-width: 520px) {
-      .top-actions .btn-secondary {
-        display: none;
-      }
+  .top-actions .btn-secondary {
+    display: none;
+  }
 
-      .container {
-        width: min(calc(100% - 18px), var(--max));
-      }
+  .container {
+    width: min(calc(100% - 18px), var(--max));
+  }
 
-      .hero-card,
-      .contact-card,
-      .cta-panel {
-        padding: 18px;
-      }
+  .hero {
+    padding: 18px 0 12px;
+  }
 
-      h1 {
-        font-size: clamp(1.95rem, 10vw, 3rem);
-      }
-    }
+  .hero-card,
+  .cta-panel {
+    padding: 16px;
+  }
+
+  .contact-card {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: clamp(1.95rem, 10vw, 3rem);
+  }
+}
   </style>
 
   <script type="application/ld+json">
@@ -577,37 +584,47 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <div class="eyebrow">Local Landscaping</div>
           <h1>We do the work we love and you will love the work we do.</h1>
-          <p class="hero-copy">
-            Clean, sharp landscaping that makes your property stand out.
-          </p>
+<p class="hero-copy">
+  Clean, sharp landscaping that makes your property stand out. Serving homes in Greenfield, NY and surrounding areas through spring, summer, and fall.
+</p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+18382025311">Call (838) 202-5311</a>
-            <a class="btn btn-secondary" href="mailto:Jacoblafaver942@gmail.com">Email for a Quote</a>
-          </div>
+<div class="hero-actions">
+  <a class="btn btn-primary" href="tel:+18382025311">Call (838) 202-5311</a>
+  <a class="btn btn-secondary" href="mailto:Jacoblafaver942@gmail.com">Get a Quote</a>
+</div>
         </div>
 
         <aside class="contact-card" aria-label="Contact details">
-          <div class="contact-logo">
-            <img src="../assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
-          </div>
+         <div class="contact-logo">
+  <img src="../assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
+</div>
 
-          <div class="contact-list">
-            <div class="contact-item">
-              <div class="contact-label">Call</div>
-              <div class="contact-value">
-                <a href="tel:+18382025311">(838) 202-5311</a>
-              </div>
-            </div>
+<div class="contact-list">
+  <div class="contact-item">
+    <div class="contact-label">Owner</div>
+    <div class="contact-value">Jacob Lafaver</div>
+  </div>
 
-            <div class="contact-item">
-              <div class="contact-label">Email</div>
-              <div class="contact-value">
-                <a href="mailto:Jacoblafaver942@gmail.com">Jacoblafaver942@gmail.com</a>
-              </div>
-            </div>
+  <div class="contact-item">
+    <div class="contact-label">Call</div>
+    <div class="contact-value">
+      <a href="tel:+18382025311">(838) 202-5311</a>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <div class="contact-label">Email</div>
+    <div class="contact-value">
+      <a href="mailto:Jacoblafaver942@gmail.com">Jacoblafaver942@gmail.com</a>
+    </div>
+  </div>
+
+  <div class="contact-item">
+    <div class="contact-label">Serving</div>
+    <div class="contact-value">Greenfield, Saratoga Springs, Wilton, Corinth, and surrounding areas</div>
+  </div>
+</div>
 
             <div class="contact-item">
               <div class="contact-label">Serving</div>
