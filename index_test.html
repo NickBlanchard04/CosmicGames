@@ -211,7 +211,7 @@ body::before,body::after{display:none}
       This is where that journey is built.
     </p>
     <div style="cursor:pointer;" onclick="showPage('videos')">
-      <iframe 
+      <iframe
         class="video-embed"
         src="https://www.tiktok.com/embed/v2/7527694624882773279"
         style="width:100%; border-radius:16px;"
@@ -330,24 +330,55 @@ body::before,body::after{display:none}
     </div>
 
     <div class="content-grid">
-      <article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-crowd.jpg" data-kicker="Leadership" data-title="In the moment and serving others"
-       <div class="thumb gallery" style="padding:0; background:none;">
-  <img src="assets/nick-speaking.JPG" alt="Strong first impression headshot" style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
-        <div class="card-body"><div class="meta"><span>Portrait</span><span class="time">Featured</span></div><h3>Strong first impression headshot</h3><p>A placeholder for a polished portrait that anchors your personal brand and works across multiple platforms.</p></div>
-      </article>
-
-<article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-crowd.jpg" data-kicker="Leadership" data-title="In the moment and serving others"        <div class="thumb gallery" style="padding:0; background:none;">
-  <img src="assets/kings-crowd.jpg" alt="In the moment and serving others" style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
-        <div class="card-body"><div class="meta"><span>Leadership</span><span class="time">Featured</span></div><h3>In the moment and serving others</h3><p>Use this slot for a natural photo that communicates confidence, responsibility, and real presence.</p></div>
-      </article>
-
-      <article class="media-card reveal modal-trigger" data-type="gallery" data-image="assets/kings-building.JPG" data-kicker="Faith" data-title="Mission aligned visual storytelling" data-desc="Photos that reinforce your values and the deeper reason behind your brand." data-body="Faith based imagery works best when it feels grounded and real, not staged. This lightbox gives you room to pair a photo with a short reflection or story.">
+      <article class="media-card reveal modal-trigger"
+        data-type="gallery"
+        data-image="assets/nick-speaking.JPG"
+        data-kicker="Portrait"
+        data-title="Strong first impression headshot"
+        data-desc="A polished portrait that anchors your personal brand."
+        data-body="A polished image that communicates presence, clarity, and leadership from the first impression.">
         <div class="thumb gallery" style="padding:0; background:none;">
-  <img src="assets/kings-building.JPG" alt="Mission aligned visual storytelling" style="width:100%; height:100%; object-fit:cover; display:block;">
-</div>
-        <div class="card-body"><div class="meta"><span>Faith</span><span class="time">Featured</span></div><h3>Mission aligned visual storytelling</h3><p>A template image space for photos that reinforce your values and the deeper reason behind your brand.</p></div>
+          <img src="assets/nick-speaking.JPG" alt="Strong first impression headshot" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <div class="card-body">
+          <div class="meta"><span>Portrait</span><span class="time">Featured</span></div>
+          <h3>Strong first impression headshot</h3>
+          <p>A polished portrait that anchors your personal brand and works across multiple platforms.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal modal-trigger"
+        data-type="gallery"
+        data-image="assets/kings-crowd.jpg"
+        data-kicker="Leadership"
+        data-title="In the moment and serving others"
+        data-desc="A natural image that communicates confidence, responsibility, and real presence."
+        data-body="A real moment in community that reflects leadership, service, and being fully present where impact is happening.">
+        <div class="thumb gallery" style="padding:0; background:none;">
+          <img src="assets/kings-crowd.jpg" alt="In the moment and serving others" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <div class="card-body">
+          <div class="meta"><span>Leadership</span><span class="time">Featured</span></div>
+          <h3>In the moment and serving others</h3>
+          <p>Use this slot for a natural photo that communicates confidence, responsibility, and real presence.</p>
+        </div>
+      </article>
+
+      <article class="media-card reveal modal-trigger"
+        data-type="gallery"
+        data-image="assets/kings-building.JPG"
+        data-kicker="Faith"
+        data-title="Mission aligned visual storytelling"
+        data-desc="Photos that reinforce your values and the deeper reason behind your brand."
+        data-body="An image that reflects setting, mission, and the environment where the work and purpose are being lived out.">
+        <div class="thumb gallery" style="padding:0; background:none;">
+          <img src="assets/kings-building.JPG" alt="Mission aligned visual storytelling" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <div class="card-body">
+          <div class="meta"><span>Faith</span><span class="time">Featured</span></div>
+          <h3>Mission aligned visual storytelling</h3>
+          <p>A template image space for photos that reinforce your values and the deeper reason behind your brand.</p>
+        </div>
       </article>
     </div>
   </div>
@@ -646,6 +677,7 @@ function typeLoop(){
 const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view')}})},{threshold:0.12});
 function runRevealCheck(){document.querySelectorAll('.page.active .reveal').forEach(el=>observer.observe(el))}
 document.querySelectorAll('[data-page-link]').forEach(link=>{link.addEventListener('click',(e)=>{e.preventDefault();showPage(link.dataset.pageLink)})});
+
 const modal=document.getElementById('contentModal');
 const modalMedia=document.getElementById('modalMedia');
 const modalKicker=document.getElementById('modalKicker');
@@ -653,22 +685,26 @@ const modalTitle=document.getElementById('modalTitle');
 const modalDesc=document.getElementById('modalDesc');
 const modalBody=document.getElementById('modalBody');
 const closeBtn=document.querySelector('.modal-close');
+
 function openModal(card){
-  const type=card.dataset.type||'blog';
-  modalKicker.textContent=card.dataset.kicker||'';
-  modalTitle.textContent=card.dataset.title||'';
-  modalDesc.textContent=card.dataset.desc||'';
-  modalBody.textContent=card.dataset.body||'';
-  modalMedia.className='modal-media'+(type==='gallery'?' gallery':'');
-if(type==='gallery'){
-  modalMedia.innerHTML = `<img src="${card.dataset.image}" alt="${card.dataset.title || ''}" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:18px;">`;
-} else {
-  modalMedia.innerHTML = '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
-}
-  modal.classList.add('open'); 
-  modal.setAttribute('aria-hidden','false'); 
+  const type = card.dataset.type || 'blog';
+  modalKicker.textContent = card.dataset.kicker || '';
+  modalTitle.textContent = card.dataset.title || '';
+  modalDesc.textContent = card.dataset.desc || '';
+  modalBody.textContent = card.dataset.body || '';
+  modalMedia.className = 'modal-media' + (type === 'gallery' ? ' gallery' : '');
+
+  if(type === 'gallery'){
+    modalMedia.innerHTML = `<img src="${card.dataset.image || ''}" alt="${card.dataset.title || ''}" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:18px;">`;
+  } else {
+    modalMedia.innerHTML = '<div style="font-size:1.02rem;font-weight:800;max-width:34rem;line-height:1.6;">Full post preview area with room for opening paragraphs and a featured visual.</div>';
+  }
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
 }
+
 function closeModal(){
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden','true');
