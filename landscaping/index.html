@@ -225,7 +225,7 @@
       line-height: 0.95;
       letter-spacing: -0.04em;
       margin-bottom: 14px;
-      max-width: 10ch;
+      max-width: 12ch;
     }
 
     .hero-copy {
@@ -268,18 +268,6 @@
       border-radius: 14px;
     }
 
-    .logo-placeholder strong {
-      display: block;
-      font-size: 1.35rem;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .logo-placeholder span {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
     .contact-list {
       display: grid;
       gap: 10px;
@@ -317,12 +305,6 @@
       font-size: clamp(1.8rem, 5vw, 3rem);
       line-height: 1.02;
       letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 56ch;
-      font-size: 0.98rem;
     }
 
     .services-grid,
@@ -516,15 +498,6 @@
         aspect-ratio: 2 / 1;
       }
 
-      .section-head {
-        grid-template-columns: 1fr auto;
-        align-items: end;
-      }
-
-      .section-head p {
-        justify-self: end;
-      }
-
       footer {
         padding-bottom: calc(38px + env(safe-area-inset-bottom));
       }
@@ -585,7 +558,7 @@
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Jasco's Landscaping home">
         <div class="brand-logo">
-          <img src="assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
+          <img src="../assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
         </div>
         <div class="brand-copy">
           <strong>Jasco's Landscaping</strong>
@@ -604,10 +577,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <div class="eyebrow">We do the work we love and you will love the work we do</div>
-          <h1>Clean, sharp landscaping that makes your property stand out.</h1>
+          <div class="eyebrow">Local Landscaping</div>
+          <h1>We do the work we love and you will love the work we do.</h1>
           <p class="hero-copy">
-            Lawn care, mulch, cleanup, trimming, edging, and outdoor maintenance for homes in Greenfield, NY and nearby areas.
+            Clean, sharp landscaping that makes your property stand out.
           </p>
 
           <div class="hero-actions">
@@ -618,8 +591,7 @@
 
         <aside class="contact-card" aria-label="Contact details">
           <div class="contact-logo">
-            <!-- Replace logo-placeholder.png with your real logo file -->
-            <img src="assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
+            <img src="../assets/logo-placeholder.png" alt="Jasco's Landscaping logo" />
           </div>
 
           <div class="contact-list">
