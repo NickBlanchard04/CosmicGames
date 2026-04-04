@@ -48,11 +48,23 @@
       padding: 12px 0; min-height: 74px;
     }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-    .brand-logo { 
-      width: 52px; height: 52px; border-radius: 14px; 
-      object-fit: cover; border: 1px solid var(--border); 
-      background: #fff;
+    
+    .header-logo-accent {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background-color: var(--brand);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
+    .brand-logo { 
+      width: 44px; height: 44px; 
+      border-radius: 6px; 
+      object-fit: contain; 
+      cursor: pointer; 
+    }
+    
     .brand-copy strong { display: block; font-size: 1rem; line-height: 1.1; }
     .brand-copy span { display: block; font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
 
@@ -151,8 +163,12 @@
     .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
     .value { font-size: 1rem; font-weight: 700; }
 
-    .bbb-box { margin-top: 10px; padding: 15px; border-radius: 18px; border: 1px dashed var(--brand); text-align: center; }
-    .bbb-box img { width: 100%; max-width: 200px; height: auto; margin-top: 8px; }
+    .bbb-box { 
+      margin-top: 10px; padding: 10px;
+      border-radius: 18px; 
+      text-align: center; 
+    }
+    .bbb-box img { width: 100%; max-width: 200px; height: auto; display: block; margin: 0 auto; }
 
     /* SECTIONS */
     .section-title { font-size: 2.2rem; letter-spacing: -0.03em; margin-bottom: 12px; }
@@ -244,7 +260,9 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand">
-        <img class="brand-logo" src="../assets/LarryBallLogo.png" alt="Helping Hands Logo">
+        <div class="header-logo-accent">
+          <img class="brand-logo" src="../assets/LarryBallLogo.png" alt="Helping Hands Logo">
+        </div>
         <div class="brand-copy">
           <strong>Helping Hands</strong>
           <span>Gansevoort, NY</span>
@@ -315,7 +333,6 @@
           </a>
 
           <div class="bbb-box">
-            <div class="label">BBB Accredited • A+ Rating</div>
             <img src="../assets/BBB-AccreditedBusiness.png" alt="BBB Accredited Business Logo">
           </div>
         </aside>
@@ -414,10 +431,18 @@
     </div>
   </div>
 
+  <div class="modal" id="logo-lb">
+    <div class="modal-content">
+      <button class="modal-close" id="logo-lb-close" aria-label="Close logo view">&times;</button>
+      <img src="" id="logo-lb-img" class="modal-img" alt="Enlarged logo view">
+    </div>
+  </div>
+
   <script>
     const modal = document.getElementById('lb');
     const lbImg = document.getElementById('lb-img');
     
+    // Gallery Lightbox logic
     document.querySelectorAll('.gallery-tile img').forEach(img => {
       img.onclick = () => {
         lbImg.src = img.src;
@@ -432,7 +457,38 @@
     }
 
     modal.onclick = (e) => { if(e.target === modal) closeLB(); }
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLB(); });
+
+    // Clickable Logo Lightbox logic
+    const headerLogo = document.querySelector('.brand .brand-logo');
+    const logoModal = document.getElementById('logo-lb');
+    const logoLbImg = document.getElementById('logo-lb-img');
+    const logoCloseBtn = document.getElementById('logo-lb-close');
+
+    headerLogo.onclick = () => {
+      logoLbImg.src = headerLogo.src;
+      logoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close specifically the logo lightbox
+    function closeLogoLB() {
+      logoModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    logoCloseBtn.onclick = () => {
+      closeLogoLB();
+    }
+
+    logoModal.onclick = (e) => { if(e.target === logoModal) closeLogoLB(); }
+
+    // Keydown listener updated to handle both modals
+    document.addEventListener('keydown', (e) => { 
+      if(e.key === 'Escape') {
+        closeLB();
+        closeLogoLB();
+      }
+    });
   </script>
 </body>
 </html>
