@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The GYM 518 | Personal Trainer Liam Hughes</title>
+    <meta name="description" content="Honest, Adaptive, and Focused personal training with Coach Liam Hughes at The GYM 518. Available Monday-Saturday.">
+    
+    <meta property="og:title" content="The GYM 518 | Personal Training">
+    <meta property="og:description" content="Start your fitness journey with a free consult, assessment, and first workout with Liam Hughes.">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "The GYM 518",
+      "image": "../assets/logo.jpg",
+      "telephone": "518-332-5650",
+      "email": "hghpau2@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Liam Hughes"
+      },
+      "priceRange": "$25 - $50",
+      "description": "Honest, Adaptive, and Focused personal training.",
+      "areaServed": "518 Area Code"
+    }
+    </script>
+
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-neutral: #f8f9fa;
+            --surface-white: #ffffff;
+            --brand-color: #d32f2f; /* Strong Red accent */
+            --brand-hover: #b71c1c;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --border-color: #dee2e6;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- BASE RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-neutral);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 70px; /* Space for mobile sticky footer */
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-color);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: white;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- HEADER --- */
+        .site-header {
+            background-color: var(--surface-white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+
+        .brand-text h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .brand-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: none; /* Hidden on mobile to save space */
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        /* --- HERO & CONTACT CARD SECTION --- */
+        .hero-contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding-top: 40px;
+        }
+
+        @media (min-width: 850px) {
+            .hero-contact-wrapper {
+                grid-template-columns: 1.5fr 1fr;
+                align-items: center;
+            }
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: var(--surface-white);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .contact-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--bg-neutral);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .contact-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .contact-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            color: var(--brand-color);
+        }
+
+        /* --- GALLERY / MEDIA SECTION --- */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 600px) {
+            .media-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .media-card {
+            background: var(--surface-white);
+            border-radius: var(--radius-md);
+            padding: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .media-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Custom Local Videos */
+        .video-container video {
+            width: 100%;
+            border-radius: var(--radius-md);
+            background: #000;
+        }
+
+        /* Social Links as Cards */
+        .social-link-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-neutral);
+            border: 2px dashed var(--border-color);
+            padding: 30px 20px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .social-link-card:hover {
+            border-color: var(--brand-color);
+            background: var(--surface-white);
+            color: var(--brand-color);
+        }
+
+        /* Standard Image Gallery Grid */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-img {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial-grid {
+            display: grid;
+            gap: 20px;
+        }
+        @media (min-width: 768px) {
+            .testimonial-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .testimonial-card {
+            background: var(--surface-white);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--brand-color);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card h5 {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .service-card {
+            background: var(--surface-white);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .service-price {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--brand-color);
+            margin-top: auto;
+        }
+        
+        .service-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FINAL CTA --- */
+        .final-cta {
+            text-align: center;
+            background: var(--surface-white);
+            padding: 60px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 20px;
+        }
+
+        /* --- STICKY MOBILE BAR --- */
+        .mobile-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--surface-white);
+            display: flex;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-cta-bar {
+                display: none;
+            }
+            body { padding-bottom: 0; }
+        }
+
+        .mobile-cta-btn {
+            flex: 1;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .mobile-cta-btn.primary {
+            background: var(--brand-color);
+            color: white;
+            border-right: none;
+        }
+
+        /* --- MODAL / LIGHTBOX --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand-info">
+                <img src="../assets/headshot-logo.jpg" alt="Liam Hughes Logo" class="brand-logo">
+                <div class="brand-text">
+                    <h1>The GYM 518</h1>
+                    <span>Personal Training by Liam</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="mailto:Hghpau2@gmail.com" class="btn btn-outline">Email</a>
+                <a href="tel:+15183325650" class="btn btn-primary">Call Now</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="hero-contact-wrapper">
+            
+            <div class="hero-content">
+                <h2>Honest. Adaptive. Focused.</h2>
+                <p>Available Monday through Saturday, Coach Liam Hughes offers elite personal training tailored to you. Claim your <strong>free consult, assessment, and first free workout</strong> to start transforming your physical and mental well-being.</p>
+                <div class="hero-actions">
+                    <a href="tel:+15183325650" class="btn btn-primary">Start Your Free Workout</a>
+                    <a href="#services" class="btn btn-outline">View Pricing</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <img src="../assets/liam-profile.jpg" alt="Coach Liam Hughes">
+                <h3>Liam Hughes</h3>
+                <p>ISSA Certified Personal Trainer</p>
+                
+                <ul class="contact-list">
+                    <li>
+                        <span class="contact-label">Phone / Text</span>
+                        <a href="tel:+15183325650" class="contact-value">(518) 332-5650</a>
+                    </li>
+                    <li>
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:Hghpau2@gmail.com" class="contact-value">Hghpau2@gmail.com</a>
+                    </li>
+                    <li>
+                        <span class="contact-label">Instagram</span>
+                        <a href="https://instagram.com/Coach_LiamHughes27" target="_blank" class="contact-value">@Coach_LiamHughes27</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container" id="gallery">
+        <h2 class="section-title">Training in Action</h2>
+        
+        <div class="media-grid">
+            <div class="media-card video-container">
+                <h4>Local Video Upload 1</h4>
+                <video controls>
+                    <source src="../assets/video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="media-card video-container">
+                <h4>Local Video Upload 2</h4>
+                <video controls>
+                    <source src="../assets/video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="media-grid">
+            <a href="https://www.instagram.com/reel/DWNApYhkfoP/?igsh=NGFhZGhnMzg3NzQy" target="_blank" class="social-link-card">
+                🎬 Watch 1-on-1 Training Reel (Instagram)
+            </a>
+            <a href="https://www.facebook.com/share/r/1DSFm9UCnx/?mibextid=wwXIfr" target="_blank" class="social-link-card">
+                💪 Fix Your Push-Up Form (Facebook)
+            </a>
+            <a href="https://www.instagram.com/p/DQnLk8HEVmN/?igsh=dnJ4cmt2cm5vZnp4" target="_blank" class="social-link-card">
+                📸 Client Before & After (Instagram)
+            </a>
+            <a href="https://www.instagram.com/p/DVzcCYkkYic/?igsh=ZHY4MHR2eHRzcmt6" target="_blank" class="social-link-card">
+                ⭐ Audio Testimonial (Instagram)
+            </a>
+        </div>
+
+        <h4 style="margin-bottom: 15px;">Facility & Client Photos</h4>
+        <div class="image-gallery">
+            <img src="../assets/gallery1.jpg" alt="Gym Photo 1" class="gallery-img">
+            <img src="../assets/gallery2.jpg" alt="Gym Photo 2" class="gallery-img">
+            <img src="../assets/gallery3.jpg" alt="Gym Photo 3" class="gallery-img">
+            <img src="../assets/gallery4.jpg" alt="Gym Photo 4" class="gallery-img">
+        </div>
+    </section>
+
+    <section class="container" style="background-color: var(--surface-white); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 60px;">
+        <h2 class="section-title">Client Success</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Having Liam as my fitness coach has been a game changer, not just physically but mentally as well. My fitness level has improved tremendously... Even though the workouts are only 30 minutes, Liam’s structure, knowledge, and attention to detail make every session incredibly effective—truly feeling like hours' worth of work in a short amount of time. I highly recommend Liam!"</p>
+                <h5>— Kyle A.</h5>
+            </div>
+            <div class="testimonial-card">
+                <p>"After training with Liam, I've progressed in ways I never imagined. He safely pushes you during workouts for maximum results, and has expertise with form that truly shaped my body. As a bonus, I'm now twice as consistent! Thank you, Liam! I highly recommend this gentleman's routine—you won't be disappointed!"</p>
+                <h5>— Mike</h5>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="services">
+        <h2 class="section-title">Training Packages</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <h4>1-on-1 Training (30 Mins)</h4>
+                <p class="service-sub">Focused, high-intensity half hour session.</p>
+                <div class="service-price">$35.00</div>
+            </div>
+
+            <div class="service-card">
+                <h4>1-on-1 Training (60 Mins)</h4>
+                <p class="service-sub">Comprehensive full hour coaching.</p>
+                <div class="service-price">$50.00</div>
+            </div>
+
+            <div class="service-card">
+                <h4>Buddy Training (2 People)</h4>
+                <p class="service-sub">Train with a partner to stay accountable.</p>
+                <div class="service-price">$30.00 <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted)">/ each</span></div>
+            </div>
+
+            <div class="service-card">
+                <h4>Small Group (3+ People)</h4>
+                <p class="service-sub">Athlete training or group dynamic (Half hour).</p>
+                <div class="service-price">$25.00 <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted)">/ each</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="final-cta">
+            <h2>Ready to transform your life?</h2>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Text or call today to schedule your free consultation, fitness assessment, and first workout.</p>
+            <a href="tel:+15183325650" class="btn btn-primary" style="font-size: 1.2rem; padding: 15px 30px;">Call (518) 332-5650</a>
+        </div>
+    </section>
+
+    <div class="mobile-cta-bar">
+        <a href="mailto:Hghpau2@gmail.com" class="mobile-cta-btn" style="color: var(--text-main);">Email</a>
+        <a href="tel:+15183325650" class="mobile-cta-btn primary">Call Now</a>
+    </div>
+
+    <div id="galleryModal" class="modal">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Expanded Gallery Image">
+    </div>
+
+    <script>
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.getElementById('closeModal');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+
+        // Open Modal
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.classList.add('active');
+                modalImg.src = this.src;
+                document.body.classList.add('modal-open');
+            });
+        });
+
+        // Close Modal via X button
+        closeBtn.addEventListener('click', closeModal);
+
+        // Close Modal via outside click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close Modal via ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => { modalImg.src = ''; }, 300); // Clear source after fade out
+        }
+    </script>
+
+</body>
+</html>
