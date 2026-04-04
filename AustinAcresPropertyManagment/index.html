@@ -280,7 +280,7 @@
 
         /* Facebook Banner Hero Action */
         .fb-hero-btn {
-            background-color: #1877F2; /* Facebook Blue */
+            background-color: #1877F2;
             color: white;
             border: none;
             display: inline-flex;
@@ -348,10 +348,14 @@
 
         .service-card {
             padding: 2rem;
-            text-align: center;
+            text-align: left;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 0.5rem;
         }
 
         /* Gallery Section */
@@ -630,31 +634,31 @@
             <div class="services-grid">
                 <div class="glass glass-card service-card fade-up">
                     <h3>Paver Installation</h3>
-                    <p>Expertly installed patios, driveways, walkways, and pool decks designed to last.</p>
+                    <p>Patios, driveways, walkways, and pool decks.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
                     <h3>Retaining Walls</h3>
-                    <p>Segmental retaining walls, rock walls, and seating walls built for durability and erosion control.</p>
+                    <p>Segmental retaining walls, rock walls, and seating walls for erosion control.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
                     <h3>Outdoor Living Structures</h3>
-                    <p>Elevate your backyard with built-in outdoor kitchens, custom stone fireplaces, and fire pits.</p>
+                    <p>Built-in outdoor kitchens, stone fireplaces, and fire pits.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
                     <h3>Site Work & Features</h3>
-                    <p>Beautiful water features (fountains/ponds), custom steps, pergolas, and decorative stonework.</p>
+                    <p>Water features (fountains/ponds), steps, pergolas, and decorative stonework.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
                     <h3>Landscape Design & Installation</h3>
-                    <p>Detailed, in-home design consultations and tailored planting plans for a stunning property.</p>
+                    <p>Detailed, in-home design and planting plans.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
                     <h3>Commercial Landscaping</h3>
-                    <p>Professional services including ADA-compliant walkways and durable, high-traffic landscaping.</p>
+                    <p>ADA-compliant walkways and high-traffic landscaping.</p>
                 </div>
                 <div class="glass glass-card service-card fade-up">
-                    <h3>Property Maintenance</h3>
-                    <p>Keep your lawn thriving with seasonal clean-ups, mulching, fertilization, and aeration.</p>
+                    <h3>Maintenance</h3>
+                    <p>Seasonal clean-ups, mulching, fertilization, and aeration.</p>
                 </div>
             </div>
         </section>
@@ -674,23 +678,20 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-pool1.jpg')">
-                    <img src="../assets/hardscape-pool1.jpg" alt="Hardscape patio by the pool" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
-                </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-fireplace1.jpg')">
                     <img src="../assets/hardscape-fireplace1.jpg" alt="Outdoor fire pit and waterfront patio" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
                 </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/deck1.jpg')">
                     <img src="../assets/deck1.jpg" alt="New composite deck build" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
                 </div>
-                <div class="gallery-item fade-up" onclick="openModal('../assets/walkway1.jpg')">
-                    <img src="../assets/walkway1.jpg" alt="Illuminated stone retaining wall and walkway at night" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
-                </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-driveway1.jpg')">
                     <img src="../assets/hardscape-driveway1.jpg" alt="Asphalt driveway with decorative paver border" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
                 </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-porch1.jpg')">
-                    <img src="../assets/hardscape-porch1.jpg" alt="Under-deck stone paver patio" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                    <img src="../assets/hardscape-porch1.jpg" alt="Under-deck stone paver patio structure" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-porch2.jpg')">
+                    <img src="../assets/hardscape-porch2.jpg" alt="Backyard stone patio installation" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
                 </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-pool2.jpg')">
                     <img src="../assets/hardscape-pool2.jpg" alt="Poolside landscaping, water feature, and stone path" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
@@ -703,6 +704,9 @@
                 </div>
                 <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-wall2.jpg')">
                     <img src="../assets/hardscape-wall2.jpg" alt="Front yard stone retaining wall with landscaping" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/plants-edging1.jpg')">
+                    <img src="../assets/plants-edging1.jpg" alt="Lush landscape garden bed with edging" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
                 </div>
             </div>
         </section>
