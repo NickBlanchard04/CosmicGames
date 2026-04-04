@@ -80,13 +80,26 @@
     .hero-copy { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin-bottom: 30px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     
-    /* NEW TEXT CTA HINT */
+    /* CLICKABLE TEXT CTA HINT (Styled like Gym cards) */
     .text-hint {
-      display: inline-block; margin-top: 16px; padding: 12px 18px;
-      background: var(--surface-soft); border-radius: 12px; border: 1px dashed var(--brand);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 16px; padding: 16px 24px;
+      background-color: #ffffff; /* Solid white background */
+      border: 2px solid var(--border); /* Solid border */
+      border-radius: 12px;
       font-size: 0.95rem; font-weight: 500; color: var(--text);
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03); /* Subtle resting shadow */
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
-    .text-hint strong { color: var(--brand); }
+    .text-hint:hover {
+      border-color: var(--brand); /* Turns brand color on hover */
+      box-shadow: 0 10px 20px rgba(138, 74, 51, 0.12); /* Larger shadow on hover */
+      transform: translateY(-2px); /* Lifts up on hover */
+    }
+    .text-hint strong { color: var(--brand); transition: all 0.3s ease; }
+    .text-hint:hover strong { color: var(--brand-dark); }
 
     /* CONTACT CARD */
     .contact-card {
@@ -223,9 +236,9 @@
             <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Get a Quote</a>
           </div>
           
-          <div class="text-hint">
-            💬 <strong>Faster estimate?</strong> Text a photo of your project to <strong>(518) 223-5779</strong>
-          </div>
+          <a href="sms:+15182235779" class="text-hint">
+            💬 <span><strong>Faster estimate?</strong> Text a photo of your project to <strong>(518) 223-5779</strong></span>
+          </a>
         </div>
 
         <aside class="contact-card">
