@@ -305,23 +305,25 @@
         }
 
         /* Social Links as Cards */
-        .social-link-card {
+      .social-link-card {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bg-neutral);
-            border: 2px dashed var(--border-color);
+            background-color: var(--surface-white); /* Changes to a solid white background */
+            border: 2px solid var(--border-color); /* Changes the dashed line to a solid line */
             padding: 30px 20px;
             border-radius: var(--radius-md);
             text-align: center;
             transition: var(--transition);
             font-weight: bold;
+            box-shadow: var(--shadow-sm); /* Adds a nice little shadow so it pops off the page */
         }
 
         .social-link-card:hover {
             border-color: var(--brand-color);
-            background: var(--surface-white);
             color: var(--brand-color);
+            box-shadow: var(--shadow-md); /* Makes the shadow slightly bigger when hovered */
+            transform: translateY(-2px); /* Makes it lift up slightly when hovered */
         }
 
         /* Standard Image Gallery Grid */
