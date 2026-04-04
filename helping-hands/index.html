@@ -10,15 +10,15 @@
   
   <style>
     :root {
-      /* NEW COLOR SCHEME: The Great Outdoors */
-      --bg: #f5f7f4; /* Soft Sage White */
+      /* COLOR SCHEME: The Great Outdoors */
+      --bg: #f5f7f4; 
       --surface: rgba(255, 255, 255, 0.65); 
-      --surface-soft: #ebf0e9; /* Light earth grey/green */
+      --surface-soft: #ebf0e9; 
       --text: #1a1c19;
       --muted: #4a5c50;
-      --brand: #21402e; /* Deep Pine Green */
-      --brand-dark: #152b1e; /* Forest Night */
-      --accent: #c67b3f; /* Warm Wood / Amber */
+      --brand: #21402e; 
+      --brand-dark: #152b1e; 
+      --accent: #c67b3f; 
       --border: rgba(33, 64, 46, 0.12);
       --shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
       --max: 1160px;
@@ -77,7 +77,6 @@
     .btn-secondary { background: #fff; border: 1px solid var(--border); color: var(--text); }
     .btn-secondary:hover { background: #f9f9f9; }
 
-    /* Pulse Animation for Hero CTA (Updated to Pine Green) */
     @keyframes pulse-btn {
       0% { box-shadow: 0 0 0 0 rgba(33, 64, 46, 0.6); }
       70% { box-shadow: 0 0 0 15px rgba(33, 64, 46, 0); }
@@ -87,7 +86,6 @@
       animation: pulse-btn 2s infinite;
     }
 
-    /* Animated Gradient Hero (Updated to Earthy Sage Tones) */
     @keyframes gradient-bg {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -106,10 +104,27 @@
       grid-template-columns: 1.2fr 0.8fr;
     }
     h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 20px; color: var(--brand-dark); }
-    .hero-copy { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin-bottom: 30px; }
+    
+    /* TYPEWRITER CSS */
+    .hero-copy { 
+      font-size: 1.1rem; 
+      color: var(--muted); 
+      max-width: 50ch; 
+      margin-bottom: 30px; 
+      min-height: 66px; /* Prevents layout shift while typing */
+    }
+    .typewriter::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     
-    /* CLICKABLE TEXT CTA HINT */
     .text-hint {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       margin-top: 16px; padding: 16px 24px;
@@ -168,15 +183,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--accent); /* Amber Wood Accent */
+      color: var(--accent); 
       flex-shrink: 0;
       border: 1px solid var(--border);
     }
 
     .contact-icon svg { width: 20px; height: 20px; }
-
     .contact-text-wrap { display: flex; flex-direction: column; }
-    
     .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
     .value { font-size: 1rem; font-weight: 700; }
 
@@ -202,9 +215,8 @@
       border: 1px solid rgba(255, 255, 255, 0.6); padding: 24px; border-radius: 20px;
     }
     .process-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: var(--brand); display: flex; align-items: center; gap: 10px; }
-    
     .process-card h3 span { 
-      background: rgba(198, 123, 63, 0.15); /* Soft Amber background */
+      background: rgba(198, 123, 63, 0.15); 
       color: var(--brand);
       width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; 
       border-radius: 50%; font-size: 0.9rem; font-weight: 900; border: 1px solid var(--accent);
@@ -228,7 +240,7 @@
     }
     
     .service-num {
-      background: rgba(198, 123, 63, 0.15); /* Soft Amber background */
+      background: rgba(198, 123, 63, 0.15);
       width: 40px; height: 40px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 50%; margin: 0 auto 12px; font-size: 0.85rem; font-weight: 800; color: var(--brand);
@@ -237,7 +249,7 @@
     .service-card h3 { margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--brand-dark); }
     .service-card p { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); font-weight: 500; }
 
-    /* GALLERY - Full color naturally, zoom on hover */
+    /* GALLERY */
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
     .gallery-tile { aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
     .gallery-tile img { 
@@ -291,6 +303,7 @@
       .top-actions .btn-secondary { display: none; }
       .footer-inner { flex-direction: column; text-align: center; }
       .service-areas p { margin: 0 auto; }
+      .hero-copy { min-height: 88px; } /* taller minimum height for mobile text wrap */
     }
   </style>
 </head>
@@ -317,10 +330,8 @@
       <div class="container hero-grid">
         <div class="hero-card fade-up">
           <h1>No job too small. Just honest help done right.</h1>
-          <p class="hero-copy">
-            Dependable home repairs, lawn care, and property maintenance. 
-            When you need someone fair and responsive, Larry is here to help.
-          </p>
+          <p class="hero-copy typewriter" id="typewriter-text"></p>
+          
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:+15182235779">Call (518) 223-5779</a>
             <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Get a Quote</a>
@@ -476,6 +487,26 @@
   </div>
 
   <script>
+    // --- Typewriter Effect ---
+    const textTarget = document.getElementById("typewriter-text");
+    const fullText = "Dependable home repairs, lawn care, and property maintenance. When you need someone fair and responsive, Larry is here to help.";
+    let charIndex = 0;
+    const typeSpeed = 35; // Adjust this to make it type faster or slower
+
+    function typeWriter() {
+      if (charIndex < fullText.length) {
+        textTarget.innerHTML += fullText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, typeSpeed);
+      } else {
+        // Optional: Remove the blinking cursor after typing is done
+        // textTarget.classList.remove('typewriter');
+      }
+    }
+
+    // Start typewriter shortly after page load
+    setTimeout(typeWriter, 500);
+
     // --- Scroll Animations ---
     const observerOptions = {
       root: null,
