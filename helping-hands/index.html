@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   
   <title>Helping Hands Home Services | Handyman & Repairs Gansevoort NY</title>
-  <meta name="description" content="Dependable home repairs, lawn care, and property maintenance in Gansevoort, NY. BBB Accredited A+ Rated handyman services. Call Larry Ball for a fair estimate." />
-  <meta name="keywords" content="handyman Gansevoort NY, home repairs Saratoga County, lawn care Gansevoort, property maintenance, drywall repair, deck building, Larry Ball" />
+  <meta name="description" content="Dependable home repairs, lawn care, and property maintenance in Gansevoort, Wilton, and Saratoga Springs. BBB Accredited A+ Rated. Text a photo for a quick estimate." />
+  <meta name="keywords" content="handyman Gansevoort NY, home repairs Saratoga County, lawn care Gansevoort, property maintenance, drywall repair, deck building, Larry Ball, South Glens Falls handyman" />
   
   <style>
     :root {
@@ -58,6 +58,7 @@
 
     .top-actions { display: flex; align-items: center; gap: 10px; }
 
+    /* BUTTONS */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       min-height: 48px; padding: 0 20px; border-radius: 999px;
@@ -67,6 +68,7 @@
     .btn-primary { background: var(--brand); color: #fff; border: none; box-shadow: 0 10px 20px rgba(138, 74, 51, 0.15); }
     .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
     .btn-secondary { background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .btn-secondary:hover { background: #f9f9f9; }
 
     /* HERO GRID */
     .hero { padding: 40px 0; }
@@ -76,7 +78,15 @@
     }
     h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 20px; }
     .hero-copy { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin-bottom: 30px; }
-    .hero-actions { display: flex; gap: 12px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    
+    /* NEW TEXT CTA HINT */
+    .text-hint {
+      display: inline-block; margin-top: 16px; padding: 12px 18px;
+      background: var(--surface-soft); border-radius: 12px; border: 1px dashed var(--brand);
+      font-size: 0.95rem; font-weight: 500; color: var(--text);
+    }
+    .text-hint strong { color: var(--brand); }
 
     /* CONTACT CARD */
     .contact-card {
@@ -93,47 +103,49 @@
     }
     .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
     .value { font-size: 1rem; font-weight: 700; }
-    
-    /* BBB LOGO BOX */
-    .bbb-box { 
-      margin-top: 10px; padding: 15px; border-radius: 18px; 
-      border: 1px dashed var(--brand); text-align: center; 
-    }
+    .bbb-box { margin-top: 10px; padding: 15px; border-radius: 18px; border: 1px dashed var(--brand); text-align: center; }
     .bbb-box img { width: 100%; max-width: 200px; height: auto; margin-top: 8px; }
 
-    /* SERVICES (GLOW & GLASS) */
-    .section-title { font-size: 2.2rem; letter-spacing: -0.03em; margin-bottom: 24px; }
+    /* SECTIONS */
+    .section-title { font-size: 2.2rem; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .section-subtitle { font-size: 1.1rem; color: var(--muted); margin-bottom: 32px; max-width: 600px; }
+
+    /* PROCESS GRID */
+    .process-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px; 
+    }
+    .process-card {
+      background: var(--surface); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4); padding: 24px; border-radius: 20px;
+    }
+    .process-card h3 { margin: 0 0 8px; font-size: 1.2rem; color: var(--brand); display: flex; align-items: center; gap: 10px; }
+    .process-card h3 span { 
+      background: #fff; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; 
+      border-radius: 50%; font-size: 0.9rem; font-weight: 900; border: 1px solid var(--border); color: var(--text);
+    }
+    .process-card p { margin: 0; font-size: 0.95rem; color: var(--muted); }
+
+    /* SERVICES GRID */
     .services-grid { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
       gap: 16px; 
-      margin-top: 20px; 
     }
     .service-card {
-      background: var(--surface);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 24px;
-      border-radius: 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: var(--surface); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3); padding: 24px; border-radius: 20px;
+      text-align: center; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center;
     }
     .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--brand);
-      box-shadow: 0 12px 24px rgba(138, 74, 51, 0.12);
-      background: rgba(255, 255, 255, 0.8);
+      transform: translateY(-5px); border-color: var(--brand);
+      box-shadow: 0 12px 24px rgba(138, 74, 51, 0.12); background: rgba(255, 255, 255, 0.8);
     }
     .service-num {
-      background: var(--surface-soft);
-      width: 40px; height: 40px;
+      background: var(--surface-soft); width: 40px; height: 40px;
       display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; margin: 0 auto 12px;
-      font-size: 0.85rem; font-weight: 800; color: var(--brand);
+      border-radius: 50%; margin: 0 auto 12px; font-size: 0.85rem; font-weight: 800; color: var(--brand);
       border: 1px solid var(--border);
     }
     .service-card h3 { margin: 0; font-size: 1.1rem; font-weight: 800; }
@@ -144,6 +156,16 @@
     .gallery-tile { aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
     .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
     .gallery-tile:hover img { transform: scale(1.05); }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 60px 0; color: var(--muted); border-top: 1px solid var(--border); background: #fff;
+    }
+    .footer-inner {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;
+    }
+    .service-areas h4 { margin: 0 0 12px; color: var(--text); font-size: 1.1rem; }
+    .service-areas p { margin: 0; line-height: 1.6; font-size: 0.95rem; max-width: 400px; }
 
     /* LIGHTBOX */
     .modal {
@@ -164,6 +186,8 @@
     @media (max-width: 800px) {
       .hero-grid { grid-template-columns: 1fr; }
       .top-actions .btn-secondary { display: none; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .service-areas p { margin: 0 auto; }
     }
   </style>
 </head>
@@ -192,11 +216,15 @@
           <h1>No job too small. Just honest help done right.</h1>
           <p class="hero-copy">
             Dependable home repairs, lawn care, and property maintenance. 
-            When you need someone fair and responsive in Gansevoort, Larry is here to help.
+            When you need someone fair and responsive, Larry is here to help.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:+15182235779">Call (518) 223-5779</a>
             <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Get a Quote</a>
+          </div>
+          
+          <div class="text-hint">
+            💬 <strong>Faster estimate?</strong> Text a photo of your project to <strong>(518) 223-5779</strong>
           </div>
         </div>
 
@@ -206,7 +234,7 @@
             <div class="value">Larry Ball</div>
           </div>
           <div class="contact-item">
-            <div class="label">Direct Line</div>
+            <div class="label">Call or Text</div>
             <div class="value">(518) 223-5779</div>
           </div>
           <div class="contact-item">
@@ -221,7 +249,26 @@
       </div>
     </section>
 
-    <section class="container" style="padding: 40px 0;">
+    <section class="container" style="padding: 20px 0 60px;">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-subtitle">We make taking care of your home straightforward and hassle-free.</p>
+      <div class="process-grid">
+        <div class="process-card">
+          <h3><span>1</span> Free Estimate</h3>
+          <p>We look at the job, discuss your needs, and give you a fair, honest price.</p>
+        </div>
+        <div class="process-card">
+          <h3><span>2</span> Scheduled Service</h3>
+          <p>We show up on time, fully equipped, and ready to get to work on your property.</p>
+        </div>
+        <div class="process-card">
+          <h3><span>3</span> Quality Finish</h3>
+          <p>We take pride in our work. We don't leave until the job is done right.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding-bottom: 60px;">
       <h2 class="section-title">What can we help with?</h2>
       <div class="services-grid">
         <article class="service-card">
@@ -260,18 +307,31 @@
     <section class="container" style="padding-bottom: 80px;">
       <h2 class="section-title">Recent Projects</h2>
       <div class="gallery-grid">
-        <div class="gallery-tile"><img src="../assets/flooring1.jpg" alt="Flooring work"></div>
-        <div class="gallery-tile"><img src="../assets/sealcoating1.jpg" alt="Sealcoating work"></div>
-        <div class="gallery-tile"><img src="../assets/electrical1.jpg" alt="Electrical work"></div>
-        <div class="gallery-tile"><img src="../assets/cleanup1.jpg" alt="Cleanup work"></div>
-        <div class="gallery-tile"><img src="../assets/fencing1.jpg" alt="Fencing work"></div>
-        <div class="gallery-tile"><img src="../assets/excavator1.jpg" alt="Excavation work"></div>
+        <div class="gallery-tile"><img src="../assets/flooring1.jpg" alt="Flooring underlayment installation"></div>
+        <div class="gallery-tile"><img src="../assets/sealcoating1.jpg" alt="Driveway sealcoating project"></div>
+        <div class="gallery-tile"><img src="../assets/electrical1.jpg" alt="Electrical wiring and outlet box installation"></div>
+        <div class="gallery-tile"><img src="../assets/cleanup1.jpg" alt="Exterior property cleanup and landscaping"></div>
+        <div class="gallery-tile"><img src="../assets/fencing1.jpg" alt="Wooden fence installation framing"></div>
+        <div class="gallery-tile"><img src="../assets/excavator1.jpg" alt="Excavator performing stump removal"></div>
       </div>
     </section>
   </main>
 
-  <footer style="text-align: center; padding: 40px 0; color: var(--muted); border-top: 1px solid var(--border);">
-    <p>&copy; 2026 Helping Hands Home Services. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="service-areas">
+        <h4>Proudly Serving Saratoga County</h4>
+        <p>Providing reliable handyman, property maintenance, and lawn care services to <strong>Gansevoort, Wilton, Saratoga Springs, South Glens Falls, Moreau</strong>, and the surrounding communities.</p>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 12px; color: var(--text);">Contact</h4>
+        <p style="margin: 0 0 8px;">(518) 223-5779</p>
+        <p style="margin: 0;">balllarry81@gmail.com</p>
+      </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 40px; font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 20px;">
+      <p>&copy; 2026 Helping Hands Home Services. All rights reserved.</p>
+    </div>
   </footer>
 
   <div class="modal" id="lb">
