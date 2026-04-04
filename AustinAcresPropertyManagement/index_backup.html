@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Acres Property Management | Landscaping, Hardscaping & Home Services</title>
+    <meta name="description" content="Locally owned property service business in Saratoga Springs, Wilton, and Glens Falls area. Certified hardscape specialists offering landscaping, handyman services, and more since 2014.">
+    <meta name="keywords" content="Austin Acres Property Management, Landscaping, Hardscaping, Handyman, Lawn Care, Gansevoort, Wilton, Saratoga Springs, South Glens Falls, Moreau">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg: #f5f7f4;
+            --primary: #21402e;
+            --dark: #152b1e;
+            --accent: #c67b3f;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-hover: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Base & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(198, 123, 63, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(198, 123, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(198, 123, 63, 0); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background-color: var(--primary);
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: var(--glass-hover);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 247, 244, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(33, 64, 46, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .logo-container span {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #a86532;
+        }
+
+        .btn-pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        #hero {
+            padding: 6rem 5%;
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(-45deg, rgba(33, 64, 46, 0.05), rgba(198, 123, 63, 0.05), rgba(245, 247, 244, 1), rgba(33, 64, 46, 0.08));
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        .hero-left p {
+            font-size: 1.2rem;
+            color: #4a5c51;
+            margin-bottom: 2rem;
+            min-height: 80px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sms-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--dark);
+            margin-top: 1rem;
+        }
+        
+        .sms-card svg {
+            fill: var(--accent);
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-card {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+        
+        a.contact-item:hover {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(198, 123, 63, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+        }
+
+        .bbb-logo-container {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .bbb-logo-container img {
+            max-width: 150px;
+            border: none;
+            outline: none;
+        }
+
+        /* Facebook Banner Hero Action */
+        .fb-hero-btn {
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3);
+        }
+
+        .fb-hero-btn:hover {
+            background-color: #166FE5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(24, 119, 242, 0.4);
+        }
+
+        .fb-hero-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 5%;
+        }
+
+        /* Process Section */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .process-card {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 4px 10px rgba(198, 123, 63, 0.4);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .before-after-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .ba-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            background: #fff;
+            aspect-ratio: 4/3;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .ba-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .ba-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            aspect-ratio: 1;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        
+        .footer-socials {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .seo-areas {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #a0aab2;
+        }
+
+        /* Lightbox Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(21, 43, 30, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 4rem;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .contact-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .contact-item {
+                justify-content: center;
+            }
+            .sms-card {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .process-grid { grid-template-columns: 1fr; }
+            .before-after-container { grid-template-columns: 1fr; } 
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .header-actions { display: none; }
+            .logo-container span { font-size: 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" onclick="openModal('../assets/AustinAcresLogo.png')">
+            <img src="../assets/AustinAcresLogo.png" alt="Austin Acres Logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD=iIzIxNDAyZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmaWxsPSIjZmZmIiBkeT0iLjNlbSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QUE8L3RleHQ+PC9zdmc+'">
+            <span>Austin Acres Property Management</span>
+        </div>
+        <div class="header-actions">
+            <a href="mailto:austinacrespm@gmail.com" class="btn btn-outline">Email Us</a>
+            <a href="tel:5187966468" class="btn btn-primary btn-pulse">Call Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-left fade-up">
+                <h1>No job too small. Just honest help done right.</h1>
+                <p id="typewriter-text"></p>
+                <div class="hero-actions">
+                    <a href="tel:5187966468" class="btn btn-primary btn-pulse">Call (518) 796-6468</a>
+                    <a href="#services" class="btn btn-outline">Get a Quote</a>
+                    <a href="https://www.facebook.com/austinacrespm" target="_blank" rel="noopener noreferrer" class="fb-hero-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Follow Us on Facebook
+                    </a>
+                </div>
+                <a href="sms:5187966468" class="glass glass-card sms-card">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+                    <div>
+                        <strong>Text a Photo of Your Project</strong>
+                        <div style="font-size: 0.85rem; color: #666;">Fastest way to get an estimate!</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="hero-right fade-up">
+                <div class="contact-card">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: #666;">Owner / Operator</div>
+                            <strong>Benjamin Austin</strong>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: #666;">Call or Text</div>
+                            <strong><a href="tel:5187966468" style="text-decoration: none; color: inherit;">(518) 796-6468</a></strong>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: #666;">Email</div>
+                            <strong><a href="mailto:austinacrespm@gmail.com" style="text-decoration: none; color: inherit;">austinacrespm@gmail.com</a></strong>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.facebook.com/austinacrespm" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <div class="contact-icon" style="background-color: rgba(24, 119, 242, 0.1);">
+                            <svg style="fill: #1877F2;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; color: #666;">Stay Updated</div>
+                            <strong>Visit our Facebook Page</strong>
+                        </div>
+                    </a>
+
+                    <div class="bbb-logo-container">
+                        <img src="../assets/BBB-AccreditedBusiness.png" alt="BBB Accredited Business" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <h2 class="fade-up">How It Works</h2>
+            <div class="process-grid">
+                <div class="glass glass-card process-card fade-up">
+                    <div class="step-number">1</div>
+                    <h3>Free Estimate</h3>
+                    <p>Contact us with your project details or text a photo. We'll provide an honest, transparent quote.</p>
+                </div>
+                <div class="glass glass-card process-card fade-up">
+                    <div class="step-number">2</div>
+                    <h3>Scheduled Service</h3>
+                    <p>We work around your schedule, arriving on time and fully equipped for the job at hand.</p>
+                </div>
+                <div class="glass glass-card process-card fade-up">
+                    <div class="step-number">3</div>
+                    <h3>Quality Finish</h3>
+                    <p>As certified hardscape specialists, we guarantee excellent craftsmanship that lasts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2 class="fade-up">Our Services</h2>
+            <div class="services-grid">
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Paver Installation</h3>
+                    <p>Patios, driveways, walkways, and pool decks.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Retaining Walls</h3>
+                    <p>Segmental retaining walls, rock walls, and seating walls for erosion control.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Outdoor Living Structures</h3>
+                    <p>Built-in outdoor kitchens, stone fireplaces, and fire pits.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Site Work & Features</h3>
+                    <p>Water features (fountains/ponds), steps, pergolas, and decorative stonework.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Landscape Design & Installation</h3>
+                    <p>Detailed, in-home design and planting plans.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Commercial Landscaping</h3>
+                    <p>ADA-compliant walkways and high-traffic landscaping.</p>
+                </div>
+                <div class="glass glass-card service-card fade-up">
+                    <h3>Maintenance</h3>
+                    <p>Seasonal clean-ups, mulching, fertilization, and aeration.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="fade-up">Recent Projects</h2>
+            
+            <div class="before-after-container fade-up">
+                <div class="ba-item" onclick="openModal('../assets/before1.jpg')">
+                    <span class="ba-label">Before</span>
+                    <img src="../assets/before1.jpg" alt="Old wooden deck with hot tub" onerror="this.src='https://placehold.co/800x600/152b1e/FFF?text=Before'">
+                </div>
+                <div class="ba-item" onclick="openModal('../assets/after1.jpg')">
+                    <span class="ba-label">After</span>
+                    <img src="../assets/after1.jpg" alt="New composite deck installed" onerror="this.src='https://placehold.co/800x600/21402e/FFF?text=After'">
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-fireplace1.jpg')">
+                    <img src="../assets/hardscape-fireplace1.jpg" alt="Outdoor fire pit and waterfront patio" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/deck1.jpg')">
+                    <img src="../assets/deck1.jpg" alt="New composite deck build" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-driveway1.jpg')">
+                    <img src="../assets/hardscape-driveway1.jpg" alt="Asphalt driveway with decorative paver border" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-porch1.jpg')">
+                    <img src="../assets/hardscape-porch1.jpg" alt="Under-deck stone paver patio structure" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-porch2.jpg')">
+                    <img src="../assets/hardscape-porch2.jpg" alt="Backyard stone patio installation" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-pool2.jpg')">
+                    <img src="../assets/hardscape-pool2.jpg" alt="Poolside landscaping, water feature, and stone path" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/walkway2.jpg')">
+                    <img src="../assets/walkway2.jpg" alt="Intricate paver and cobblestone walkway" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-wall1.jpg')">
+                    <img src="../assets/hardscape-wall1.jpg" alt="Tiered landscape retaining wall" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-wall2.jpg')">
+                    <img src="../assets/hardscape-wall2.jpg" alt="Front yard stone retaining wall with landscaping" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/plants-edging1.jpg')">
+                    <img src="../assets/plants-edging1.jpg" alt="Lush landscape garden bed with edging" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h2>Ready to start your project?</h2>
+        <br>
+        <a href="tel:5187966468" class="btn btn-primary btn-pulse" style="margin-bottom: 2rem;">Call Benjamin: (518) 796-6468</a>
+        
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/austinacrespm" target="_blank" rel="noopener noreferrer" class="fb-hero-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Connect on Facebook
+            </a>
+        </div>
+        
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Austin Acres Property Management. All rights reserved.</p>
+        
+        <div class="seo-areas">
+            <p><strong>Proudly Serving:</strong> Gansevoort, Wilton, Saratoga Springs, South Glens Falls, Moreau</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="modal" onclick="closeModal(event)">
+        <span class="modal-close">&times;</span>
+        <img id="lightbox-img" class="modal-content" src="" alt="Fullscreen view">
+    </div>
+
+    <script>
+        // 1. Typewriter Effect
+        const textToType = "Handling property maintenance including landscaping, lawn care, exterior painting & staining, handyman services and hardscaping. Locally owned and operated since 2014 by certified hardscape specialists.";
+        const typeTarget = document.getElementById('typewriter-text');
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typeTarget.innerHTML = textToType.substring(0, charIndex + 1) + '<span class="cursor"></span>';
+                charIndex++;
+                setTimeout(typeWriter, 30); // Typing speed
+            } else {
+                typeTarget.innerHTML = textToType + '<span class="cursor"></span>';
+            }
+        }
+
+        setTimeout(typeWriter, 500);
+
+        // 2. Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3. Lightbox Functionality
+        const modal = document.getElementById('lightbox');
+        const modalImg = document.getElementById('lightbox-img');
+
+        function openModal(imageSrc) {
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e) {
+            if (e.target !== modalImg) {
+                modal.classList.remove('active');
+                setTimeout(() => { modalImg.src = ''; }, 300);
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
