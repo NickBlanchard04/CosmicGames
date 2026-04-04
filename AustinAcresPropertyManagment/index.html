@@ -362,7 +362,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
 
@@ -460,10 +460,14 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .process-grid { grid-template-columns: 1fr; }
-            .before-after-container { grid-template-columns: 1fr; } /* Stack Before/After on mobile */
+            .before-after-container { grid-template-columns: 1fr; } 
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .header-actions { display: none; }
             .logo-container span { font-size: 1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -600,20 +604,35 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item fade-up" onclick="openModal('../assets/491289872_2262964914099318_2587479567921506127_n.jpg')">
-                    <img src="../assets/491289872_2262964914099318_2587479567921506127_n.jpg" alt="Under deck stone patio project" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-pool1.jpg')">
+                    <img src="../assets/hardscape-pool1.jpg" alt="Hardscape patio by the pool" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
                 </div>
-                <div class="gallery-item fade-up" onclick="openModal('../assets/493510972_2263828254012984_7970811034563245284_n.jpg')">
-                    <img src="../assets/493510972_2263828254012984_7970811034563245284_n.jpg" alt="Waterfront paver patio and fire pit" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-fireplace1.jpg')">
+                    <img src="../assets/hardscape-fireplace1.jpg" alt="Outdoor fire pit and waterfront patio" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
                 </div>
-                <div class="gallery-item fade-up" onclick="openModal('../assets/495041750_2268486860213790_1843607939366993840_n.jpg')">
-                    <img src="../assets/495041750_2268486860213790_1843607939366993840_n.jpg" alt="New grey composite deck construction" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/deck1.jpg')">
+                    <img src="../assets/deck1.jpg" alt="New composite deck build" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
                 </div>
-                <div class="gallery-item fade-up" onclick="openModal('../assets/515928357_2323463094716166_4957321669109377728_n.jpg')">
-                    <img src="../assets/515928357_2323463094716166_4957321669109377728_n.jpg" alt="Illuminated hardscape retaining wall at night" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/walkway1.jpg')">
+                    <img src="../assets/walkway1.jpg" alt="Illuminated stone retaining wall and walkway at night" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
                 </div>
-                <div class="gallery-item fade-up" onclick="openModal('../assets/482245939_1071563051444582_2731255209903381482_n.jpg')">
-                    <img src="../assets/482245939_1071563051444582_2731255209903381482_n.jpg" alt="Poolside stone patio and hardscaping" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-driveway1.jpg')">
+                    <img src="../assets/hardscape-driveway1.jpg" alt="Asphalt driveway with decorative paver border" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-porch1.jpg')">
+                    <img src="../assets/hardscape-porch1.jpg" alt="Under-deck stone paver patio" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-pool2.jpg')">
+                    <img src="../assets/hardscape-pool2.jpg" alt="Poolside landscaping, water feature, and stone path" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/walkway2.jpg')">
+                    <img src="../assets/walkway2.jpg" alt="Intricate paver and cobblestone walkway" onerror="this.src='https://placehold.co/400x400/152b1e/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-wall1.jpg')">
+                    <img src="../assets/hardscape-wall1.jpg" alt="Tiered landscape retaining wall" onerror="this.src='https://placehold.co/400x400/c67b3f/FFF?text=Project'">
+                </div>
+                <div class="gallery-item fade-up" onclick="openModal('../assets/hardscape-wall2.jpg')">
+                    <img src="../assets/hardscape-wall2.jpg" alt="Front yard stone retaining wall with landscaping" onerror="this.src='https://placehold.co/400x400/21402e/FFF?text=Project'">
                 </div>
             </div>
         </section>
