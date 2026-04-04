@@ -80,23 +80,23 @@
     .hero-copy { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin-bottom: 30px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     
-    /* CLICKABLE TEXT CTA HINT (Styled like Gym cards) */
+    /* CLICKABLE TEXT CTA HINT */
     .text-hint {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
       margin-top: 16px; padding: 16px 24px;
-      background-color: #ffffff; /* Solid white background */
-      border: 2px solid var(--border); /* Solid border */
+      background-color: #ffffff;
+      border: 2px solid var(--border);
       border-radius: 12px;
       font-size: 0.95rem; font-weight: 500; color: var(--text);
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.03); /* Subtle resting shadow */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
       transition: all 0.3s ease;
       cursor: pointer;
     }
     .text-hint:hover {
-      border-color: var(--brand); /* Turns brand color on hover */
-      box-shadow: 0 10px 20px rgba(138, 74, 51, 0.12); /* Larger shadow on hover */
-      transform: translateY(-2px); /* Lifts up on hover */
+      border-color: var(--brand);
+      box-shadow: 0 10px 20px rgba(138, 74, 51, 0.12);
+      transform: translateY(-2px);
     }
     .text-hint strong { color: var(--brand); transition: all 0.3s ease; }
     .text-hint:hover strong { color: var(--brand-dark); }
@@ -110,12 +110,47 @@
       box-shadow: var(--shadow);
       display: flex; flex-direction: column; gap: 16px;
     }
+
     .contact-item {
-      padding: 12px 16px; border-radius: 18px;
-      background: var(--surface-soft); border: 1px solid var(--border);
+      padding: 14px 16px; 
+      border-radius: 18px;
+      background: var(--surface-soft); 
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
     }
-    .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    
+    a.contact-item:hover {
+      background: #fff;
+      border-color: var(--brand);
+      box-shadow: 0 8px 16px rgba(138, 74, 51, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .contact-icon svg { width: 20px; height: 20px; }
+
+    .contact-text-wrap { display: flex; flex-direction: column; }
+    
+    .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
     .value { font-size: 1rem; font-weight: 700; }
+
     .bbb-box { margin-top: 10px; padding: 15px; border-radius: 18px; border: 1px dashed var(--brand); text-align: center; }
     .bbb-box img { width: 100%; max-width: 200px; height: auto; margin-top: 8px; }
 
@@ -209,7 +244,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand">
-        <img class="brand-logo" src="../assets/helpinghands-logo.jpg" alt="Helping Hands Logo">
+        <img class="brand-logo" src="../assets/LarryBallLogo.png" alt="Helping Hands Logo">
         <div class="brand-copy">
           <strong>Helping Hands</strong>
           <span>Gansevoort, NY</span>
@@ -242,18 +277,43 @@
         </div>
 
         <aside class="contact-card">
+          
           <div class="contact-item">
-            <div class="label">Owner</div>
-            <div class="value">Larry Ball</div>
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+            </div>
+            <div class="contact-text-wrap">
+              <span class="label">Owner</span>
+              <span class="value">Larry Ball</span>
+            </div>
           </div>
-          <div class="contact-item">
-            <div class="label">Call or Text</div>
-            <div class="value">(518) 223-5779</div>
-          </div>
-          <div class="contact-item">
-            <div class="label">Email</div>
-            <div class="value">balllarry81@gmail.com</div>
-          </div>
+
+          <a href="tel:+15182235779" class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+            </div>
+            <div class="contact-text-wrap">
+              <span class="label">Call or Text</span>
+              <span class="value">(518) 223-5779</span>
+            </div>
+          </a>
+
+          <a href="mailto:balllarry81@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div class="contact-text-wrap">
+              <span class="label">Email</span>
+              <span class="value">balllarry81@gmail.com</span>
+            </div>
+          </a>
+
           <div class="bbb-box">
             <div class="label">BBB Accredited • A+ Rating</div>
             <img src="../assets/BBB-AccreditedBusiness.png" alt="BBB Accredited Business Logo">
