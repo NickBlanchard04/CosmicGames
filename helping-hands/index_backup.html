@@ -2,997 +2,305 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Helping Hands Home Services | Home & Property Services in Gansevoort, NY</title>
-  <meta
-    name="description"
-    content="Helping Hands Home Services offers dependable home repairs, lawn care, light cleaning, and property maintenance in Gansevoort, NY and nearby communities."
-  />
-  <meta
-    name="keywords"
-    content="Helping Hands Home Services, handyman Gansevoort NY, lawn care Gansevoort, property maintenance, home repairs, deck builds, drywall, painting, siding"
-  />
-
-  <meta property="og:title" content="Helping Hands Home Services" />
-  <meta
-    property="og:description"
-    content="Reliable local help for your home and property in Gansevoort, NY."
-  />
-  <meta property="og:type" content="website" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  
+  <title>Helping Hands Home Services | Handyman & Repairs Gansevoort NY</title>
+  <meta name="description" content="Dependable home repairs, lawn care, and property maintenance in Gansevoort, NY. BBB Accredited A+ Rated handyman services. Call Larry Ball for a fair estimate." />
+  <meta name="keywords" content="handyman Gansevoort NY, home repairs Saratoga County, lawn care Gansevoort, property maintenance, drywall repair, deck building, Larry Ball" />
+  
   <style>
     :root {
-      --bg: #eeebe6;
-      --surface: #f6f4f1;
-      --card: #f8f7f5;
-      --text: #16181d;
-      --muted: #5f6b7a;
-      --line: #ddd3c7;
-      --brand: #a15b45;
-      --brand-dark: #884a37;
-      --pill: #f1ece7;
-      --shadow: 0 20px 45px rgba(25, 24, 22, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 16px;
-      --radius-sm: 999px;
-      --max: 1080px;
+      --bg: #f7f6f2;
+      --surface: rgba(255, 255, 255, 0.6); /* Glassmorphism Base */
+      --surface-soft: #f0f2ee;
+      --text: #1a1c19;
+      --muted: #5c635a;
+      --brand: #8a4a33; 
+      --brand-dark: #6e3b29;
+      --border: rgba(0, 0, 0, 0.08);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
+      --max: 1160px;
+      --radius: 28px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
     }
 
-    body.modal-open {
-      overflow: hidden;
-    }
+    .container { width: min(calc(100% - 30px), var(--max)); margin: 0 auto; }
 
-    img {
-      max-width: 100%;
-      display: block;
+    /* HEADER - MATCHING JASCO FORMATTING */
+    .topbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(247, 246, 242, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; min-height: 74px;
     }
-
-    .container {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand-logo { 
+      width: 52px; height: 52px; border-radius: 14px; 
+      object-fit: cover; border: 1px solid var(--border); 
+      background: #fff;
     }
+    .brand-copy strong { display: block; font-size: 1rem; line-height: 1.1; }
+    .brand-copy span { display: block; font-size: 0.84rem; color: var(--muted); margin-top: 2px; }
 
-    .section-card {
-      background: rgba(248, 247, 245, 0.92);
-      border: 1px solid rgba(221, 211, 199, 0.85);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-    }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(246, 244, 241, 0.82);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(221, 211, 199, 0.95);
-    }
-
-    .header-inner {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 8px 0;
-    }
-
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      background: #ece7e0;
-      flex-shrink: 0;
-    }
-
-    .brand-text {
-      min-width: 0;
-    }
-
-    .brand-title {
-      margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-subtitle {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
+    /* BUTTONS */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 1rem;
-      border: 1px solid var(--line);
-      transition: 0.18s ease;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 20px; border-radius: 999px;
+      font-weight: 700; text-decoration: none; transition: 0.2s ease;
+      font-size: 0.95rem;
     }
+    .btn-primary { background: var(--brand); color: #fff; border: none; box-shadow: 0 10px 20px rgba(138, 74, 51, 0.15); }
+    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); }
+    .btn-secondary { background: #fff; border: 1px solid var(--border); color: var(--text); }
+    .btn-secondary:hover { background: #f9f9f9; }
 
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      background: var(--brand);
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 10px 22px rgba(161, 91, 69, 0.22);
-    }
-
-    .btn-primary:hover {
-      background: var(--brand-dark);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.55);
-      color: var(--text);
-    }
-
-    .hero-shell {
-      padding: 28px 0 22px;
-    }
-
+    /* HERO GRID */
+    .hero { padding: 40px 0; }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 20px;
-      align-items: stretch;
+      display: grid; gap: 24px;
+      grid-template-columns: 1.2fr 0.8fr;
     }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 20px; }
+    .hero-copy { font-size: 1.1rem; color: var(--muted); max-width: 50ch; margin-bottom: 30px; }
+    .hero-actions { display: flex; gap: 12px; }
 
-    .hero-panel,
-    .contact-panel {
-      padding: 26px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      min-height: 38px;
-      padding: 0 14px;
-      border-radius: var(--radius-sm);
-      background: var(--pill);
-      border: 1px solid var(--line);
-      color: var(--brand-dark);
-      font-weight: 700;
-      font-size: 0.97rem;
-      letter-spacing: 0.01em;
-    }
-
-    .hero-title {
-      margin: 18px 0 18px;
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      font-weight: 900;
-      max-width: 8.5ch;
-    }
-
-    .hero-copy {
-      max-width: 640px;
-      margin: 0 0 22px;
-      font-size: 1.12rem;
-      color: #415065;
-      line-height: 1.65;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .trust-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.48);
-      border: 1px solid var(--line);
-      color: #455568;
-      font-weight: 600;
-    }
-
-    .contact-panel {
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-photo {
-      width: calc(100% + 52px);
-      margin: -26px -26px 22px;
-      aspect-ratio: 1.35 / 1;
-      object-fit: cover;
-      background: #ddd8d1;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .panel-label {
-      margin: 0 0 6px;
-      color: #607087;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.84rem;
-      font-weight: 800;
-    }
-
-    .contact-title {
-      margin: 0 0 8px;
-      font-size: 1.15rem;
-      line-height: 1.2;
-      font-weight: 800;
-    }
-
-    .contact-copy {
-      margin: 0 0 18px;
-      color: #4d5d71;
-      font-size: 1.03rem;
-      line-height: 1.55;
-    }
-
-    .info-stack {
-      display: grid;
-      gap: 12px;
-    }
-
-    .info-box {
-      border: 1px solid var(--line);
-      background: rgba(239, 235, 230, 0.55);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
-    }
-
-    .info-label {
-      margin: 0 0 4px;
-      color: #607087;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .info-value {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 800;
-      word-break: break-word;
-    }
-
-    .contact-actions {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .bbb-wrap {
-      margin-top: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.55);
-      border-radius: 18px;
-      padding: 12px;
-      text-align: center;
-    }
-
-    .bbb-note {
-      margin: 0 0 10px;
-      font-size: 0.9rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .bbb-badge {
-      width: 100%;
-      max-width: 260px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: white;
-    }
-
-    .content-section {
-      margin-top: 28px;
+    /* CONTACT CARD */
+    .contact-card {
+      background: #fff;
+      border-radius: var(--radius);
       padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 16px;
     }
-
-    .section-title {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      font-weight: 900;
+    .contact-item {
+      padding: 12px 16px; border-radius: 18px;
+      background: var(--surface-soft); border: 1px solid var(--border);
     }
+    .label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .value { font-size: 1rem; font-weight: 700; }
+    .bbb-box { margin-top: 10px; padding: 15px; border-radius: 18px; border: 1px dashed var(--brand); text-align: center; }
+    .bbb-box img { max-width: 180px; margin: 8px auto 0; }
 
-    .section-copy {
-      margin: 0 0 18px;
-      color: #546377;
-      font-size: 1.08rem;
-      max-width: 760px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr 1fr;
-      gap: 10px;
-      grid-template-areas:
-        "featured top1 top2"
-        "featured bottom1 bottom2";
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 22px;
-      background: #e5e0da;
-      min-height: 156px;
-      cursor: pointer;
-      border: 1px solid rgba(221, 211, 199, 0.85);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.03);
-    }
-
-    .gallery-item.featured {
-      grid-area: featured;
-      min-height: 324px;
-    }
-
-    .gallery-item:nth-child(2) { grid-area: top1; }
-    .gallery-item:nth-child(3) { grid-area: top2; }
-    .gallery-item:nth-child(4) { grid-area: bottom1; }
-    .gallery-item:nth-child(5) { grid-area: bottom2; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+    /* SERVICES - GLASSMORPHISM & INTERACTIVE GLOW */
+    .section-title { font-size: 2.2rem; letter-spacing: -0.03em; margin-bottom: 24px; }
+    .services-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 16px; 
+      margin-top: 20px; 
     }
 
     .service-card {
-      min-height: 108px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.45);
-      padding: 16px 18px;
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 24px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 14px;
-    }
-
-    .service-badge {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: var(--pill);
-      color: var(--brand-dark);
-      font-size: 0.9rem;
-      font-weight: 900;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(221, 211, 199, 0.85);
-    }
-
-    .service-name {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .final-cta {
-      margin: 28px 0 96px;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
       align-items: center;
     }
 
-    .final-title {
-      margin: 0 0 12px;
-      font-size: clamp(2.1rem, 4.2vw, 4rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      font-weight: 900;
-      max-width: 11ch;
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--brand);
+      box-shadow: 0 12px 24px rgba(138, 74, 51, 0.12);
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    .final-copy {
-      margin: 0;
-      color: #526175;
-      font-size: 1.08rem;
-      max-width: 520px;
-    }
-
-    .final-actions {
-      display: grid;
-      gap: 12px;
-    }
-
-    .final-actions .btn {
-      width: 100%;
-      min-height: 54px;
-      font-size: 1.03rem;
-    }
-
-    .mobile-sticky-bar {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1200;
-      background: rgba(246, 244, 241, 0.95);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(221, 211, 199, 0.95);
-      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-      display: none;
-      gap: 10px;
-    }
-
-    .mobile-sticky-bar .btn {
-      flex: 1;
-      min-height: 52px;
-      padding: 0 12px;
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(12, 13, 17, 0.78);
+    .service-num {
+      background: var(--surface-soft);
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.22s ease;
-      z-index: 2000;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--brand);
+      border: 1px solid var(--border);
     }
 
-    .lightbox.active {
-      opacity: 1;
-      visibility: visible;
+    .service-card h3 { margin: 0; font-size: 1.1rem; font-weight: 800; }
+    .service-card p { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .gallery-tile { aspect-ratio: 1/1; border-radius: 20px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); }
+    .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+    .gallery-tile:hover img { transform: scale(1.05); }
+
+    /* LIGHTBOX */
+    .modal {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal.active { display: flex; }
+    .modal-content { position: relative; max-width: 1000px; width: 100%; }
+    .modal-img { width: 100%; border-radius: 15px; max-height: 85vh; object-fit: contain; }
+    .modal-close {
+      position: absolute; top: -20px; right: -20px;
+      background: #fff; border: none; width: 40px; height: 40px;
+      border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    .lightbox-dialog {
-      position: relative;
-      width: min(100%, 1080px);
-      max-height: 92vh;
-      transform: scale(0.96);
-      transition: transform 0.22s ease;
-    }
-
-    .lightbox.active .lightbox-dialog {
-      transform: scale(1);
-    }
-
-    .lightbox-image {
-      width: 100%;
-      max-height: 92vh;
-      object-fit: contain;
-      border-radius: 22px;
-      background: #111;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.32);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(19, 21, 26, 0.72);
-      color: white;
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .final-cta {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        max-width: 9ch;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-          "featured featured"
-          "top1 top2"
-          "bottom1 bottom2";
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .header-inner {
-        min-height: 72px;
-      }
-
-      .brand-title {
-        font-size: 1.06rem;
-      }
-
-      .brand-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .header-actions {
-        display: none;
-      }
-
-      .hero-shell {
-        padding-top: 16px;
-      }
-
-      .hero-panel,
-      .contact-panel,
-      .content-section,
-      .final-cta {
-        padding: 18px;
-      }
-
-      .hero-title,
-      .section-title,
-      .final-title {
-        max-width: none;
-      }
-
-      .hero-title {
-        font-size: clamp(2.8rem, 13vw, 4.1rem);
-      }
-
-      .contact-photo {
-        width: calc(100% + 36px);
-        margin: -18px -18px 18px;
-        aspect-ratio: 1.45 / 1;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      .gallery-item,
-      .gallery-item.featured {
-        min-height: 130px;
-      }
-
-      .gallery-item.featured {
-        min-height: 220px;
-      }
-
-      .services-grid {
-        gap: 10px;
-      }
-
-      .service-card {
-        min-height: 96px;
-        border-radius: 18px;
-        padding: 14px;
-      }
-
-      .mobile-sticky-bar {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .container {
-        width: min(calc(100% - 20px), var(--max));
-      }
-
-      .header-inner {
-        width: min(calc(100% - 20px), var(--max));
-      }
-
-      .brand-logo {
-        width: 48px;
-        height: 48px;
-      }
-
-      .hero-actions,
-      .final-actions {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions .btn,
-      .final-actions .btn {
-        width: 100%;
-      }
-
-      .trust-pills {
-        gap: 8px;
-      }
-
-      .trust-pill {
-        font-size: 0.92rem;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .service-name {
-        font-size: 0.96rem;
-      }
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .top-actions .btn-secondary { display: none; }
     }
   </style>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "Helping Hands Home Services",
-      "telephone": "+1-518-223-5779",
-      "email": "balllarry81@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "535 Selfridge Road",
-        "addressLocality": "Gansevoort",
-        "addressRegion": "NY",
-        "postalCode": "12831",
-        "addressCountry": "US"
-      },
-      "areaServed": [
-        "Gansevoort, NY",
-        "Wilton, NY",
-        "South Glens Falls, NY",
-        "Saratoga County, NY"
-      ],
-      "founder": "Larry Ball",
-      "url": "https://cosmicgames.info/helping-hands/"
-    }
-  </script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#top" class="brand-wrap">
-        <!-- REPLACE WITH REAL LOGO OR SQUARE BRAND IMAGE -->
-        <img
-          class="brand-logo"
-          src="../assets/helpinghands-logo.jpg"
-          alt="Helping Hands Home Services logo"
-        />
 
-        <div class="brand-text">
-          <p class="brand-title">Helping Hands Home Services</p>
-          <p class="brand-subtitle">Gansevoort, NY • Home &amp; property services</p>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="brand">
+        <img class="brand-logo" src="../assets/helpinghands-logo.jpg" alt="Helping Hands Logo">
+        <div class="brand-copy">
+          <strong>Helping Hands</strong>
+          <span>Gansevoort, NY</span>
         </div>
       </a>
-
-      <div class="header-actions">
+      <div class="top-actions">
         <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Email</a>
-        <a class="btn btn-primary" href="tel:15182235779">Call Now</a>
+        <a class="btn btn-primary" href="tel:+15182235779">Call Now</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero-shell">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="section-card hero-panel">
-            <div class="eyebrow">Reliable local help for your home and property</div>
-
-            <h1 class="hero-title">
-              No job too small. Just honest help that gets done right.
-            </h1>
-
-            <p class="hero-copy">
-              Helping Hands Home Services offers dependable home repairs, lawn care,
-              light cleaning, and property maintenance for homeowners in Gansevoort
-              and nearby communities. When something needs attention, you want someone
-              fair, responsive, and easy to trust.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tel:15182235779">Call now</a>
-              <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Get a quote</a>
-            </div>
-
-            <div class="trust-pills">
-              <div class="trust-pill">Fair estimates</div>
-              <div class="trust-pill">Owner-operated</div>
-              <div class="trust-pill">Serving Gansevoort, NY</div>
-            </div>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <h1>No job too small. Just honest help done right.</h1>
+          <p class="hero-copy">
+            Dependable home repairs, lawn care, and property maintenance. 
+            When you need someone fair and responsive in Gansevoort, Larry is here to help.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+15182235779">Call (518) 223-5779</a>
+            <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Get a Quote</a>
           </div>
-
-          <aside class="section-card contact-panel">
-            <!-- REPLACE WITH YOUR MAIN BUSINESS IMAGE -->
-            <img
-              class="contact-photo"
-              src="../assets/helpinghands-cover.jpg"
-              alt="Helping Hands Home Services business photo"
-            />
-
-            <p class="panel-label">Contact</p>
-            <h2 class="contact-title">Helping Hands Home Services</h2>
-            <p class="contact-copy">
-              Owned by Larry Ball. Local home, lawn, and property help with a
-              straightforward, neighborly approach.
-            </p>
-
-            <div class="info-stack">
-              <div class="info-box">
-                <p class="info-label">Owner</p>
-                <p class="info-value">Larry Ball</p>
-              </div>
-
-              <div class="info-box">
-                <p class="info-label">Phone</p>
-                <p class="info-value">(518) 223-5779</p>
-              </div>
-
-              <div class="info-box">
-                <p class="info-label">Email</p>
-                <p class="info-value">balllarry81@gmail.com</p>
-              </div>
-            </div>
-
-            <div class="contact-actions">
-              <a class="btn btn-primary" href="tel:15182235779">Call now</a>
-              <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Email for an estimate</a>
-            </div>
-
-            <!-- BBB LOGO SPOT -->
-            <div class="bbb-wrap">
-              <p class="bbb-note">BBB Accredited • A+ Rated</p>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View Better Business Bureau profile"
-              >
-                <img
-                  class="bbb-badge"
-                  src="../assets/BBB-AccreditedBusiness.png"
-                  alt="BBB Accredited Business badge"
-                />
-              </a>
-            </div>
-          </aside>
         </div>
+
+        <aside class="contact-card">
+          <div class="contact-item">
+            <div class="label">Owner</div>
+            <div class="value">Larry Ball</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Direct Line</div>
+            <div class="value">(518) 223-5779</div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value">balllarry81@gmail.com</div>
+          </div>
+          <div class="bbb-box">
+            <div class="label">BBB Accredited • A+ Rating</div>
+            <img src="../assets/BBB-AccreditedBusiness.png" alt="BBB Badge">
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="container section-card content-section" id="gallery">
-      <h2 class="section-title">Recent work</h2>
-      <p class="section-copy">
-        Use this section to show the quality of the work right away. Swap these file
-        names later with real project photos inside your <strong>/assets</strong> folder.
-      </p>
-
-      <div class="gallery-grid">
-        <!-- CHANGE THESE IMAGE FILE NAMES LATER -->
-        <div class="gallery-item featured">
-          <img src="../assets/photo1.jpg" alt="Project photo 1" />
-        </div>
-        <div class="gallery-item">
-          <img src="../assets/photo2.jpg" alt="Project photo 2" />
-        </div>
-        <div class="gallery-item">
-          <img src="../assets/photo3.jpg" alt="Project photo 3" />
-        </div>
-        <div class="gallery-item">
-          <img src="../assets/photo4.jpg" alt="Project photo 4" />
-        </div>
-        <div class="gallery-item">
-          <img src="../assets/photo5.jpg" alt="Project photo 5" />
-        </div>
-      </div>
-    </section>
-
-    <section class="container section-card content-section" id="services">
-      <h2 class="section-title">Services</h2>
-      <p class="section-copy">
-        Short, clear services keep the page easy to scan on mobile. You can rename,
-        remove, or add these cards anytime.
-      </p>
-
+    <section class="container" style="padding: 40px 0;">
+      <h2 class="section-title">What can we help with?</h2>
       <div class="services-grid">
-        <div class="service-card">
-          <div class="service-badge">01</div>
-          <p class="service-name">Handyman repairs</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">02</div>
-          <p class="service-name">Flooring</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">03</div>
-          <p class="service-name">Siding</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">04</div>
-          <p class="service-name">Deck builds</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">05</div>
-          <p class="service-name">Drywall</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">06</div>
-          <p class="service-name">Painting</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">07</div>
-          <p class="service-name">Lawn care</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">08</div>
-          <p class="service-name">Property maintenance</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-badge">09</div>
-          <p class="service-name">Light cleaning</p>
-        </div>
+        <article class="service-card">
+          <div class="service-num">01</div>
+          <h3>Repairs</h3>
+          <p>Small fixes & drywall</p>
+        </article>
+        <article class="service-card">
+          <div class="service-num">02</div>
+          <h3>Lawn Care</h3>
+          <p>Mowing & edging</p>
+        </article>
+        <article class="service-card">
+          <div class="service-num">03</div>
+          <h3>Cleaning</h3>
+          <p>Move-in/out & light tidy</p>
+        </article>
+        <article class="service-card">
+          <div class="service-num">04</div>
+          <h3>Deck/Siding</h3>
+          <p>Power washing & minor builds</p>
+        </article>
+        <article class="service-card">
+          <div class="service-num">05</div>
+          <h3>Maintenance</h3>
+          <p>Seasonal upkeep</p>
+        </article>
       </div>
     </section>
 
-    <section class="container section-card final-cta">
-      <div>
-        <h2 class="final-title">Need help with something around the house or property?</h2>
-        <p class="final-copy">
-          From repairs and maintenance to cleanup and lawn work, Helping Hands Home
-          Services is ready to talk through the job and give you a fair estimate.
-          Reach out today and get the conversation started.
-        </p>
-      </div>
-
-      <div class="final-actions">
-        <a class="btn btn-primary" href="tel:15182235779">Call (518) 223-5779</a>
-        <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Email balllarry81@gmail.com</a>
+    <section class="container" style="padding-bottom: 80px;">
+      <h2 class="section-title">Recent Work</h2>
+      <div class="gallery-grid">
+        <div class="gallery-tile"><img src="../assets/photo1.jpg" alt="Handyman work"></div>
+        <div class="gallery-tile"><img src="../assets/photo2.jpg" alt="Property maintenance"></div>
+        <div class="gallery-tile"><img src="../assets/photo3.jpg" alt="Lawn care"></div>
+        <div class="gallery-tile"><img src="../assets/photo4.jpg" alt="Home repairs"></div>
+        <div class="gallery-tile"><img src="../assets/photo5.jpg" alt="Deck work"></div>
       </div>
     </section>
   </main>
 
-  <div class="mobile-sticky-bar">
-    <a class="btn btn-primary" href="tel:15182235779">Call now</a>
-    <a class="btn btn-secondary" href="mailto:balllarry81@gmail.com">Email</a>
-  </div>
+  <footer style="text-align: center; padding: 40px 0; color: var(--muted); border-top: 1px solid var(--border);">
+    <p>&copy; 2026 Helping Hands Home Services. All rights reserved.</p>
+  </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-dialog">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
-      <img class="lightbox-image" id="lightboxImage" src="" alt="Expanded gallery image" />
+  <div class="modal" id="lb">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeLB()" aria-label="Close image">&times;</button>
+      <img src="" id="lb-img" class="modal-img" alt="Enlarged gallery photo">
     </div>
   </div>
 
   <script>
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const galleryImages = document.querySelectorAll(".gallery-item img");
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "Expanded gallery image";
-      lightbox.classList.add("active");
-      document.body.classList.add("modal-open");
-      lightbox.setAttribute("aria-hidden", "false");
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-      document.body.classList.remove("modal-open");
-      lightbox.setAttribute("aria-hidden", "true");
-      setTimeout(() => {
-        lightboxImage.src = "";
-      }, 180);
-    }
-
-    galleryImages.forEach((img) => {
-      img.addEventListener("click", () => {
-        openLightbox(img.src, img.alt);
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
+    const modal = document.getElementById('lb');
+    const lbImg = document.getElementById('lb-img');
+    
+    document.querySelectorAll('.gallery-tile img').forEach(img => {
+      img.onclick = () => {
+        lbImg.src = img.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox.classList.contains("active")) {
-        closeLightbox();
-      }
-    });
+    function closeLB() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    modal.onclick = (e) => { if(e.target === modal) closeLB(); }
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLB(); });
   </script>
 </body>
 </html>
