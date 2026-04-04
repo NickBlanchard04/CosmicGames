@@ -49,20 +49,14 @@
     }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
     
-    .header-logo-accent {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      background-color: var(--brand);
-      position: relative;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
+    /* Transparent, borderless logo */
     .brand-logo { 
-      width: 44px; height: 44px; 
-      border-radius: 6px; 
+      width: 56px; height: 56px; 
+      border-radius: 12px; 
       object-fit: contain; 
-      cursor: pointer; 
+      cursor: pointer;
+      background: transparent;
+      border: none;
     }
     
     .brand-copy strong { display: block; font-size: 1rem; line-height: 1.1; }
@@ -260,9 +254,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand">
-        <div class="header-logo-accent">
-          <img class="brand-logo" src="../assets/LarryBallLogo.png" alt="Helping Hands Logo">
-        </div>
+        <img class="brand-logo" src="../assets/LarryBallLogo.png" alt="Helping Hands Logo">
         <div class="brand-copy">
           <strong>Helping Hands</strong>
           <span>Gansevoort, NY</span>
@@ -470,7 +462,6 @@
       document.body.style.overflow = 'hidden';
     }
 
-    // Function to close specifically the logo lightbox
     function closeLogoLB() {
       logoModal.classList.remove('active');
       document.body.style.overflow = 'auto';
@@ -482,7 +473,6 @@
 
     logoModal.onclick = (e) => { if(e.target === logoModal) closeLogoLB(); }
 
-    // Keydown listener updated to handle both modals
     document.addEventListener('keydown', (e) => { 
       if(e.key === 'Escape') {
         closeLB();
