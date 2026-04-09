@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Alpha Tree Service | Professional Tree Care & Removal in Troy, NY</title>
+  <meta name="description" content="Alpha Tree Service is a professional tree care company based in Troy, NY. They specialize in tree removal, pruning, and stump grinding services for residential and commercial properties." />
+  <meta name="keywords" content="tree service Troy NY, tree removal, pruning, stump grinding, free estimates, fully insured, Alpha Tree Service" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Alpha Tree Service" />
+  <meta name="theme-color" content="#f26f21" />
+
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --surface: #ffffff;
+      --surface-soft: #f1f1f1;
+      --text: #1a1a1a;
+      --muted: #555555;
+      --primary: #f26f21; /* Alpha Tree Service Orange */
+      --primary-dark: #cc5a1b;
+      --black-brand: #111111;
+      --border: rgba(17, 17, 17, 0.10);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      --max: 1160px;
+      --header-h: 80px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
+
+    .container {
+      width: min(calc(100% - 24px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* Trust Badges */
+    .trust-banner {
+      background: var(--black-brand);
+      color: #fff;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .trust-banner span {
+      color: var(--primary);
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .topbar-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand-logo {
+      width: 140px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(242, 111, 33, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--black-brand);
+      color: var(--black-brand);
+    }
+
+    .btn-secondary:hover {
+      background: var(--black-brand);
+      color: #fff;
+    }
+
+    section { padding: 80px 0; }
+
+    /* Funnel Stage 1: Awareness (Hero) */
+    .hero {
+      padding: 40px 0 60px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-card {
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      color: var(--black-brand);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1 span { color: var(--primary); }
+
+    .hero-copy {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 50ch;
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .contact-card {
+      background: var(--black-brand);
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--primary);
+    }
+
+    .contact-logo img {
+      width: 100%;
+      max-width: 250px;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .contact-item {
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-item:last-child { border: none; padding-bottom: 0; }
+
+    .contact-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .contact-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .contact-value a { color: #fff; }
+
+    /* Funnel Stage 2: Interest (Services) */
+    .section-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--black-brand);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-head p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .service-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(242, 111, 33, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    /* Funnel Stage 3: Desire (Reviews / Social Proof) */
+    .reviews-section {
+      background: var(--black-brand);
+      color: #fff;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+
+    .reviews-section .section-head h2 { color: #fff; }
+    .reviews-section .section-head p { color: #ccc; }
+
+    .scroller {
+      max-width: 100%;
+      overflow: hidden;
+      -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    }
+
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+      flex-wrap: nowrap;
+      animation: scroll 40s forwards linear infinite;
+    }
+
+    .scroller[data-animated="true"]:hover .scroller__inner {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      to { transform: translate(calc(-50% - 10px)); }
+    }
+
+    .review-card {
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 8px;
+      width: 350px;
+      flex-shrink: 0;
+    }
+
+    .stars { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.95rem; font-style: italic; color: #ddd; margin-bottom: 15px; }
+    .review-author { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+
+    /* Funnel Stage 4: Action (Gallery & Final CTA) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .gallery-tile {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      position: relative;
+    }
+
+    .gallery-tile.featured {
+      grid-column: 1 / -1;
+      aspect-ratio: 21/9;
+    }
+
+    .badge-before-after {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      z-index: 10;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-tile:hover img { transform: scale(1.05); }
+
+    .cta-banner {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 40px;
+      border-radius: 12px;
+    }
+
+    .cta-banner h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; }
+    .cta-banner .btn { background: var(--black-brand); color: #fff; }
+    .cta-banner .btn:hover { background: #fff; color: var(--black-brand); }
+
+    /* Responsive */
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 50px; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+      .gallery-tile.featured { grid-column: span 2; aspect-ratio: 16/9; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .btn { width: 100%; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile.featured { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="trust-banner">
+    100% Fully Insured &nbsp;|&nbsp; <span>Free Estimates</span> &nbsp;|&nbsp; Professional Arborists
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Alpha Tree Service home">
+        <img src="AlphaTreeService.jpg" alt="Alpha Tree Service Logo" class="brand-logo" />
+      </a>
+      <div class="top-actions">
+        <a class="btn btn-primary" href="tel:+15184510089">CALL: (518) 451-0089</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <h1>Stop Worrying About <span>Dangerous Trees.</span></h1>
+          <p class="hero-copy">
+            Alpha Tree Service is a professional tree care company based in Troy, NY. We specialize in safe, efficient tree removal, pruning, and stump grinding for both residential and commercial properties. 
+          </p>
+          <p class="hero-copy">
+            Our team is dedicated to maintaining the health and beauty of your trees while ensuring the absolute safety of surrounding structures.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+15184510089">Claim Your Free Estimate Now</a>
+            <a class="btn btn-secondary" href="#services">Explore Our Services</a>
+          </div>
+        </div>
+
+        <aside class="contact-card" aria-label="Direct Contact">
+          <div class="contact-logo">
+            <img src="AlphaTreeService.jpg" alt="Alpha Tree Service Logo" />
+          </div>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-label">Owner & Operator</div>
+              <div class="contact-value">George Gary Conrad</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Direct Line</div>
+              <div class="contact-value">
+                <a href="tel:+15184510089">(518) 451-0089</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Headquarters</div>
+              <div class="contact-value">
+                416 Seventh Ave<br>Troy, NY 12182
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Protect Your Property: Choose the Right Service</h2>
+          <p>Whether you need a massive hazard removed or seasonal maintenance, our experienced arborists have the tools and expertise to handle it safely.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">01</div>
+            <h3>Tree Removal</h3>
+            <p>Safe and efficient removal of dead, diseased, or hazardous trees from your property.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">02</div>
+            <h3>Expert Pruning</h3>
+            <p>Professional trimming to maintain the health and beauty of your trees and prevent property damage.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">03</div>
+            <h3>Stump Grinding</h3>
+            <p>Complete removal of ugly stumps to reclaim your yard and eliminate tripping hazards.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">04</div>
+            <h3>Emergency Storm Prep</h3>
+            <p>Proactive cutting back of hazardous branches that could potentially harm your house during heavy storms.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">05</div>
+            <h3>Debris Cleanup</h3>
+            <p>We respect your property. Every job includes thorough cleanup of falling branches and surrounding areas.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">06</div>
+            <h3>Lot Clearing</h3>
+            <p>Comprehensive clearing of trees and brush for residential and commercial development projects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Don't Just Take Our Word For It</h2>
+          <p>See why Troy, NY homeowners trust us with their biggest tree challenges.</p>
+        </div>
+
+        <div class="scroller" data-animated="true">
+          <ul class="scroller__inner" style="list-style: none; padding: 0; margin: 0;">
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Excellent Service and great job... best price! You have to call ALPHA for a quote"</p>
+              <div class="review-author">— Rich H., Troy, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Alpha Tree Service removed a large tree in my backyard... provided a free estimate. The price was reasonable... They got the job done quickly and without any issues."</p>
+              <div class="review-author">— Andrea H., Poughkeepsie, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"...undertook a massive job cutting back a willow tree that potentially could come down in a storm... worked for 6 hours and trimmed the tree and cleaned the surrounding area... highly recommend."</p>
+              <div class="review-author">— Sheryl S., Altamont, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Great job taking 3 tree's down! Very reasonable, efficient and professional! Thank you for your service today!"</p>
+              <div class="review-author">— Den B., Clifton Park, NY</div>
+            </li>
+             <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"...did excellent work and even gave me some recommendations... gave a reasonable estimate, did the work in a timely matter, did not leave a mess, were very respectful... 100% satisfied!"</p>
+              <div class="review-author">— Michelle W., Cohoes, NY</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Proof is in the Property: View Our Work</h2>
+          <p>Check out our recent residential and commercial projects.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-tile featured">
+            <div class="badge-before-after">Before & After</div>
+            <img src="https://loremflickr.com/1200/600/tree,yard" alt="Before and After yard transformation" />
+          </div>
+
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/chainsaw" alt="Arborist using chainsaw" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/tree,removal" alt="Large tree branch removal" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/stump,grinder" alt="Stump grinding machine" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/woodchipper" alt="Woodchipper clearing debris" />
+          </div>
+        </div>
+
+        <div class="cta-banner">
+          <h2>Ready to Reclaim Your Property?</h2>
+          <p style="margin-bottom: 25px; font-size: 1.2rem;">Don't wait for a storm to take down a hazardous tree. Get professional, insured care today.</p>
+          <a class="btn btn-primary" style="background:#111; color:#fff;" href="tel:+15184510089">CLAIM YOUR FREE ESTIMATE NOW</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Duplicate the reviews to ensure seamless infinite scrolling
+    const scrollers = document.querySelectorAll(".scroller");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
