@@ -5,92 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <title>Alpha Tree Service | Professional Tree Care in Troy, NY</title>
-  <meta name="description" content="Alpha Tree Service is a professional tree care company based in Troy, NY specializing in tree removal, pruning, and stump grinding for residential and commercial properties." />
-  <meta name="keywords" content="tree service Troy NY, tree removal Troy, pruning, stump grinding, arborists Capital Region, Alpha Tree Service" />
+  <title>Alpha Tree Service | Professional Tree Care & Removal in Troy, NY</title>
+  <meta name="description" content="Alpha Tree Service is a professional tree care company based in Troy, NY. They specialize in tree removal, pruning, and stump grinding services for residential and commercial properties." />
+  <meta name="keywords" content="tree service Troy NY, tree removal, pruning, stump grinding, free estimates, fully insured, Alpha Tree Service" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Alpha Tree Service" />
-  <meta name="theme-color" content="#234f2f" />
-
-  <meta property="og:title" content="Alpha Tree Service | Troy, NY" />
-  <meta property="og:description" content="Professional tree care, removal, and pruning services in Troy, NY and surrounding areas." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Alpha Tree Service | Troy, NY" />
-  <meta name="twitter:description" content="Professional tree care and removal for residential and commercial properties." />
+  <meta name="theme-color" content="#f26f21" />
 
   <style>
     :root {
-      --bg: #f5f4ef;
-      --surface: rgba(255,255,255,0.88);
-      --surface-soft: #eef3ed;
-      --text: #122117;
-      --muted: #556258;
-      --primary: #234f2f;
-      --primary-dark: #193b22;
-      --border: rgba(18, 33, 23, 0.10);
-      --shadow: 0 18px 45px rgba(18, 33, 23, 0.08);
+      --bg: #f9f9f9;
+      --surface: #ffffff;
+      --surface-soft: #f1f1f1;
+      --text: #1a1a1a;
+      --muted: #555555;
+      --primary: #f26f21; /* Alpha Tree Service Orange */
+      --primary-dark: #cc5a1b;
+      --black-brand: #111111;
+      --border: rgba(17, 17, 17, 0.10);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
       --max: 1160px;
-      --header-h: 74px;
+      --header-h: 80px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at top right, rgba(122, 161, 103, 0.10), transparent 28%),
-        linear-gradient(180deg, #f8f7f2 0%, var(--bg) 100%);
-      line-height: 1.5;
+      background: var(--bg);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    h1, h2, h3, p {
-      margin: 0;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
 
     .container {
       width: min(calc(100% - 24px), var(--max));
       margin: 0 auto;
     }
 
+    /* Trust Badges */
+    .trust-banner {
+      background: var(--black-brand);
+      color: #fff;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .trust-banner span {
+      color: var(--primary);
+    }
+
+    /* Header */
     .topbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(245, 244, 239, 0.92);
-      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .topbar-inner {
@@ -99,75 +82,50 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 12px 0;
+      padding: 10px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      min-width: 0;
+      gap: 15px;
     }
 
     .brand-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, #dce8d6, #ffffff);
-      overflow: hidden;
+      width: 140px;
+      height: auto;
       flex-shrink: 0;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-copy strong {
-      display: block;
-      font-size: 1rem;
-      line-height: 1.1;
-    }
-
-    .brand-copy span {
-      display: block;
-      font-size: 0.84rem;
-      color: var(--muted);
-      margin-top: 2px;
     }
 
     .top-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+      gap: 12px;
     }
 
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 17px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: 1px solid transparent;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-      -webkit-tap-highlight-color: transparent;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
       text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
-    .btn:active {
-      transform: translateY(1px) scale(0.995);
-    }
+    .btn:active { transform: scale(0.98); }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 10px 24px rgba(35, 79, 47, 0.18);
+      box-shadow: 0 10px 20px rgba(242, 111, 33, 0.2);
     }
 
     .btn-primary:hover {
@@ -175,474 +133,299 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.82);
-      border-color: var(--border);
-      color: var(--text);
+      background: transparent;
+      border-color: var(--black-brand);
+      color: var(--black-brand);
     }
 
     .btn-secondary:hover {
-      background: #fff;
+      background: var(--black-brand);
+      color: #fff;
     }
 
-    section {
-      padding: 20px 0;
-    }
+    section { padding: 80px 0; }
 
+    /* Funnel Stage 1: Awareness (Hero) */
     .hero {
-      padding: 24px 0 18px;
+      padding: 40px 0 60px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+      border-bottom: 1px solid var(--border);
     }
 
     .hero-grid {
       display: grid;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .hero-card,
-    .contact-card {
-      padding: 16px 18px 20px;
-      height: 100%;
-    }
-
-    .service-card,
-    .gallery-tile,
-    .footer-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      gap: 30px;
+      align-items: center;
     }
 
     .hero-card {
-      border-radius: 28px;
-      padding: 24px;
+      padding: 20px 0;
     }
 
     h1 {
-      font-size: clamp(2.1rem, 7vw, 4.3rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-      max-width: 12ch;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      color: var(--black-brand);
+      margin-bottom: 20px;
+      text-transform: uppercase;
     }
 
+    h1 span { color: var(--primary); }
+
     .hero-copy {
-      font-size: 1rem;
+      font-size: 1.15rem;
       color: var(--muted);
-      max-width: 54ch;
-      margin-bottom: 12px;
+      max-width: 50ch;
+      margin-bottom: 20px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
+      gap: 15px;
+      margin-top: 30px;
     }
 
     .contact-card {
-      backdrop-filter: blur(6px);
-      border-radius: 28px;
-      padding: 20px;
-      display: grid;
-      gap: 16px;
-      background: linear-gradient(180deg, #ffffff 0%, #f3f6f1 100%);
-      border: 1px solid rgba(35, 79, 47, 0.12);
-      box-shadow: 0 20px 50px rgba(18, 33, 23, 0.08);
-    }
-
-    .contact-logo {
-      border-radius: 20px;
-      background: #ffffff;
-      padding: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid rgba(35, 79, 47, 0.08);
+      background: var(--black-brand);
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--primary);
     }
 
     .contact-logo img {
       width: 100%;
-      height: 100%;
-      max-height: 240px;
-      max-width: 85%;
-      object-fit: contain;
-      border-radius: 14px;
+      max-width: 250px;
+      margin: 0 auto 20px;
+      border-radius: 8px;
     }
 
     .contact-list {
       display: grid;
-      gap: 10px;
+      gap: 15px;
     }
 
     .contact-item {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
+    .contact-item:last-child { border: none; padding-bottom: 0; }
+
     .contact-label {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      color: var(--primary);
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .contact-value {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      word-break: break-word;
     }
 
+    .contact-value a { color: #fff; }
+
+    /* Funnel Stage 2: Interest (Services) */
     .section-head {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 18px;
+      text-align: center;
+      margin-bottom: 50px;
     }
 
     .section-head h2 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--black-brand);
+      text-transform: uppercase;
+      margin-bottom: 15px;
     }
 
-    .gallery-grid,
+    .section-head p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .services-grid {
       display: grid;
-      gap: 12px;
-    }
-
-    .gallery-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .gallery-tile {
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      padding: 10px;
-      border: 1.5px solid rgba(35, 79, 47, 0.18);
-      overflow: hidden;
-      position: relative;
-      background: linear-gradient(135deg, rgba(122, 161, 103, 0.14), rgba(255,255,255,0.96));
-      cursor: pointer;
-    }
-
-    .gallery-tile::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 14px;
-      border: 1px dashed rgba(35, 79, 47, 0.18);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .gallery-inner {
-      height: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.44);
-      position: relative;
-      z-index: 1;
-    }
-
-    .gallery-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.28s ease;
-    }
-
-    .gallery-tile:hover .gallery-inner img {
-      transform: scale(1.03);
-    }
-
-    .services-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
 
     .service-card {
-      border-radius: 18px;
-      padding: 14px;
-      min-height: 112px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
 
-    .service-card h3 {
-      font-size: 0.98rem;
-      line-height: 1.2;
-    }
+    .service-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
     .service-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
+      width: 60px;
+      height: 60px;
+      background: rgba(242, 111, 33, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
-      background: rgba(122, 161, 103, 0.14);
-      border: 1px solid rgba(35, 79, 47, 0.10);
-      color: var(--primary);
-      font-size: 0.95rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
       font-weight: 800;
+      margin-bottom: 10px;
     }
 
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(7, 12, 9, 0.82);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.25s ease, visibility 0.25s ease;
-    }
-
-    .modal.is-open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .modal-dialog {
-      position: relative;
-      width: min(100%, 1100px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform: scale(0.96);
-      transition: transform 0.25s ease;
-    }
-
-    .modal.is-open .modal-dialog {
-      transform: scale(1);
-    }
-
-    .modal-image-wrap {
-      width: 100%;
-      max-height: 88vh;
-      border-radius: 22px;
+    /* Funnel Stage 3: Desire (Reviews / Social Proof) */
+    .reviews-section {
+      background: var(--black-brand);
+      color: #fff;
       overflow: hidden;
-      background: #fff;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+      padding: 80px 0;
     }
 
-    .modal-image {
-      display: block;
-      width: 100%;
-      max-height: 88vh;
-      object-fit: contain;
-      background: #fff;
+    .reviews-section .section-head h2 { color: #fff; }
+    .reviews-section .section-head p { color: #ccc; }
+
+    .scroller {
+      max-width: 100%;
+      overflow: hidden;
+      -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
     }
 
-    .modal-close {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 48px;
-      height: 48px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.96);
-      color: #122117;
-      font-size: 1.7rem;
-      line-height: 1;
-      cursor: pointer;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    footer {
-      padding: 24px 0 calc(98px + env(safe-area-inset-bottom));
+    .scroller[data-animated="true"] .scroller__inner {
+      flex-wrap: nowrap;
+      animation: scroll 40s forwards linear infinite;
     }
 
-    .sticky-callbar {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 999;
-      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(245, 244, 239, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid var(--border);
+    .scroller[data-animated="true"]:hover .scroller__inner {
+      animation-play-state: paused;
     }
 
-    .sticky-callbar .inner {
-      width: min(calc(100% - 4px), 720px);
-      margin: 0 auto;
+    @keyframes scroll {
+      to { transform: translate(calc(-50% - 10px)); }
+    }
+
+    .review-card {
+      background: #1e1e1e;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 8px;
+      width: 350px;
+      flex-shrink: 0;
+    }
+
+    .stars { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.95rem; font-style: italic; color: #ddd; margin-bottom: 15px; }
+    .review-author { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+
+    /* Funnel Stage 4: Action (Gallery & Final CTA) */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
 
-    .sticky-callbar .btn {
+    .gallery-tile {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      position: relative;
+    }
+
+    .gallery-tile.featured {
+      grid-column: 1 / -1;
+      aspect-ratio: 21/9;
+    }
+
+    .badge-before-after {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: #fff;
+      padding: 8px 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      z-index: 10;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .gallery-tile img {
       width: 100%;
-      min-height: 52px;
-      font-size: 0.98rem;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
     }
 
-    @media (min-width: 700px) {
-      .hero {
-        padding-top: 42px;
-      }
+    .gallery-tile:hover img { transform: scale(1.05); }
 
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .gallery-tile:nth-child(1),
-      .gallery-tile:nth-child(6) {
-        grid-column: span 2;
-        aspect-ratio: 2 / 1;
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      footer {
-        padding-bottom: calc(38px + env(safe-area-inset-bottom));
-      }
-
-      .sticky-callbar {
-        display: none;
-      }
+    .cta-banner {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 40px;
+      border-radius: 12px;
     }
 
-    @media (max-width: 520px) {
-      .top-actions .btn-secondary {
-        display: none;
-      }
+    .cta-banner h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; }
+    .cta-banner .btn { background: var(--black-brand); color: #fff; }
+    .cta-banner .btn:hover { background: #fff; color: var(--black-brand); }
 
-      .container {
-        width: min(calc(100% - 18px), var(--max));
-      }
+    /* Responsive */
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 50px; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+      .gallery-tile.featured { grid-column: span 2; aspect-ratio: 16/9; }
+    }
 
-      .hero {
-        padding: 18px 0 12px;
-      }
-
-      .hero-card,
-      .cta-panel {
-        padding: 16px;
-      }
-
-      .contact-card {
-        padding: 14px;
-      }
-
-      .section-head {
-        margin-bottom: 14px;
-      }
-
-      .section-head h2 {
-        font-size: clamp(1.7rem, 8vw, 2.3rem);
-      }
-
-      .services-grid {
-        gap: 8px;
-      }
-
-      .service-card {
-        padding: 12px;
-        min-height: 96px;
-      }
-
-      .service-card h3 {
-        font-size: 0.92rem;
-      }
-
-      .service-icon {
-        width: 34px;
-        height: 34px;
-        margin-bottom: 8px;
-        font-size: 0.88rem;
-      }
-
-      .modal {
-        padding: 14px;
-      }
-
-      .modal-dialog {
-        width: 100%;
-      }
-
-      .modal-close {
-        top: -8px;
-        right: -2px;
-        width: 42px;
-        height: 42px;
-        font-size: 1.5rem;
-      }
-
-      h1 {
-        font-size: clamp(1.95rem, 10vw, 3rem);
-      }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .btn { width: 100%; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-tile.featured { aspect-ratio: 4/3; }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Alpha Tree Service",
-    "description": "Professional tree care company based in Troy, NY specializing in tree removal, pruning, and stump grinding for residential and commercial properties.",
-    "areaServed": [
-      { "@type": "City", "name": "Troy" },
-      { "@type": "City", "name": "Poughkeepsie" },
-      { "@type": "City", "name": "Latham" },
-      { "@type": "City", "name": "Altamont" },
-      { "@type": "City", "name": "Clifton Park" },
-      { "@type": "City", "name": "Cohoes" },
-      { "@type": "State", "name": "New York" }
-    ],
-    "telephone": "+15184510089",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "416 Seventh Ave",
-      "addressLocality": "Troy",
-      "addressRegion": "NY",
-      "postalCode": "12182",
-      "addressCountry": "US"
-    }
-  }
-  </script>
 </head>
 <body>
+  
+  <div class="trust-banner">
+    100% Fully Insured &nbsp;|&nbsp; <span>Free Estimates</span> &nbsp;|&nbsp; Professional Arborists
+  </div>
+
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Alpha Tree Service home">
-        <div class="brand-logo">
-          <img src="https://placehold.co/100x100/eef3ed/234f2f?text=Alpha" alt="Alpha Tree Service logo placeholder" />
-        </div>
-        <div class="brand-copy">
-          <strong>Alpha Tree Service</strong>
-          <span>Troy, New York</span>
-        </div>
+        <img src="AlphaTreeService.jpg" alt="Alpha Tree Service Logo" class="brand-logo" />
       </a>
-
       <div class="top-actions">
-        <a class="btn btn-secondary" href="#contact">Contact</a>
-        <a class="btn btn-primary" href="tel:+15184510089">Call Now</a>
+        <a class="btn btn-primary" href="tel:+15184510089">CALL: (518) 451-0089</a>
       </div>
     </div>
   </header>
@@ -651,39 +434,36 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <h1>Safe, Efficient, and Professional Tree Care.</h1>
+          <h1>Stop Worrying About <span>Dangerous Trees.</span></h1>
           <p class="hero-copy">
-            Alpha Tree Service is a professional tree care company based in Troy, NY. We specialize in tree removal, pruning, and stump grinding services for residential and commercial properties.
+            Alpha Tree Service is a professional tree care company based in Troy, NY. We specialize in safe, efficient tree removal, pruning, and stump grinding for both residential and commercial properties. 
           </p>
           <p class="hero-copy">
-            Owned by Gary, a hard-working veteran, our experienced arborists are dedicated to providing safe solutions and clean worksites.
+            Our team is dedicated to maintaining the health and beauty of your trees while ensuring the absolute safety of surrounding structures.
           </p>
-
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+15184510089">Call (518) 451-0089</a>
+            <a class="btn btn-primary" href="tel:+15184510089">Claim Your Free Estimate Now</a>
+            <a class="btn btn-secondary" href="#services">Explore Our Services</a>
           </div>
         </div>
 
-        <aside class="contact-card" id="contact" aria-label="Contact details">
+        <aside class="contact-card" aria-label="Direct Contact">
           <div class="contact-logo">
-            <img src="https://placehold.co/400x300/eef3ed/234f2f?text=Alpha+Tree+Service" alt="Alpha Tree Service logo placeholder" />
+            <img src="AlphaTreeService.jpg" alt="Alpha Tree Service Logo" />
           </div>
-
           <div class="contact-list">
             <div class="contact-item">
-              <div class="contact-label">Owner</div>
-              <div class="contact-value">Gary (Veteran Owned)</div>
+              <div class="contact-label">Owner & Operator</div>
+              <div class="contact-value">George Gary Conrad</div>
             </div>
-
             <div class="contact-item">
-              <div class="contact-label">Call</div>
+              <div class="contact-label">Direct Line</div>
               <div class="contact-value">
                 <a href="tel:+15184510089">(518) 451-0089</a>
               </div>
             </div>
-
             <div class="contact-item">
-              <div class="contact-label">Address</div>
+              <div class="contact-label">Headquarters</div>
               <div class="contact-value">
                 416 Seventh Ave<br>Troy, NY 12182
               </div>
@@ -693,180 +473,143 @@
       </div>
     </section>
 
-    <section aria-labelledby="gallery-title">
+    <section id="services">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2 id="gallery-title">Our Recent Work</h2>
-          </div>
-        </div>
-
-     <div class="gallery-grid">
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/600x400/234f2f/FFF?text=Tree+Removal+1" alt="Large tree removal project in Troy">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Tree+Pruning" alt="Tree pruning and trimming">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Stump+Grinding" alt="Stump grinding machine in action">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Arborist+Team" alt="Experienced team of arborists">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Storm+Prep" alt="Storm preparation and trimming">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/600x400/234f2f/FFF?text=Debris+Cleanup" alt="Cleaned up yard after tree removal">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Commercial+Project" alt="Commercial property tree care">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Residential+Work" alt="Residential property tree removal">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Cat+Rescue" alt="Rescuing a cat from a tree">
-    </div>
-  </button>
-
-  <button class="gallery-tile">
-    <div class="gallery-inner">
-      <img src="https://placehold.co/400x400/234f2f/FFF?text=Tree+Removal+2" alt="Safe branch cutting">
-    </div>
-  </button>
-</div>
-      </div>
-    </section>
-
-    <section aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 id="services-title">Our Services</h2>
-          </div>
+          <h2>Protect Your Property: Choose the Right Service</h2>
+          <p>Whether you need a massive hazard removed or seasonal maintenance, our experienced arborists have the tools and expertise to handle it safely.</p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
             <div class="service-icon">01</div>
             <h3>Tree Removal</h3>
+            <p>Safe and efficient removal of dead, diseased, or hazardous trees from your property.</p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">02</div>
-            <h3>Pruning & Trimming</h3>
+            <h3>Expert Pruning</h3>
+            <p>Professional trimming to maintain the health and beauty of your trees and prevent property damage.</p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">03</div>
             <h3>Stump Grinding</h3>
+            <p>Complete removal of ugly stumps to reclaim your yard and eliminate tripping hazards.</p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">04</div>
-            <h3>Storm Prep</h3>
+            <h3>Emergency Storm Prep</h3>
+            <p>Proactive cutting back of hazardous branches that could potentially harm your house during heavy storms.</p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">05</div>
             <h3>Debris Cleanup</h3>
+            <p>We respect your property. Every job includes thorough cleanup of falling branches and surrounding areas.</p>
           </article>
 
           <article class="service-card">
             <div class="service-icon">06</div>
-            <h3>Animal Rescue</h3>
+            <h3>Lot Clearing</h3>
+            <p>Comprehensive clearing of trees and brush for residential and commercial development projects.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Don't Just Take Our Word For It</h2>
+          <p>See why Troy, NY homeowners trust us with their biggest tree challenges.</p>
+        </div>
+
+        <div class="scroller" data-animated="true">
+          <ul class="scroller__inner" style="list-style: none; padding: 0; margin: 0;">
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Excellent Service and great job... best price! You have to call ALPHA for a quote"</p>
+              <div class="review-author">— Rich H., Troy, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Alpha Tree Service removed a large tree in my backyard... provided a free estimate. The price was reasonable... They got the job done quickly and without any issues."</p>
+              <div class="review-author">— Andrea H., Poughkeepsie, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"...undertook a massive job cutting back a willow tree that potentially could come down in a storm... worked for 6 hours and trimmed the tree and cleaned the surrounding area... highly recommend."</p>
+              <div class="review-author">— Sheryl S., Altamont, NY</div>
+            </li>
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Great job taking 3 tree's down! Very reasonable, efficient and professional! Thank you for your service today!"</p>
+              <div class="review-author">— Den B., Clifton Park, NY</div>
+            </li>
+             <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"...did excellent work and even gave me some recommendations... gave a reasonable estimate, did the work in a timely matter, did not leave a mess, were very respectful... 100% satisfied!"</p>
+              <div class="review-author">— Michelle W., Cohoes, NY</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>Proof is in the Property: View Our Work</h2>
+          <p>Check out our recent residential and commercial projects.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-tile featured">
+            <div class="badge-before-after">Before & After</div>
+            <img src="https://loremflickr.com/1200/600/tree,yard" alt="Before and After yard transformation" />
+          </div>
+
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/chainsaw" alt="Arborist using chainsaw" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/tree,removal" alt="Large tree branch removal" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/stump,grinder" alt="Stump grinding machine" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://loremflickr.com/600/400/woodchipper" alt="Woodchipper clearing debris" />
+          </div>
+        </div>
+
+        <div class="cta-banner">
+          <h2>Ready to Reclaim Your Property?</h2>
+          <p style="margin-bottom: 25px; font-size: 1.2rem;">Don't wait for a storm to take down a hazardous tree. Get professional, insured care today.</p>
+          <a class="btn btn-primary" style="background:#111; color:#fff;" href="tel:+15184510089">CLAIM YOUR FREE ESTIMATE NOW</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer></footer>
-
-  <div class="sticky-callbar" aria-label="Quick contact bar">
-    <div class="inner">
-      <a class="btn btn-primary" href="tel:+15184510089" style="grid-column: span 2;">Call Now: (518) 451-0089</a>
-    </div>
-  </div>
-
-  <div class="modal" id="galleryModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <button class="modal-close" type="button" aria-label="Close gallery image">&times;</button>
-      <div class="modal-image-wrap">
-        <img class="modal-image" id="modalImage" src="" alt="" />
-      </div>
-    </div>
-  </div>
-
   <script>
-    const galleryTiles = document.querySelectorAll(".gallery-tile");
-    const modal = document.getElementById("galleryModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalClose = document.querySelector(".modal-close");
-
-    function openModal(img) {
-      modalImage.src = img.src;
-      modalImage.alt = img.alt;
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
-    }
-
-    function closeModal() {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImage.src = "";
-      modalImage.alt = "";
-      document.body.classList.remove("modal-open");
-    }
-
-    galleryTiles.forEach((tile) => {
-      tile.addEventListener("click", () => {
-        const img = tile.querySelector("img");
-        if (img) openModal(img);
+    // Duplicate the reviews to ensure seamless infinite scrolling
+    const scrollers = document.querySelectorAll(".scroller");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
       });
-    });
-
-    modalClose.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("is-open")) {
-        closeModal();
-      }
-    });
+    }
   </script>
 </body>
 </html>
