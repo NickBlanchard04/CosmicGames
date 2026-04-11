@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Nesco Services | Dumpsters, Demolition & Junk Removal in Schenectady, NY</title>
+  <meta name="description" content="Nesco Services offers fast, reliable roll-off dumpsters, demolition, junk removal, and cleanout services in Schenectady, NY and the Capital Region." />
+  <meta name="keywords" content="dumpster rental Schenectady, junk removal, demolition services, house cleanouts, roll-off dumpsters, Nesco Services, Lawn Logic" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Nesco Services" />
+  <meta name="theme-color" content="#d32f2f" />
+
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --surface-soft: #f1f3f5;
+      --text: #212529;
+      --muted: #495057;
+      --primary: #d32f2f; /* Bold Red matching the dumpsters */
+      --primary-dark: #b71c1c;
+      --secondary: #ffb300; /* Alert yellow accent */
+      --black-brand: #111111;
+      --border: rgba(0, 0, 0, 0.08);
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+      --max: 1160px;
+      --header-h: 80px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin: 0; }
+
+    .container {
+      width: min(calc(100% - 24px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* Text Animations */
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-text {
+      animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+    .animate-delay-3 { animation-delay: 0.5s; opacity: 0; }
+
+    /* Trust Badges */
+    .trust-banner {
+      background: var(--black-brand);
+      color: #fff;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .trust-banner span {
+      color: var(--secondary);
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .topbar-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand-logo {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 24px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--black-brand);
+      color: var(--black-brand);
+    }
+
+    .btn-secondary:hover {
+      background: var(--black-brand);
+      color: #fff;
+    }
+
+    section { padding: 80px 0; }
+
+    /* Funnel Stage 1: Awareness (Hero) */
+    .hero {
+      padding: 40px 0 60px;
+      background: linear-gradient(135deg, #ffffff 0%, #ffebee 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-card {
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 3.8rem);
+      line-height: 1.1;
+      font-weight: 900;
+      color: var(--black-brand);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1 span { color: var(--primary); }
+
+    .hero-copy {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 50ch;
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .contact-card {
+      background: var(--black-brand);
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--primary);
+    }
+
+    .contact-logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 220px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .contact-item {
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-item:last-child { border: none; padding-bottom: 0; }
+
+    .contact-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .contact-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .contact-value a { color: #fff; }
+
+    /* Funnel Stage 2: Interest (Services) */
+    .section-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--black-brand);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .section-head p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .service-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(211, 47, 47, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    /* Funnel Stage 3: Desire (Reviews / Social Proof) */
+    .reviews-section {
+      background: var(--primary-dark);
+      color: #fff;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+
+    .reviews-section .section-head h2 { color: #fff; }
+    .reviews-section .section-head p { color: rgba(255,255,255,0.8); }
+
+    .scroller {
+      max-width: 100%;
+      overflow: hidden;
+      -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    }
+
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+      flex-wrap: nowrap;
+      animation: scroll 28s forwards linear infinite; 
+    }
+
+    .scroller[data-animated="true"]:hover .scroller__inner {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      to { transform: translate(calc(-50% - 10px)); }
+    }
+
+    .review-card {
+      background: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 8px;
+      width: 380px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .stars { color: var(--secondary); font-size: 1.2rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.95rem; font-style: italic; color: var(--muted); margin-bottom: 15px; }
+    .review-author { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; color: var(--black-brand); }
+
+    /* Funnel Stage 4: Action (Gallery & Final CTA) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .gallery-tile {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      position: relative;
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-tile:hover img { transform: scale(1.05); }
+
+    .cta-banner {
+      background: var(--secondary);
+      color: #111;
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 40px;
+      border-radius: 12px;
+    }
+
+    .cta-banner h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; }
+    .cta-banner .btn { background: var(--black-brand); color: #fff; }
+    .cta-banner .btn:hover { background: #fff; color: var(--black-brand); }
+
+    /* Responsive */
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 50px; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .btn { width: 100%; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="trust-banner">
+    Fully Licensed & Insured &nbsp;|&nbsp; <span>Free Estimates</span> &nbsp;|&nbsp; 5-Star Rated Service
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Nesco Services home">
+        <img src="NescoServices.jpg" alt="Nesco Services Logo" class="brand-logo" />
+      </a>
+      <div class="top-actions">
+        <a class="btn btn-primary" href="tel:+15182690250">CALL: (518) 269-0250</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <h1 class="animate-text">Got Junk? Need a Demolition Project <span>Completed?</span></h1>
+          <p class="hero-copy animate-text animate-delay-1">
+            Nesco Services provides fast, reliable, and affordable roll-off dumpsters, demolition, and junk removal in Schenectady, NY and the Capital Region.
+          </p>
+          <p class="hero-copy animate-text animate-delay-2" style="font-weight: bold; color: var(--primary);">
+            ...And Yes We Do That Too!
+          </p>
+          <div class="hero-actions animate-text animate-delay-3">
+            <a class="btn btn-primary" href="tel:+15182690250">Call/Text for a Free Estimate</a>
+            <a class="btn btn-secondary" href="#services">View Our Services</a>
+          </div>
+        </div>
+
+        <aside class="contact-card animate-text animate-delay-3" aria-label="Direct Contact">
+          <img src="NescoServices.jpg" alt="Nesco Services Logo" class="contact-logo" />
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-label">Owners / Operators</div>
+              <div class="contact-value">Joe & Partner</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Direct Line</div>
+              <div class="contact-value">
+                <a href="tel:+15182690250">(518) 269-0250</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Email Us</div>
+              <div class="contact-value">
+                <a href="mailto:nescoservicesinc@gmail.com" style="font-size: 0.95rem;">nescoservicesinc@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item" style="border:none; padding-bottom: 0;">
+              <div class="contact-label">Headquarters</div>
+              <div class="contact-value">
+                95 Dahlia St<br>Schenectady, NY 12306
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head animate-text">
+          <h2>We Handle the Heavy Lifting</h2>
+          <p>Don't let junk or unwanted structures take up space. We handle the heavy lifting and disposal for you!</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">01</div>
+            <h3>Roll-Off Dumpsters</h3>
+            <p>Fast, same-day delivery of roll-off dumpsters right to your driveway for any renovation project.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">02</div>
+            <h3>Complete Demolition</h3>
+            <p>Expert teardowns including home interiors, old sheds, decks, and more.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">03</div>
+            <h3>Junk Removal</h3>
+            <p>Quick removal of old furniture, appliances, construction debris, and unwanted clutter.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">04</div>
+            <h3>House & Garage Cleanouts</h3>
+            <p>Clearing out messy basements, overloaded garages, and whole-house cleanouts.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">05</div>
+            <h3>Appliance Disposal</h3>
+            <p>Safe, heavy-lifting removal and proper disposal of old, broken household appliances.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">06</div>
+            <h3>Landscaping / Lawn Logic</h3>
+            <p>Professional property maintenance and landscaping services from our Lawn Logic division.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-head animate-text">
+          <h2>Don't Just Take Our Word For It</h2>
+          <p>See why the Capital Region rates Joe and the Nesco team 5 stars for speed and fair pricing.</p>
+        </div>
+
+        <div class="scroller" data-animated="true">
+          <ul class="scroller__inner" style="list-style: none; padding: 0; margin: 0;">
+            
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Same day service, the owner Joe explained everything and we discussed in details where I wanted it placed. He was fair in the price and quick in service."</p>
+              <div class="review-author">— Brittany Berrian</div>
+            </li>
+            
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"I called Nesco Services for a dumpster with short notice and they were able to drop me off a roll off dumpster within a couple of hours. Amazing."</p>
+              <div class="review-author">— Bob Caprara</div>
+            </li>
+            
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Excellent service! Cheapest price and delivered asap, and responded right away. Would highly recommend and will definitely use again in the future."</p>
+              <div class="review-author">— Michele Jones</div>
+            </li>
+
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Very speedy response time. Honest and fair quotes. Friendly service... Highly recommend you give them a call. You won't be disappointed."</p>
+              <div class="review-author">— Jamie Dominy</div>
+            </li>
+
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"A+++. This company is quick to respond I needed a dumpster quickly. They dropped it off and picked it up once I was done. This will be the 4th time I have used them."</p>
+              <div class="review-author">— Michael Michael</div>
+            </li>
+            
+            <li class="review-card">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"Excellent prices, on time, and honest. Took great care to make sure my driveway was not harmed from container."</p>
+              <div class="review-author">— Michael Claus</div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head animate-text">
+          <h2>Our Equipment Ready For Your Project</h2>
+          <p>Commercial-grade roll-offs for residential and commercial cleanups.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-tile">
+            <img src="Dumpster1.jpg" alt="Red Nesco Services Roll-Off Dumpster parked on street" />
+          </div>
+          <div class="gallery-tile">
+            <img src="Dumpster2.jpg" alt="Nesco Services delivery truck dropping a red dumpster" />
+          </div>
+          
+          <div class="gallery-tile">
+            <img src="https://placehold.co/600x400/f1f3f5/d32f2f?text=Demolition+Project+Here" alt="Placeholder for demolition work" />
+          </div>
+          <div class="gallery-tile">
+            <img src="https://placehold.co/600x400/f1f3f5/d32f2f?text=Junk+Removal+Here" alt="Placeholder for junk removal cleanout" />
+          </div>
+        </div>
+
+        <div class="cta-banner animate-text">
+          <h2>Ready to clear out the clutter?</h2>
+          <p style="margin-bottom: 25px; font-size: 1.2rem; font-weight: 600;">We guarantee a hassle-free experience. Call us today to get started!</p>
+          <a class="btn btn-primary" style="background:#111; color:#fff;" href="tel:+15182690250">CLAIM YOUR FREE ESTIMATE NOW</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Duplicate the reviews to ensure seamless infinite scrolling
+    const scrollers = document.querySelectorAll(".scroller");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
