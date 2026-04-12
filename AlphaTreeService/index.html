@@ -196,6 +196,15 @@
       border-top: 6px solid var(--primary);
     }
 
+    .contact-logo {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .contact-logo:hover {
+      transform: scale(1.02);
+    }
+
     .contact-logo img {
       width: 100%;
       max-width: 250px;
@@ -398,6 +407,58 @@
     .cta-banner .btn { background: var(--black-brand); color: #fff; }
     .cta-banner .btn:hover { background: #fff; color: var(--black-brand); }
 
+    /* Modal / Lightbox Styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 9999; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.85); 
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from {transform:scale(0.9); opacity:0;}
+      to {transform:scale(1); opacity:1;}
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close-modal:hover,
+    .close-modal:focus {
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     /* Responsive */
     @media (min-width: 900px) {
       .hero-grid { grid-template-columns: 1.2fr 0.8fr; gap: 50px; }
@@ -410,10 +471,16 @@
       .btn { width: 100%; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-tile.featured { aspect-ratio: 4/3; }
+      .close-modal { top: 10px; right: 20px; }
     }
   </style>
 </head>
 <body>
+
+  <div id="logoModal" class="modal">
+    <span class="close-modal" aria-label="Close modal">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Expanded Logo">
+  </div>
   
   <div class="trust-banner">
     Veteran Owned & Operated &nbsp;|&nbsp; 100% Fully Insured &nbsp;|&nbsp; <span>Free Estimates</span>
@@ -448,7 +515,7 @@
         </div>
 
         <aside class="contact-card" aria-label="Direct Contact">
-          <div class="contact-logo">
+          <div class="contact-logo" id="logoTrigger" title="Click to enlarge">
             <img src="AlphaTreeService.jpg" alt="Alpha Tree Service Logo" />
           </div>
           <div class="contact-list">
@@ -463,9 +530,15 @@
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-label">Headquarters</div>
+              <div class="contact-label">Troy Location</div>
               <div class="contact-value">
                 416 Seventh Ave<br>Troy, NY 12182
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Niskayuna Location</div>
+              <div class="contact-value">
+                1264 Van Antwerp Rd<br>Niskayuna, NY 12309
               </div>
             </div>
           </div>
@@ -597,7 +670,7 @@
   </main>
 
   <script>
-    // Duplicate the reviews to ensure seamless infinite scrolling
+    // Reviews infinite scrolling logic
     const scrollers = document.querySelectorAll(".scroller");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       scrollers.forEach((scroller) => {
@@ -610,6 +683,30 @@
           scrollerInner.appendChild(duplicatedItem);
         });
       });
+    }
+
+    // Logo Modal logic
+    const modal = document.getElementById("logoModal");
+    const logoTrigger = document.getElementById("logoTrigger");
+    const modalImg = document.getElementById("modalImg");
+    const closeModalBtn = document.querySelector(".close-modal");
+
+    // Open modal on click
+    logoTrigger.onclick = function() {
+      modal.classList.add("show");
+      modalImg.src = this.querySelector('img').src; 
+    }
+
+    // Close modal on 'x' click
+    closeModalBtn.onclick = function() {
+      modal.classList.remove("show");
+    }
+
+    // Close modal when clicking anywhere outside the image
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.classList.remove("show");
+      }
     }
   </script>
 </body>
