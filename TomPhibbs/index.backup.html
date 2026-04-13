@@ -254,15 +254,15 @@
       background: var(--accent);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
-      padding: 15px 20px;
+      padding: 15px 40px; /* Increased side padding to accommodate absolute icon */
       display: flex;
       align-items: center;
       justify-content: center; /* Forces horizontal centering */
       text-align: center;      /* Centers the text lines */
-      gap: 12px;
+      position: relative;      /* Anchor for the absolute positioned SVG */
       font-weight: 700;
       color: #fff;
-      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3); /* Bright glowing effect */
+      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
@@ -273,10 +273,11 @@
     }
 
     .service-item svg {
+      position: absolute;
+      left: 20px; /* Lock icon to the left side */
       width: 20px;
       height: 20px;
-      fill: #fff; /* White icon to contrast with the green box */
-      flex-shrink: 0;
+      fill: #fff;
     }
 
     /* =========================================
@@ -572,17 +573,17 @@
       <div class="services-grid">
         <svg style="display:none;" id="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Weekly Mowing</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Bi-Weekly Mowing</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Mulching</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Hedge Trimming</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Spring & Fall Clean-Ups</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Tree & Debris Removal</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Bed Installation & Removal</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Sod Installation</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Dethatching</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Overseeding</div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> Seasonal Flower Rotations</div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Weekly Mowing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Bi-Weekly Mowing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Mulching</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Hedge Trimming</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Spring & Fall Clean-Ups</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Tree & Debris Removal</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Bed Installation & Removal</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Sod Installation</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Dethatching</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Overseeding</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Seasonal Flower Rotations</span></div>
       </div>
 
       <div style="text-align: center; margin-top: 30px;">
@@ -698,18 +699,15 @@
   </footer>
 
   <script>
-    /* =========================================
-       DYNAMIC NUMBER COUNTER ANIMATION
-       ========================================= */
     const counters = document.querySelectorAll('.counter');
-    const speed = 40; // Lower is faster
+    const speed = 40; 
 
     const animateCounters = () => {
       counters.forEach(counter => {
         const updateCount = () => {
           const target = +counter.getAttribute('data-target');
           const suffix = counter.getAttribute('data-suffix');
-          const count = +counter.innerText.replace(/\D/g, ''); // Extract just numbers
+          const count = +counter.innerText.replace(/\D/g, ''); 
           
           const inc = target / speed;
 
@@ -724,12 +722,11 @@
       });
     };
 
-    // Trigger animation when stats scroll into view
     const statsObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           animateCounters();
-          observer.disconnect(); // Run only once
+          observer.disconnect(); 
         }
       });
     }, { threshold: 0.5 });
@@ -739,9 +736,6 @@
       statsObserver.observe(statsSection);
     }
 
-    /* =========================================
-       IMAGE COMPARISON SLIDER (Vanilla JS)
-       ========================================= */
     function initComparisons() {
       var x, i;
       x = document.getElementsByClassName("img-comp-overlay");
@@ -798,12 +792,8 @@
       }
     }
     
-    // Initialize Before/After Sliders on load
     window.onload = initComparisons;
 
-    /* =========================================
-       INFINITE SCROLL GALLERY DUPLICATION
-       ========================================= */
     const scrollers = document.querySelectorAll(".scroller");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       scrollers.forEach((scroller) => {
@@ -818,9 +808,6 @@
       });
     }
 
-    /* =========================================
-       LIGHTBOX MODAL WITH FIXED X
-       ========================================= */
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeModalBtn = document.getElementById("closeModalBtn");
