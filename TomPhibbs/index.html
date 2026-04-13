@@ -143,7 +143,7 @@
       gap: 8px;
       font-weight: 700;
       color: #fff;
-      background: rgba(225, 48, 108, 0.25); /* High contrast backdrop */
+      background: rgba(225, 48, 108, 0.25);
       border: 1px solid rgba(225, 48, 108, 0.8);
       padding: 8px 16px;
       border-radius: 8px;
@@ -165,31 +165,20 @@
       text-align: center;
     }
 
-    /* Typewriter Effect - Now Stops */
-    .typewriter-wrapper {
-      display: inline-block;
-      margin-bottom: 20px;
-      max-width: 100%;
-    }
-
-    .typewriter-text {
-      font-size: clamp(1.8rem, 4.5vw, 3rem); /* Shrunk font slightly */
+    .hero-headline {
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       line-height: 1.2;
-      overflow: hidden;
-      border-right: .15em solid var(--accent);
-      white-space: nowrap;
-      margin: 0 auto;
+      margin: 0 auto 20px;
       letter-spacing: .02em;
-      /* Animation forwards stops typing at 100%, blink stops after a few flashes */
-      animation: typing 2s steps(40, end) forwards, blink-caret .75s step-end 4 forwards;
+      color: #fff;
+      animation: fadeUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink-caret { 
-      from, to { border-color: transparent } 
-      50% { border-color: var(--accent); } 
-      100% { border-color: transparent; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero p {
@@ -197,6 +186,15 @@
       color: var(--text-muted);
       max-width: 750px;
       margin: 0 auto 40px;
+      animation: fadeUp 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero .btn {
+      animation: fadeUp 0.8s ease-out 0.4s forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     /* =========================================
@@ -253,28 +251,31 @@
     }
 
     .service-item {
-      background: rgba(255, 255, 255, 0.08); /* Contrasting Background */
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 15px 20px;
       display: flex;
       align-items: center;
+      justify-content: center; /* Forces horizontal centering */
+      text-align: center;      /* Centers the text lines */
       gap: 12px;
-      font-weight: 600;
-      color: #fff; /* Contrasting text */
-      transition: transform 0.2s, background 0.2s;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3); /* Bright glowing effect */
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
     .service-item:hover {
       transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--accent);
+      background: var(--accent-hover);
+      box-shadow: 0 6px 20px rgba(46, 160, 67, 0.5);
     }
 
     .service-item svg {
       width: 20px;
       height: 20px;
-      fill: var(--accent);
+      fill: #fff; /* White icon to contrast with the green box */
       flex-shrink: 0;
     }
 
@@ -294,8 +295,8 @@
     .img-comp-container {
       position: relative;
       width: 100%;
-      max-width: 550px; /* Restrict width to fix centering */
-      margin: 0 auto; /* Force Center */
+      max-width: 550px; 
+      margin: 0 auto; 
       height: 400px;
       border-radius: 12px;
       overflow: hidden;
@@ -346,7 +347,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
-    /* Video/Reel Grid - Now just Action Buttons */
+    /* Video/Reel Grid */
     .reels-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -360,7 +361,6 @@
       justify-content: center;
     }
 
-    /* Boxed Emoji Headlines - Converted to buttons */
     .reel-action-btn {
       display: flex;
       align-items: center;
@@ -484,50 +484,26 @@
     @media (max-width: 900px) {
       .about-grid, .ba-container { grid-template-columns: 1fr; }
       
-      /* Mobile Centering Override */
       body { text-align: center; }
       p, h1, h2, h3, h4, .about-content p { text-align: center !important; }
       
-      .about-stats { 
-        justify-content: center; 
-        flex-wrap: wrap; 
-      }
-      
-      .stat-box { 
-        border-left: none; 
-        border-bottom: 3px solid var(--accent); 
-        padding: 0 0 10px 0; 
-      }
+      .about-stats { justify-content: center; flex-wrap: wrap; }
+      .stat-box { border-left: none; border-bottom: 3px solid var(--accent); padding: 0 0 10px 0; }
       
       /* Services Mobile Stack */
-      .services-grid { 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-      }
-      .service-item { 
-        width: 100%; 
-        max-width: 350px; 
-        justify-content: center; 
-        text-align: center; 
-      }
+      .services-grid { display: flex; flex-direction: column; align-items: center; }
+      .service-item { width: 100%; max-width: 350px; }
     }
 
     @media (max-width: 600px) {
-      /* Dynamic Header Resizing to ensure Call button & IG fit */
-      .header-inner { 
-        flex-direction: row; 
-        flex-wrap: nowrap;
-        padding: 10px 0; 
-        gap: 8px; 
-      }
-      .logo-container img { height: 35px; } /* Scaled down logo */
+      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 10px 0; gap: 8px; }
+      .logo-container img { height: 35px; } 
       .header-actions { gap: 6px; }
       .ig-badge { padding: 6px 10px; font-size: 0.75rem; gap: 4px;}
       .ig-badge svg { width: 14px; height: 14px; }
-      .btn { padding: 8px 12px; font-size: 0.75rem; } /* Scaled down button */
+      .btn { padding: 8px 12px; font-size: 0.75rem; }
 
-      .typewriter-text { font-size: 1.45rem; }
+      .hero-headline { font-size: 2rem; }
       .img-comp-container { height: 300px; max-width: 100%; }
       .img-comp-img img { height: 300px; }
     }
@@ -559,10 +535,8 @@
 
   <main>
     <section class="hero container">
-      <div class="typewriter-wrapper">
-        <h1 class="typewriter-text">Upgrade Now. Schedule Filling Fast.</h1>
-      </div>
-      <p>Tom Phibbs Lawn Care delivers premium property maintenance, breathtaking custom patios, stone installations, and complete property transformations in the Capital Region.</p>
+      <h1 class="hero-headline">Elevate Your Outdoor Space.</h1>
+      <p>Tom Phibbs delivers premium property maintenance, lawn mowings, breathtaking custom patios, stone installations, and complete property transformations in the Capital Region.</p>
       <a href="tel:+15187273672" class="btn btn-accent">Start Your Project Today</a>
     </section>
 
@@ -592,7 +566,7 @@
     </section>
 
     <section id="services" class="container" style="padding-top: 20px; padding-bottom: 60px;">
-      <h2 class="section-title">Comprehensive Property Solutions</h2>
+      <h2 class="section-title">What is your property missing?</h2>
       <p class="section-subtitle">From routine upkeep to total yard overhauls, we have the tools and experience to get it done.</p>
 
       <div class="services-grid">
