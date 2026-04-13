@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title>Landscape for Less | Lawn Care & Landscaping in Albany, NY</title>
-  <meta name="description" content="Landscape for Less, led by Kevin Nasadoski, provides top-rated lawn care, landscaping, and hardscaping services in Albany, NY and the Capital Region." />
-  <meta name="keywords" content="landscaper Albany NY, lawn care, spring cleanup, walkways, patios, retaining walls, Kevin Nasadoski, Landscape for Less" />
+  <meta name="description" content="Landscape for Less, led by Kevin Nasadoski, provides top-rated lawn care, landscaping, and hardscaping services in the Capital Region." />
+  <meta name="keywords" content="landscaping Albany NY, hardscaping, patios, pavers, lawn care, Kevin Nasadoski, Landscape for Less" />
   
-  <link rel="icon" type="image/jpeg" href="LandscapeForLessLogo.jpg" />
+  <link rel="icon" type="image/jpeg" href="KevinsLandscapeForLessLogo.jpg" />
 
   <style>
     /* =========================================
@@ -94,6 +94,7 @@
       transition: all 0.2s ease;
       cursor: pointer;
       border: none;
+      white-space: nowrap;
     }
 
     .btn-accent {
@@ -133,6 +134,7 @@
       font-weight: 800;
       font-size: 1.2rem;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .logo-container img {
@@ -184,7 +186,7 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 800px;
+      max-width: 750px;
       margin: 0 auto 40px;
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
@@ -206,15 +208,12 @@
       margin-top: 20px;
     }
 
-    /* Clickable Facebook Link in Hero with contrasting background */
-    .hero-fb-badge {
+    .hero-fb-badge, .hero-email-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-weight: 700;
       color: #fff;
-      background: rgba(24, 119, 242, 0.15); 
-      border: 1px solid rgba(24, 119, 242, 0.7);
       padding: 12px 24px;
       border-radius: 8px;
       transition: all 0.2s;
@@ -227,40 +226,27 @@
       transform: translateY(20px);
     }
 
+    .hero-fb-badge {
+      background: rgba(24, 119, 242, 0.15); 
+      border: 1px solid rgba(24, 119, 242, 0.7);
+    }
+
     .hero-fb-badge:hover { 
       background: rgba(24, 119, 242, 0.4);
       transform: translateY(-2px);
     }
     
-    .hero-fb-badge svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* New Clickable Email Badge */
     .hero-email-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      color: #fff;
       background: rgba(234, 67, 53, 0.15); 
       border: 1px solid rgba(234, 67, 53, 0.7);
-      padding: 12px 24px;
-      border-radius: 8px;
-      transition: all 0.2s;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-decoration: none;
-      animation: fadeUp 0.8s ease-out 0.6s forwards;
-      opacity: 0;
-      transform: translateY(20px);
     }
 
     .hero-email-badge:hover { 
       background: rgba(234, 67, 53, 0.4);
       transform: translateY(-2px);
     }
-    
-    .hero-email-badge svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .hero-fb-badge svg, .hero-email-badge svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* =========================================
        FUNNEL STAGE 2: INTEREST (ABOUT & SERVICES)
@@ -307,7 +293,6 @@
     .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; display: flex; align-items: center;}
     .stat-box span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;}
 
-    /* Ensure photo container fills space properly */
     .about-image {
       border-radius: 12px;
       overflow: hidden;
@@ -324,7 +309,7 @@
       object-position: center;
     }
 
-    /* Services Grid with Green Backdrop Buttons */
+    /* Services Grid */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -344,7 +329,7 @@
       position: relative;      
       font-weight: 700;
       color: #fff;
-      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3); 
+      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
@@ -356,17 +341,17 @@
 
     .service-item svg {
       position: absolute;
-      left: 20px;
+      left: 20px; 
       width: 20px;
       height: 20px;
-      fill: #fff; 
+      fill: #fff;
     }
 
     /* =========================================
        FUNNEL STAGE 3: DESIRE (PORTFOLIO & PROOF)
        ========================================= */
     
-    /* Before/After Custom Slider Layout (Updated for 2 sliders) */
+    /* Before/After Custom Slider - FIXED FOR TOUCH DRAGGING */
     .ba-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -379,56 +364,76 @@
     .img-comp-container {
       position: relative;
       width: 100%;
-      max-width: 550px; 
-      height: 400px; 
+      max-width: 800px; 
+      margin: 0 auto; 
+      height: 400px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--glass-border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.2);
+      touch-action: pan-y; /* Crucial: Allows vertical scrolling but captures horizontal touch dragging */
     }
 
     .img-comp-img {
       position: absolute;
       width: auto;
-      height: auto;
+      height: 100%;
       overflow: hidden;
+      top: 0;
+      left: 0;
     }
 
     .img-comp-img img {
       display: block;
-      width: 100%;
-      height: 400px;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: left center;
+      pointer-events: none; /* Prevents images from catching clicks */
     }
 
+    /* Fixed Drag Handle / Slider */
     .img-comp-slider {
       position: absolute;
       z-index: 9;
       cursor: ew-resize;
+      width: 40px; /* Big Hit Area */
+      height: 100%;
+      background-color: transparent;
+      top: 0;
+      transform: translateX(-50%); /* Keeps hit area perfectly centered over line */
+    }
+
+    /* The actual visible line */
+    .img-comp-slider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 4px;
       height: 100%;
       background-color: var(--accent);
-      top: 0;
-      opacity: 0.9;
+      pointer-events: none;
     }
 
+    /* The visual circle */
     .img-comp-slider::after {
       content: "↔";
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       background: var(--accent);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 16px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      pointer-events: none;
     }
 
     /* Reviews Grid */
@@ -511,8 +516,6 @@
     /* =========================================
        FUNNEL STAGE 4: ACTION (CONTACT/FOOTER)
        ========================================= */
-    
-    /* Customer Service Commitments section at bottom */
     .customer-service-section {
       padding: 80px 0;
       text-align: center;
@@ -522,7 +525,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
-      justify-content: center;
+      justify-content: center; 
       margin-top: 40px;
       width: 100%;
     }
@@ -603,7 +606,7 @@
        MOBILE RESPONSIVE CLASSES (CENTERING)
        ========================================= */
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid, .ba-container { grid-template-columns: 1fr; }
       
       body { text-align: center; }
       p, h1, h2, h3, h4, .about-content p { text-align: center !important; }
@@ -614,15 +617,17 @@
       /* Services Mobile Stack */
       .services-grid { display: flex; flex-direction: column; align-items: center; }
       .service-item { width: 100%; max-width: 350px; }
-      
-      .logo-container span { display: none; } /* Hide text logo on mobile for space */
     }
 
     @media (max-width: 600px) {
-      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 10px 0; gap: 8px; justify-content: space-between;}
-      .logo-container img { height: 40px; } 
+      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 12px 0; gap: 5px; justify-content: space-between;}
+      
+      .logo-container { font-size: 0.95rem; gap: 6px; line-height: 1.1; }
+      .logo-container img { height: 35px; } 
+      
       .header-actions { gap: 6px; }
-      .btn { padding: 10px 16px; font-size: 0.85rem; }
+      
+      .btn { padding: 8px 12px; font-size: 0.75rem; }
 
       .hero-headline { font-size: 2rem; }
       .img-comp-container { height: 300px; max-width: 100%; }
@@ -630,6 +635,12 @@
       
       .hero-fb-badge, .hero-email-badge { padding: 10px 18px; font-size: 0.8rem; margin-top: 10px; }
       .hero-fb-badge svg, .hero-email-badge svg { width: 16px; height: 16px; }
+    }
+    
+    @media (max-width: 380px) {
+      .logo-container { font-size: 0.8rem; gap: 4px; }
+      .logo-container img { height: 28px; }
+      .btn { padding: 6px 10px; font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -645,7 +656,7 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo-container" aria-label="Home">
-        <img src="LandscapeForLessLogo.jpg" alt="Landscape for Less Logo" onerror="this.style.display='none'">
+        <img src="KevinsLandscapeForLessLogo.jpg" alt="Landscape for Less Logo" onerror="this.style.display='none'">
         <span>Landscape for Less</span>
       </a>
       <div class="header-actions">
@@ -675,23 +686,23 @@
     <section class="container" style="padding-bottom: 60px;">
       <div class="glass-card about-grid">
         <div class="about-text">
-          <h2 style="font-size: 2rem; margin-bottom: 20px;">Reliable. Professional. Quality Work.</h2>
-          <p>Led by Kevin Nasadoski, Landscape for Less is a top-rated property maintenance company serving residential and commercial clients in Albany, NY and the surrounding areas.</p>
-          <p>We handle the jobs that transform your property, ensuring your yard looks pristine year-round. <br><br><strong>Proudly Providing Discounts to Veterans & Public Servants.</strong></p>
+          <h2 style="font-size: 2rem; margin-bottom: 20px;">Built on Local Roots.</h2>
+          <p>We are a fully insured, locally owned and operated property maintenance company dedicated to total customer satisfaction. We believe in local success, which is why <strong>all our products—from mulch to ice melt—are sourced from family businesses right here in the Capital Region.</strong></p>
+          <p>Whether you are a residential homeowner, a commercial business, or an HOA, we deliver the highest quality of work.</p>
           
           <div class="about-stats" id="stats-section">
             <div class="stat-box">
-              <h4 class="counter" data-target="5" data-suffix=".0">0</h4>
-              <span>Google Rating</span>
+              <h4 class="counter" data-target="10" data-suffix="+">0</h4>
+              <span>Years Experience</span>
             </div>
             <div class="stat-box">
-              <h4 class="counter" data-target="33" data-suffix="">0</h4>
-              <span>5-Star Reviews</span>
+              <h4 class="counter" data-target="100" data-suffix="%">0</h4>
+              <span>Locally Sourced</span>
             </div>
           </div>
 
         </div>
-        <div class="about-image">
+        <div class="about-image" style="border-radius: 12px; overflow: hidden;">
            <img src="KevinsLandscaping1.jpg" alt="Landscaping property transformation" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
@@ -724,29 +735,39 @@
 
     <section class="container" style="padding-top: 20px;">
       <h2 class="section-title">The Difference is in the Details</h2>
-      <p class="section-subtitle">Drag the slider to see the transformation.</p>
+      <p class="section-subtitle">Drag the slider to see the transformation from raw property to finished landscape.</p>
 
       <div class="ba-container">
         <div class="img-comp-container glass-card" style="padding: 0; border: none;">
           <div class="img-comp-img">
-            <img src="KevinsLandscapingAfter1.jpg" alt="After Transformation">
+            <img src="KevinsLandscapingAfter1.jpg" alt="After Landscaping">
           </div>
           <div class="img-comp-img img-comp-overlay">
-            <img src="KevinsLandscapingBefore1.jpg" alt="Before Transformation">
+            <img src="KevinsLandscapingBefore1.jpg" alt="Before Landscaping">
           </div>
         </div>
+        
         <div class="img-comp-container glass-card" style="padding: 0; border: none;">
           <div class="img-comp-img">
-            <img src="KevinsLandscapingAfter2.jpg" alt="After Transformation 2">
+            <img src="KevinsLandscapingAfter2.jpg" alt="After Landscaping">
           </div>
           <div class="img-comp-img img-comp-overlay">
-            <img src="KevinsLandscapingBefore2.jpg" alt="Before Transformation 2">
+            <img src="KevinsLandscapingBefore2.jpg" alt="Before Landscaping">
+          </div>
+        </div>
+
+        <div class="img-comp-container glass-card" style="padding: 0; border: none;">
+          <div class="img-comp-img">
+            <img src="KevinsLandscapingAfter3.jpg" alt="After Landscaping">
+          </div>
+          <div class="img-comp-img img-comp-overlay">
+            <img src="KevinsLandscapingBefore3.jpg" alt="Before Landscaping">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container" style="padding-top: 20px;">
+    <section class="container">
       <h2 class="section-title">5-Star Local Reputation</h2>
       <p class="section-subtitle">Don't just take our word for it. Here is what your neighbors are saying.</p>
 
@@ -759,14 +780,14 @@
 
         <article class="review-card glass-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Landscape for Less and Kevin are EXCELLENT. He is very friendly and polite, and communicates very well. I like him a lot! He also happens to do FANTASTIC work. And his prices are extremely fair... He was willing to do just about every job needed to clean up the enormous disaster of a yard... If you have an opportunity to hire him, do it!!!"</p>
-          <div class="review-author">— Eric W</div>
+          <p class="review-text">"Just met Kevin from landscape for less... So excited I don't have crummy crap and weeds around the tree. Him and his team made a perfect spot with stones, mulch and rock border. It was so creative, Kevin took my idea and turned it into a beautiful masterpiece... I highly recommend his services! His prices are great, very communicable and brings great expertise!"</p>
+          <div class="review-author">— Debbie Eberle-Sherman</div>
         </article>
 
         <article class="review-card glass-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Just met Kevin from landscape for less... So excited I don't have crummy crap and weeds around the tree. Him and his team made a perfect spot with stones, mulch and rock border. It was so creative, Kevin took my idea and turned it into a beautiful masterpiece... I highly recommend his services! His prices are great, very communicable and brings great expertise!"</p>
-          <div class="review-author">— Debbie Eberle-Sherman</div>
+          <p class="review-text">"Kevin is great to work with. His crew did an amazing job weeding, edging and mulching our garden beds. Our front, back and side yard look great. We would definitely recommend working with Kevin and his wonderful team."</p>
+          <div class="review-author">— Rebecca Hathaway</div>
         </article>
       </div>
     </section>
@@ -778,12 +799,12 @@
         <div class="scroller__inner" id="galleryScroller">
           <img src="KevinsLandscaping1.jpg" alt="Landscaping work" class="gallery-img">
           <img src="KevinsLandscaping2.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscaping3.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscaping4.jpg" alt="Landscaping work" class="gallery-img">
           <img src="KevinsLandscapingAfter1.jpg" alt="Landscaping work" class="gallery-img">
           <img src="KevinsLandscapingBefore1.jpg" alt="Landscaping work" class="gallery-img">
           <img src="KevinsLandscapingAfter2.jpg" alt="Landscaping work" class="gallery-img">
           <img src="KevinsLandscapingBefore2.jpg" alt="Landscaping work" class="gallery-img">
-          <img src="KevinsLandscaping1.jpg" alt="Landscaping work" class="gallery-img">
-          <img src="KevinsLandscaping2.jpg" alt="Landscaping work" class="gallery-img">
         </div>
       </div>
     </section>
@@ -817,100 +838,7 @@
   </footer>
 
   <script>
-    function initComparisons() {
-      var x, i;
-      x = document.getElementsByClassName("img-comp-overlay");
-      for (i = 0; i < x.length; i++) {
-        compareImages(x[i]);
-      }
-      
-      function compareImages(img) {
-        var slider, clicked = 0, w, h;
-        w = img.offsetWidth;
-        h = img.offsetHeight;
-        img.style.width = (w / 2) + "px";
-        
-        slider = document.createElement("DIV");
-        slider.setAttribute("class", "img-comp-slider");
-        img.parentElement.insertBefore(slider, img);
-        slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
-        slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
-        
-        slider.addEventListener("mousedown", slideReady);
-        window.addEventListener("mouseup", slideFinish);
-        slider.addEventListener("touchstart", slideReady);
-        window.addEventListener("touchmove", slideFinish);
-        
-        function slideReady(e) {
-          e.preventDefault();
-          clicked = 1;
-          window.addEventListener("mousemove", slideMove);
-          window.addEventListener("touchmove", slideMove);
-        }
-        function slideFinish() {
-          clicked = 0;
-        }
-        function slideMove(e) {
-          var pos;
-          if (clicked == 0) return false;
-          pos = getCursorPos(e)
-          if (pos < 0) pos = 0;
-          if (pos > w) pos = w;
-          slide(pos);
-        }
-        function getCursorPos(e) {
-          var a, x = 0;
-          e = (e.changedTouches) ? e.changedTouches[0] : e;
-          a = img.getBoundingClientRect();
-          x = e.pageX - a.left;
-          x = x - window.pageXOffset;
-          return x;
-        }
-        function slide(x) {
-          img.style.width = x + "px";
-          slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
-        }
-      }
-    }
-    
-    window.onload = initComparisons;
-
-    const scrollers = document.querySelectorAll(".scroller");
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      scrollers.forEach((scroller) => {
-        scroller.setAttribute("data-animated", true);
-        const scrollerInner = scroller.querySelector(".scroller__inner");
-        const scrollerContent = Array.from(scrollerInner.children);
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true);
-          duplicatedItem.setAttribute("aria-hidden", true);
-          scrollerInner.appendChild(duplicatedItem);
-        });
-      });
-    }
-
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeModalBtn = document.getElementById("closeModalBtn");
-    const galleryImages = document.querySelectorAll(".gallery-img");
-
-    galleryImages.forEach(img => {
-      img.addEventListener("click", function() {
-        modal.classList.add("show");
-        modalImg.src = this.src;
-      });
-    });
-
-    closeModalBtn.onclick = function() {
-      modal.classList.remove("show");
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.classList.remove("show");
-      }
-    }
-    
+    // Stats Counter Animation
     const counters = document.querySelectorAll('.counter');
     const speed = 40; 
 
@@ -946,6 +874,143 @@
     const statsSection = document.getElementById('stats-section');
     if (statsSection) {
       statsObserver.observe(statsSection);
+    }
+
+    // Completely Rewritten Touch-Friendly Before & After Slider
+    function initComparisons() {
+      var overlays = document.querySelectorAll(".img-comp-overlay");
+      
+      overlays.forEach(function(overlay) {
+        var slider = document.createElement("DIV");
+        slider.className = "img-comp-slider";
+        overlay.parentElement.insertBefore(slider, overlay);
+        
+        var clicked = 0;
+        
+        // Dynamic sizing logic that calculates based on container bounds
+        function updateSizes() {
+           var container = overlay.parentElement;
+           var w = container.offsetWidth;
+           
+           // Ensure inner images stretch to fill the outer container so they crop properly
+           var innerImg = overlay.querySelector("img");
+           if (innerImg) {
+             innerImg.style.width = w + "px";
+             innerImg.style.maxWidth = "none";
+           }
+           var baseImgContainer = container.firstElementChild;
+           if (baseImgContainer && baseImgContainer !== overlay) {
+             var baseImg = baseImgContainer.querySelector("img");
+             if (baseImg) {
+               baseImg.style.width = w + "px";
+               baseImg.style.maxWidth = "none";
+             }
+           }
+           
+           // Reset slider exactly to middle on load/resize
+           overlay.style.width = (w / 2) + "px";
+           slider.style.left = (w / 2) + "px";
+        }
+        
+        // Wait for ALL images inside this specific slider to load before grabbing dimensions
+        var imgs = overlay.parentElement.querySelectorAll("img");
+        var loaded = 0;
+        imgs.forEach(i => {
+            if(i.complete) loaded++;
+            else i.addEventListener("load", () => {
+                loaded++;
+                if(loaded === imgs.length) updateSizes();
+            });
+        });
+        if(loaded === imgs.length) updateSizes();
+        
+        // Recalculate if the screen size/orientation changes
+        window.addEventListener("resize", updateSizes);
+
+        // Listen for mouse/touch interactions
+        slider.addEventListener("mousedown", slideReady);
+        window.addEventListener("mouseup", slideFinish);
+        slider.addEventListener("touchstart", slideReady, {passive: false});
+        window.addEventListener("touchend", slideFinish);
+
+        function slideReady(e) {
+          e.preventDefault();
+          clicked = 1;
+          window.addEventListener("mousemove", slideMove);
+          // passive: false is required to allow preventDefault on touch dragging
+          window.addEventListener("touchmove", slideMove, {passive: false});
+        }
+        
+        function slideFinish() {
+          clicked = 0;
+        }
+        
+        function slideMove(e) {
+          if (clicked === 0) return false;
+          // Stop the page from scrolling while user slides back and forth
+          if(e.cancelable) e.preventDefault(); 
+          
+          var pos = getCursorPos(e);
+          var w = overlay.parentElement.offsetWidth;
+          
+          if (pos < 0) pos = 0;
+          if (pos > w) pos = w;
+          
+          overlay.style.width = pos + "px";
+          slider.style.left = pos + "px";
+        }
+        
+        function getCursorPos(e) {
+          var a, x = 0;
+          e = (e.changedTouches) ? e.changedTouches[0] : e;
+          // Get bounding box of the stable parent container, not the shifting overlay
+          a = overlay.parentElement.getBoundingClientRect(); 
+          x = e.pageX - a.left;
+          x = x - window.pageXOffset;
+          return x;
+        }
+      });
+    }
+    
+    // Initialize after full DOM load
+    window.addEventListener("load", initComparisons);
+
+    // Infinite Marquee Logic
+    const scrollers = document.querySelectorAll(".scroller");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+
+    // Lightbox Logic
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const galleryImages = document.querySelectorAll(".gallery-img");
+
+    galleryImages.forEach(img => {
+      img.addEventListener("click", function() {
+        modal.classList.add("show");
+        modalImg.src = this.src;
+      });
+    });
+
+    closeModalBtn.onclick = function() {
+      modal.classList.remove("show");
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.classList.remove("show");
+      }
     }
   </script>
 </body>
