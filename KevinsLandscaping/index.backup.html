@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <title>Marty's Landscaping & Minor Construction | Troy, NY</title>
-  <meta name="description" content="Professional landscaping, snow removal, sealcoating, and minor construction services by Patrick Gerighty in Troy, NY. 5-star rated property maintenance." />
-  <meta name="keywords" content="landscaper Troy NY, lawn care, minor construction, drywall repair, snow removal, sealcoating, Patrick Gerighty, Marty's Landscaping" />
+  <title>Landscape for Less | Lawn Care & Landscaping in Albany, NY</title>
+  <meta name="description" content="Landscape for Less, led by Kevin Nasadoski, provides top-rated lawn care, landscaping, and hardscaping services in the Capital Region." />
+  <meta name="keywords" content="landscaping Albany NY, hardscaping, patios, pavers, lawn care, Kevin Nasadoski, Landscape for Less" />
   
-  <link rel="icon" type="image/jpeg" href="MartysLandscapingLogo.jpg" />
+  <link rel="icon" type="image/jpeg" href="KevinsLandscapeForLessLogo.jpg" />
 
   <style>
     /* =========================================
@@ -94,6 +94,7 @@
       transition: all 0.2s ease;
       cursor: pointer;
       border: none;
+      white-space: nowrap;
     }
 
     .btn-accent {
@@ -133,6 +134,7 @@
       font-weight: 800;
       font-size: 1.2rem;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .logo-container img {
@@ -173,8 +175,6 @@
       animation: fadeUp 0.8s ease-out forwards;
       opacity: 0;
       transform: translateY(20px);
-      text-align: center;
-      width: 100%;
     }
 
     @keyframes fadeUp {
@@ -184,12 +184,11 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 800px;
+      max-width: 750px;
       margin: 0 auto 40px;
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
       transform: translateY(20px);
-      text-align: center;
     }
 
     .hero .btn {
@@ -197,29 +196,36 @@
       opacity: 0;
       transform: translateY(20px);
     }
+    
+    .hero-badges-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
 
-    /* Clickable Facebook Link in Hero with contrasting background */
-    .hero-fb-badge {
+    .hero-fb-badge, .hero-email-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-weight: 700;
       color: #fff;
-      background: rgba(24, 119, 242, 0.15); /* Distinct blue background */
-      border: 1px solid rgba(24, 119, 242, 0.7);
       padding: 12px 24px;
       border-radius: 8px;
       transition: all 0.2s;
-      margin-top: 20px; /* Space under the green button */
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-decoration: none;
-      
-      /* Animation to match button */
       animation: fadeUp 0.8s ease-out 0.5s forwards;
       opacity: 0;
       transform: translateY(20px);
+    }
+
+    .hero-fb-badge {
+      background: rgba(24, 119, 242, 0.15); 
+      border: 1px solid rgba(24, 119, 242, 0.7);
     }
 
     .hero-fb-badge:hover { 
@@ -227,7 +233,17 @@
       transform: translateY(-2px);
     }
     
-    .hero-fb-badge svg { width: 20px; height: 20px; fill: currentColor; }
+    .hero-email-badge {
+      background: rgba(234, 67, 53, 0.15); 
+      border: 1px solid rgba(234, 67, 53, 0.7);
+    }
+
+    .hero-email-badge:hover { 
+      background: rgba(234, 67, 53, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .hero-fb-badge svg, .hero-email-badge svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* =========================================
        FUNNEL STAGE 2: INTEREST (ABOUT & SERVICES)
@@ -260,23 +276,37 @@
       font-size: 1.1rem;
     }
 
+    .about-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .stat-box {
+      border-left: 3px solid var(--accent);
+      padding-left: 15px;
+    }
+
+    .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; }
+    .stat-box span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;}
+
     .about-image {
       border-radius: 12px;
       overflow: hidden;
       width: 100%;
       height: 100%;
-      min-height: 300px; /* Ensures minimum height on mobile */
+      min-height: 300px;
       display: flex;
     }
     
     .about-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Correctly covers space without distortion */
+      object-fit: cover;
       object-position: center;
     }
 
-    /* Services Grid with Green Backdrop Buttons */
+    /* Services Grid */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -285,18 +315,18 @@
     }
 
     .service-item {
-      background: var(--accent); /* Green accent backdrop */
+      background: var(--accent);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
       padding: 15px 40px; 
       display: flex;
       align-items: center;
-      justify-content: center; /* Forces horizontal centering */
-      text-align: center;      /* Centers the text lines */
-      position: relative;      /* Anchor for the absolute positioned SVG */
+      justify-content: center; 
+      text-align: center;      
+      position: relative;      
       font-weight: 700;
       color: #fff;
-      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3); /* Bright glowing effect */
+      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
@@ -308,21 +338,20 @@
 
     .service-item svg {
       position: absolute;
-      left: 20px; /* Lock icon to the left side */
+      left: 20px;
       width: 20px;
       height: 20px;
-      fill: #fff; /* White icon to contrast with the green box */
-      flex-shrink: 0;
+      fill: #fff;
     }
 
     /* =========================================
        FUNNEL STAGE 3: DESIRE (PORTFOLIO & PROOF)
        ========================================= */
     
-    /* Before/After Custom Slider */
+    /* Before/After Custom Slider - FIXED DEAD SPACE */
     .ba-container {
       display: grid;
-      grid-template-columns: 1fr; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
       gap: 30px;
       margin-bottom: 80px;
       width: 100%;
@@ -333,26 +362,28 @@
       position: relative;
       width: 100%;
       max-width: 800px; 
-      height: 500px; 
+      margin: 0 auto; 
+      height: 400px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--glass-border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.2);
     }
 
     .img-comp-img {
       position: absolute;
       width: auto;
-      height: auto;
+      height: 100%;
       overflow: hidden;
+      top: 0;
+      left: 0;
     }
 
     .img-comp-img img {
       display: block;
-      width: 100%;
-      height: 500px;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: left center;
     }
 
     .img-comp-slider {
@@ -464,42 +495,6 @@
     /* =========================================
        FUNNEL STAGE 4: ACTION (CONTACT/FOOTER)
        ========================================= */
-    
-    /* Customer Service Commitments section at bottom */
-    .customer-service-section {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .cs-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center; /* Center the boxes as a group */
-      margin-top: 40px;
-      width: 100%;
-    }
-
-    .cs-box {
-      background-color: #f0f0f0; /* Contrasting light backdrop, non-blurred, non-matching site bg */
-      color: #111; /* Dark text for light background */
-      border: 1px solid #d0d0d0;
-      border-radius: 8px;
-      padding: 15px 20px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: all 0.2s ease;
-      width: fit-content; /* Small boxes like buttons */
-    }
-
-    .cs-box:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-
     .cta-section {
       text-align: center;
       padding: 60px 0 80px;
@@ -513,8 +508,8 @@
       border-top: 4px solid var(--accent);
     }
 
-    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; text-align: center;}
-    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0; display: block; text-align: center;}
+    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; }
+    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0; display: block;}
 
     /* Lightbox Modal */
     .modal {
@@ -555,10 +550,13 @@
        MOBILE RESPONSIVE CLASSES (CENTERING)
        ========================================= */
     @media (max-width: 900px) {
-      .about-grid, .ba-container { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
       
       body { text-align: center; }
       p, h1, h2, h3, h4, .about-content p { text-align: center !important; }
+      
+      .about-stats { justify-content: center; flex-wrap: wrap; }
+      .stat-box { border-left: none; border-bottom: 3px solid var(--accent); padding: 0 0 10px 0; }
       
       /* Services Mobile Stack */
       .services-grid { display: flex; flex-direction: column; align-items: center; }
@@ -566,28 +564,30 @@
     }
 
     @media (max-width: 600px) {
-      /* Mobile Header: Ensure Logo and Call fit seamlessly */
-      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 12px 0; gap: 8px; justify-content: space-between;}
+      /* Mobile Header: Ensure Logo, Name, and Call fit seamlessly */
+      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 12px 0; gap: 4px; justify-content: space-between;}
       
       /* Adjusted sizes to guarantee name fits */
-      .logo-container { font-size: 0.9rem; gap: 8px; line-height: 1.1; white-space: nowrap; }
+      .logo-container { font-size: 0.95rem; gap: 6px; line-height: 1.1; }
       .logo-container img { height: 35px; } 
       
-      .btn { padding: 8px 14px; font-size: 0.8rem; white-space: nowrap; }
+      .header-actions { gap: 6px; }
+      
+      .btn { padding: 8px 12px; font-size: 0.75rem; }
 
-      .hero-headline { font-size: 1.8rem; }
+      .hero-headline { font-size: 2rem; }
       .img-comp-container { height: 300px; max-width: 100%; }
       .img-comp-img img { height: 300px; }
       
-      .hero-fb-badge { padding: 10px 18px; font-size: 0.8rem; margin-top: 15px; }
-      .hero-fb-badge svg { width: 16px; height: 16px; }
+      .hero-fb-badge, .hero-email-badge { padding: 10px 18px; font-size: 0.8rem; margin-top: 10px; }
+      .hero-fb-badge svg, .hero-email-badge svg { width: 16px; height: 16px; }
     }
-
-    /* Extra safety for very small screens (e.g. iPhone SE / 320px) */
-    @media (max-width: 360px) {
-      .logo-container { font-size: 0.75rem; gap: 6px; }
+    
+    @media (max-width: 380px) {
+      /* Extra safety for very small screens (iPhone SE) */
+      .logo-container { font-size: 0.8rem; gap: 4px; }
       .logo-container img { height: 28px; }
-      .btn { padding: 6px 10px; font-size: 0.75rem; }
+      .btn { padding: 6px 10px; font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -603,102 +603,141 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo-container" aria-label="Home">
-        <img src="MartysLandscapingLogo.jpg" alt="Marty's Logo" onerror="this.style.display='none'">
-        <span>Marty's Landscaping</span>
+        <img src="KevinsLandscapeForLessLogo.jpg" alt="Landscape for Less Logo" onerror="this.style.display='none'">
+        <span>Landscape for Less</span>
       </a>
       <div class="header-actions">
-        <a href="tel:+15184163543" class="btn btn-accent">Call Now</a>
+        <a href="tel:+15183319076" class="btn btn-accent">Call Now</a>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero container">
-      <h1 class="hero-headline">Transform Your Property Now With Marty's Expertise.</h1>
-      <p>Marty's delivers expert property maintenance, pristine lawn mowings, on time snow removal, driveway sealcoating, construction repairs, and total property transformations across Troy and the Capital Region.</p>
-      <a href="tel:+15184163543" class="btn btn-accent">Get Your Free Estimate</a>
+      <h1 class="hero-headline">Spring Bookings Now Open! Get Your Yard Ready for the Season.</h1>
+      <p>Landscape for Less delivers expert property maintenance, precise hardscaping, and total yard transformations across Albany and the Capital Region.</p>
+      <a href="tel:+15183319076" class="btn btn-accent">Get Your Free Estimate</a>
       
-      <a href="#" target="_blank" rel="noopener" class="hero-fb-badge" aria-label="Visit our Facebook page">
-        <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-        <span>Facebook</span>
-      </a>
+      <div class="hero-badges-container">
+        <a href="https://www.facebook.com/p/Landscape-for-Less-61550884124109/" target="_blank" rel="noopener" class="hero-fb-badge" aria-label="Visit our Facebook page">
+          <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+          <span>Facebook</span>
+        </a>
+        <a href="mailto:Landscapeless@gmail.com" class="hero-email-badge" aria-label="Email Us">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span>Email Us</span>
+        </a>
+      </div>
     </section>
 
     <section class="container" style="padding-bottom: 60px;">
       <div class="glass-card about-grid">
         <div class="about-text">
-          <h2 style="font-size: 2rem; margin-bottom: 20px;">Quality Work, Local Roots.</h2>
-          <p>Located at <strong>39 114th St, Troy, NY</strong>, Marty's Landscaping and Minor Construction is dedicated to total customer satisfaction. We handle the jobs other companies won't, ensuring your property looks pristine year-round.</p>
-          <p>Whether you need an entire driveway cleared of ice, a deck repaired, or fresh drywall installed, Patrick and his crew are responsive, kind, and fair on price.</p>
+          <h2 style="font-size: 2rem; margin-bottom: 20px;">Built on Local Roots.</h2>
+          <p>We are a fully insured, locally owned and operated property maintenance company dedicated to total customer satisfaction. We believe in local success, which is why <strong>all our products—from mulch to ice melt—are sourced from family businesses right here in the Capital Region.</strong></p>
+          <p>Whether you are a residential homeowner, a commercial business, or an HOA, we deliver the highest quality of work.</p>
+          
+          <div class="about-stats" id="stats-section">
+            <div class="stat-box">
+              <h4 class="counter" data-target="10" data-suffix="+">0</h4>
+              <span>Years Experience</span>
+            </div>
+            <div class="stat-box">
+              <h4 class="counter" data-target="100" data-suffix="%">0</h4>
+              <span>Locally Sourced</span>
+            </div>
+          </div>
+
         </div>
-        <div class="about-image">
-           <img src="MartysLandscaping1.jpg" alt="Landscaping property transformation" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="about-image" style="border-radius: 12px; overflow: hidden;">
+           <img src="KevinsLandscaping1.jpg" alt="Landscaping property transformation" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
     </section>
 
     <section id="services" class="container" style="padding-top: 20px; padding-bottom: 60px;">
       <h2 class="section-title">What is your property missing?</h2>
-      <p class="section-subtitle">We go beyond just the lawn. From summer landscaping to winter storm recovery and indoor renovations.</p>
+      <p class="section-subtitle">From routine upkeep to total yard overhauls, we have the tools and experience to get it done.</p>
 
       <div class="services-grid">
         <svg style="display:none;" id="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Lawn Care & Landscaping</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Snow & Ice Removal</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Driveway Sealcoating</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Leaf Removal & Fall Cleanup</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>General Construction & Repairs</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Gutter Cleaning</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Drywall Installation & Repair</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Interior & Exterior Painting</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Flooring & Tile Work</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Deck Maintenance</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Spring & Fall Clean up</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Tree Removal</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Trimming / Mulching</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Walkways / Patios</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Retaining Walls</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Mowing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Decks</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Fences</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Rock Work</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Seeding</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Painting</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Power Washing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Outdoor Seasonal Decorating</span></div>
       </div>
 
       <div style="text-align: center; margin-top: 30px;">
         <p style="font-size: 1.15rem; margin-bottom: 20px; font-weight: 600;">Need something that isn't listed?</p>
-        <a href="tel:+15184163543" class="btn btn-accent" style="background: transparent; border: 2px solid var(--accent);">Call Patrick Today!</a>
+        <a href="tel:+15183319076" class="btn btn-accent" style="background: transparent; border: 2px solid var(--accent);">Call Kevin Today!</a>
       </div>
     </section>
 
     <section class="container" style="padding-top: 20px;">
       <h2 class="section-title">The Difference is in the Details</h2>
-      <p class="section-subtitle">Drag the slider to see the transformation.</p>
+      <p class="section-subtitle">Drag the slider to see the transformation from raw property to finished landscape.</p>
 
       <div class="ba-container">
         <div class="img-comp-container glass-card" style="padding: 0; border: none;">
           <div class="img-comp-img">
-            <img src="MartysAfter1.jpg" alt="After Transformation">
+            <img src="KevinsLandscapingAfter1.jpg" alt="After Landscaping">
           </div>
           <div class="img-comp-img img-comp-overlay">
-            <img src="MartysBefore1.jpg" alt="Before Transformation">
+            <img src="KevinsLandscapingBefore1.jpg" alt="Before Landscaping">
+          </div>
+        </div>
+        
+        <div class="img-comp-container glass-card" style="padding: 0; border: none;">
+          <div class="img-comp-img">
+            <img src="KevinsLandscapingAfter2.jpg" alt="After Landscaping">
+          </div>
+          <div class="img-comp-img img-comp-overlay">
+            <img src="KevinsLandscapingBefore2.jpg" alt="Before Landscaping">
+          </div>
+        </div>
+
+        <div class="img-comp-container glass-card" style="padding: 0; border: none;">
+          <div class="img-comp-img">
+            <img src="KevinsLandscapingAfter3.jpg" alt="After Landscaping">
+          </div>
+          <div class="img-comp-img img-comp-overlay">
+            <img src="KevinsLandscapingBefore3.jpg" alt="Before Landscaping">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container" style="padding-top: 20px;">
+    <section class="container">
       <h2 class="section-title">5-Star Local Reputation</h2>
-      <p class="section-subtitle">Don't just take our word for it. Here is what your neighbors next door are saying.</p>
+      <p class="section-subtitle">Don't just take our word for it. Here is what your neighbors are saying.</p>
 
       <div class="reviews-grid">
         <article class="review-card glass-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"One of the best to do it, came out to west sand lake and cleared out snow all the way down to pavement for a large driveway. Highly recommended"</p>
-          <div class="review-author">— J Why</div>
+          <p class="review-text">"Kevin did the edging, mulching, cleanup and some trimming of my landscaping. The crew did a great job including cleanup when they were done. Kevin is a pleasure to work with, does a great job and has very fair prices. What more can you ask for? I think it looks great! See what you think."</p>
+          <div class="review-author">— Maryanne Sangiacomo</div>
         </article>
 
         <article class="review-card glass-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Both Patrick and one other gentlemen... were so responsive and kind. Came same day within a couple hours when I needed snow and ice removed. They were so friendly, kind, and fair on price (ended up paying more because they did such a good job). 100% would call them again"</p>
-          <div class="review-author">— Rajat Duggirala</div>
+          <p class="review-text">"Just met Kevin from landscape for less... So excited I don't have crummy crap and weeds around the tree. Him and his team made a perfect spot with stones, mulch and rock border. It was so creative, Kevin took my idea and turned it into a beautiful masterpiece... I highly recommend his services! His prices are great, very communicable and brings great expertise!"</p>
+          <div class="review-author">— Debbie Eberle-Sherman</div>
         </article>
 
         <article class="review-card glass-card">
           <div class="stars">★★★★★</div>
-          <p class="review-text">"Positive: Responsiveness, Punctuality, Quality, Professionalism, Value. <br><br>Services: Gutter cleaning, General construction, Flooring, General repairs, Drywall installation, Tile work installation, Paint indoors, Exterior painting, Drywall repair"</p>
-          <div class="review-author">— john fink</div>
+          <p class="review-text">"Kevin is great to work with. His crew did an amazing job weeding, edging and mulching our garden beds. Our front, back and side yard look great. We would definitely recommend working with Kevin and his wonderful team."</p>
+          <div class="review-author">— Rebecca Hathaway</div>
         </article>
       </div>
     </section>
@@ -708,51 +747,72 @@
       
       <div class="scroller" data-animated="true">
         <div class="scroller__inner" id="galleryScroller">
-          <img src="MartysDeck.jpg" alt="Marty's Deck Work" class="gallery-img">
-          <img src="MartysLandscaping1.jpg" alt="Landscaping" class="gallery-img">
-          <img src="MartysLandscaping2.jpg" alt="Landscaping" class="gallery-img">
-          <img src="MartysLandscaping3.jpg" alt="Landscaping" class="gallery-img">
-          <img src="MartysLandscaping4.jpg" alt="Landscaping" class="gallery-img">
-          <img src="MartysLeafRemoval1.jpg" alt="Leaf Removal" class="gallery-img">
-          <img src="MartysLeafRemoval2.jpg" alt="Leaf Removal" class="gallery-img">
-          <img src="MartysLeafRemoval3.jpg" alt="Leaf Removal" class="gallery-img">
-          <img src="MartysSealcoating1.jpg" alt="Driveway Sealcoating" class="gallery-img">
-          <img src="MartysSealcoating2.jpg" alt="Driveway Sealcoating" class="gallery-img">
-          <img src="MartysSealcoating3.jpg" alt="Driveway Sealcoating" class="gallery-img">
-          <img src="MartysSealcoating4.jpg" alt="Driveway Sealcoating" class="gallery-img">
+          <img src="KevinsLandscaping1.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscaping2.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscaping3.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscaping4.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscapingAfter1.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscapingBefore1.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscapingAfter2.jpg" alt="Landscaping work" class="gallery-img">
+          <img src="KevinsLandscapingBefore2.jpg" alt="Landscaping work" class="gallery-img">
         </div>
-      </div>
-    </section>
-
-    <section class="customer-service-section container">
-      <h2 class="section-title">Customer Service Commitments</h2>
-      <p class="section-subtitle">Dedicated service built on local roots in the Capital Region.</p>
-      <div class="cs-container">
-        <div class="cs-box">Dedicated Service</div>
-        <div class="cs-box">Proven Reputation</div>
-        <div class="cs-box">Fully Insured & Locally Owned</div>
-        <div class="cs-box">Prompt & Reliable Response</div>
-        <div class="cs-box">Transparent & Fair Pricing</div>
       </div>
     </section>
 
     <section class="cta-section container">
       <div class="glass-card cta-card">
         <h2>Ready for a Change?</h2>
-        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">Whether it's seasonal lawn care, a sudden snowstorm, or an indoor renovation project, Patrick and the team are ready.</p>
-        <a href="tel:+15184163543" class="cta-phone" style="margin-bottom: 30px;">(518) 416-3543</a>
-        <a href="tel:+15184163543" class="btn btn-accent" style="width: 100%;">Call Now For An Estimate</a>
+        <p style="font-size: 1.1rem; color: var(--text-muted);">Don't wait to create the outdoor space you've always wanted. Whether it's a new stone patio or a complete property overhaul, we are ready.</p>
+        <a href="tel:+15183319076" class="cta-phone">(518) 331-9076</a>
+        <a href="tel:+15183319076" class="btn btn-accent" style="width: 100%;">Call Now For An Estimate</a>
       </div>
     </section>
   </main>
 
   <footer style="text-align: center; padding: 40px 0; border-top: 1px solid var(--glass-border); margin-top: 20px;">
-    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;">&copy; 2026 Marty's Landscaping and Minor Construction. All Rights Reserved. Serving Troy, NY and surrounding areas.</p>
+    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;">&copy; 2026 Landscape for Less. All Rights Reserved. Serving Albany, NY and surrounding areas.</p>
     <p style="color: var(--text-muted); font-size: 0.85rem;">Website developed by <a href="mailto:nickblanchardbusiness@gmail.com" style="color: var(--accent); text-decoration: underline; font-weight: bold;">Nick Blanchard</a></p>
   </footer>
 
   <script>
-    // Image Comparison Slider logic
+    const counters = document.querySelectorAll('.counter');
+    const speed = 40; 
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const suffix = counter.getAttribute('data-suffix');
+          const count = +counter.innerText.replace(/\D/g, ''); 
+          
+          const inc = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc) + suffix;
+            setTimeout(updateCount, 30);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+        updateCount();
+      });
+    };
+
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.disconnect(); 
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.getElementById('stats-section');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Fixed Dead Space Script for Sliders
     function initComparisons() {
       var x, i;
       x = document.getElementsByClassName("img-comp-overlay");
@@ -762,8 +822,25 @@
       
       function compareImages(img) {
         var slider, clicked = 0, w, h;
-        w = img.offsetWidth;
-        h = img.offsetHeight;
+        var container = img.parentElement;
+        w = container.offsetWidth;
+        h = container.offsetHeight;
+
+        var innerImg = img.querySelector("img");
+        if(innerImg) {
+            innerImg.style.width = w + "px";
+            innerImg.style.maxWidth = "none";
+        }
+        
+        var baseImgContainer = container.firstElementChild;
+        if(baseImgContainer && baseImgContainer !== img) {
+            var baseImg = baseImgContainer.querySelector("img");
+            if(baseImg) {
+                baseImg.style.width = w + "px";
+                baseImg.style.maxWidth = "none";
+            }
+        }
+        
         img.style.width = (w / 2) + "px";
         
         slider = document.createElement("DIV");
@@ -775,7 +852,15 @@
         slider.addEventListener("mousedown", slideReady);
         window.addEventListener("mouseup", slideFinish);
         slider.addEventListener("touchstart", slideReady);
-        window.addEventListener("touchend", slideFinish);
+        window.addEventListener("touchmove", slideFinish);
+
+        window.addEventListener('resize', function() {
+            var newW = container.offsetWidth;
+            if(innerImg) innerImg.style.width = newW + "px";
+            if(baseImg) baseImg.style.width = newW + "px";
+            img.style.width = (newW / 2) + "px";
+            slider.style.left = (newW / 2) - (slider.offsetWidth / 2) + "px";
+        });
         
         function slideReady(e) {
           e.preventDefault();
@@ -791,7 +876,7 @@
           if (clicked == 0) return false;
           pos = getCursorPos(e)
           if (pos < 0) pos = 0;
-          if (pos > w) pos = w;
+          if (pos > container.offsetWidth) pos = container.offsetWidth;
           slide(pos);
         }
         function getCursorPos(e) {
@@ -811,7 +896,6 @@
     
     window.onload = initComparisons;
 
-    // Infinite Marquee logic
     const scrollers = document.querySelectorAll(".scroller");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       scrollers.forEach((scroller) => {
@@ -826,7 +910,6 @@
       });
     }
 
-    // Lightbox logic
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeModalBtn = document.getElementById("closeModalBtn");
