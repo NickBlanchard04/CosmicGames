@@ -23,6 +23,7 @@
       --glass-border: rgba(255, 255, 255, 0.1);
       --max-width: 1200px;
       --header-height: 80px;
+      --fb-brand: #1877F2; /* Facebook Blue */
     }
 
     * {
@@ -140,15 +141,47 @@
       transition: transform 0.3s ease;
     }
 
-    .logo-container:hover img {
-      transform: scale(1.05);
-    }
-
     .header-actions {
       display: flex;
       align-items: center;
       gap: 15px;
     }
+
+    .ig-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(225, 48, 108, 0.25);
+      border: 1px solid rgba(225, 48, 108, 0.8);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    
+    .ig-badge svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Fix: Clickable Facebook Link with contrasting background */
+    .fb-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(24, 119, 242, 0.15); /* Distinct blue background */
+      border: 1px solid rgba(24, 119, 242, 0.7);
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .fb-badge:hover { 
+      background: rgba(24, 119, 242, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .fb-badge svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* =========================================
        FUNNEL STAGE 1: AWARENESS (HERO)
@@ -168,6 +201,8 @@
       animation: fadeUp 0.8s ease-out forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-align: center;
+      width: 100%;
     }
 
     @keyframes fadeUp {
@@ -182,6 +217,7 @@
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-align: center;
     }
 
     .hero .btn {
@@ -235,6 +271,23 @@
     .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; display: flex; align-items: center;}
     .stat-box span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;}
 
+    /* Fix: Ensure photo container fills space properly */
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      min-height: 300px; /* Ensures minimum height on mobile */
+      display: flex;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Correctly covers space without distortion */
+      object-position: center;
+    }
+
     /* Services Grid */
     .services-grid {
       display: grid;
@@ -280,18 +333,18 @@
     /* Before/After Custom Slider - Adjusted for 1 Image Set */
     .ba-container {
       display: grid;
-      grid-template-columns: 1fr; /* Changed to 1fr for single slider */
+      grid-template-columns: 1fr; 
       gap: 30px;
       margin-bottom: 80px;
       width: 100%;
+      justify-items: center; /* Ensures centering */
     }
 
     .img-comp-container {
       position: relative;
       width: 100%;
-      max-width: 800px; /* Increased max-width since it's only one */
-      margin: 0 auto; 
-      height: 500px; /* Taller for single display */
+      max-width: 800px; 
+      height: 500px; 
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--glass-border);
@@ -435,8 +488,8 @@
       border-top: 4px solid var(--accent);
     }
 
-    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0; display: block;}
+    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; text-align: center;}
+    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0; display: block; text-align: center;}
 
     /* Lightbox Modal */
     .modal {
@@ -520,6 +573,9 @@
         <span>Marty's Landscaping</span>
       </a>
       <div class="header-actions">
+        <a href="#" target="_blank" rel="noopener" class="fb-badge" aria-label="Visit our Facebook page">
+          <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        </a>
         <a href="tel:+15184163543" class="btn btn-accent">Call Now</a>
       </div>
     </div>
@@ -527,8 +583,8 @@
 
   <main>
     <section class="hero container">
-      <h1 class="hero-headline">Complete Property & Construction Solutions.</h1>
-      <p>From premium landscaping and sealcoating to reliable minor construction and repairs, Patrick Gerighty and the team at Marty's deliver 5-star results across Troy and the Capital Region.</p>
+      <h1 class="hero-headline">Transform Your Property Now. Spots Are Filling Fast.</h1>
+      <p>Marty's delivers expert property maintenance, pristine lawn mowings, durable snow removal, driveway sealcoating, construction repairs, and total property transformations across Troy and the Capital Region.</p>
       <a href="tel:+15184163543" class="btn btn-accent">Get Your Free Estimate</a>
     </section>
 
@@ -542,23 +598,23 @@
           <div class="about-stats" id="stats-section">
             <div class="stat-box">
               <h4 class="counter" data-target="5" data-suffix=".0">0</h4>
-              <span>Google Rating</span>
+              <span>Proven Reputation</span>
             </div>
             <div class="stat-box">
               <h4 class="counter" data-target="100" data-suffix="%">0</h4>
-              <span>Satisfaction</span>
+              <span>Dedicated Service</span>
             </div>
           </div>
 
         </div>
-        <div class="about-image" style="border-radius: 12px; overflow: hidden;">
+        <div class="about-image">
            <img src="MartysLandscaping1.jpg" alt="Landscaping property transformation" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
     </section>
 
     <section id="services" class="container" style="padding-top: 20px; padding-bottom: 60px;">
-      <h2 class="section-title">What does your property need?</h2>
+      <h2 class="section-title">What is your property missing?</h2>
       <p class="section-subtitle">We go beyond just the lawn. From summer landscaping to winter storm recovery and indoor renovations.</p>
 
       <div class="services-grid">
