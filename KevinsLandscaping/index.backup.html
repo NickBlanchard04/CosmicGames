@@ -175,6 +175,8 @@
       animation: fadeUp 0.8s ease-out forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-align: center;
+      width: 100%;
     }
 
     @keyframes fadeUp {
@@ -189,6 +191,7 @@
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-align: center;
     }
 
     .hero .btn {
@@ -287,7 +290,7 @@
       padding-left: 15px;
     }
 
-    .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; }
+    .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; display: flex; align-items: center;}
     .stat-box span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;}
 
     .about-image {
@@ -338,7 +341,7 @@
 
     .service-item svg {
       position: absolute;
-      left: 20px;
+      left: 20px; 
       width: 20px;
       height: 20px;
       fill: #fff;
@@ -348,7 +351,7 @@
        FUNNEL STAGE 3: DESIRE (PORTFOLIO & PROOF)
        ========================================= */
     
-    /* Before/After Custom Slider - FIXED DEAD SPACE */
+    /* Before/After Custom Slider - FIXED FOR TOUCH DRAGGING */
     .ba-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -368,6 +371,7 @@
       overflow: hidden;
       border: 1px solid var(--glass-border);
       background: rgba(0,0,0,0.2);
+      touch-action: pan-y; /* Crucial: Allows vertical scrolling but captures horizontal touch dragging */
     }
 
     .img-comp-img {
@@ -384,35 +388,52 @@
       height: 100%;
       object-fit: cover;
       object-position: left center;
+      pointer-events: none; /* Prevents images from catching clicks */
     }
 
+    /* Fixed Drag Handle / Slider */
     .img-comp-slider {
       position: absolute;
       z-index: 9;
       cursor: ew-resize;
+      width: 40px; /* Big Hit Area */
+      height: 100%;
+      background-color: transparent;
+      top: 0;
+      transform: translateX(-50%); /* Keeps hit area perfectly centered over line */
+    }
+
+    /* The actual visible line */
+    .img-comp-slider::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 4px;
       height: 100%;
       background-color: var(--accent);
-      top: 0;
-      opacity: 0.9;
+      pointer-events: none;
     }
 
+    /* The visual circle */
     .img-comp-slider::after {
       content: "↔";
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       background: var(--accent);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 16px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      pointer-events: none;
     }
 
     /* Reviews Grid */
@@ -495,6 +516,40 @@
     /* =========================================
        FUNNEL STAGE 4: ACTION (CONTACT/FOOTER)
        ========================================= */
+    .customer-service-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center; 
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    .cs-box {
+      background-color: #f0f0f0; 
+      color: #111; 
+      border: 1px solid #d0d0d0;
+      border-radius: 8px;
+      padding: 15px 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+
+    .cs-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
     .cta-section {
       text-align: center;
       padding: 60px 0 80px;
@@ -508,8 +563,9 @@
       border-top: 4px solid var(--accent);
     }
 
-    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; }
-    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0; display: block;}
+    .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; text-align: center;}
+    .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0 10px; display: block; text-align: center;}
+    .cta-email { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 30px; display: block; text-align: center; text-decoration: underline;}
 
     /* Lightbox Modal */
     .modal {
@@ -550,7 +606,7 @@
        MOBILE RESPONSIVE CLASSES (CENTERING)
        ========================================= */
     @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid, .ba-container { grid-template-columns: 1fr; }
       
       body { text-align: center; }
       p, h1, h2, h3, h4, .about-content p { text-align: center !important; }
@@ -564,10 +620,8 @@
     }
 
     @media (max-width: 600px) {
-      /* Mobile Header: Ensure Logo, Name, and Call fit seamlessly */
-      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 12px 0; gap: 4px; justify-content: space-between;}
+      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 12px 0; gap: 5px; justify-content: space-between;}
       
-      /* Adjusted sizes to guarantee name fits */
       .logo-container { font-size: 0.95rem; gap: 6px; line-height: 1.1; }
       .logo-container img { height: 35px; } 
       
@@ -584,7 +638,6 @@
     }
     
     @media (max-width: 380px) {
-      /* Extra safety for very small screens (iPhone SE) */
       .logo-container { font-size: 0.8rem; gap: 4px; }
       .logo-container img { height: 28px; }
       .btn { padding: 6px 10px; font-size: 0.7rem; }
@@ -662,19 +715,16 @@
       <div class="services-grid">
         <svg style="display:none;" id="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Spring & Fall Clean up</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Tree Removal</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Trimming / Mulching</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Walkways / Patios</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Retaining Walls</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Mowing</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Decks</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Fences</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Rock Work</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Seeding</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Painting</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Power Washing</span></div>
-        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Outdoor Seasonal Decorating</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Landscapes & Hardscapes</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Pressure Washing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Indoor/Outdoor Painting</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Decks & Patios</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Cleanups</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Plowing / Snow Removal</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Mulch & Mowing</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Bush/Tree Trimming & Installs</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Outdoor Lights</span></div>
+        <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Seasonal Decor & Lights</span></div>
       </div>
 
       <div style="text-align: center; margin-top: 30px;">
@@ -759,11 +809,24 @@
       </div>
     </section>
 
+    <section class="customer-service-section container">
+      <h2 class="section-title">Customer Service Commitments</h2>
+      <p class="section-subtitle">Dedicated service built on local roots in the Capital Region.</p>
+      <div class="cs-container">
+        <div class="cs-box">Dedicated Service</div>
+        <div class="cs-box">Proven Reputation</div>
+        <div class="cs-box">Fully Insured & Locally Owned</div>
+        <div class="cs-box">Prompt & Reliable Response</div>
+        <div class="cs-box">Transparent & Fair Pricing</div>
+      </div>
+    </section>
+
     <section class="cta-section container">
       <div class="glass-card cta-card">
         <h2>Ready for a Change?</h2>
-        <p style="font-size: 1.1rem; color: var(--text-muted);">Don't wait to create the outdoor space you've always wanted. Whether it's a new stone patio or a complete property overhaul, we are ready.</p>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">Whether it's a seasonal clean-up, tree removal, or a total yard overhaul, Kevin and the team are ready.</p>
         <a href="tel:+15183319076" class="cta-phone">(518) 331-9076</a>
+        <a href="mailto:Landscapeless@gmail.com" class="cta-email">Landscapeless@gmail.com</a>
         <a href="tel:+15183319076" class="btn btn-accent" style="width: 100%;">Call Now For An Estimate</a>
       </div>
     </section>
@@ -775,6 +838,7 @@
   </footer>
 
   <script>
+    // Stats Counter Animation
     const counters = document.querySelectorAll('.counter');
     const speed = 40; 
 
@@ -812,90 +876,106 @@
       statsObserver.observe(statsSection);
     }
 
-    // Fixed Dead Space Script for Sliders
+    // Completely Rewritten Touch-Friendly Before & After Slider
     function initComparisons() {
-      var x, i;
-      x = document.getElementsByClassName("img-comp-overlay");
-      for (i = 0; i < x.length; i++) {
-        compareImages(x[i]);
-      }
+      var overlays = document.querySelectorAll(".img-comp-overlay");
       
-      function compareImages(img) {
-        var slider, clicked = 0, w, h;
-        var container = img.parentElement;
-        w = container.offsetWidth;
-        h = container.offsetHeight;
+      overlays.forEach(function(overlay) {
+        var slider = document.createElement("DIV");
+        slider.className = "img-comp-slider";
+        overlay.parentElement.insertBefore(slider, overlay);
+        
+        var clicked = 0;
+        
+        // Dynamic sizing logic that calculates based on container bounds
+        function updateSizes() {
+           var container = overlay.parentElement;
+           var w = container.offsetWidth;
+           
+           // Ensure inner images stretch to fill the outer container so they crop properly
+           var innerImg = overlay.querySelector("img");
+           if (innerImg) {
+             innerImg.style.width = w + "px";
+             innerImg.style.maxWidth = "none";
+           }
+           var baseImgContainer = container.firstElementChild;
+           if (baseImgContainer && baseImgContainer !== overlay) {
+             var baseImg = baseImgContainer.querySelector("img");
+             if (baseImg) {
+               baseImg.style.width = w + "px";
+               baseImg.style.maxWidth = "none";
+             }
+           }
+           
+           // Reset slider exactly to middle on load/resize
+           overlay.style.width = (w / 2) + "px";
+           slider.style.left = (w / 2) + "px";
+        }
+        
+        // Wait for ALL images inside this specific slider to load before grabbing dimensions
+        var imgs = overlay.parentElement.querySelectorAll("img");
+        var loaded = 0;
+        imgs.forEach(i => {
+            if(i.complete) loaded++;
+            else i.addEventListener("load", () => {
+                loaded++;
+                if(loaded === imgs.length) updateSizes();
+            });
+        });
+        if(loaded === imgs.length) updateSizes();
+        
+        // Recalculate if the screen size/orientation changes
+        window.addEventListener("resize", updateSizes);
 
-        var innerImg = img.querySelector("img");
-        if(innerImg) {
-            innerImg.style.width = w + "px";
-            innerImg.style.maxWidth = "none";
-        }
-        
-        var baseImgContainer = container.firstElementChild;
-        if(baseImgContainer && baseImgContainer !== img) {
-            var baseImg = baseImgContainer.querySelector("img");
-            if(baseImg) {
-                baseImg.style.width = w + "px";
-                baseImg.style.maxWidth = "none";
-            }
-        }
-        
-        img.style.width = (w / 2) + "px";
-        
-        slider = document.createElement("DIV");
-        slider.setAttribute("class", "img-comp-slider");
-        img.parentElement.insertBefore(slider, img);
-        slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
-        slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
-        
+        // Listen for mouse/touch interactions
         slider.addEventListener("mousedown", slideReady);
         window.addEventListener("mouseup", slideFinish);
-        slider.addEventListener("touchstart", slideReady);
-        window.addEventListener("touchmove", slideFinish);
+        slider.addEventListener("touchstart", slideReady, {passive: false});
+        window.addEventListener("touchend", slideFinish);
 
-        window.addEventListener('resize', function() {
-            var newW = container.offsetWidth;
-            if(innerImg) innerImg.style.width = newW + "px";
-            if(baseImg) baseImg.style.width = newW + "px";
-            img.style.width = (newW / 2) + "px";
-            slider.style.left = (newW / 2) - (slider.offsetWidth / 2) + "px";
-        });
-        
         function slideReady(e) {
           e.preventDefault();
           clicked = 1;
           window.addEventListener("mousemove", slideMove);
-          window.addEventListener("touchmove", slideMove);
+          // passive: false is required to allow preventDefault on touch dragging
+          window.addEventListener("touchmove", slideMove, {passive: false});
         }
+        
         function slideFinish() {
           clicked = 0;
         }
+        
         function slideMove(e) {
-          var pos;
-          if (clicked == 0) return false;
-          pos = getCursorPos(e)
+          if (clicked === 0) return false;
+          // Stop the page from scrolling while user slides back and forth
+          if(e.cancelable) e.preventDefault(); 
+          
+          var pos = getCursorPos(e);
+          var w = overlay.parentElement.offsetWidth;
+          
           if (pos < 0) pos = 0;
-          if (pos > container.offsetWidth) pos = container.offsetWidth;
-          slide(pos);
+          if (pos > w) pos = w;
+          
+          overlay.style.width = pos + "px";
+          slider.style.left = pos + "px";
         }
+        
         function getCursorPos(e) {
           var a, x = 0;
           e = (e.changedTouches) ? e.changedTouches[0] : e;
-          a = img.getBoundingClientRect();
+          // Get bounding box of the stable parent container, not the shifting overlay
+          a = overlay.parentElement.getBoundingClientRect(); 
           x = e.pageX - a.left;
           x = x - window.pageXOffset;
           return x;
         }
-        function slide(x) {
-          img.style.width = x + "px";
-          slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
-        }
-      }
+      });
     }
     
-    window.onload = initComparisons;
+    // Initialize after full DOM load
+    window.addEventListener("load", initComparisons);
 
+    // Infinite Marquee Logic
     const scrollers = document.querySelectorAll(".scroller");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       scrollers.forEach((scroller) => {
@@ -910,6 +990,7 @@
       });
     }
 
+    // Lightbox Logic
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeModalBtn = document.getElementById("closeModalBtn");
