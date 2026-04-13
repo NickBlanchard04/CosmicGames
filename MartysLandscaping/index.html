@@ -198,7 +198,7 @@
       transform: translateY(20px);
     }
 
-    /* Relocated: Clickable Facebook Link in Hero with contrasting background */
+    /* Clickable Facebook Link in Hero with contrasting background */
     .hero-fb-badge {
       display: inline-flex;
       align-items: center;
@@ -260,49 +260,23 @@
       font-size: 1.1rem;
     }
 
-    /* Customer Service Checkmarks */
-    .about-checkmarks {
-      list-style: none;
-      padding: 0;
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .about-checkmarks li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .about-checkmarks svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--accent);
-      flex-shrink: 0;
-    }
-
     .about-image {
       border-radius: 12px;
       overflow: hidden;
       width: 100%;
       height: 100%;
-      min-height: 300px;
+      min-height: 300px; /* Ensures minimum height on mobile */
       display: flex;
     }
     
     .about-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Correctly covers space without distortion */
       object-position: center;
     }
 
-    /* Reverted: Services Grid with Green Backdrop Buttons */
+    /* Services Grid with Green Backdrop Buttons */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -491,7 +465,7 @@
        FUNNEL STAGE 4: ACTION (CONTACT/FOOTER)
        ========================================= */
     
-    /* New: Customer Service styling for bottom section */
+    /* Customer Service Commitments section at bottom */
     .customer-service-section {
       padding: 80px 0;
       text-align: center;
@@ -590,9 +564,7 @@
       .services-grid { display: flex; flex-direction: column; align-items: center; }
       .service-item { width: 100%; max-width: 350px; }
       
-      /* Center Checkmarks Block */
-      .about-checkmarks { align-items: center; }
-      .about-checkmarks li { text-align: left; justify-content: flex-start; width: fit-content; }
+      .logo-container span { display: none; } /* Hide text logo on mobile for space */
     }
 
     @media (max-width: 600px) {
@@ -654,16 +626,6 @@
           <h2 style="font-size: 2rem; margin-bottom: 20px;">Quality Work, Local Roots.</h2>
           <p>Located at <strong>39 114th St, Troy, NY</strong>, Marty's Landscaping and Minor Construction is dedicated to total customer satisfaction. We handle the jobs other companies won't, ensuring your property looks pristine year-round.</p>
           <p>Whether you need an entire driveway cleared of ice, a deck repaired, or fresh drywall installed, Patrick and his crew are responsive, kind, and fair on price.</p>
-          
-          <svg style="display:none;" id="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-          <ul class="about-checkmarks">
-            <li><svg><use href="#checkmark"></use></svg> Dedicated Service</li>
-            <li><svg><use href="#checkmark"></use></svg> Proven Reputation</li>
-            <li><svg><use href="#checkmark"></use></svg> Fully Insured & Locally Owned</li>
-            <li><svg><use href="#checkmark"></use></svg> Prompt & Reliable Response</li>
-            <li><svg><use href="#checkmark"></use></svg> Transparent, Fair Pricing</li>
-          </ul>
-
         </div>
         <div class="about-image">
            <img src="MartysLandscaping1.jpg" alt="Landscaping property transformation" style="width: 100%; height: 100%; object-fit: cover;">
