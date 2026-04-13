@@ -9,6 +9,8 @@
   <meta name="description" content="Professional landscaping, snow removal, sealcoating, and minor construction services by Patrick Gerighty in Troy, NY. 5-star rated property maintenance." />
   <meta name="keywords" content="landscaper Troy NY, lawn care, minor construction, drywall repair, snow removal, sealcoating, Patrick Gerighty, Marty's Landscaping" />
   
+  <link rel="icon" type="image/jpeg" href="MartysLandscapingLogo.jpg" />
+
   <style>
     /* =========================================
        VARIABLES & BASE SETUP
@@ -23,7 +25,6 @@
       --glass-border: rgba(255, 255, 255, 0.1);
       --max-width: 1200px;
       --header-height: 80px;
-      --fb-brand: #1877F2; /* Facebook Blue */
     }
 
     * {
@@ -141,28 +142,17 @@
       transition: transform 0.3s ease;
     }
 
+    .logo-container:hover img {
+      transform: scale(1.05);
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
       gap: 15px;
     }
 
-    .ig-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      color: #fff;
-      background: rgba(225, 48, 108, 0.25);
-      border: 1px solid rgba(225, 48, 108, 0.8);
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-    
-    .ig-badge svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* Fix: Clickable Facebook Link with contrasting background */
+    /* Clickable Facebook Link */
     .fb-badge {
       display: flex;
       align-items: center;
@@ -257,34 +247,45 @@
       font-size: 1.1rem;
     }
 
-    .about-stats {
-      display: flex;
-      gap: 30px;
+    /* Customer Service Checkmarks */
+    .about-checkmarks {
+      list-style: none;
+      padding: 0;
       margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .stat-box {
-      border-left: 3px solid var(--accent);
-      padding-left: 15px;
+    .about-checkmarks li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
-    .stat-box h4 { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 5px; display: flex; align-items: center;}
-    .stat-box span { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;}
+    .about-checkmarks svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
 
-    /* Fix: Ensure photo container fills space properly */
     .about-image {
       border-radius: 12px;
       overflow: hidden;
       width: 100%;
       height: 100%;
-      min-height: 300px; /* Ensures minimum height on mobile */
+      min-height: 300px;
       display: flex;
     }
     
     .about-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Correctly covers space without distortion */
+      object-fit: cover;
       object-position: center;
     }
 
@@ -330,14 +331,14 @@
        FUNNEL STAGE 3: DESIRE (PORTFOLIO & PROOF)
        ========================================= */
     
-    /* Before/After Custom Slider - Adjusted for 1 Image Set */
+    /* Before/After Custom Slider */
     .ba-container {
       display: grid;
       grid-template-columns: 1fr; 
       gap: 30px;
       margin-bottom: 80px;
       width: 100%;
-      justify-items: center; /* Ensures centering */
+      justify-items: center; 
     }
 
     .img-comp-container {
@@ -535,23 +536,30 @@
       body { text-align: center; }
       p, h1, h2, h3, h4, .about-content p { text-align: center !important; }
       
-      .about-stats { justify-content: center; flex-wrap: wrap; }
-      .stat-box { border-left: none; border-bottom: 3px solid var(--accent); padding: 0 0 10px 0; }
-      
       /* Services Mobile Stack */
       .services-grid { display: flex; flex-direction: column; align-items: center; }
       .service-item { width: 100%; max-width: 350px; }
       
-      .logo-container span { display: none; } /* Hide text logo on mobile for space */
+      /* Center Checkmarks Block */
+      .about-checkmarks { align-items: center; }
+      .about-checkmarks li { text-align: left; justify-content: flex-start; width: fit-content; }
     }
 
     @media (max-width: 600px) {
-      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 10px 0; gap: 8px; }
-      .logo-container img { height: 40px; } 
-      .header-actions { gap: 6px; }
-      .btn { padding: 10px 16px; font-size: 0.85rem; }
+      /* Shrink Mobile Header to ensure Logo, FB, and Call fit */
+      .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 10px 0; gap: 4px; justify-content: space-between;}
+      
+      .logo-container { font-size: 0.8rem; gap: 6px; line-height: 1.1; }
+      .logo-container img { height: 32px; } 
+      
+      .header-actions { gap: 4px; }
+      
+      .fb-badge { padding: 6px 8px; font-size: 0.7rem; gap: 4px;}
+      .fb-badge svg { width: 14px; height: 14px; }
+      
+      .btn { padding: 6px 10px; font-size: 0.7rem; }
 
-      .hero-headline { font-size: 2rem; }
+      .hero-headline { font-size: 1.8rem; }
       .img-comp-container { height: 300px; max-width: 100%; }
       .img-comp-img img { height: 300px; }
     }
@@ -575,6 +583,7 @@
       <div class="header-actions">
         <a href="#" target="_blank" rel="noopener" class="fb-badge" aria-label="Visit our Facebook page">
           <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+          <span>Facebook</span>
         </a>
         <a href="tel:+15184163543" class="btn btn-accent">Call Now</a>
       </div>
@@ -583,8 +592,8 @@
 
   <main>
     <section class="hero container">
-      <h1 class="hero-headline">Transform Your Property Now. Spots Are Filling Fast.</h1>
-      <p>Marty's delivers expert property maintenance, pristine lawn mowings, durable snow removal, driveway sealcoating, construction repairs, and total property transformations across Troy and the Capital Region.</p>
+      <h1 class="hero-headline">Transform Your Property Now With Marty's Expertise</h1>
+      <p>Marty's delivers expert property maintenance, pristine lawn mowings, on time snow removal, driveway sealcoating, construction repairs, and total property transformations across Troy and the Capital Region.</p>
       <a href="tel:+15184163543" class="btn btn-accent">Get Your Free Estimate</a>
     </section>
 
@@ -595,16 +604,14 @@
           <p>Located at <strong>39 114th St, Troy, NY</strong>, Marty's Landscaping and Minor Construction is dedicated to total customer satisfaction. We handle the jobs other companies won't, ensuring your property looks pristine year-round.</p>
           <p>Whether you need an entire driveway cleared of ice, a deck repaired, or fresh drywall installed, Patrick and his crew are responsive, kind, and fair on price.</p>
           
-          <div class="about-stats" id="stats-section">
-            <div class="stat-box">
-              <h4 class="counter" data-target="5" data-suffix=".0">0</h4>
-              <span>Proven Reputation</span>
-            </div>
-            <div class="stat-box">
-              <h4 class="counter" data-target="100" data-suffix="%">0</h4>
-              <span>Dedicated Service</span>
-            </div>
-          </div>
+          <svg style="display:none;" id="checkmark" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <ul class="about-checkmarks">
+            <li><svg><use href="#checkmark"></use></svg> Dedicated Service</li>
+            <li><svg><use href="#checkmark"></use></svg> Proven Reputation</li>
+            <li><svg><use href="#checkmark"></use></svg> Fully Insured & Locally Owned</li>
+            <li><svg><use href="#checkmark"></use></svg> Prompt & Reliable Response</li>
+            <li><svg><use href="#checkmark"></use></svg> Transparent, Fair Pricing</li>
+          </ul>
 
         </div>
         <div class="about-image">
@@ -618,8 +625,6 @@
       <p class="section-subtitle">We go beyond just the lawn. From summer landscaping to winter storm recovery and indoor renovations.</p>
 
       <div class="services-grid">
-        <svg style="display:none;" id="check-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-
         <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Lawn Care & Landscaping</span></div>
         <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Snow & Ice Removal</span></div>
         <div class="service-item"><svg><use href="#check-icon"></use></svg> <span>Driveway Sealcoating</span></div>
@@ -656,7 +661,7 @@
 
     <section class="container" style="padding-top: 20px;">
       <h2 class="section-title">5-Star Local Reputation</h2>
-      <p class="section-subtitle">Don't just take our word for it. Here is what your neighbors are saying on Google.</p>
+      <p class="section-subtitle">Don't just take our word for it. Here is what your neighbors next door are saying.</p>
 
       <div class="reviews-grid">
         <article class="review-card glass-card">
@@ -716,43 +721,7 @@
   </footer>
 
   <script>
-    const counters = document.querySelectorAll('.counter');
-    const speed = 40; 
-
-    const animateCounters = () => {
-      counters.forEach(counter => {
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const suffix = counter.getAttribute('data-suffix');
-          const count = +counter.innerText.replace(/\D/g, ''); 
-          
-          const inc = target / speed;
-
-          if (count < target) {
-            counter.innerText = Math.ceil(count + inc) + suffix;
-            setTimeout(updateCount, 30);
-          } else {
-            counter.innerText = target + suffix;
-          }
-        };
-        updateCount();
-      });
-    };
-
-    const statsObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.disconnect(); 
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.getElementById('stats-section');
-    if (statsSection) {
-      statsObserver.observe(statsSection);
-    }
-
+    // Image Comparison Slider logic
     function initComparisons() {
       var x, i;
       x = document.getElementsByClassName("img-comp-overlay");
@@ -811,6 +780,7 @@
     
     window.onload = initComparisons;
 
+    // Infinite Marquee logic
     const scrollers = document.querySelectorAll(".scroller");
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       scrollers.forEach((scroller) => {
@@ -825,6 +795,7 @@
       });
     }
 
+    // Lightbox logic
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImg");
     const closeModalBtn = document.getElementById("closeModalBtn");
