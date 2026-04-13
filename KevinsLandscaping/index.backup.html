@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title>Landscape for Less | Lawn Care & Landscaping in Albany, NY</title>
-  <meta name="description" content="Landscape for Less, led by Kevin Nasadoski, provides top-rated lawn care, landscaping, and hardscaping services in the Capital Region." />
-  <meta name="keywords" content="landscaping Albany NY, hardscaping, patios, pavers, lawn care, Kevin Nasadoski, Landscape for Less" />
+  <meta name="description" content="Landscape for Less, led by Kevin Nasadoski, provides top-rated lawn care, landscaping, and hardscaping services in the Capital Region. Serving residential and commercial properties." />
+  <meta name="keywords" content="landscaping Albany NY, hardscaping, patios, pavers, lawn care, Kevin Nasadoski, Landscape for Less, commercial landscaping, veteran discount" />
   
   <link rel="icon" type="image/jpeg" href="KevinsLandscapeForLessLogo.jpg" />
 
@@ -186,12 +186,28 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 750px;
-      margin: 0 auto 40px;
+      max-width: 800px;
+      margin: 0 auto 25px;
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
       transform: translateY(20px);
       text-align: center;
+    }
+    
+    .hero-offer {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 35px;
+      animation: fadeUp 0.8s ease-out 0.3s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      background: rgba(46, 160, 67, 0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(46, 160, 67, 0.3);
     }
 
     .hero .btn {
@@ -329,7 +345,7 @@
       position: relative;      
       font-weight: 700;
       color: #fff;
-      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
+      box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3); 
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
@@ -344,7 +360,7 @@
       left: 20px; 
       width: 20px;
       height: 20px;
-      fill: #fff;
+      fill: #fff; 
     }
 
     /* =========================================
@@ -371,7 +387,7 @@
       overflow: hidden;
       border: 1px solid var(--glass-border);
       background: rgba(0,0,0,0.2);
-      touch-action: pan-y; /* Crucial: Allows vertical scrolling but captures horizontal touch dragging */
+      touch-action: pan-y;
     }
 
     .img-comp-img {
@@ -388,22 +404,20 @@
       height: 100%;
       object-fit: cover;
       object-position: left center;
-      pointer-events: none; /* Prevents images from catching clicks */
+      pointer-events: none;
     }
 
-    /* Fixed Drag Handle / Slider */
     .img-comp-slider {
       position: absolute;
       z-index: 9;
       cursor: ew-resize;
-      width: 40px; /* Big Hit Area */
+      width: 40px; 
       height: 100%;
       background-color: transparent;
       top: 0;
-      transform: translateX(-50%); /* Keeps hit area perfectly centered over line */
+      transform: translateX(-50%); 
     }
 
-    /* The actual visible line */
     .img-comp-slider::before {
       content: "";
       position: absolute;
@@ -416,7 +430,6 @@
       pointer-events: none;
     }
 
-    /* The visual circle */
     .img-comp-slider::after {
       content: "↔";
       position: absolute;
@@ -565,8 +578,7 @@
 
     .cta-card h2 { font-size: 2.2rem; margin-bottom: 20px; text-align: center;}
     .cta-phone { font-size: 2rem; font-weight: 900; color: var(--accent); margin: 20px 0 10px; display: block; text-align: center;}
-    .cta-email { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 30px; display: block; text-align: center; text-decoration: underline;}
-
+    
     /* Lightbox Modal */
     .modal {
       display: none; 
@@ -668,7 +680,13 @@
   <main>
     <section class="hero container">
       <h1 class="hero-headline">Spring Bookings Now Open! Get Your Yard Ready for the Season.</h1>
-      <p>Landscape for Less delivers expert property maintenance, precise hardscaping, and total yard transformations across Albany and the Capital Region.</p>
+      
+      <p>Landscape for Less delivers expert property maintenance, precise hardscaping, and total yard transformations for <strong>residential and commercial properties</strong> across Albany and the Capital Region.</p>
+      
+      <div class="hero-offer">
+        ★ Proudly Offering Discounts for Veterans & Public Servants ★
+      </div>
+
       <a href="tel:+15183319076" class="btn btn-accent">Get Your Free Estimate</a>
       
       <div class="hero-badges-container">
@@ -689,6 +707,7 @@
           <h2 style="font-size: 2rem; margin-bottom: 20px;">Built on Local Roots.</h2>
           <p>We are a fully insured, locally owned and operated property maintenance company dedicated to total customer satisfaction. We believe in local success, which is why <strong>all our products—from mulch to ice melt—are sourced from family businesses right here in the Capital Region.</strong></p>
           <p>Whether you are a residential homeowner, a commercial business, or an HOA, we deliver the highest quality of work.</p>
+          <p><strong style="color: var(--accent); font-size: 1.05rem;">Proudly Providing Discounts to Veterans & Public Servants.</strong></p>
           
           <div class="about-stats" id="stats-section">
             <div class="stat-box">
@@ -824,9 +843,10 @@
     <section class="cta-section container">
       <div class="glass-card cta-card">
         <h2>Ready for a Change?</h2>
-        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">Whether it's a seasonal clean-up, tree removal, or a total yard overhaul, Kevin and the team are ready.</p>
-        <a href="tel:+15183319076" class="cta-phone">(518) 331-9076</a>
-        <a href="mailto:Landscapeless@gmail.com" class="cta-email">Landscapeless@gmail.com</a>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">Whether it's a seasonal clean-up, tree removal, or a total yard overhaul for your <strong>residential or commercial property</strong>, Kevin and the team are ready.</p>
+        <p style="color: var(--accent); font-weight: bold; margin-bottom: 25px;">Don't forget to ask about our Veteran and Public Servant discounts!</p>
+        
+        <a href="tel:+15183319076" class="cta-phone" style="margin-bottom: 30px;">(518) 331-9076</a>
         <a href="tel:+15183319076" class="btn btn-accent" style="width: 100%;">Call Now For An Estimate</a>
       </div>
     </section>
@@ -876,7 +896,7 @@
       statsObserver.observe(statsSection);
     }
 
-    // Completely Rewritten Touch-Friendly Before & After Slider
+    // Touch-Friendly Before & After Slider
     function initComparisons() {
       var overlays = document.querySelectorAll(".img-comp-overlay");
       
@@ -887,12 +907,10 @@
         
         var clicked = 0;
         
-        // Dynamic sizing logic that calculates based on container bounds
         function updateSizes() {
            var container = overlay.parentElement;
            var w = container.offsetWidth;
            
-           // Ensure inner images stretch to fill the outer container so they crop properly
            var innerImg = overlay.querySelector("img");
            if (innerImg) {
              innerImg.style.width = w + "px";
@@ -907,12 +925,10 @@
              }
            }
            
-           // Reset slider exactly to middle on load/resize
            overlay.style.width = (w / 2) + "px";
            slider.style.left = (w / 2) + "px";
         }
         
-        // Wait for ALL images inside this specific slider to load before grabbing dimensions
         var imgs = overlay.parentElement.querySelectorAll("img");
         var loaded = 0;
         imgs.forEach(i => {
@@ -924,10 +940,8 @@
         });
         if(loaded === imgs.length) updateSizes();
         
-        // Recalculate if the screen size/orientation changes
         window.addEventListener("resize", updateSizes);
 
-        // Listen for mouse/touch interactions
         slider.addEventListener("mousedown", slideReady);
         window.addEventListener("mouseup", slideFinish);
         slider.addEventListener("touchstart", slideReady, {passive: false});
@@ -937,7 +951,6 @@
           e.preventDefault();
           clicked = 1;
           window.addEventListener("mousemove", slideMove);
-          // passive: false is required to allow preventDefault on touch dragging
           window.addEventListener("touchmove", slideMove, {passive: false});
         }
         
@@ -947,7 +960,6 @@
         
         function slideMove(e) {
           if (clicked === 0) return false;
-          // Stop the page from scrolling while user slides back and forth
           if(e.cancelable) e.preventDefault(); 
           
           var pos = getCursorPos(e);
@@ -963,7 +975,6 @@
         function getCursorPos(e) {
           var a, x = 0;
           e = (e.changedTouches) ? e.changedTouches[0] : e;
-          // Get bounding box of the stable parent container, not the shifting overlay
           a = overlay.parentElement.getBoundingClientRect(); 
           x = e.pageX - a.left;
           x = x - window.pageXOffset;
@@ -972,7 +983,6 @@
       });
     }
     
-    // Initialize after full DOM load
     window.addEventListener("load", initComparisons);
 
     // Infinite Marquee Logic
