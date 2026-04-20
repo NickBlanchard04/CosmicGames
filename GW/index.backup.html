@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <title>Green Wave | Professional Landscaping & Patios</title>
-  <meta name="description" content="Green Wave provides premium lawn care, landscaping, and custom patio installations. Text or call today for a free estimate!" />
-  <meta name="keywords" content="landscaping, lawn mowing, patios, Green Wave" />
+  <meta name="description" content="Green Wave provides premium lawn care, landscaping, and custom patio installations with fast, reliable service. Text or call today for a free estimate!" />
+  <meta name="keywords" content="landscaping, lawn mowing, patios, Green Wave, fast landscaping" />
   
   <link rel="icon" type="image/png" href="GreenWaveLogo.png" />
 
@@ -16,13 +16,14 @@
        VARIABLES & BASE SETUP
        ========================================= */
     :root {
-      --bg-color: #081014; /* Deep Ocean Dark */
+      --bg-color: #0b1110; /* Deep off-black */
       --text-main: #f0fdf4;
-      --text-muted: #a7f3d0;
-      --accent: #10b981; /* Vibrant Wave Green */
-      --accent-hover: #059669;
+      --text-muted: #9aa8a1;
+      --accent: #193232; /* Pine Green for Backgrounds/Buttons */
+      --accent-hover: #264a4a; /* Lighter Pine for hover states */
+      --accent-text: #6b8e7b; /* Sage green for text visibility on dark bg */
       --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(16, 185, 129, 0.2);
+      --glass-border: rgba(25, 50, 50, 0.8);
       --max-width: 1200px;
       --header-height: 80px;
     }
@@ -38,14 +39,14 @@
       position: relative;
     }
 
-    /* Subtle Animated "Wave" Background */
+    /* Subtle Animated "Wave" Background in Pine Green */
     .bg-mesh {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       z-index: -1;
       background: 
-        radial-gradient(circle at 20% 40%, rgba(16, 185, 129, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(5, 150, 105, 0.05), transparent 40%);
+        radial-gradient(circle at 20% 40%, rgba(25, 50, 50, 0.4), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(38, 74, 74, 0.2), transparent 40%);
       animation: drift 20s ease-in-out infinite alternate;
     }
 
@@ -73,22 +74,23 @@
 
     .btn-accent {
       background: var(--accent); color: #fff;
-      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 20px rgba(25, 50, 50, 0.6);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .btn-accent:hover { background: var(--accent-hover); transform: translateY(-3px); }
 
     .btn-outline {
-      background: transparent; color: var(--accent);
+      background: transparent; color: var(--accent-text);
       border: 2px solid var(--accent);
     }
-    .btn-outline:hover { background: rgba(16, 185, 129, 0.1); transform: translateY(-3px); }
+    .btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
 
     /* =========================================
        HEADER / NAVIGATION
        ========================================= */
     header {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(8, 16, 20, 0.85); backdrop-filter: blur(12px);
+      background: rgba(11, 17, 16, 0.85); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--glass-border);
     }
 
@@ -104,11 +106,11 @@
     }
 
     .logo-container img { height: 45px; width: auto; border-radius: 6px; }
-    .logo-text { background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo-text { background: linear-gradient(90deg, #fff, var(--accent-text)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-link { font-weight: 700; cursor: pointer; transition: color 0.2s; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;}
-    .nav-link:hover, .nav-link.active { color: var(--accent); }
+    .nav-link:hover, .nav-link.active { color: var(--accent-text); }
 
     /* =========================================
        VIEWS (SPA Logic)
@@ -123,15 +125,15 @@
     .hero { padding: 80px 0 60px; text-align: center; }
     
     .fomo-banner {
-      display: inline-block; background: rgba(16, 185, 129, 0.15);
-      border: 1px solid var(--accent); color: var(--accent);
+      display: inline-block; background: rgba(25, 50, 50, 0.5);
+      border: 1px solid var(--accent-hover); color: #fff;
       padding: 8px 20px; border-radius: 50px; font-weight: 800;
       font-size: 0.9rem; text-transform: uppercase; margin-bottom: 25px;
       letter-spacing: 1px;
     }
 
     .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
-    .hero h1 span { color: var(--accent); }
+    .hero h1 span { color: var(--accent-text); }
     .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
     
     .hero-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -157,7 +159,7 @@
       display: flex; flex-direction: column; justify-content: flex-end;
     }
 
-    .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2); }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(25, 50, 50, 0.5); }
 
     .service-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -168,7 +170,7 @@
 
     .service-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(8,16,20, 1) 0%, rgba(8,16,20, 0.4) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(11,17,16, 1) 0%, rgba(11,17,16, 0.4) 50%, transparent 100%);
       z-index: 1;
     }
 
@@ -185,7 +187,7 @@
       background: var(--accent); color: #fff; padding: 12px 24px;
       border-radius: 8px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 1px; transition: background 0.2s; width: 100%;
-      justify-content: center; font-size: 1rem;
+      justify-content: center; font-size: 1rem; border: 1px solid rgba(255,255,255,0.1);
     }
     .text-now-link:hover { background: var(--accent-hover); }
 
@@ -194,7 +196,7 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       color: #fff;
       padding: 6px 14px;
       border-radius: 20px;
@@ -205,13 +207,13 @@
       border: 1px solid rgba(255,255,255,0.2);
       z-index: 4;
       transition: background 0.3s ease, transform 0.3s ease;
-      pointer-events: none; /* Allows the click to pass through to the card */
+      pointer-events: none;
       text-transform: uppercase;
     }
 
     .service-card:hover .view-gallery-badge {
       background: var(--accent);
-      border-color: var(--accent);
+      border-color: var(--accent-hover);
       transform: scale(1.05);
     }
     
@@ -227,12 +229,12 @@
        HOME VIEW: BOTTOM FUNNEL
        ========================================= */
     .cta-strip {
-      background: rgba(16, 185, 129, 0.1); border-top: 1px solid var(--glass-border);
+      background: rgba(25, 50, 50, 0.3); border-top: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border); padding: 60px 20px; text-align: center;
       margin: 60px 0;
     }
     .cta-strip h2 { font-size: 2.2rem; margin-bottom: 15px; }
-    .number-highlight { font-size: 3rem; font-weight: 900; color: var(--accent); display: block; margin: 20px 0; }
+    .number-highlight { font-size: 3rem; font-weight: 900; color: var(--accent-text); display: block; margin: 20px 0; }
 
     /* =========================================
        GALLERY VIEW (Separate Page Logic)
@@ -248,7 +250,7 @@
       color: #fff; padding: 8px 20px; border-radius: 30px; font-weight: 700;
       cursor: pointer; transition: all 0.2s;
     }
-    .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); border-color: var(--accent-hover); }
 
     .gallery-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -258,16 +260,16 @@
     .gallery-item {
       border-radius: 12px; overflow: hidden; aspect-ratio: 4/3;
       border: 1px solid var(--glass-border); position: relative;
-      cursor: pointer; transition: transform 0.2s; display: none; /* hidden by default for filtering */
+      cursor: pointer; transition: transform 0.2s; display: none; 
     }
     .gallery-item.show { display: block; animation: fadeIn 0.4s ease forwards; }
-    .gallery-item:hover { transform: scale(1.03); z-index: 2; border-color: var(--accent); }
+    .gallery-item:hover { transform: scale(1.03); z-index: 2; border-color: var(--accent-text); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
     .item-label {
-      position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8);
-      padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 700;
-      color: var(--accent); text-transform: uppercase;
+      position: absolute; bottom: 10px; left: 10px; background: var(--accent);
+      padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;
+      color: #fff; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2);
     }
 
     /* =========================================
@@ -281,7 +283,7 @@
     .modal.show { display: flex; animation: fadeIn 0.3s ease; }
     .modal-content { max-width: 90%; max-height: 90vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
     .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.2s; }
-    .close-modal:hover { color: var(--accent); }
+    .close-modal:hover { color: var(--accent-text); }
 
     /* =========================================
        FOOTER
@@ -330,9 +332,9 @@
     <div id="home-view" class="view-section active">
       
       <section class="hero">
-        <div class="fomo-banner">🚨 2026 Schedule is Filling Fast</div>
-        <h1>Catch the <span>Green Wave</span> For Your Property.</h1>
-        <p>Premium lawn mowing, custom patio installations, and full-service landscaping. Don't let your yard fall behind—lock in your pricing today.</p>
+        <div class="fomo-banner">🚨 2026 Schedule is Filling Fast - Act Now</div>
+        <h1>Fast, Reliable Service For Your <span>Property.</span></h1>
+        <p>Premium lawn mowing, custom patio installations, and full-service landscaping. We pride ourselves on quick response times and high-quality results. Text us today to get on the schedule.</p>
         <div class="hero-actions">
           <a href="sms:+15189863099" class="btn btn-accent">Text Us For A Quote</a>
           <a href="tel:+15189863099" class="btn btn-outline">Call (518) 986-3099</a>
@@ -479,20 +481,19 @@
   <footer>
     <div class="container">
       <h2 style="color: #fff; margin-bottom: 10px;">Green Wave</h2>
-      <p style="margin-bottom: 20px;">Call or Text: <a href="tel:+15189863099" style="color: var(--accent); font-weight: bold;">(518) 986-3099</a></p>
-      <p>&copy; 2026 Green Wave Landscaping. All Rights Reserved.</p>
+      <p style="margin-bottom: 20px;">Call or Text: <a href="tel:+15189863099" style="color: var(--accent-text); font-weight: bold;">(518) 986-3099</a></p>
+      <p style="margin-bottom: 10px;">&copy; 2026 Green Wave Landscaping. All Rights Reserved.</p>
+      
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">Website developed by <a href="mailto:nickblanchardbusiness@gmail.com" style="color: var(--accent-text); text-decoration: underline; font-weight: bold;">Nick Blanchard</a></p>
     </div>
   </footer>
 
   <script>
     // --- SPA View Switcher ---
     function switchView(viewId) {
-      // Hide all views
       document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-      // Show selected view
       document.getElementById(viewId + '-view').classList.add('active');
       
-      // Update Nav Active State
       document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
       document.getElementById('nav-' + viewId).classList.add('active');
       
@@ -501,18 +502,13 @@
 
     // --- Gallery Filtering ---
     function filterGallery(category, btnElement) {
-      // Update active button state
       document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
       btnElement.classList.add('active');
 
-      // Filter logic
       const items = document.querySelectorAll('.gallery-item');
       items.forEach(item => {
-        // Reset animation by removing and re-adding class
         item.classList.remove('show');
-        
         if (category === 'all' || item.classList.contains(category)) {
-          // small timeout to allow display:block to register before animation
           setTimeout(() => { item.classList.add('show'); }, 10);
         }
       });
@@ -520,10 +516,7 @@
 
     // --- Direct Gallery Link Logic ---
     function goToGallery(category) {
-      // 1. Switch to the gallery view
       switchView('gallery');
-      
-      // 2. Find the corresponding filter button and trigger it
       const filterBtn = document.querySelector(`.filter-btn[onclick*="${category}"]`);
       if(filterBtn) {
         filterGallery(category, filterBtn);
@@ -535,7 +528,6 @@
     const modalImg = document.getElementById("modalImg");
     const closeModalBtn = document.getElementById("closeModalBtn");
     
-    // Attach click only to the images inside the gallery
     const clickableImages = document.querySelectorAll(".gallery-item img");
 
     clickableImages.forEach(img => {
