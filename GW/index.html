@@ -112,6 +112,9 @@
     .nav-link { font-weight: 700; cursor: pointer; transition: color 0.2s; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; white-space: nowrap;}
     .nav-link:hover, .nav-link.active { color: var(--accent-text); }
 
+    /* The Call Icon for Mobile */
+    .mobile-call-icon { display: none; }
+
     /* =========================================
        VIEWS (SPA Logic)
        ========================================= */
@@ -168,23 +171,21 @@
 
     .service-content {
       position: relative; z-index: 2; padding: 30px;
-      text-align: center; pointer-events: none; /* Let clicks pass to the card, unless it's a button */
+      text-align: center; pointer-events: none;
     }
 
     .service-content h3 { font-size: 2rem; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
     
-    /* Dedicated Text Now Links inside Cards */
     .text-now-link {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--accent); color: #fff; padding: 12px 24px;
       border-radius: 8px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 1px; transition: background 0.2s; width: 100%;
       justify-content: center; font-size: 1rem; border: 1px solid rgba(255,255,255,0.1);
-      pointer-events: auto; /* Make the button itself clickable */
+      pointer-events: auto;
     }
     .text-now-link:hover { background: var(--accent-hover); }
 
-    /* Visual Cue for Clickable Gallery Images */
     .view-gallery-badge {
       position: absolute;
       top: 15px;
@@ -208,6 +209,13 @@
       background: var(--accent);
       border-color: var(--accent-hover);
       transform: scale(1.05);
+    }
+    
+    .service-click-area {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 3;
+      cursor: pointer;
     }
 
     /* =========================================
@@ -284,19 +292,25 @@
     }
 
     @media (max-width: 600px) {
-      /* Force single row layout for mobile iOS portrait */
       .header-inner { flex-direction: row; flex-wrap: nowrap; padding: 10px 0; gap: 5px; justify-content: space-between; height: auto;}
       
-      /* Shrink Logo & Text */
-      .logo-container { font-size: 0.95rem; gap: 5px; }
-      .logo-container img { height: 32px; } 
+      .logo-container { font-size: 1rem; gap: 8px; }
+      .logo-container img { height: 36px; } 
       
-      /* Shrink Nav links */
-      .nav-links { gap: 8px; }
-      .nav-link { font-size: 0.75rem; letter-spacing: 0; }
+      .nav-links { gap: 12px; }
+      .nav-link { font-size: 0.8rem; letter-spacing: 0; }
       
-      /* Shrink Header Call Button */
-      .nav-links .btn { padding: 6px 10px !important; font-size: 0.75rem !important; width: auto; }
+      /* Hide the text "Call Now" button and show the circular Phone Icon button */
+      .desktop-call-btn { display: none !important; }
+      
+      .mobile-call-icon {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 36px; height: 36px; border-radius: 50%;
+        background: var(--accent); color: #fff;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 4px 10px rgba(25, 50, 50, 0.6);
+      }
+      .mobile-call-icon svg { width: 18px; height: 18px; fill: currentColor; }
       
       .hero-actions { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
       .hero-actions .btn { width: 100%; }
@@ -304,11 +318,9 @@
     
     @media (max-width: 380px) {
       /* Extra tight layout for very small iPhones */
-      .logo-container span { display: none; } /* Hide text, keep logo icon */
-      .logo-container img { height: 28px; }
-      .nav-links { gap: 6px; }
-      .nav-link { font-size: 0.7rem; }
-      .nav-links .btn { padding: 5px 8px !important; font-size: 0.7rem !important; }
+      .logo-container span { display: none; } /* Hide text "Green Wave", keep logo icon */
+      .logo-container img { height: 32px; }
+      .nav-links { gap: 10px; }
     }
   </style>
 </head>
@@ -323,15 +335,19 @@
 
   <header>
     <div class="container header-inner">
-      <div class="logo-container" onclick="switchView('home')">
+      <div class="logo-container" onclick="switchView('home')" aria-label="Home">
         <img src="GreenWaveLogo.png" alt="Green Wave Logo" onerror="this.style.display='none'">
         <span class="logo-text">Green Wave</span>
       </div>
       
       <nav class="nav-links">
-        <span class="nav-link active" onclick="switchView('home')" id="nav-home">Home</span>
         <span class="nav-link" onclick="switchView('gallery')" id="nav-gallery">Our Work</span>
-        <a href="tel:+15189863099" class="btn btn-accent" style="padding: 8px 16px; font-size: 0.85rem;">Call Now</a>
+        
+        <a href="tel:+15189863099" class="btn btn-accent desktop-call-btn" style="padding: 8px 16px; font-size: 0.85rem;">Call Now</a>
+        
+        <a href="tel:+15189863099" class="mobile-call-icon" aria-label="Call Now">
+          <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.03 21c.53 0 .96-.44.96-.98v-3.66c0-.53-.43-.98-.98-.98z"/></svg>
+        </a>
       </nav>
     </div>
   </header>
@@ -499,7 +515,8 @@
       document.getElementById(viewId + '-view').classList.add('active');
       
       document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-      document.getElementById('nav-' + viewId).classList.add('active');
+      const activeNav = document.getElementById('nav-' + viewId);
+      if(activeNav) activeNav.classList.add('active');
       
       window.scrollTo(0,0);
     }
