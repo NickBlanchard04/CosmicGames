@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
       /* =========================================
@@ -16,13 +16,13 @@
          ========================================= */
       :root {
         --accent: #1a4d3f; 
-        --accent-light: #44924c; /* Adjusted to match the brighter green 'I'm New' button */
+        --accent-light: #4c9a45; /* Vibrant green matching screenshot buttons */
         --surface: #ffffff; 
         --text: #17202a;
         --cream: #f9f6f0; 
         --muted: #6b7280;
         --hard-shadow: #1a4d3f; 
-        --line: rgba(26, 77, 63, 0.15);
+        --line: rgba(255, 255, 255, 0.15);
         --max: 1180px;
         --header-height: 80px;
       }
@@ -51,7 +51,7 @@
       .shell { width: min(var(--max), calc(100vw - 2rem)); margin: 0 auto; }
 
       /* =========================================
-         HEADER (Transparent to Solid on Scroll)
+         HEADER (Transparent to Solid on Scroll/Tab)
          ========================================= */
       .topbar {
         position: fixed; 
@@ -61,7 +61,7 @@
         transition: background 0.3s ease, box-shadow 0.3s ease;
       }
       
-      /* Active Scrolled State */
+      /* Active Scrolled State OR Non-Home Tabs */
       .topbar.is-scrolled {
         background: #000000;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -76,7 +76,7 @@
       .brand { cursor: pointer; display: flex; align-items: center;}
       .brand img { 
         height: 45px; width: auto; 
-        /* Forces logo to be white so it stands out on the dark video overlay AND the black scrolled header */
+        /* Forces logo to white to stand out on dark video & black header */
         filter: brightness(0) invert(1); 
         transition: filter 0.3s ease;
       }
@@ -107,7 +107,6 @@
       .close-menu-btn {
         position: absolute; top: 25px; right: 25px; background: none; border: none; cursor: pointer;
       }
-      
       .close-menu-btn svg { width: 36px; height: 36px; fill: #111; stroke: #111; stroke-width: 1px;}
       
       .menu-links {
@@ -115,16 +114,14 @@
       }
       
       .menu-links a {
-        font-family: 'Archivo', sans-serif; font-size: 2.2rem; color: #111; 
+        /* PERSONALIZED HUMAN TOUCH FONT */
+        font-family: 'Lora', serif; font-size: 2.2rem; color: #111; 
         text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 10px;
         transition: color 0.2s;
       }
       
       .menu-links a:hover { color: var(--accent-light); }
-      
-      .menu-links a .caret {
-        font-weight: 300; color: #999; font-size: 1.8rem;
-      }
+      .menu-links a .caret { font-weight: 300; color: #999; font-size: 1.8rem; font-family: 'Archivo', sans-serif;}
       
       .menu-new-btn {
         margin-top: 1.5rem; border-radius: 50px; background: var(--accent-light); 
@@ -137,7 +134,7 @@
       /* =========================================
          VIEWS (SPA Logic)
          ========================================= */
-      .view-section { display: none; animation: fadeIn 0.4s ease forwards; padding-bottom: 60px; }
+      .view-section { display: none; animation: fadeIn 0.4s ease forwards; }
       .view-section.active { display: block; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -146,16 +143,15 @@
          ========================================= */
       .btn {
         display: inline-flex; align-items: center; justify-content: center;
-        border-radius: 4px; font-weight: 800; font-family: 'Oswald', sans-serif;
-        text-transform: uppercase; letter-spacing: .05em; transition: all 0.2s;
-        min-height: 3.15rem; padding: 0.8rem 1.5rem; border: 2px solid var(--accent);
-        cursor: pointer; font-size: 1.05rem;
+        border-radius: 50px; font-weight: 600; font-family: 'Archivo', sans-serif;
+        letter-spacing: .02em; transition: all 0.2s; cursor: pointer; font-size: 1.1rem;
+        padding: 1rem 2.5rem; text-decoration: none; border: none;
       }
-      .btn-primary { background: var(--accent); color: #fff; box-shadow: 4px 4px 0px var(--hard-shadow); }
-      .btn-primary:hover { background: var(--accent-light); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--hard-shadow); }
+      .btn-primary { background: var(--accent-light); color: #fff; }
+      .btn-primary:hover { background: #3a7a39; transform: translateY(-2px); }
 
       /* =========================================
-         HOME VIEW (Hero Only)
+         HOME VIEW (Hero + Content Blocks)
          ========================================= */
       .hero {
         min-height: 100svh; position: relative; overflow: hidden; display: flex;
@@ -165,12 +161,12 @@
       .hero-video {
         position: absolute; inset: 0; width: 100%; height: 100%;
         object-fit: cover; filter: saturate(1.1) contrast(1.05) brightness(0.8);
-        transform: scale(1.03); pointer-events: none; z-index: 0;
+        pointer-events: none; z-index: 0;
       }
       
       .hero-overlay {
         position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(16,23,32,0.85) 0%, rgba(26, 77, 63, 0.4) 100%);
+        background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
         z-index: 1;
       }
       
@@ -181,19 +177,47 @@
       
       .hero h1 {
         font-size: clamp(3rem, 12vw, 6rem); line-height: 1.05; text-transform: uppercase;
-        text-shadow: 3px 3px 0px #000; margin-bottom: 1.5rem;
+        text-shadow: 3px 3px 15px rgba(0,0,0,0.8); margin-bottom: 1.5rem;
+      }
+
+      /* Home Content Blocks (Dark Sections) */
+      .home-blocks-wrapper {
+        background: #2b2b2b; /* Dark grey matching screenshot */
+        color: #fff;
+        padding: 80px 20px;
+      }
+
+      .get-connected-title {
+        text-align: center; margin-bottom: 60px;
       }
       
-      .hero-copy {
-        max-width: 600px; color: #fff; font-size: clamp(1.1rem, 4vw, 1.4rem);
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 500; margin: 0 auto 2.5rem;
+      /* Hand-drawn style circle around title */
+      .get-connected-title h2 {
+        display: inline-block; font-size: clamp(2rem, 6vw, 3.5rem);
+        border: 4px solid var(--accent-light); border-radius: 50%;
+        padding: 15px 40px; transform: rotate(-2deg); margin-bottom: 30px;
       }
-      
-      .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+      .get-connected-title p {
+        font-size: 1.3rem; max-width: 600px; margin: 0 auto; font-family: 'Archivo', sans-serif;
+      }
+
+      .home-block {
+        max-width: 800px; margin: 0 auto 80px; text-align: center;
+      }
+      .home-block img {
+        width: 100%; height: 400px; object-fit: cover; border-radius: 4px; margin-bottom: 20px;
+      }
+      .home-block h3 {
+        font-size: 3rem; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 15px;
+      }
+      .home-block p {
+        font-size: 1.2rem; color: #e5e5e5; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;
+      }
 
       /* =========================================
          SECTIONS & CARDS (For other tabs)
          ========================================= */
+      .page-wrap { background: var(--cream); padding-bottom: 80px; }
       .page-header { text-align: center; padding: 120px 20px 40px; }
       .page-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--accent); margin-bottom: 10px; }
       .page-header p { font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
@@ -234,16 +258,48 @@
       .message-details p { color: var(--accent-light); font-weight: 700; margin: 0; font-size: 0.9rem;}
 
       /* =========================================
+         FOOTER
+         ========================================= */
+      .newsletter-strip {
+        background: var(--accent-light); padding: 40px 20px; text-align: center; color: #fff;
+      }
+      .newsletter-strip p { font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; font-family: 'Archivo', sans-serif;}
+      .newsletter-strip .btn { background: #fff; color: var(--accent-light); }
+      .newsletter-strip .btn:hover { background: #eee; }
+
+      .main-footer {
+        background: #000000; color: #ffffff; padding: 80px 20px 40px; text-align: center;
+      }
+      .main-footer img {
+        height: 60px; filter: brightness(0) invert(1); margin-bottom: 40px;
+      }
+      .main-footer p { font-size: 1.1rem; margin-bottom: 10px; }
+      .main-footer .contact-line { margin: 20px 0 40px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;}
+      
+      .social-icons { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+      .social-icons svg { width: 28px; height: 28px; fill: #fff; transition: fill 0.2s;}
+      .social-icons a:hover svg { fill: var(--accent-light); }
+
+      .footer-links a { color: #fff; text-decoration: underline; margin: 0 10px; font-size: 0.95rem;}
+      .developer-credit { margin-top: 60px !important; font-size: 0.85rem !important; color: #666 !important; }
+      .developer-credit a { color: var(--accent-light); text-decoration: none; font-weight: bold;}
+
+      /* =========================================
          MOBILE RESPONSIVENESS
          ========================================= */
       @media (max-width: 900px) {
         .grid-2 { grid-template-columns: 1fr; }
         .message-card { flex-direction: column; text-align: center; }
         .message-thumb { width: 100%; border-bottom: 3px solid var(--accent); }
+        .home-block img { height: 250px; }
+        .home-block h3 { font-size: 2.2rem; }
+        .get-connected-title h2 { font-size: 2.2rem; padding: 10px 20px; }
       }
     </style>
   </head>
   <body>
+    
+    <div class="noise-overlay"></div>
 
     <header class="topbar" id="mainHeader">
       <div class="shell topbar-inner">
@@ -288,163 +344,227 @@
           <div class="shell hero-content">
             <h1>Welcome.<br>Join Us On<br>Sundays.</h1>
             <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
-            
-            <div class="hero-actions">
-              <button class="btn btn-primary" onclick="switchView('im-new')" style="width: 100%; max-width: 300px;">Plan a Visit</button>
-            </div>
           </div>
+        </section>
+
+        <section class="home-blocks-wrapper">
+          <div class="get-connected-title">
+            <h2>GET CONNECTED</h2>
+            <p>Life is better together, and there are a few ways that we encourage everyone to connect at First Presbyterian.</p>
+          </div>
+
+          <article class="home-block">
+            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Worship Band">
+            <h3>Sunday Worship</h3>
+            <p>Each Sunday morning we gather to worship, learn, and connect. These gatherings are an important opportunity for us to grow closer to God and to one another. No matter where you are in life, there's a place for you here on Sunday.</p>
+            <button class="btn btn-primary" onclick="switchView('im-new')">Join us Sunday</button>
+          </article>
+
+          <article class="home-block">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Church Events">
+            <h3>Events</h3>
+            <p>There is always something going on at our church. As an active, growing, intergenerational church there are different events happening for people of all ages and stages of life. Check out our list of upcoming events and we'll see you soon.</p>
+            <button class="btn btn-primary" onclick="switchView('events')">Upcoming Events</button>
+          </article>
+
+          <article class="home-block">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Small Groups">
+            <h3>Small Groups</h3>
+            <p>Joining a small group provides a place for you to get to know other people and walk through the journey of life together. Groups are a place to celebrate the good times, support each other through the hard times, and to seek God together.</p>
+            <button class="btn btn-primary" onclick="switchView('ministries')">Find a Group</button>
+          </article>
+
+          <article class="home-block" style="margin-bottom: 0;">
+            <img src="https://images.unsplash.com/photo-1593113580332-ceb4b8a21356?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Serving Community">
+            <h3>Serving</h3>
+            <p>Serving others is one of the best ways that we are able to demonstrate the love of Christ to others. From welcoming people into the building to participating in events serving our region, we have regular opportunities for serving here.</p>
+            <button class="btn btn-primary" onclick="switchView('ministries')">Serving Opportunities</button>
+          </article>
         </section>
       </div>
 
-      <div id="events-view" class="view-section shell">
-        <div class="page-header">
-          <h2>Events & What to Expect</h2>
-          <p>Reduce the unknowns around visiting, watching online, giving, or getting involved.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="info-card">
-            <h3>Plan your visit</h3>
-            <p>Join us on Sundays at 10 AM. You will find our historic building right in the heart of Corinth. Parking is available on-site.</p>
-            <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
-          </article>
-          
-          <article class="info-card" onclick="switchView('watch')" style="cursor: pointer;">
-            <h3>Watch online</h3>
-            <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
-          </article>
-        </div>
-      </div>
-
-      <div id="next-steps-view" class="view-section shell">
-        <div class="page-header">
-          <h2>Next Steps</h2>
-          <p>Make the most important church paths visible before you have to search.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="info-card" onclick="switchView('im-new')">
-            <h3>Sunday worship</h3>
-            <p>Find the worship time, location, and what to expect when you walk through our doors.</p>
-          </article>
-          <article class="info-card" onclick="switchView('watch')">
-            <h3>Sermons and livestream</h3>
-            <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
-          </article>
-          <article class="info-card" onclick="switchView('ministries')">
-            <h3>Missions & community</h3>
-            <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
-          </article>
-        </div>
-      </div>
-
-      <div id="about-view" class="view-section shell">
-        <div class="page-header">
-          <h2>About Us</h2>
-          <p>We believe faith is meant to be lived out together. Learn more about our community.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="info-card">
-            <h3>Worship Gathering</h3>
-            <p>Gather with us in the sanctuary for uplifting music, practical teaching, and a warm community. We are built on local roots.</p>
+      <div id="events-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>Events & What to Expect</h2>
+            <p>Reduce the unknowns around visiting, watching online, giving, or getting involved.</p>
           </div>
-          <div class="info-card">
-            <h3>Our History</h3>
-            <p>First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus.</p>
-          </div>
-        </div>
-      </div>
 
-      <div id="ministries-view" class="view-section shell">
-        <div class="page-header">
-          <h2>Ministries & Outreach</h2>
-          <p>Sharing the hope and healing of Jesus beyond the walls of our building.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="info-card">
-            <h3>Local Impact</h3>
-            <p>We actively partner with organizations in Corinth to provide resources and support to those in need.</p>
-          </article>
-          <article class="info-card">
-            <h3>Global Missions</h3>
-            <p>Our church supports initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
-          </article>
-          <article class="info-card">
-            <h3>Get Involved</h3>
-            <p>We believe every person has unique gifts. There are countless ways to serve.</p>
-            <a href="mailto:grace@corinthfirstpres.org" class="btn btn-primary" style="margin-top: 15px; width: 100%;">Email to Volunteer</a>
-          </article>
-        </div>
-      </div>
-
-      <div id="watch-view" class="view-section shell">
-        <div class="page-header">
-          <h2>Watch Online</h2>
-          <p>Join our livestream every Sunday at 10 AM, or catch up on recent messages right here.</p>
-        </div>
-
-        <div class="video-frame" style="max-width: 900px; margin: 0 auto;">
-          <iframe title="Recent message from First Presbyterian Church" src="https://www.youtube.com/embed/NSX8X7kGb8M?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
-        </div>
-
-        <div style="max-width: 900px; margin: 0 auto;">
-          <h3 style="margin-top: 3rem; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px;">Recent Messages</h3>
-          <div class="message-list">
-            <article class="message-card">
-              <div class="message-thumb">Jonah</div>
-              <div class="message-details">
-                <p>March 15, 2026</p>
-                <h4>An Anchor for the Soul</h4>
-              </div>
+          <div class="grid-2">
+            <article class="info-card">
+              <h3>Plan your visit</h3>
+              <p>Join us on Sundays at 10 AM. You will find our historic building right in the heart of Corinth. Parking is available on-site.</p>
+              <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
             </article>
-            <article class="message-card">
-              <div class="message-thumb">Hebrews</div>
-              <div class="message-details">
-                <p>March 8, 2026</p>
-                <h4>On to Maturity</h4>
-              </div>
-            </article>
-            <article class="message-card">
-              <div class="message-thumb">Message</div>
-              <div class="message-details">
-                <p>March 1, 2026</p>
-                <h4>Jesus the Great High Priest</h4>
-              </div>
+            
+            <article class="info-card" onclick="switchView('watch')" style="cursor: pointer;">
+              <h3>Watch online</h3>
+              <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
             </article>
           </div>
         </div>
       </div>
 
-      <div id="im-new-view" class="view-section shell">
-        <div class="page-header">
-          <h2>I'm New Here</h2>
-          <p>We want to help you understand when to visit, where to go, and what to expect.</p>
-        </div>
+      <div id="next-steps-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>Next Steps</h2>
+            <p>Make the most important church paths visible before you have to search.</p>
+          </div>
 
-        <div class="grid-2">
-          <article class="info-card" style="text-align: center;">
-            <h3 style="border: none;">Service Times & Location</h3>
-            <p>Join us this Sunday.</p>
-            <hr style="border: 1px solid var(--line); margin: 20px 0;">
-            <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">Sundays at 10 AM</strong>
-            <p style="margin-top: 10px;">199 Palmer Ave., Corinth, NY 12822</p>
-            <a href="tel:5186549432" class="btn btn-primary" style="margin-top: 20px; width: 100%;">Call (518) 654-9432</a>
-          </article>
-          
-          <article class="info-card" style="text-align: center;">
-            <h3 style="border: none;">Contact Us</h3>
-            <p>We are here to answer any questions.</p>
-            <hr style="border: 1px solid var(--line); margin: 20px 0;">
-            <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">Send an Email</strong>
-            <p style="margin-top: 10px;">grace@corinthfirstpres.org</p>
-            <a href="mailto:grace@corinthfirstpres.org" class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--surface); color: var(--accent);">Email Us</a>
-          </article>
+          <div class="grid-3">
+            <article class="info-card" onclick="switchView('im-new')">
+              <h3>Sunday worship</h3>
+              <p>Find the worship time, location, and what to expect when you walk through our doors.</p>
+            </article>
+            <article class="info-card" onclick="switchView('watch')">
+              <h3>Sermons and livestream</h3>
+              <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
+            </article>
+            <article class="info-card" onclick="switchView('ministries')">
+              <h3>Missions & community</h3>
+              <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="about-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>About Us</h2>
+            <p>We believe faith is meant to be lived out together. Learn more about our community.</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="info-card">
+              <h3>Worship Gathering</h3>
+              <p>Gather with us in the sanctuary for uplifting music, practical teaching, and a warm community. We are built on local roots.</p>
+            </div>
+            <div class="info-card">
+              <h3>Our History</h3>
+              <p>First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ministries-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>Ministries & Outreach</h2>
+            <p>Sharing the hope and healing of Jesus beyond the walls of our building.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="info-card">
+              <h3>Small Groups</h3>
+              <p>Joining a small group provides a place for you to get to know other people and walk through the journey of life together.</p>
+            </article>
+            <article class="info-card">
+              <h3>Local Serving</h3>
+              <p>From welcoming people into the building to participating in events serving our region, we have regular opportunities to serve.</p>
+            </article>
+            <article class="info-card">
+              <h3>Global Missions</h3>
+              <p>Our church supports initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="watch-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>Watch Online</h2>
+            <p>Join our livestream every Sunday at 10 AM, or catch up on recent messages right here.</p>
+          </div>
+
+          <div class="video-frame" style="max-width: 900px; margin: 0 auto;">
+            <iframe title="Recent message from First Presbyterian Church" src="https://www.youtube.com/embed/NSX8X7kGb8M?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
+
+          <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="margin-top: 3rem; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px;">Recent Messages</h3>
+            <div class="message-list">
+              <article class="message-card">
+                <div class="message-thumb">Jonah</div>
+                <div class="message-details">
+                  <p>March 15, 2026</p>
+                  <h4>An Anchor for the Soul</h4>
+                </div>
+              </article>
+              <article class="message-card">
+                <div class="message-thumb">Hebrews</div>
+                <div class="message-details">
+                  <p>March 8, 2026</p>
+                  <h4>On to Maturity</h4>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="im-new-view" class="view-section page-wrap">
+        <div class="shell">
+          <div class="page-header">
+            <h2>I'm New Here</h2>
+            <p>We want to help you understand when to visit, where to go, and what to expect.</p>
+          </div>
+
+          <div class="grid-2">
+            <article class="info-card" style="text-align: center;">
+              <h3 style="border: none;">Service Times & Location</h3>
+              <p>Join us this Sunday.</p>
+              <hr style="border: 1px solid var(--line); margin: 20px 0;">
+              <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">Sundays at 10 AM</strong>
+              <p style="margin-top: 10px;">199 Palmer Ave., Corinth, NY 12822</p>
+            </article>
+            
+            <article class="info-card" style="text-align: center;">
+              <h3 style="border: none;">Contact Us</h3>
+              <p>We are here to answer any questions.</p>
+              <hr style="border: 1px solid var(--line); margin: 20px 0;">
+              <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">(518) 654-9432</strong>
+              <p style="margin-top: 10px;">grace@corinthfirstpres.org</p>
+            </article>
+          </div>
         </div>
       </div>
 
     </main>
+
+    <div class="newsletter-strip">
+      <p>Find out what is happening at First Presbyterian</p>
+      <button class="btn">Receive Updates</button>
+    </div>
+
+    <footer class="main-footer">
+      <div class="shell">
+        <img src="FirstPresbyterianChurchLogo.png" alt="First Presbyterian Church Logo" onerror="this.style.display='none'">
+        
+        <p>199 Palmer Ave.</p>
+        <p>Corinth, NY 12822</p>
+        
+        <div class="contact-line">
+          <span>518-654-9432</span>
+          <span>grace@corinthfirstpres.org</span>
+        </div>
+
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M22.396 7.164c-.093 2.026-1.507 4.8-4.245 8.32C15.323 19.16 12.93 21 10.97 21c-1.214 0-2.24-1.12-3.08-3.36-.56-2.052-1.119-4.105-1.68-6.159C5.588 6.071 4.681 5.038 3.5 5.038c-.187 0-.435.033-.746.099l-.809-1.082c.902-.821 1.959-1.671 3.172-2.553C6.671.4 7.822 0 8.568 0c1.742 0 2.768 1.343 3.08 4.03.249 2.115.435 3.524.56 4.226.435 2.457 1.057 3.685 1.866 3.685.622 0 1.43-1.056 2.426-3.167.995-2.11 1.461-3.665 1.399-4.664-.093-1.4-1.088-2.1-2.985-2.1-.653 0-1.275.124-1.866.373C14.398 1.058 16.544 0 19.343 0c2.208 0 3.25 2.388 3.053 7.164z"/></svg></a>
+        </div>
+
+        <div class="footer-links">
+          <a href="#">Career Opportunities</a>
+        </div>
+        
+        <p class="developer-credit">Website developed by <a href="mailto:nickblanchardbusiness@gmail.com">Nick Blanchard</a></p>
+      </div>
+    </footer>
     
     <script>
       // Toggle Full Screen Overlay Menu
@@ -457,6 +577,20 @@
           document.body.style.overflow = 'hidden';
         } else {
           document.body.style.overflow = 'auto';
+        }
+      }
+
+      // Update the transparent/black state of the header
+      function updateHeaderState() {
+        var header = document.getElementById("mainHeader");
+        var currentViewId = document.querySelector('.view-section.active').id;
+        
+        // If we are NOT on the home page, OR we have scrolled down, make the header solid black.
+        if (currentViewId !== 'home-view' || window.scrollY > 50) {
+          header.classList.add("is-scrolled");
+        } else {
+          // Only transparent if on home page AND at the very top.
+          header.classList.remove("is-scrolled");
         }
       }
 
@@ -475,20 +609,18 @@
           toggleMenu();
         }
         
+        // Update header state immediately based on new tab
+        updateHeaderState();
+        
         // Scroll to top instantly
         window.scrollTo(0,0);
       }
 
-      // Transparent to Black Scrolling Header Logic
+      // Initialize scripts
       document.addEventListener("DOMContentLoaded", function() {
-        var header = document.getElementById("mainHeader");
-        window.addEventListener("scroll", function() {
-          if (window.scrollY > 50) {
-            header.classList.add("is-scrolled");
-          } else {
-            header.classList.remove("is-scrolled");
-          }
-        });
+        // Run header check on load and scroll
+        updateHeaderState();
+        window.addEventListener("scroll", updateHeaderState);
 
         // iOS Video Autoplay Fallback
         var video = document.querySelector(".hero-video");
