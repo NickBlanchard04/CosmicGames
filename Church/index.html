@@ -22,7 +22,7 @@
         --cream: #f9f6f0; 
         --muted: #6b7280;
         --hard-shadow: #1a4d3f; 
-        --line: rgba(255, 255, 255, 0.15);
+        --line: rgba(26, 77, 63, 0.15);
         --max: 1180px;
         --header-height: 80px;
       }
@@ -166,7 +166,7 @@
       
       .hero-overlay {
         position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
+        background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
         z-index: 1;
       }
       
@@ -179,6 +179,13 @@
         font-size: clamp(3rem, 12vw, 6rem); line-height: 1.05; text-transform: uppercase;
         text-shadow: 3px 3px 15px rgba(0,0,0,0.8); margin-bottom: 1.5rem;
       }
+
+      .hero-copy {
+        max-width: 500px; color: #fff; font-size: clamp(1.1rem, 4vw, 1.4rem);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 500; margin: 0 auto 2.5rem;
+      }
+      
+      .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
       /* Home Content Blocks (Dark Sections) */
       .home-blocks-wrapper {
@@ -235,26 +242,48 @@
       .info-card p { font-size: 1.1rem; color: var(--text); }
       .info-card strong { display: block; font-size: 1.25rem; color: var(--accent-light); margin-top: 15px; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px;}
 
-      /* Watch Panel */
+      /* =========================================
+         WATCH TAB (Dark Cinematic Layout)
+         ========================================= */
+      #watch-view {
+        background-color: #000000;
+        color: #ffffff;
+        padding-top: 120px;
+        min-height: 100vh;
+      }
+
+      #watch-view h2.online-title {
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #ffffff;
+      }
+
       .video-frame {
         position: relative; aspect-ratio: 16/9; background: #111; overflow: hidden;
-        border-radius: 4px; border: 4px solid var(--surface); box-shadow: 8px 8px 0px var(--hard-shadow);
+        border-radius: 4px; max-width: 1000px; margin: 0 auto 2rem;
       }
       .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
       
+      .watch-note {
+        text-align: center; font-size: 1.1rem; color: #cccccc; margin-bottom: 3rem;
+      }
+
+      /* Dark Mode Message List inside Watch Tab */
       .message-list { display: grid; gap: 1.5rem; margin-top: 2rem;}
       .message-card {
-        background: var(--cream); border: 3px solid var(--accent);
-        border-radius: 4px; box-shadow: 6px 6px 0px var(--hard-shadow); overflow: hidden; display: flex; align-items: center;
-        transition: transform 0.2s; cursor: pointer;
+        background: #111111; border: 1px solid #333333;
+        border-radius: 4px; display: flex; align-items: center;
+        transition: transform 0.2s; cursor: pointer; color: #fff;
       }
-      .message-card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--hard-shadow); }
+      .message-card:hover { transform: translateY(-4px); border-color: var(--accent-light); }
       .message-thumb {
-        background: var(--accent); color: #fff; padding: 1.5rem; font-family: 'Oswald', sans-serif;
+        background: #222222; color: #fff; padding: 1.5rem; font-family: 'Oswald', sans-serif;
         font-size: 1.5rem; font-weight: 900; text-transform: uppercase; width: 120px; text-align: center;
+        border-right: 1px solid #333;
       }
       .message-details { padding: 1rem 1.5rem; }
-      .message-details h4 { font-size: 1.3rem; margin: 0 0 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase; color: var(--accent);}
+      .message-details h4 { font-size: 1.3rem; margin: 0 0 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #ffffff;}
       .message-details p { color: var(--accent-light); font-weight: 700; margin: 0; font-size: 0.9rem;}
 
       /* =========================================
@@ -290,7 +319,7 @@
       @media (max-width: 900px) {
         .grid-2 { grid-template-columns: 1fr; }
         .message-card { flex-direction: column; text-align: center; }
-        .message-thumb { width: 100%; border-bottom: 3px solid var(--accent); }
+        .message-thumb { width: 100%; border-right: none; border-bottom: 1px solid #333; }
         .home-block img { height: 250px; }
         .home-block h3 { font-size: 2.2rem; }
         .get-connected-title h2 { font-size: 2.2rem; padding: 10px 20px; }
@@ -298,8 +327,6 @@
     </style>
   </head>
   <body>
-    
-    <div class="noise-overlay"></div>
 
     <header class="topbar" id="mainHeader">
       <div class="shell topbar-inner">
@@ -343,7 +370,11 @@
           
           <div class="shell hero-content">
             <h1>Welcome.<br>Join Us On<br>Sundays.</h1>
-            <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
+            <p class="hero-copy">Our Sunday worship service starts at 10:00am and is streamed online.</p>
+            
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="switchView('watch')" style="width: 100%; max-width: 250px;">Join Online</button>
+            </div>
           </div>
         </section>
 
@@ -377,7 +408,7 @@
           <article class="home-block" style="margin-bottom: 0;">
             <img src="https://images.unsplash.com/photo-1593113580332-ceb4b8a21356?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Serving Community">
             <h3>Serving</h3>
-            <p>Serving others is one of the best ways that we are able to demonstrate the love of Christ to others. From welcoming people into the building to participating in events serving our region, we have regular opportunities for serving here.</p>
+            <p>Serving others is one of the best ways that we are able to demonstrate the love of Christ to others. From welcoming people into the building to participating in events serving our region, we have regular opportunities for serving here at church and in the community.</p>
             <button class="btn btn-primary" onclick="switchView('ministries')">Serving Opportunities</button>
           </article>
         </section>
@@ -473,19 +504,22 @@
         </div>
       </div>
 
-      <div id="watch-view" class="view-section page-wrap">
+      <div id="watch-view" class="view-section">
         <div class="shell">
-          <div class="page-header">
-            <h2>Watch Online</h2>
-            <p>Join our livestream every Sunday at 10 AM, or catch up on recent messages right here.</p>
-          </div>
+          <h2 class="online-title">FIRST PRESBYTERIAN CHURCH ONLINE</h2>
 
-          <div class="video-frame" style="max-width: 900px; margin: 0 auto;">
+          <div class="video-frame">
             <iframe title="Recent message from First Presbyterian Church" src="https://www.youtube.com/embed/NSX8X7kGb8M?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
           </div>
 
-          <div style="max-width: 900px; margin: 0 auto;">
-            <h3 style="margin-top: 3rem; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px;">Recent Messages</h3>
+          <p class="watch-note">Please refresh the page if connection issues occur - thank you!</p>
+
+          <div style="text-align: center; margin-bottom: 80px;">
+            <button class="btn btn-primary" onclick="document.getElementById('library-section').scrollIntoView({behavior: 'smooth'})">Recent Messages</button>
+          </div>
+
+          <div id="library-section" style="max-width: 900px; margin: 0 auto; padding-top: 40px;">
+            <h3 style="color: var(--accent-light); border-bottom: 2px solid var(--accent-light); padding-bottom: 10px;">Message Library</h3>
             <div class="message-list">
               <article class="message-card">
                 <div class="message-thumb">Jonah</div>
@@ -499,6 +533,13 @@
                 <div class="message-details">
                   <p>March 8, 2026</p>
                   <h4>On to Maturity</h4>
+                </div>
+              </article>
+              <article class="message-card">
+                <div class="message-thumb">Message</div>
+                <div class="message-details">
+                  <p>March 1, 2026</p>
+                  <h4>Jesus the Great High Priest</h4>
                 </div>
               </article>
             </div>
@@ -553,84 +594,4 @@
         </div>
 
         <div class="social-icons">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-          <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M22.396 7.164c-.093 2.026-1.507 4.8-4.245 8.32C15.323 19.16 12.93 21 10.97 21c-1.214 0-2.24-1.12-3.08-3.36-.56-2.052-1.119-4.105-1.68-6.159C5.588 6.071 4.681 5.038 3.5 5.038c-.187 0-.435.033-.746.099l-.809-1.082c.902-.821 1.959-1.671 3.172-2.553C6.671.4 7.822 0 8.568 0c1.742 0 2.768 1.343 3.08 4.03.249 2.115.435 3.524.56 4.226.435 2.457 1.057 3.685 1.866 3.685.622 0 1.43-1.056 2.426-3.167.995-2.11 1.461-3.665 1.399-4.664-.093-1.4-1.088-2.1-2.985-2.1-.653 0-1.275.124-1.866.373C14.398 1.058 16.544 0 19.343 0c2.208 0 3.25 2.388 3.053 7.164z"/></svg></a>
-        </div>
-
-        <div class="footer-links">
-          <a href="#">Career Opportunities</a>
-        </div>
-        
-        <p class="developer-credit">Website developed by <a href="mailto:nickblanchardbusiness@gmail.com">Nick Blanchard</a></p>
-      </div>
-    </footer>
-    
-    <script>
-      // Toggle Full Screen Overlay Menu
-      function toggleMenu() {
-        const menu = document.getElementById('navMenu');
-        menu.classList.toggle('active');
-        
-        // Prevent background scrolling when menu is open
-        if(menu.classList.contains('active')){
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'auto';
-        }
-      }
-
-      // Update the transparent/black state of the header
-      function updateHeaderState() {
-        var header = document.getElementById("mainHeader");
-        var currentViewId = document.querySelector('.view-section.active').id;
-        
-        // If we are NOT on the home page, OR we have scrolled down, make the header solid black.
-        if (currentViewId !== 'home-view' || window.scrollY > 50) {
-          header.classList.add("is-scrolled");
-        } else {
-          // Only transparent if on home page AND at the very top.
-          header.classList.remove("is-scrolled");
-        }
-      }
-
-      // Single Page Application (SPA) Tab Switcher
-      function switchView(viewId) {
-        // Hide all views
-        document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-        
-        // Show target view
-        const targetView = document.getElementById(viewId + '-view');
-        if(targetView) targetView.classList.add('active');
-        
-        // Close menu if it's open
-        const menu = document.getElementById('navMenu');
-        if(menu.classList.contains('active')){
-          toggleMenu();
-        }
-        
-        // Update header state immediately based on new tab
-        updateHeaderState();
-        
-        // Scroll to top instantly
-        window.scrollTo(0,0);
-      }
-
-      // Initialize scripts
-      document.addEventListener("DOMContentLoaded", function() {
-        // Run header check on load and scroll
-        updateHeaderState();
-        window.addEventListener("scroll", updateHeaderState);
-
-        // iOS Video Autoplay Fallback
-        var video = document.querySelector(".hero-video");
-        if (video) {
-          video.muted = true;
-          video.play().catch(function(error) {
-            console.log("Autoplay prevented. Poster image active.");
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
+          <a href="https://www.facebook.com/CorinthFirstPresbyterianChurch" aria-label="Facebook" target="_blank"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731
