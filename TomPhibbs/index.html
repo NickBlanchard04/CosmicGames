@@ -158,15 +158,48 @@
     .ig-badge svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* =========================================
-       FUNNEL STAGE 1: AWARENESS (HERO)
+       FUNNEL STAGE 1: AWARENESS (VIDEO HERO)
        ========================================= */
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
+    .hero { 
+      position: relative;
+      min-height: 80vh; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center; 
+      padding: 100px 20px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      background: #000;
+    }
+
+    .hero-video-wrap video {
+      width: 100%; height: 100%; object-fit: cover;
+      pointer-events: none; /* Prevents iOS from treating it as a clickable media player */
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(13, 17, 23, 0.7) 0%, rgba(13, 17, 23, 0.4) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-headline {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 900;
       line-height: 1.2;
       margin: 0 auto 20px;
@@ -175,6 +208,7 @@
       animation: fadeUp 0.8s ease-out forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
     }
 
     @keyframes fadeUp {
@@ -182,13 +216,14 @@
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
+      font-size: 1.25rem;
+      color: #fff;
       max-width: 750px;
       margin: 0 auto 40px;
       animation: fadeUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
       transform: translateY(20px);
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
     }
 
     .hero .btn {
@@ -221,6 +256,9 @@
       gap: 40px;
       align-items: center;
       margin-bottom: 80px;
+      margin-top: -40px; /* Pull it up slightly over the hero */
+      position: relative;
+      z-index: 5;
     }
 
     .about-content p {
@@ -254,12 +292,12 @@
       background: var(--accent);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 8px;
-      padding: 15px 40px; /* Increased side padding to accommodate absolute icon */
+      padding: 15px 40px; 
       display: flex;
       align-items: center;
-      justify-content: center; /* Forces horizontal centering */
-      text-align: center;      /* Centers the text lines */
-      position: relative;      /* Anchor for the absolute positioned SVG */
+      justify-content: center; 
+      text-align: center;      
+      position: relative;      
       font-weight: 700;
       color: #fff;
       box-shadow: 0 4px 15px rgba(46, 160, 67, 0.3);
@@ -274,7 +312,7 @@
 
     .service-item svg {
       position: absolute;
-      left: 20px; /* Lock icon to the left side */
+      left: 20px; 
       width: 20px;
       height: 20px;
       fill: #fff;
@@ -504,7 +542,8 @@
       .ig-badge svg { width: 14px; height: 14px; }
       .btn { padding: 8px 12px; font-size: 0.75rem; }
 
-      .hero-headline { font-size: 2rem; }
+      .hero { min-height: 60vh; padding: 80px 20px; }
+      .hero-headline { font-size: 2.2rem; }
       .img-comp-container { height: 300px; max-width: 100%; }
       .img-comp-img img { height: 300px; }
     }
@@ -535,10 +574,20 @@
   </header>
 
   <main>
-    <section class="hero container">
-      <h1 class="hero-headline">Elevate Your Outdoor Space.</h1>
-      <p>Tom Phibbs delivers premium property maintenance, lawn mowings, breathtaking custom patios, stone installations, and complete property transformations in the Capital Region.</p>
-      <a href="tel:+15187273672" class="btn btn-accent">Start Your Project Today</a>
+    
+    <section class="hero">
+      <div class="hero-video-wrap">
+        <video id="heroVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="Drone_Tour_Fallback.jpg">
+          <source src="Drone_Tour_Of_Craftsman_Estate.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-video-overlay"></div>
+      
+      <div class="hero-content">
+        <h1 class="hero-headline">Elevate Your Outdoor Space.</h1>
+        <p>Tom Phibbs delivers premium property maintenance, lawn mowings, breathtaking custom patios, stone installations, and complete property transformations in the Capital Region.</p>
+        <a href="tel:+15187273672" class="btn btn-accent">Start Your Project Today</a>
+      </div>
     </section>
 
     <section class="container" style="padding-bottom: 60px;">
@@ -699,6 +748,17 @@
   </footer>
 
   <script>
+    // --- Video Autoplay Fallback for strict iOS Devices ---
+    document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById("heroVideo");
+      if (video) {
+        video.muted = true;
+        video.play().catch(function(error) {
+          console.log("Autoplay prevented by browser, showing poster image instead.");
+        });
+      }
+    });
+
     const counters = document.querySelectorAll('.counter');
     const speed = 40; 
 
