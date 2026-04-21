@@ -331,7 +331,7 @@
       border-radius: 4px;
       padding: 60px 20px; 
       text-align: center;
-      margin: 80px auto; /* FIXED: Now centers automatically */
+      margin: 80px auto; 
       box-shadow: 8px 8px 0px var(--hard-shadow);
     }
     .cta-strip h2 { font-size: 2.8rem; margin-bottom: 15px; color: #fff; }
@@ -470,7 +470,7 @@
       
       <section class="hero">
         <div class="hero-video-wrap">
-          <video id="heroVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
+          <video id="heroVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="GreenWaveHeroFallback.png">
             <source src="GreenWaveHeroVideo.mp4" type="video/mp4">
           </video>
         </div>
@@ -637,7 +637,8 @@
       if (video) {
         video.muted = true;
         video.play().catch(function(error) {
-          console.log("Autoplay prevented by browser:", error);
+          console.log("Autoplay prevented by browser, showing poster image instead.");
+          // The poster image set in the HTML attribute will naturally display here.
         });
       }
     });
