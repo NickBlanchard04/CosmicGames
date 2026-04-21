@@ -8,23 +8,23 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
       /* =========================================
          VARIABLES & BASE SETUP
          ========================================= */
       :root {
-        --accent: #1a4d3f; /* Dark Forest Green from Logo */
-        --accent-light: #7a9c22; /* Leaf Green from Logo */
+        --accent: #1a4d3f; 
+        --accent-light: #44924c; /* Adjusted to match the brighter green 'I'm New' button */
         --surface: #ffffff; 
         --text: #17202a;
-        --cream: #f9f6f0; /* Warm organic background */
+        --cream: #f9f6f0; 
         --muted: #6b7280;
-        --hard-shadow: #1a4d3f; /* Dark green constructed shadow */
+        --hard-shadow: #1a4d3f; 
         --line: rgba(26, 77, 63, 0.15);
         --max: 1180px;
-        --header-height: 84px;
+        --header-height: 80px;
       }
 
       * { box-sizing: border-box; }
@@ -39,16 +39,6 @@
         overflow-x: hidden;
       }
 
-      /* GRIT / TEXTURE OVERLAY */
-      .noise-overlay {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.05;
-        background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-      }
-
       a { color: inherit; text-decoration: none; }
       p { margin: 0; line-height: 1.6; }
       h1, h2, h3 { 
@@ -61,51 +51,88 @@
       .shell { width: min(var(--max), calc(100vw - 2rem)); margin: 0 auto; }
 
       /* =========================================
-         HEADER / TABS NAVIGATION
+         HEADER (Transparent to Solid on Scroll)
          ========================================= */
       .topbar {
-        position: sticky; 
+        position: fixed; 
         top: 0; left: 0; width: 100%;
         z-index: 1000;
-        background: #ffffff;
-        color: var(--accent);
-        border-bottom: 3px solid var(--accent);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        background: transparent;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      /* Active Scrolled State */
+      .topbar.is-scrolled {
+        background: #000000;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       }
       
       .topbar-inner {
-        min-height: var(--header-height); display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        height: var(--header-height); 
+        display: flex; align-items: center; justify-content: space-between; 
+        padding: 0 1.5rem;
       }
       
-      .brand { display: flex; align-items: center; gap: .85rem; font-weight: 800; cursor: pointer; }
-      .brand img { height: 50px; width: auto; }
-      
-      .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
-      
-      .nav-actions span, .nav-actions a {
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        color: var(--accent);
-        padding: 0.5rem 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        border-radius: 4px;
+      .brand { cursor: pointer; display: flex; align-items: center;}
+      .brand img { 
+        height: 45px; width: auto; 
+        /* Forces logo to be white so it stands out on the dark video overlay AND the black scrolled header */
+        filter: brightness(0) invert(1); 
+        transition: filter 0.3s ease;
       }
       
-      .nav-actions span:hover, .nav-actions span.active {
-        background: var(--accent); color: #fff;
+      .hamburger-btn {
+        background: none; border: none; cursor: pointer; padding: 10px;
+        display: flex; flex-direction: column; gap: 6px;
+      }
+      
+      .hamburger-btn span {
+        display: block; width: 30px; height: 2px; background: #ffffff;
+        transition: all 0.3s ease;
       }
 
-      .nav-actions a.donate-btn {
-        background: var(--accent-light); color: #fff; border: 2px solid var(--accent);
-        box-shadow: 2px 2px 0px var(--hard-shadow); margin-left: 0.5rem;
+      /* =========================================
+         FULL SCREEN OVERLAY MENU
+         ========================================= */
+      .menu-overlay {
+        position: fixed; inset: 0; background: #ffffff; z-index: 2000;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
       }
-      .nav-actions a.donate-btn:hover {
-        transform: translate(-2px, -2px); box-shadow: 4px 4px 0px var(--hard-shadow);
+      
+      .menu-overlay.active {
+        opacity: 1; pointer-events: auto;
       }
+      
+      .close-menu-btn {
+        position: absolute; top: 25px; right: 25px; background: none; border: none; cursor: pointer;
+      }
+      
+      .close-menu-btn svg { width: 36px; height: 36px; fill: #111; stroke: #111; stroke-width: 1px;}
+      
+      .menu-links {
+        display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+      }
+      
+      .menu-links a {
+        font-family: 'Archivo', sans-serif; font-size: 2.2rem; color: #111; 
+        text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 10px;
+        transition: color 0.2s;
+      }
+      
+      .menu-links a:hover { color: var(--accent-light); }
+      
+      .menu-links a .caret {
+        font-weight: 300; color: #999; font-size: 1.8rem;
+      }
+      
+      .menu-new-btn {
+        margin-top: 1.5rem; border-radius: 50px; background: var(--accent-light); 
+        color: #fff; border: none; padding: 15px 50px; font-size: 1.3rem; 
+        font-family: 'Archivo', sans-serif; font-weight: 600; cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .menu-new-btn:hover { transform: scale(1.05); }
 
       /* =========================================
          VIEWS (SPA Logic)
@@ -126,16 +153,13 @@
       }
       .btn-primary { background: var(--accent); color: #fff; box-shadow: 4px 4px 0px var(--hard-shadow); }
       .btn-primary:hover { background: var(--accent-light); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--hard-shadow); }
-      .btn-secondary { background: var(--cream); color: var(--accent); box-shadow: 4px 4px 0px var(--hard-shadow); }
-      .btn-secondary:hover { background: var(--accent); color: #fff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--hard-shadow); }
 
       /* =========================================
          HOME VIEW (Hero Only)
          ========================================= */
       .hero {
-        min-height: calc(100svh - var(--header-height)); position: relative; overflow: hidden; display: flex;
+        min-height: 100svh; position: relative; overflow: hidden; display: flex;
         align-items: center; justify-content: center; color: #fff; background: #071017;
-        border-bottom: 4px solid var(--accent); text-align: center;
       }
       
       .hero-video {
@@ -151,17 +175,18 @@
       }
       
       .hero-content {
-        position: relative; z-index: 2; padding: 2rem 1rem; max-width: 900px; margin: 0 auto;
+        position: relative; z-index: 2; padding: 2rem 1.5rem; max-width: 900px; margin: 0 auto;
+        text-align: center;
       }
       
-      h1 {
-        font-size: clamp(2.8rem, 8vw, 6rem); line-height: 1.05; text-transform: uppercase;
+      .hero h1 {
+        font-size: clamp(3rem, 12vw, 6rem); line-height: 1.05; text-transform: uppercase;
         text-shadow: 3px 3px 0px #000; margin-bottom: 1.5rem;
       }
       
       .hero-copy {
-        max-width: 600px; color: #fff; font-size: clamp(1.1rem, 2vw, 1.4rem);
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 600; margin: 0 auto 2rem;
+        max-width: 600px; color: #fff; font-size: clamp(1.1rem, 4vw, 1.4rem);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 500; margin: 0 auto 2.5rem;
       }
       
       .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -169,7 +194,7 @@
       /* =========================================
          SECTIONS & CARDS (For other tabs)
          ========================================= */
-      .page-header { text-align: center; padding: 60px 20px 40px; }
+      .page-header { text-align: center; padding: 120px 20px 40px; }
       .page-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--accent); margin-bottom: 10px; }
       .page-header p { font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
 
@@ -197,83 +222,62 @@
       .message-card {
         background: var(--cream); border: 3px solid var(--accent);
         border-radius: 4px; box-shadow: 6px 6px 0px var(--hard-shadow); overflow: hidden; display: flex; align-items: center;
+        transition: transform 0.2s; cursor: pointer;
       }
+      .message-card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--hard-shadow); }
       .message-thumb {
         background: var(--accent); color: #fff; padding: 1.5rem; font-family: 'Oswald', sans-serif;
         font-size: 1.5rem; font-weight: 900; text-transform: uppercase; width: 120px; text-align: center;
       }
       .message-details { padding: 1rem 1.5rem; }
-      .message-details h4 { font-size: 1.3rem; margin: 0 0 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+      .message-details h4 { font-size: 1.3rem; margin: 0 0 5px; font-family: 'Oswald', sans-serif; text-transform: uppercase; color: var(--accent);}
       .message-details p { color: var(--accent-light); font-weight: 700; margin: 0; font-size: 0.9rem;}
-
-      /* Gallery */
-      .gallery-visual {
-        height: 250px; display: flex; align-items: flex-end; padding: 1.5rem; color: #fff;
-        background: linear-gradient(180deg, rgba(0,0,0,0), rgba(26,77,63,0.8));
-        font-family: 'Oswald', sans-serif; font-size: 1.5rem; text-transform: uppercase; border-bottom: 3px solid var(--accent);
-      }
 
       /* =========================================
          MOBILE RESPONSIVENESS
          ========================================= */
       @media (max-width: 900px) {
-        .topbar-inner { 
-          flex-direction: column; padding: 15px 10px; gap: 15px; 
-        }
-        .brand img { height: 45px; }
-        
-        /* Mobile Scrollable Tabs */
-        .nav-actions {
-          width: 100%;
-          overflow-x: auto;
-          justify-content: flex-start;
-          padding-bottom: 5px;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none; /* Firefox */
-        }
-        .nav-actions::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-        
-        .nav-actions span, .nav-actions a {
-          white-space: nowrap;
-          font-size: 0.85rem;
-          padding: 8px 12px;
-          border: 1px solid var(--accent);
-          flex-shrink: 0;
-        }
-
-        h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
-        .hero-copy { font-size: 1.1rem; }
         .grid-2 { grid-template-columns: 1fr; }
-        
         .message-card { flex-direction: column; text-align: center; }
         .message-thumb { width: 100%; border-bottom: 3px solid var(--accent); }
       }
     </style>
   </head>
   <body>
-    
-    <div class="noise-overlay"></div>
 
-    <header class="topbar">
+    <header class="topbar" id="mainHeader">
       <div class="shell topbar-inner">
         <div class="brand" onclick="switchView('home')">
-          <img src="FirstPresbyterianChurchLogo.png" alt="First Presbyterian Church Corinth NY" onerror="this.style.display='none'">
+          <img src="FirstPresbyterianChurchLogo.png" alt="First Presbyterian Church Logo" onerror="this.style.display='none'">
         </div>
         
-        <nav class="nav-actions" aria-label="Primary navigation">
-          <span class="nav-link active" onclick="switchView('home')" id="nav-home">Home</span>
-          <span class="nav-link" onclick="switchView('church')" id="nav-church">Our Church</span>
-          <span class="nav-link" onclick="switchView('missions')" id="nav-missions">Missions</span>
-          <span class="nav-link" onclick="switchView('sermons')" id="nav-sermons">LiveStream & Sermons</span>
-          <span class="nav-link" onclick="switchView('contact')" id="nav-contact">Contact</span>
-          <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=V93AEKJLD2JAJ&amp;source=url" target="_blank" rel="noreferrer" class="donate-btn">Donate</a>
-        </nav>
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
+    <div class="menu-overlay" id="navMenu">
+      <button class="close-menu-btn" onclick="toggleMenu()" aria-label="Close Menu">
+        <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+      <nav class="menu-links">
+        <a href="#" onclick="switchView('events')">Events</a>
+        <a href="#" onclick="switchView('next-steps')">Next Steps <span class="caret">&gt;</span></a>
+        <a href="#" onclick="switchView('about')">About <span class="caret">&gt;</span></a>
+        <a href="#" onclick="switchView('ministries')">Ministries <span class="caret">&gt;</span></a>
+        <a href="#" onclick="switchView('watch')">Watch <span class="caret">&gt;</span></a>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=V93AEKJLD2JAJ&amp;source=url" target="_blank">Give</a>
+        
+        <button class="menu-new-btn" onclick="switchView('im-new')">I'm New</button>
+      </nav>
+    </div>
+
     <main>
       
-      <div id="home-view" class="view-section active">
+      <div id="home-view" class="view-section active" style="padding-bottom: 0;">
         <section class="hero">
           <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="Drone_Tour_Fallback.jpg">
             <source src="Drone_Shot_Of_Church_Property.mp4" type="video/mp4" />
@@ -282,86 +286,103 @@
           <div class="hero-overlay"></div>
           
           <div class="shell hero-content">
-            <h1>Welcome.<br>Join us on Sundays.</h1>
-            <p class="hero-copy">First Presbyterian Church welcomes you. Experience the hope and healing of Jesus with our community in Corinth, NY.</p>
+            <h1>Welcome.<br>Join Us On<br>Sundays.</h1>
+            <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
             
             <div class="hero-actions">
-              <button class="btn btn-primary" onclick="switchView('church')">Plan a Visit</button>
-              <button class="btn btn-secondary" onclick="switchView('sermons')">Watch Online</button>
+              <button class="btn btn-primary" onclick="switchView('im-new')" style="width: 100%; max-width: 300px;">Plan a Visit</button>
             </div>
           </div>
         </section>
       </div>
 
-      <div id="church-view" class="view-section shell">
+      <div id="events-view" class="view-section shell">
         <div class="page-header">
-          <h2>Welcome Home</h2>
-          <p>Built on local roots since 1814. Discover what to expect when you visit.</p>
+          <h2>Events & What to Expect</h2>
+          <p>Reduce the unknowns around visiting, watching online, giving, or getting involved.</p>
         </div>
 
         <div class="grid-2">
           <article class="info-card">
-            <h3>Sunday Service</h3>
-            <p>We gather every week to worship, learn, and grow together. Whether you've grown up in church or are exploring faith for the first time, you belong here.</p>
-            <strong>Sundays at 10:00 AM</strong>
+            <h3>Plan your visit</h3>
+            <p>Join us on Sundays at 10 AM. You will find our historic building right in the heart of Corinth. Parking is available on-site.</p>
+            <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
           </article>
           
-          <article class="info-card">
-            <h3>Location</h3>
-            <p>Our historic building is located right in the heart of Corinth. Parking is available on-site.</p>
-            <strong>199 Palmer Ave.<br>Corinth, NY 12822</strong>
+          <article class="info-card" onclick="switchView('watch')" style="cursor: pointer;">
+            <h3>Watch online</h3>
+            <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
           </article>
         </div>
+      </div>
 
-        <div class="grid-3" style="margin-top: 3rem;">
-          <div class="info-card" style="padding: 0; overflow: hidden;">
-            <div class="gallery-visual">Worship</div>
-            <div style="padding: 1.5rem;">
-              <p>Gather with us in the sanctuary for uplifting music and practical teaching.</p>
-            </div>
+      <div id="next-steps-view" class="view-section shell">
+        <div class="page-header">
+          <h2>Next Steps</h2>
+          <p>Make the most important church paths visible before you have to search.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="info-card" onclick="switchView('im-new')">
+            <h3>Sunday worship</h3>
+            <p>Find the worship time, location, and what to expect when you walk through our doors.</p>
+          </article>
+          <article class="info-card" onclick="switchView('watch')">
+            <h3>Sermons and livestream</h3>
+            <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
+          </article>
+          <article class="info-card" onclick="switchView('ministries')">
+            <h3>Missions & community</h3>
+            <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
+          </article>
+        </div>
+      </div>
+
+      <div id="about-view" class="view-section shell">
+        <div class="page-header">
+          <h2>About Us</h2>
+          <p>We believe faith is meant to be lived out together. Learn more about our community.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <h3>Worship Gathering</h3>
+            <p>Gather with us in the sanctuary for uplifting music, practical teaching, and a warm community. We are built on local roots.</p>
           </div>
-          <div class="info-card" style="padding: 0; overflow: hidden;">
-            <div class="gallery-visual">Community</div>
-            <div style="padding: 1.5rem;">
-              <p>Find your people. We believe faith is meant to be lived out together.</p>
-            </div>
-          </div>
-          <div class="info-card" style="padding: 0; overflow: hidden;">
-            <div class="gallery-visual">Family</div>
-            <div style="padding: 1.5rem;">
-              <p>Safe, engaging environments for kids of all ages to learn about Jesus.</p>
-            </div>
+          <div class="info-card">
+            <h3>Our History</h3>
+            <p>First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus.</p>
           </div>
         </div>
       </div>
 
-      <div id="missions-view" class="view-section shell">
+      <div id="ministries-view" class="view-section shell">
         <div class="page-header">
-          <h2>Missions & Outreach</h2>
+          <h2>Ministries & Outreach</h2>
           <p>Sharing the hope and healing of Jesus beyond the walls of our building.</p>
         </div>
 
         <div class="grid-3">
           <article class="info-card">
             <h3>Local Impact</h3>
-            <p>We actively partner with organizations in Corinth and the surrounding areas to provide food, resources, and support to those in need.</p>
+            <p>We actively partner with organizations in Corinth to provide resources and support to those in need.</p>
           </article>
           <article class="info-card">
             <h3>Global Missions</h3>
-            <p>Our church supports international missionaries and initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
+            <p>Our church supports initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
           </article>
           <article class="info-card">
             <h3>Get Involved</h3>
-            <p>There are countless ways to serve. We believe every person has unique gifts that can be used to bless others.</p>
-            <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="switchView('contact')">Volunteer With Us</button>
+            <p>We believe every person has unique gifts. There are countless ways to serve.</p>
+            <a href="mailto:grace@corinthfirstpres.org" class="btn btn-primary" style="margin-top: 15px; width: 100%;">Email to Volunteer</a>
           </article>
         </div>
       </div>
 
-      <div id="sermons-view" class="view-section shell">
+      <div id="watch-view" class="view-section shell">
         <div class="page-header">
           <h2>Watch Online</h2>
-          <p>Join our livestream every Sunday at 10 AM, or catch up on recent messages.</p>
+          <p>Join our livestream every Sunday at 10 AM, or catch up on recent messages right here.</p>
         </div>
 
         <div class="video-frame" style="max-width: 900px; margin: 0 auto;">
@@ -385,40 +406,60 @@
                 <h4>On to Maturity</h4>
               </div>
             </article>
+            <article class="message-card">
+              <div class="message-thumb">Message</div>
+              <div class="message-details">
+                <p>March 1, 2026</p>
+                <h4>Jesus the Great High Priest</h4>
+              </div>
+            </article>
           </div>
         </div>
       </div>
 
-      <div id="contact-view" class="view-section shell">
+      <div id="im-new-view" class="view-section shell">
         <div class="page-header">
-          <h2>Get In Touch</h2>
-          <p>We're here to pray with you, answer questions, and help you get connected.</p>
+          <h2>I'm New Here</h2>
+          <p>We want to help you understand when to visit, where to go, and what to expect.</p>
         </div>
 
-        <div class="grid-2" style="max-width: 800px; margin: 0 auto;">
+        <div class="grid-2">
           <article class="info-card" style="text-align: center;">
-            <h3>Call Us</h3>
-            <p>Our office is available during the week.</p>
-            <strong>(518) 654-9432</strong>
-            <a href="tel:5186549432" class="btn btn-primary" style="margin-top: 20px;">Call Now</a>
+            <h3 style="border: none;">Service Times & Location</h3>
+            <p>Join us this Sunday.</p>
+            <hr style="border: 1px solid var(--line); margin: 20px 0;">
+            <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">Sundays at 10 AM</strong>
+            <p style="margin-top: 10px;">199 Palmer Ave., Corinth, NY 12822</p>
+            <a href="tel:5186549432" class="btn btn-primary" style="margin-top: 20px; width: 100%;">Call (518) 654-9432</a>
           </article>
           
           <article class="info-card" style="text-align: center;">
-            <h3>Email Us</h3>
-            <p>Send us a message anytime.</p>
-            <strong style="font-size: 1rem; text-transform: lowercase;">grace@corinthfirstpres.org</strong>
-            <a href="mailto:grace@corinthfirstpres.org" class="btn btn-secondary" style="margin-top: 20px;">Send Email</a>
+            <h3 style="border: none;">Contact Us</h3>
+            <p>We are here to answer any questions.</p>
+            <hr style="border: 1px solid var(--line); margin: 20px 0;">
+            <strong style="color: var(--accent); display:block; font-size: 1.5rem; font-family: 'Oswald', sans-serif;">Send an Email</strong>
+            <p style="margin-top: 10px;">grace@corinthfirstpres.org</p>
+            <a href="mailto:grace@corinthfirstpres.org" class="btn btn-primary" style="margin-top: 20px; width: 100%; background: var(--surface); color: var(--accent);">Email Us</a>
           </article>
-        </div>
-        
-        <div style="text-align: center; margin-top: 4rem;">
-          <a href="https://www.facebook.com/CorinthFirstPresbyterianChurch" target="_blank" rel="noreferrer" class="btn btn-primary" style="background: #1877F2; border-color: #1877F2; color: #fff;">Follow us on Facebook</a>
         </div>
       </div>
 
     </main>
     
     <script>
+      // Toggle Full Screen Overlay Menu
+      function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        menu.classList.toggle('active');
+        
+        // Prevent background scrolling when menu is open
+        if(menu.classList.contains('active')){
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'auto';
+        }
+      }
+
       // Single Page Application (SPA) Tab Switcher
       function switchView(viewId) {
         // Hide all views
@@ -428,22 +469,33 @@
         const targetView = document.getElementById(viewId + '-view');
         if(targetView) targetView.classList.add('active');
         
-        // Update Nav Active State
-        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-        const activeNav = document.getElementById('nav-' + viewId);
-        if(activeNav) activeNav.classList.add('active');
+        // Close menu if it's open
+        const menu = document.getElementById('navMenu');
+        if(menu.classList.contains('active')){
+          toggleMenu();
+        }
         
-        // Scroll to top instantly so they don't land halfway down the new tab
+        // Scroll to top instantly
         window.scrollTo(0,0);
       }
 
-      // iOS Video Autoplay Fallback
+      // Transparent to Black Scrolling Header Logic
       document.addEventListener("DOMContentLoaded", function() {
+        var header = document.getElementById("mainHeader");
+        window.addEventListener("scroll", function() {
+          if (window.scrollY > 50) {
+            header.classList.add("is-scrolled");
+          } else {
+            header.classList.remove("is-scrolled");
+          }
+        });
+
+        // iOS Video Autoplay Fallback
         var video = document.querySelector(".hero-video");
         if (video) {
           video.muted = true;
           video.play().catch(function(error) {
-            console.log("Autoplay prevented. Ensure a poster image is set.");
+            console.log("Autoplay prevented. Poster image active.");
           });
         }
       });
