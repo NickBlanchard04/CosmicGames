@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>First Presbyterian Church | Corinth, NY</title>
-    <meta name="description" content="Auto-generated mockup for First Presbyterian Church, built from lead data for church service positioning in Corinth, NY." />
+    <meta name="description" content="First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect." />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,13 +59,24 @@
       .shell { width: min(var(--max), calc(100vw - 2rem)); margin: 0 auto; }
 
       /* =========================================
-         HEADER / NAVIGATION
+         HEADER / NAVIGATION (Scroll Reveal)
          ========================================= */
       .topbar {
-        position: sticky; top: 0; z-index: 20;
+        position: fixed; 
+        top: 0; left: 0; width: 100%;
+        z-index: 1000;
         background: #ffffff;
         color: var(--accent);
         border-bottom: 3px solid var(--accent);
+        
+        /* Hidden by default, smoothly transitions down */
+        transform: translateY(-100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      /* Class added by JavaScript on scroll */
+      .topbar.is-visible {
+        transform: translateY(0);
       }
       
       .topbar-inner {
@@ -77,7 +88,7 @@
       }
       
       .brand img {
-        height: 55px; /* Sized specifically for the horizontal logo */
+        height: 55px;
         width: auto;
       }
       
@@ -148,10 +159,10 @@
       .chip:hover { background: var(--accent-light); color: #fff; }
 
       /* =========================================
-         HERO SECTION (Video + Logo Overlay)
+         HERO SECTION (Video + Text Overlay)
          ========================================= */
       .hero {
-        min-height: 85svh; position: relative; overflow: hidden; display: grid;
+        min-height: 100svh; position: relative; overflow: hidden; display: grid;
         align-items: center; color: #fff; background: #071017;
         border-bottom: 4px solid var(--accent);
       }
@@ -168,7 +179,7 @@
       }
       
       .hero-content {
-        position: relative; z-index: 2; padding: 8rem 0 3.25rem; display: grid;
+        position: relative; z-index: 2; padding: 6rem 0 3.25rem; display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(300px, .42fr); gap: 2rem; align-items: center;
       }
       
@@ -189,8 +200,8 @@
       }
       
       h1 {
-        font-size: clamp(3.35rem, 6vw, 6rem); line-height: 1; text-transform: uppercase;
-        max-width: 15ch; text-shadow: 3px 3px 0px #000;
+        font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.1; text-transform: uppercase;
+        max-width: 20ch; text-shadow: 3px 3px 0px #000;
       }
       
       .hero-copy {
@@ -348,7 +359,7 @@
       @media (max-width: 900px) {
         .topbar-inner { min-height: 72px; padding: .65rem 0; display: flex; justify-content: space-between; }
         .brand img { height: 40px; }
-        .nav-actions { display: none; /* In a real build, add a hamburger menu. Hiding for clean mobile preview based on current HTML structure */ }
+        .nav-actions { display: none; }
         .hero { min-height: auto; }
         .hero-content, .section-head, .path-grid, .welcome-grid, .quote-grid, .step-grid, .watch-panel { grid-template-columns: 1fr; }
         .hero-content { padding: 4.5rem 0 3.5rem; }
@@ -384,7 +395,7 @@
       <section class="hero" id="top">
         
         <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="Drone_Tour_Fallback.jpg">
-          <source src="Drone_Tour_Of_Craftsman_Estate.mp4" type="video/mp4" />
+          <source src="Drone_Shot_Of_Church_Property.mp4" type="video/mp4" />
         </video>
         
         <div class="shell hero-content">
@@ -394,7 +405,7 @@
             </div>
             
             <p class="eyebrow">Corinth, NY | Church</p>
-            <h1>Welcome home.<br>Join us this Sunday.</h1>
+            <h1>To Experience And Share The Hope And Healing Of Jesus</h1>
             <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
             
             <ul class="hero-highlights">
@@ -675,8 +686,8 @@
     </main>
     
     <script>
-      // iOS Video Autoplay Fallback script
       document.addEventListener("DOMContentLoaded", function() {
+        // iOS Video Autoplay Fallback script
         var video = document.querySelector(".hero-video");
         if (video) {
           video.muted = true;
@@ -684,6 +695,16 @@
             console.log("Autoplay prevented by browser. Poster image will display instead.");
           });
         }
+
+        // Scroll Header Logic
+        var topbar = document.querySelector(".topbar");
+        window.addEventListener("scroll", function() {
+          if (window.scrollY > 10) {
+            topbar.classList.add("is-visible");
+          } else {
+            topbar.classList.remove("is-visible");
+          }
+        });
       });
     </script>
   </body>
