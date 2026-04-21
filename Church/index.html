@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>First Presbyterian Church | Corinth, NY</title>
+    <meta name="description" content="Auto-generated mockup for First Presbyterian Church, built from lead data for church service positioning in Corinth, NY." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+      /* =========================================
+         VARIABLES & BASE SETUP (Organic & Constructed)
+         ========================================= */
+      :root {
+        --accent: #1a4d3f; /* Dark Forest Green from Logo */
+        --accent-light: #7a9c22; /* Leaf Green from Logo */
+        --surface: #ffffff; /* Clean White */
+        --text: #17202a;
+        --cream: #f9f6f0; /* Warm organic background */
+        --muted: #6b7280;
+        --hard-shadow: #1a4d3f; /* Dark green constructed shadow */
+        --line: rgba(26, 77, 63, 0.15);
+        --max: 1180px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      
+      body {
+        margin: 0;
+        font-family: 'Archivo', sans-serif;
+        color: var(--text);
+        background: var(--cream);
+        position: relative;
+      }
+
+      /* GRIT / TEXTURE OVERLAY */
+      .noise-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.05;
+        background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+      }
+
+      a { color: inherit; text-decoration: none; }
+      p { margin: 0; line-height: 1.72; }
+      h1, h2, h3 { 
+        margin: 0; 
+        font-family: 'Oswald', sans-serif; 
+        text-transform: uppercase; 
+        letter-spacing: 0.02em; 
+      }
+      
+      .shell { width: min(var(--max), calc(100vw - 2rem)); margin: 0 auto; }
+
+      /* =========================================
+         HEADER / NAVIGATION
+         ========================================= */
+      .topbar {
+        position: sticky; top: 0; z-index: 20;
+        background: #ffffff;
+        color: var(--accent);
+        border-bottom: 3px solid var(--accent);
+      }
+      
+      .topbar-inner {
+        min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      }
+      
+      .brand {
+        display: flex; align-items: center; gap: .85rem; font-weight: 800;
+      }
+      
+      .brand img {
+        height: 55px; /* Sized specifically for the horizontal logo */
+        width: auto;
+      }
+      
+      .nav-actions, .hero-actions, .chip-row {
+        display: flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+      }
+      
+      .nav-actions a {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        color: var(--accent);
+        padding: .52rem .5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+      }
+      
+      .nav-actions a:hover, .nav-actions a[aria-current="page"] {
+        color: var(--accent-light);
+      }
+      
+      /* Constructed Header Button */
+      .nav-actions .nav-new {
+        padding: .45rem 1rem;
+        border-radius: 4px;
+        background: var(--accent-light);
+        color: #fff;
+        border: 2px solid var(--accent);
+        box-shadow: 2px 2px 0px var(--hard-shadow);
+        transition: all 0.2s;
+      }
+      .nav-actions .nav-new:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 0px var(--hard-shadow);
+      }
+
+      /* =========================================
+         BUTTONS & CHIPS (Constructed Shadows)
+         ========================================= */
+      .btn, .chip {
+        display: inline-flex; align-items: center; justify-content: center;
+        border-radius: 4px; font-weight: 800; font-family: 'Oswald', sans-serif;
+        text-transform: uppercase; letter-spacing: .05em; transition: all 0.2s;
+      }
+      
+      .btn { min-height: 3.15rem; padding: .95rem 1.5rem; border: 2px solid var(--accent); }
+      
+      .btn-primary {
+        background: var(--accent); color: #fff;
+        box-shadow: 4px 4px 0px var(--hard-shadow);
+      }
+      .btn-primary:hover {
+        background: var(--accent-light); transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--hard-shadow);
+      }
+      
+      .btn-secondary {
+        background: var(--surface); color: var(--accent);
+        box-shadow: 4px 4px 0px var(--hard-shadow);
+      }
+      .btn-secondary:hover {
+        background: var(--accent); color: #fff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--hard-shadow);
+      }
+      
+      .chip {
+        padding: .64rem .9rem; background: var(--surface); border: 2px solid var(--accent);
+        color: var(--accent); font-size: .88rem; box-shadow: 2px 2px 0px var(--hard-shadow);
+      }
+      .chip:hover { background: var(--accent-light); color: #fff; }
+
+      /* =========================================
+         HERO SECTION (Video + Logo Overlay)
+         ========================================= */
+      .hero {
+        min-height: 85svh; position: relative; overflow: hidden; display: grid;
+        align-items: center; color: #fff; background: #071017;
+        border-bottom: 4px solid var(--accent);
+      }
+      
+      .hero-video {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; filter: saturate(1.1) contrast(1.05) brightness(0.8);
+        transform: scale(1.03); pointer-events: none;
+      }
+      
+      .hero::after {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(26, 77, 63, 0.9) 0%, rgba(26, 77, 63, 0.4) 50%, rgba(0,0,0,0.6) 100%);
+      }
+      
+      .hero-content {
+        position: relative; z-index: 2; padding: 8rem 0 3.25rem; display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, .42fr); gap: 2rem; align-items: center;
+      }
+      
+      .hero-logo-box {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 25px;
+        border-radius: 4px;
+        border: 3px solid var(--accent);
+        box-shadow: 6px 6px 0px #000;
+        margin-bottom: 25px;
+      }
+
+      .eyebrow {
+        margin: 0 0 .85rem; color: var(--accent-light); font-weight: 900;
+        letter-spacing: .18em; text-transform: uppercase; font-size: .85rem;
+        font-family: 'Oswald', sans-serif; text-shadow: 1px 1px 2px #000;
+      }
+      
+      h1 {
+        font-size: clamp(3.35rem, 6vw, 6rem); line-height: 1; text-transform: uppercase;
+        max-width: 15ch; text-shadow: 3px 3px 0px #000;
+      }
+      
+      .hero-copy {
+        margin-top: 1.15rem; max-width: 780px; color: #fff; font-size: clamp(1rem, 1.7vw, 1.25rem);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 600;
+      }
+      
+      /* Constructed Highlight Pills */
+      .hero-highlights {
+        list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; gap: .7rem; flex-wrap: wrap;
+      }
+      .hero-highlights li {
+        display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .78rem;
+        border-radius: 4px; background: var(--accent); border: 2px solid #fff; font-weight: 700;
+        box-shadow: 2px 2px 0px #000;
+      }
+      .hero-highlights li::before {
+        content: ""; width: .58rem; height: .58rem; border-radius: 50%; background: var(--accent-light);
+      }
+      
+      .hero-note { margin-top: 1rem; color: rgba(255,255,255,.8); max-width: 680px; font-style: italic;}
+      
+      /* Constructed Visit Card */
+      .visit-card {
+        align-self: stretch; padding: 2rem; border-radius: 4px;
+        background: var(--surface); color: var(--text);
+        border: 4px solid var(--accent); box-shadow: 10px 10px 0px var(--hard-shadow);
+        display: flex; flex-direction: column; justify-content: center;
+      }
+      .visit-card h2 { font-size: 2.2rem; margin-bottom: 10px; color: var(--accent); }
+      .visit-card p { color: var(--muted); margin-bottom: 20px;}
+      
+      .mini-stack { display: grid; gap: 1rem; margin-top: 1.5rem; border-top: 2px solid var(--line); padding-top: 1.5rem;}
+      .mini-stack span { display: block; color: var(--accent-light); text-transform: uppercase; font-size: .8rem; font-weight: 900; letter-spacing: .14em; font-family: 'Oswald', sans-serif;}
+      .mini-stack strong { display: block; margin-top: .12rem; font-size: 1.1rem; }
+
+      /* =========================================
+         SECTIONS & GRIDS
+         ========================================= */
+      .section { padding: 6rem 0; scroll-margin-top: 7rem; }
+      
+      .section-dark { 
+        background: var(--accent); color: #fff; 
+        border-top: 4px solid var(--accent-light); border-bottom: 4px solid var(--accent-light);
+      }
+      
+      .section-head {
+        display: grid; grid-template-columns: minmax(0, .85fr) minmax(260px, .7fr);
+        gap: 1.2rem; align-items: end; margin-bottom: 3rem;
+      }
+      
+      .section-head h2 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; text-transform: uppercase; }
+      .section-head p { color: var(--muted); font-size: 1.1rem; }
+      .section-dark .section-head p, .section-dark .eyebrow { color: #e2e8f0; }
+      .section-dark .section-head h2 { color: var(--surface); }
+      
+      .path-grid, .welcome-grid, .quote-grid, .step-grid {
+        display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem;
+      }
+      .welcome-grid, .quote-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      
+      /* Constructed Cards */
+      .path-card, .welcome-card, .quote-card, .step-card {
+        border-radius: 4px; padding: 2rem; border: 3px solid var(--accent);
+        background: var(--surface); box-shadow: 6px 6px 0px var(--hard-shadow);
+        transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+      }
+      .path-card:hover, .welcome-card:hover, .quote-card:hover, .step-card:hover {
+        transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--hard-shadow);
+      }
+      
+      .section-dark .path-card, .section-dark .quote-card {
+        background: var(--cream); color: var(--text); border-color: var(--surface);
+        box-shadow: 6px 6px 0px #000;
+      }
+      .section-dark .path-card:hover, .section-dark .quote-card:hover {
+        box-shadow: 10px 10px 0px #000;
+      }
+      
+      .path-card span, .step-card span {
+        display: inline-flex; margin-bottom: 1rem; color: var(--surface); background: var(--accent-light);
+        padding: 5px 12px; border-radius: 4px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+        border: 2px solid var(--accent); box-shadow: 2px 2px 0px var(--accent);
+      }
+      
+      .path-card h3, .step-card h3, .welcome-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--accent); }
+      
+      /* Video & Watch Panel */
+      .watch-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .48fr); gap: 2rem; align-items: start; }
+      
+      .video-frame {
+        position: relative; aspect-ratio: 16/9; background: #111; overflow: hidden;
+        border-radius: 4px; border: 4px solid var(--surface); box-shadow: 8px 8px 0px #000;
+      }
+      .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      
+      .filter-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0 0 2rem; }
+      .filter-bar button {
+        appearance: none; border: 2px solid var(--surface); background: var(--cream); color: var(--accent);
+        min-height: 3.35rem; padding: 0 1rem; text-align: left; font-family: 'Oswald', sans-serif; font-size: 1.1rem;
+        font-weight: 700; border-radius: 4px; box-shadow: 4px 4px 0px #000; cursor: pointer; transition: all 0.2s;
+        text-transform: uppercase;
+      }
+      .filter-bar button:hover { background: var(--accent-light); color: #fff; transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #000; }
+      
+      .message-list { display: grid; gap: 1.5rem; }
+      .message-card {
+        background: var(--cream); color: var(--text); border: 3px solid var(--surface);
+        border-radius: 4px; box-shadow: 6px 6px 0px #000; overflow: hidden;
+        transition: transform 0.2s; cursor: pointer;
+      }
+      .message-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px #000; }
+      
+      .message-thumb {
+        min-height: 120px; display: flex; align-items: center; justify-content: center;
+        background: var(--surface); color: var(--accent); font-family: 'Oswald', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: .08em; text-transform: uppercase;
+        border-bottom: 3px solid var(--surface);
+      }
+      .message-card p { margin: .9rem 0 .25rem; color: var(--accent-light); font-weight: 900; letter-spacing: .14em; padding: 0 1.2rem; font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+      .message-card h3 { font-size: 1.4rem; padding: 0 1.2rem 1.2rem; color: var(--accent); }
+      
+      /* Gallery */
+      .gallery-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem; }
+      
+      .gallery-card {
+        grid-column: span 3; border-radius: 4px; overflow: hidden; background: var(--surface);
+        border: 3px solid var(--accent); box-shadow: 6px 6px 0px var(--hard-shadow);
+        transition: transform 0.2s; cursor: pointer;
+      }
+      .gallery-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--hard-shadow); }
+      .gallery-card:first-child { grid-column: span 6; }
+      
+      .gallery-visual {
+        min-height: 280px; display: flex; align-items: flex-end; padding: 1.5rem; color: #fff;
+        font-weight: 900; background: linear-gradient(180deg, rgba(0,0,0,0), rgba(26,77,63,0.8));
+        font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; border-bottom: 3px solid var(--accent);
+      }
+      .gallery-card div:last-child { padding: 1.5rem; }
+      .gallery-card h3 { color: var(--accent); }
+      
+      /* Footer CTA */
+      .final {
+        padding: 6rem 0; background: var(--accent); color: #fff; text-align: center;
+        scroll-margin-top: 7rem; border-top: 4px solid var(--accent-light);
+      }
+      .final h2 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 15px; text-shadow: 3px 3px 0px #000; }
+      .final p { max-width: 760px; margin: 1rem auto 2rem; color: #e2e8f0; font-size: 1.2rem; }
+      .final .chip-row { justify-content: center; margin-top: 2rem; }
+      .credit { margin-top: 3rem; color: rgba(255,255,255,.5); font-size: .9rem; }
+
+      /* =========================================
+         MOBILE RESPONSIVENESS
+         ========================================= */
+      @media (max-width: 900px) {
+        .topbar-inner { min-height: 72px; padding: .65rem 0; display: flex; justify-content: space-between; }
+        .brand img { height: 40px; }
+        .nav-actions { display: none; /* In a real build, add a hamburger menu. Hiding for clean mobile preview based on current HTML structure */ }
+        .hero { min-height: auto; }
+        .hero-content, .section-head, .path-grid, .welcome-grid, .quote-grid, .step-grid, .watch-panel { grid-template-columns: 1fr; }
+        .hero-content { padding: 4.5rem 0 3.5rem; }
+        h1 { font-size: clamp(3rem, 16vw, 5rem); }
+        .filter-bar { grid-template-columns: 1fr; gap: .65rem; margin-bottom: 1.5rem; }
+        .gallery-grid { grid-template-columns: 1fr; }
+        .gallery-card, .gallery-card:first-child { grid-column: span 1; }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="noise-overlay"></div>
+
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top">
+          <img src="FirstPresbyterianChurchLogo.png" alt="First Presbyterian Church Corinth NY">
+        </a>
+        <nav class="nav-actions" aria-label="Primary navigation">
+          <a href="#events">Events</a>
+          <a href="#next-steps">Next Steps</a>
+          <a href="#about">About</a>
+          <a href="#ministries">Ministries</a>
+          <a href="#watch">Watch</a>
+          <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=V93AEKJLD2JAJ&amp;source=url" target="_blank" rel="noreferrer">Give</a>
+          <a class="nav-new" href="#im-new">I'm New</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture poster="Drone_Tour_Fallback.jpg">
+          <source src="Drone_Tour_Of_Craftsman_Estate.mp4" type="video/mp4" />
+        </video>
+        
+        <div class="shell hero-content">
+          <article>
+            <div class="hero-logo-box">
+               <img src="FirstPresbyterianChurchLogo.png" alt="First Presbyterian Church Logo" style="height: 60px; max-width: 100%; display: block;">
+            </div>
+            
+            <p class="eyebrow">Corinth, NY | Church</p>
+            <h1>Welcome home.<br>Join us this Sunday.</h1>
+            <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
+            
+            <ul class="hero-highlights">
+              <li>Serving Corinth, NY</li>
+              <li>Worship, sermons, and community</li>
+              <li>Join us Sunday</li>
+            </ul>
+            
+            <div class="hero-actions" style="margin-top: 2rem;">
+              <a class="btn btn-primary" href="tel:5186549432">Call the church</a>
+              <a class="btn btn-secondary" href="http://youtube.com/channel/UCuJUmxKtZuOwpE_B-IJ710Q/live" target="_blank" rel="noreferrer">Watch live</a>
+            </div>
+          </article>
+          
+          <aside class="visit-card">
+            <p class="eyebrow" style="color: var(--accent);">Visit details</p>
+            <h2>Join us this Sunday.</h2>
+            <p>Put worship time, address, livestream, sermons, and giving links into one calm first-screen path for visitors.</p>
+            
+            <div class="hero-actions">
+              <a class="btn btn-primary" style="width: 100%;" href="tel:5186549432">Call the church</a>
+              <a class="btn btn-secondary" style="width: 100%;" href="http://youtube.com/channel/UCuJUmxKtZuOwpE_B-IJ710Q/live" target="_blank" rel="noreferrer">Watch live</a>
+            </div>
+            
+            <div class="mini-stack">
+              <div><span>Location</span><strong>199 Palmer Ave., Corinth, NY 12822</strong></div>
+              <div><span>Contact</span><strong>518-654-9432</strong></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="im-new">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow">Welcome</p><h2>Welcome Home</h2></div>
+            <p>Use this section to make first-time visitors feel oriented before they decide to attend or watch online.</p>
+          </div>
+          
+          <div class="welcome-grid">
+            <article class="welcome-card">
+              <h3>A clear welcome before anything else</h3>
+              <p>Use the first screen to help people in Corinth, NY understand when to visit, where to go, and what to expect.</p>
+            </article>
+            <article class="welcome-card">
+              <h3>Livestream and sermons stay easy to find</h3>
+              <p>Keep online worship and recent messages close to the top so returning visitors can get there fast.</p>
+            </article>
+            <article class="welcome-card">
+              <h3>Mission, giving, and contact paths</h3>
+              <p>Make the church feel active and reachable with clear links for missions, donations, email, phone, and social channels.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="next-steps">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow" style="color: var(--accent-light);">Welcome paths</p><h2>Worship, sermons, and ways to connect</h2></div>
+            <p>Make the most important church paths visible before visitors have to search.</p>
+          </div>
+          
+          <div class="path-grid">
+            <article class="path-card">
+              <span>01</span>
+              <h3>Sunday worship</h3>
+              <p>Put the worship time, location, and livestream path where visitors can find them immediately.</p>
+            </article>
+            <article class="path-card">
+              <span>02</span>
+              <h3>Sermons and livestream</h3>
+              <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
+            </article>
+            <article class="path-card">
+              <span>03</span>
+              <h3>Missions & community</h3>
+              <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
+            </article>
+            <article class="path-card">
+              <span>04</span>
+              <h3>Giving and support</h3>
+              <p>Keep donate and giving links clear, respectful, and visible without overpowering the welcome message.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="watch">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow">Watch back</p><h2>Watch the latest message</h2></div>
+            <p>Watch a recent Corinth First Presbyterian message, then browse previous sermons the same way Pine Knolls organizes its messages.</p>
+          </div>
+          
+          <div class="filter-bar" aria-label="Message filters">
+            <button type="button">Filter by Series</button>
+            <button type="button">Filter by Speaker</button>
+            <button type="button">Filter by Date</button>
+          </div>
+          
+          <div class="watch-panel">
+            <div class="video-frame">
+              <iframe title="Recent message from First Presbyterian Church" src="https://www.youtube.com/embed/NSX8X7kGb8M?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <aside class="message-list">
+              <article class="message-card">
+                <div class="message-thumb">Jonah</div>
+                <p>3/15/26</p>
+                <h3>An Anchor for the Soul</h3>
+              </article>
+              <article class="message-card">
+                <div class="message-thumb">Hebrews</div>
+                <p>3/8/26</p>
+                <h3>On to Maturity</h3>
+              </article>
+              <article class="message-card">
+                <div class="message-thumb">Message</div>
+                <p>3/1/26</p>
+                <h3>Jesus the Great High Priest</h3>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ministries" style="background: #fff; border-top: 2px solid var(--line);">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow">Visitor path</p><h2>Welcome first, then make the next step obvious.</h2></div>
+            <p>A church homepage should help a new visitor know when to come, how to watch, how to connect, and how to give without feeling overwhelmed.</p>
+          </div>
+          
+          <div class="path-grid">
+            <article class="path-card">
+              <span>01</span>
+              <h3>Welcome the visitor</h3>
+              <p>Lead with a calm full-screen video, church name, worship time, and a clear invitation.</p>
+            </article>
+            <article class="path-card">
+              <span>02</span>
+              <h3>Give quick paths</h3>
+              <p>Make worship, livestream, sermons, missions, and giving easy to reach from the first screen.</p>
+            </article>
+            <article class="path-card">
+              <span>03</span>
+              <h3>Show community life</h3>
+              <p>Use missions, recent messages, and church-life images to show that the church is active.</p>
+            </article>
+            <article class="path-card">
+              <span>04</span>
+              <h3>Close with visit details</h3>
+              <p>Repeat the address, phone, email, social links, and Sunday time near the bottom.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="about">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow" style="color: var(--accent-light);">Community</p><h2>A calmer path for visitors and online worship.</h2></div>
+            <p>Use this section to make First Presbyterian Church feel welcoming, active, and easy to connect with around Corinth, NY.</p>
+          </div>
+          
+          <div class="quote-grid">
+            <article class="quote-card">
+              <p>The weekly service time and visit path should be visible without searching.</p>
+              <h3>Sunday worship is clear</h3>
+            </article>
+            <article class="quote-card">
+              <p>Livestream and recent sermons should be one click away for returning visitors.</p>
+              <h3>Online worship stays close</h3>
+            </article>
+            <article class="quote-card">
+              <p>Donate and mission links should be easy to find without taking over the page.</p>
+              <h3>Giving and missions are respectful</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow">Church life</p><h2>A glimpse of church life</h2></div>
+            <p>Use worship, outreach, building, and community images so the church feels active and human.</p>
+          </div>
+          
+          <div class="gallery-grid">
+            <article class="gallery-card">
+              <div class="gallery-visual">Worship</div>
+              <div>
+                <h3>Worship gathering</h3>
+                <p>Use a warm shot of the sanctuary, congregation, or worship moment.</p>
+              </div>
+            </article>
+            <article class="gallery-card">
+              <div class="gallery-visual">Mission</div>
+              <div>
+                <h3>Community and missions</h3>
+                <p>Show outreach, service, or local community life.</p>
+              </div>
+            </article>
+            <article class="gallery-card">
+              <div class="gallery-visual">Visit</div>
+              <div>
+                <h3>Church building</h3>
+                <p>Show the entrance or exterior so first-time visitors recognize the place.</p>
+              </div>
+            </article>
+            <article class="gallery-card">
+              <div class="gallery-visual">Community</div>
+              <div>
+                <h3>People and connection</h3>
+                <p>Use a candid community photo that makes the church feel human.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="events" style="background: #fff; border-top: 2px solid var(--line);">
+        <div class="shell">
+          <div class="section-head">
+            <div><p class="eyebrow">This Sunday</p><h2>What to expect when you visit</h2></div>
+            <p>Reduce the unknowns around visiting, watching online, giving, or getting involved.</p>
+          </div>
+          
+          <div class="step-grid">
+            <article class="step-card">
+              <span>01</span>
+              <h3>Plan your visit</h3>
+              <p>Find the Sunday worship time, address, and what to expect before you arrive.</p>
+            </article>
+            <article class="step-card">
+              <span>02</span>
+              <h3>Watch online</h3>
+              <p>Use livestream and recent sermons when you cannot be there in person.</p>
+            </article>
+            <article class="step-card">
+              <span>03</span>
+              <h3>Connect with missions</h3>
+              <p>See how the church serves locally and where to get involved.</p>
+            </article>
+            <article class="step-card">
+              <span>04</span>
+              <h3>Reach out directly</h3>
+              <p>Call, email, or follow social links for questions and next steps.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="final" id="give">
+        <div class="shell">
+          <p class="eyebrow" style="color: var(--accent-light);">Visit or connect</p>
+          <h2>Join us this Sunday</h2>
+          <p>Close with worship time, address, livestream, giving, and contact details so the next step feels simple.</p>
+          
+          <div class="hero-actions" style="justify-content:center; margin-top: 2rem;">
+            <a class="btn btn-primary" href="tel:5186549432">Call the church</a>
+            <a class="btn btn-secondary" style="background: transparent; color: #fff; border-color: #fff;" href="http://youtube.com/channel/UCuJUmxKtZuOwpE_B-IJ710Q/live" target="_blank" rel="noreferrer">Watch live</a>
+          </div>
+          
+          <div class="chip-row" style="margin-top: 2.5rem;">
+            <a class="chip" href="tel:5186549432">518-654-9432</a>
+            <a class="chip" href="mailto:grace@corinthfirstpres.org">grace@corinthfirstpres.org</a>
+            <a class="chip" href="https://corinthfirstpres.org" target="_blank" rel="noreferrer">corinthfirstpres.org</a>
+            <a class="chip" href="http://youtube.com/channel/UCuJUmxKtZuOwpE_B-IJ710Q/live" target="_blank" rel="noreferrer">Watch live</a>
+            <a class="chip" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=V93AEKJLD2JAJ&amp;source=url" target="_blank" rel="noreferrer">Give</a>
+            <a class="chip" href="https://www.facebook.com/CorinthFirstPresbyterianChurch" target="_blank" rel="noreferrer">Facebook</a>
+          </div>
+          
+          <p class="credit">Sunday worship, livestream, sermons, missions, and giving should all be one click away.<br>Website developed by Nick Blanchard.</p>
+        </div>
+      </section>
+    </main>
+    
+    <script>
+      // iOS Video Autoplay Fallback script
+      document.addEventListener("DOMContentLoaded", function() {
+        var video = document.querySelector(".hero-video");
+        if (video) {
+          video.muted = true;
+          video.play().catch(function(error) {
+            console.log("Autoplay prevented by browser. Poster image will display instead.");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
