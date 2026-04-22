@@ -135,16 +135,22 @@
       .menu-links {
         display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
         margin-top: auto; /* Push down to center vertically */
+        width: 100%;
       }
       
       .menu-links a {
         font-family: 'Lora', serif; font-size: 2.2rem; color: #111; 
-        text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 12px;
+        text-decoration: none; font-weight: 500; 
+        position: relative; /* Keeps the arrow anchored without shifting text */
+        display: inline-flex; align-items: center; justify-content: center;
         transition: color 0.2s;
       }
       
       .menu-links a:hover { color: var(--accent-light); }
-      .menu-links a .soft-arrow { stroke: #b0b0b0; transition: stroke 0.2s, transform 0.2s; }
+      .menu-links a .soft-arrow { 
+        position: absolute; left: calc(100% + 12px); /* Hangs arrow outside the centered text */
+        stroke: #b0b0b0; transition: stroke 0.2s, transform 0.2s; 
+      }
       .menu-links a:hover .soft-arrow { stroke: var(--accent-light); transform: translateX(5px); }
       
       .menu-new-btn {
