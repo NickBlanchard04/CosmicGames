@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>First Presbyterian Church | Corinth, NY</title>
-    <meta name="description" content="First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect." />
+    <meta name="description" content="First Presbyterian Church is a welcoming community dedicated to sharing the hope and healing of Jesus. Join us for Sunday worship, livestream access, and local missions." />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -201,6 +201,19 @@
         font-size: clamp(3rem, 12vw, 6rem); line-height: 1.05; text-transform: uppercase;
         text-shadow: 3px 3px 15px rgba(0,0,0,0.8); margin-bottom: 1.5rem;
       }
+      
+      .hero-copy {
+        max-width: 650px; color: #fff; font-size: clamp(1.1rem, 4vw, 1.3rem);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.8); font-weight: 500; margin: 0 auto 1.5rem;
+      }
+
+      .hero-service-time {
+        font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 700;
+        letter-spacing: 1px; color: var(--accent-light); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        margin-bottom: 2.5rem; text-transform: uppercase;
+      }
+      
+      .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
       /* Home Content Blocks (Dark Sections) */
       .home-blocks-wrapper {
@@ -208,14 +221,23 @@
         position: relative; z-index: 2;
       }
 
-      .get-connected-title { text-align: center; margin-bottom: 60px; }
+      /* Board Header Style for 'Get Connected' */
+      .get-connected-title { 
+        text-align: center; 
+        margin: 0 auto 80px; 
+        max-width: 900px;
+        padding-bottom: 50px;
+        border-bottom: 2px dashed rgba(255,255,255,0.15);
+      }
+
       .get-connected-title h2 {
         display: inline-block; font-size: clamp(2rem, 6vw, 3.5rem);
         border: 4px solid var(--accent-light); border-radius: 50%;
         padding: 15px 40px; transform: rotate(-2deg); margin-bottom: 30px;
       }
       .get-connected-title p {
-        font-size: 1.3rem; max-width: 600px; margin: 0 auto; font-family: 'Archivo', sans-serif;
+        font-size: 1.3rem; max-width: 650px; margin: 0 auto; font-family: 'Archivo', sans-serif;
+        color: #e5e5e5;
       }
 
       .home-block { max-width: 800px; margin: 0 auto 80px; text-align: center; }
@@ -366,10 +388,11 @@
           
           <div class="shell hero-content">
             <h1>Welcome.<br>Join Us On<br>Sundays.</h1>
-            <p class="hero-copy">First Presbyterian Church welcomes people around Corinth, NY with Sunday worship, livestream access, recent sermons, missions, giving, and simple ways to connect.</p>
+            <p class="hero-copy">First Presbyterian Church is a welcoming community dedicated to sharing the hope and healing of Jesus. Join us for Sunday worship, livestream access, uplifting sermons, and local missions.</p>
+            <p class="hero-service-time">Sunday service is at 10:00 AM</p>
             
             <div class="hero-actions">
-              <button class="btn btn-primary" onclick="switchView('im-new')" style="width: 100%; max-width: 300px;">Plan a Visit</button>
+              <button class="btn btn-primary" onclick="switchView('watch')" style="width: 100%; max-width: 300px;">Join Online</button>
             </div>
           </div>
         </section>
@@ -432,7 +455,7 @@
               <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
             </article>
             
-            <article class="info-card fade-up" onclick="switchView('watch')">
+            <article class="info-card fade-up" onclick="switchView('watch')" style="cursor: pointer;">
               <h3>Watch online</h3>
               <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
             </article>
@@ -702,4 +725,3 @@
     </script>
   </body>
 </html>
-
