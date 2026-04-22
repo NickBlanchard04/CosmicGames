@@ -120,6 +120,7 @@
         position: fixed; inset: 0; background: #ffffff; z-index: 2000;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        padding: 2rem 1rem; overflow-y: auto;
       }
       
       .menu-overlay.active {
@@ -133,25 +134,46 @@
       
       .menu-links {
         display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        margin-top: auto; /* Push down to center vertically */
       }
       
       .menu-links a {
         /* PERSONALIZED HUMAN TOUCH FONT */
         font-family: 'Lora', serif; font-size: 2.2rem; color: #111; 
-        text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 10px;
+        text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 12px;
         transition: color 0.2s;
       }
       
       .menu-links a:hover { color: var(--accent-light); }
-      .menu-links a .caret { font-weight: 300; color: #999; font-size: 1.8rem; font-family: 'Archivo', sans-serif;}
+      .menu-links a .soft-arrow { stroke: #b0b0b0; transition: stroke 0.2s, transform 0.2s; }
+      .menu-links a:hover .soft-arrow { stroke: var(--accent-light); transform: translateX(5px); }
       
+      /* Glowing Tactile Button */
       .menu-new-btn {
         margin-top: 1.5rem; border-radius: 50px; background: var(--accent-light); 
         color: #fff; border: none; padding: 15px 50px; font-size: 1.3rem; 
         font-family: 'Archivo', sans-serif; font-weight: 600; cursor: pointer;
-        transition: transform 0.2s;
+        transition: all 0.2s;
+        box-shadow: 0 4px 20px rgba(76, 154, 69, 0.4);
       }
-      .menu-new-btn:hover { transform: scale(1.05); }
+      .menu-new-btn:hover { 
+        transform: scale(1.05) translateY(-2px); 
+        box-shadow: 0 8px 25px rgba(76, 154, 69, 0.6);
+      }
+
+      /* Mini-Footer inside the Menu */
+      .menu-footer {
+        margin-top: auto; /* Pushes to the bottom */
+        padding-top: 4rem;
+        text-align: center;
+        color: var(--muted);
+        font-family: 'Archivo', sans-serif;
+      }
+      .menu-footer p { font-size: 0.95rem; margin-bottom: 5px; }
+      .menu-footer strong { color: var(--accent); font-weight: 800; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 1.1rem;}
+      .menu-social { margin-top: 15px; display: flex; justify-content: center; }
+      .menu-social svg { width: 24px; height: 24px; fill: var(--muted); transition: fill 0.2s; }
+      .menu-social a:hover svg { fill: var(--accent-light); }
 
       /* =========================================
          VIEWS (SPA Logic)
@@ -237,7 +259,7 @@
       }
       .get-connected-title p {
         font-size: 1.3rem; max-width: 650px; margin: 0 auto; font-family: 'Archivo', sans-serif;
-        color: #e5e5e5;
+        color: #e5e5e5; line-height: 1.7;
       }
 
       .home-block { max-width: 800px; margin: 0 auto 80px; text-align: center; }
@@ -254,7 +276,7 @@
         font-size: 3rem; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.2); padding-bottom: 15px;
       }
       .home-block p {
-        font-size: 1.2rem; color: #e5e5e5; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;
+        font-size: 1.2rem; color: #e5e5e5; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7;
       }
 
       /* =========================================
@@ -364,16 +386,37 @@
       <button class="close-menu-btn" onclick="toggleMenu()" aria-label="Close Menu">
         <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
       </button>
+      
       <nav class="menu-links">
-        <a href="javascript:void(0)" onclick="switchView('events')">Events</a>
-        <a href="javascript:void(0)" onclick="switchView('next-steps')">Next Steps <span class="caret">&gt;</span></a>
-        <a href="javascript:void(0)" onclick="switchView('about')">About <span class="caret">&gt;</span></a>
-        <a href="javascript:void(0)" onclick="switchView('ministries')">Ministries <span class="caret">&gt;</span></a>
-        <a href="javascript:void(0)" onclick="switchView('watch')">Watch <span class="caret">&gt;</span></a>
+        <a href="javascript:void(0)" onclick="switchView('events')">
+          Events <svg class="soft-arrow" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="javascript:void(0)" onclick="switchView('next-steps')">
+          Next Steps <svg class="soft-arrow" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="javascript:void(0)" onclick="switchView('about')">
+          About <svg class="soft-arrow" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="javascript:void(0)" onclick="switchView('ministries')">
+          Ministries <svg class="soft-arrow" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+        <a href="javascript:void(0)" onclick="switchView('watch')">
+          Watch <svg class="soft-arrow" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
         <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=V93AEKJLD2JAJ&amp;source=url" target="_blank">Give</a>
         
         <button class="menu-new-btn" onclick="switchView('im-new')">I'm New</button>
       </nav>
+
+      <div class="menu-footer">
+        <p><strong>Sundays at 10:00 AM</strong></p>
+        <p>199 Palmer Ave., Corinth, NY 12822</p>
+        <div class="menu-social">
+          <a href="https://www.facebook.com/share/1HX7yxFtiB/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
 
     <main>
@@ -400,7 +443,7 @@
         <section class="home-blocks-wrapper">
           <div class="get-connected-title fade-up">
             <h2>GET CONNECTED</h2>
-            <p>Life is better together, and there are a few ways that we encourage everyone to connect at First Presbyterian.</p>
+            <p>We weren't meant to walk through life alone. Discover where you belong, grow in your faith, and find your people at First Presbyterian.</p>
           </div>
 
           <article class="home-block fade-up">
@@ -408,7 +451,7 @@
               <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Worship Band">
             </div>
             <h3>Sunday Worship</h3>
-            <p>Each Sunday morning we gather to worship, learn, and connect. These gatherings are an important opportunity for us to grow closer to God and to one another. No matter where you are in life, there's a place for you here on Sunday.</p>
+            <p>Join us every Sunday to experience uplifting music, practical teaching from the Word, and a welcoming community. Whether you're a lifelong believer or just exploring faith, there's a seat saved for you.</p>
             <button class="btn btn-primary" onclick="switchView('im-new')">Join us Sunday</button>
           </article>
 
@@ -417,7 +460,7 @@
               <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Church Events">
             </div>
             <h3>Events</h3>
-            <p>There is always something going on at our church. As an active, growing, intergenerational church there are different events happening for people of all ages and stages of life. Check out our list of upcoming events and we'll see you soon.</p>
+            <p>From family gatherings and youth retreats to community service days, there’s always an opportunity to build meaningful relationships. Check out our calendar to see what's coming up next.</p>
             <button class="btn btn-primary" onclick="switchView('events')">Upcoming Events</button>
           </article>
 
@@ -426,7 +469,7 @@
               <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Small Groups">
             </div>
             <h3>Small Groups</h3>
-            <p>Joining a small group provides a place for you to get to know other people and walk through the journey of life together. Groups are a place to celebrate the good times, support each other through the hard times, and to seek God together.</p>
+            <p>Big churches feel smaller when you're part of a group. Connect with others in a relaxed setting to share life's ups and downs, study scripture, and pray for one another.</p>
             <button class="btn btn-primary" onclick="switchView('ministries')">Find a Group</button>
           </article>
 
@@ -435,7 +478,7 @@
               <img src="https://images.unsplash.com/photo-1593113580332-ceb4b8a21356?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Serving Community">
             </div>
             <h3>Serving</h3>
-            <p>Serving others is one of the best ways that we are able to demonstrate the love of Christ to others. From welcoming people into the building to participating in events serving our region, we have regular opportunities for serving here.</p>
+            <p>God has given you unique gifts to make a difference. Step into your purpose by serving on one of our volunteer teams, either inside our walls or out in the Corinth community.</p>
             <button class="btn btn-primary" onclick="switchView('ministries')">Serving Opportunities</button>
           </article>
         </section>
@@ -611,9 +654,7 @@
         </div>
 
         <div class="social-icons">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-          <a href="#" aria-label="Vimeo"><svg viewBox="0 0 24 24"><path d="M22.396 7.164c-.093 2.026-1.507 4.8-4.245 8.32C15.323 19.16 12.93 21 10.97 21c-1.214 0-2.24-1.12-3.08-3.36-.56-2.052-1.119-4.105-1.68-6.159C5.588 6.071 4.681 5.038 3.5 5.038c-.187 0-.435.033-.746.099l-.809-1.082c.902-.821 1.959-1.671 3.172-2.553C6.671.4 7.822 0 8.568 0c1.742 0 2.768 1.343 3.08 4.03.249 2.115.435 3.524.56 4.226.435 2.457 1.057 3.685 1.866 3.685.622 0 1.43-1.056 2.426-3.167.995-2.11 1.461-3.665 1.399-4.664-.093-1.4-1.088-2.1-2.985-2.1-.653 0-1.275.124-1.866.373C14.398 1.058 16.544 0 19.343 0c2.208 0 3.25 2.388 3.053 7.164z"/></svg></a>
+          <a href="https://www.facebook.com/share/1HX7yxFtiB/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
         </div>
 
         <div class="footer-links">
@@ -705,8 +746,6 @@
             entries.forEach(function(entry) {
               if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-                // Optional: Stop observing once it's faded in
-                // observer.unobserve(entry.target); 
               }
             });
           }, { threshold: 0.1 });
