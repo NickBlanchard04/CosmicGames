@@ -138,7 +138,6 @@
       }
       
       .menu-links a {
-        /* PERSONALIZED HUMAN TOUCH FONT */
         font-family: 'Lora', serif; font-size: 2.2rem; color: #111; 
         text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 12px;
         transition: color 0.2s;
@@ -148,7 +147,6 @@
       .menu-links a .soft-arrow { stroke: #b0b0b0; transition: stroke 0.2s, transform 0.2s; }
       .menu-links a:hover .soft-arrow { stroke: var(--accent-light); transform: translateX(5px); }
       
-      /* Glowing Tactile Button */
       .menu-new-btn {
         margin-top: 1.5rem; border-radius: 50px; background: var(--accent-light); 
         color: #fff; border: none; padding: 15px 50px; font-size: 1.3rem; 
@@ -163,11 +161,8 @@
 
       /* Mini-Footer inside the Menu */
       .menu-footer {
-        margin-top: auto; /* Pushes to the bottom */
-        padding-top: 4rem;
-        text-align: center;
-        color: var(--muted);
-        font-family: 'Archivo', sans-serif;
+        margin-top: auto; padding-top: 4rem; text-align: center;
+        color: var(--muted); font-family: 'Archivo', sans-serif;
       }
       .menu-footer p { font-size: 0.95rem; margin-bottom: 5px; }
       .menu-footer strong { color: var(--accent); font-weight: 800; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 1.1rem;}
@@ -243,15 +238,10 @@
         position: relative; z-index: 2;
       }
 
-      /* Board Header Style for 'Get Connected' */
       .get-connected-title { 
-        text-align: center; 
-        margin: 0 auto 80px; 
-        max-width: 900px;
-        padding-bottom: 50px;
-        border-bottom: 2px dashed rgba(255,255,255,0.15);
+        text-align: center; margin: 0 auto 80px; max-width: 900px;
+        padding-bottom: 50px; border-bottom: 2px dashed rgba(255,255,255,0.15);
       }
-
       .get-connected-title h2 {
         display: inline-block; font-size: clamp(2rem, 6vw, 3.5rem);
         border: 4px solid var(--accent-light); border-radius: 50%;
@@ -263,8 +253,6 @@
       }
 
       .home-block { max-width: 800px; margin: 0 auto 80px; text-align: center; }
-      
-      /* Image Hover Zoom Animation */
       .home-block-img-wrap { overflow: hidden; border-radius: 4px; margin-bottom: 20px; }
       .home-block img {
         width: 100%; height: 400px; object-fit: cover; display: block;
@@ -293,12 +281,21 @@
       .info-card {
         border-radius: 4px; padding: 2rem; border: 3px solid var(--accent);
         background: var(--surface); box-shadow: 6px 6px 0px var(--hard-shadow);
-        transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
-      .info-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--hard-shadow); }
+      
+      /* Only apply hover effects if it's a clickable card */
+      a.info-card, .clickable-card { cursor: pointer; display: block; color: inherit; text-decoration: none;}
+      a.info-card:hover, .clickable-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--hard-shadow); }
+      
       .info-card h3 { font-size: 1.8rem; color: var(--accent); margin-bottom: 15px; border-bottom: 2px solid var(--line); padding-bottom: 10px;}
       .info-card p { font-size: 1.1rem; color: var(--text); }
       .info-card strong { display: block; font-size: 1.25rem; color: var(--accent-light); margin-top: 15px; font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px;}
+      
+      /* Beliefs List */
+      .beliefs-list { margin-top: 1rem; padding-left: 0; list-style: none; text-align: left; }
+      .beliefs-list li { margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.6; }
+      .beliefs-list strong { display: inline; font-size: 1.1rem; color: var(--accent); margin-top: 0; }
 
       /* Watch Panel */
       .video-frame {
@@ -347,7 +344,6 @@
       .social-icons svg { width: 28px; height: 28px; fill: #fff; transition: fill 0.2s;}
       .social-icons a:hover svg { fill: var(--accent-light); }
 
-      .footer-links a { color: #fff; text-decoration: underline; margin: 0 10px; font-size: 0.95rem;}
       .developer-credit { margin-top: 60px !important; font-size: 0.85rem !important; color: #666 !important; }
       .developer-credit a { color: var(--accent-light); text-decoration: none; font-weight: bold;}
 
@@ -361,6 +357,10 @@
         .home-block img { height: 250px; }
         .home-block h3 { font-size: 2.2rem; }
         .get-connected-title h2 { font-size: 2.2rem; padding: 10px 20px; }
+        
+        /* Forces cards to center their text on smaller screens */
+        .info-card { text-align: center; }
+        .beliefs-list { text-align: left; } /* Keep beliefs left-aligned for readability */
       }
     </style>
   </head>
@@ -431,7 +431,7 @@
           
           <div class="shell hero-content">
             <h1>Welcome.<br>Join Us On<br>Sundays.</h1>
-            <p class="hero-copy">First Presbyterian Church is a welcoming community dedicated to sharing the hope and healing of Jesus. Join us for Sunday worship, livestream access, uplifting sermons, and local missions.</p>
+            <p class="hero-copy">First Presbyterian Church is a welcoming community dedicated to sharing the hope and healing of Jesus. Join us for Sunday worship, livestream access, and local missions.</p>
             <p class="hero-service-time">Sunday service is at 10:00 AM</p>
             
             <div class="hero-actions">
@@ -498,7 +498,7 @@
               <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
             </article>
             
-            <article class="info-card fade-up" onclick="switchView('watch')" style="cursor: pointer;">
+            <article class="info-card clickable-card fade-up" onclick="switchView('watch')">
               <h3>Watch online</h3>
               <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
             </article>
@@ -514,15 +514,15 @@
           </div>
 
           <div class="grid-3">
-            <article class="info-card fade-up" onclick="switchView('im-new')">
+            <article class="info-card clickable-card fade-up" onclick="switchView('im-new')">
               <h3>Sunday worship</h3>
               <p>Find the worship time, location, and what to expect when you walk through our doors.</p>
             </article>
-            <article class="info-card fade-up" onclick="switchView('watch')">
+            <article class="info-card clickable-card fade-up" onclick="switchView('watch')">
               <h3>Sermons and livestream</h3>
               <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
             </article>
-            <article class="info-card fade-up" onclick="switchView('ministries')">
+            <article class="info-card clickable-card fade-up" onclick="switchView('ministries')">
               <h3>Missions & community</h3>
               <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
             </article>
@@ -547,6 +547,23 @@
               <p>First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus.</p>
             </div>
           </div>
+
+          <div class="info-card fade-up" style="margin-top: 2rem;">
+            <h3>Our Beliefs</h3>
+            <p>Our mission at First Presbyterian Church of Corinth, NY, is to grow in relationship with God and to share the good news of Jesus Christ in word and deed.</p>
+            <p style="margin-top: 1.5rem;">As a member of the Covenant Order of Evangelical Presbyterians (ECO), First Presbyterian Church of Corinth affirms and is guided by the Essential Tenets of ECO, including:</p>
+            
+            <ul class="beliefs-list">
+              <li><strong>Our purpose:</strong> To glorify God and enjoy him forever.</li>
+              <li><strong>The Bible:</strong> We know this purpose through the Scriptures. We believe God reveals himself to us both in the infallible (without error) Scriptures of the Old and New Testament and also in the incarnation of his Son, Jesus.</li>
+              <li><strong>The Trinity:</strong> We worship the only true God - Father, Son, and Holy Spirit - who is both one essence and three persons. God created the world for his people to enjoy with him forever.</li>
+              <li><strong>Sin:</strong> We believe the world exists in its chaotic, broken state not because of God’s fault, but because of humanity’s free, sinful rebellion against his will – and due to that rebellion, we remain trapped in our sins and under God’s judgment.</li>
+              <li><strong>Jesus Christ:</strong> We believe Jesus, the Son of God, came to earth to live the perfect life no human could, and to die the death all humans deserved. Jesus, being fully God and fully human, took the penalty of our sin in his death on the cross, then triumphed over death’s power when God raised him from the dead through the Holy Spirit.</li>
+              <li><strong>Salvation:</strong> Only by the grace of Jesus can we be forgiven of our sin and brought into God's family. Those who put their faith in Jesus Christ’s sacrificial death and forgiven of the guilt of sin, and receive the gift of eternal life.</li>
+              <li><strong>Sanctification:</strong> By believing in Jesus, the believer is forgiven of their sins. When one believes in Jesus, they receive his Holy Spirit, who gives them power to begin to live a different life; further and further from sin, deeper and deeper into God’s holiness.</li>
+              <li><strong>The Holy Spirit:</strong> The Holy Spirit is sent to live within each person who believes in Jesus Christ; sanctifying them from sin and unifying them to be a part of God’s family, the Church.</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -559,16 +576,20 @@
 
           <div class="grid-3">
             <article class="info-card fade-up">
-              <h3>Small Groups</h3>
-              <p>Joining a small group provides a place for you to get to know other people and walk through the journey of life together.</p>
+              <h3>Corinth Community Cupboard</h3>
+              <p>We work together with the Corinth Community Churches to operate a food pantry called the Corinth Community Cupboard. It is located at 6 4th Street. If you need assistance or have questions about donating, please call <strong>518-615-9564</strong> during open hours.</p>
+              <strong style="margin-top: 1.5rem;">Hours</strong>
+              <p>Tuesday: 2 - 5 PM<br>Wednesday: 6 - 8 PM<br>Thursday: 9 AM - 12 PM<br>Friday: 2 - 5 PM</p>
             </article>
+
             <article class="info-card fade-up">
-              <h3>Local Serving</h3>
-              <p>From welcoming people into the building to participating in events serving our region, we have regular opportunities to serve.</p>
+              <h3>Share the Warmth</h3>
+              <p>We also join the Corinth Community Churches in operating a fund to help those struggling with the rising cost of heating their homes. If you live in the Corinth School District and would like to request assistance, please call the church at <strong>518-654-9432</strong>.</p>
             </article>
+
             <article class="info-card fade-up">
-              <h3>Global Missions</h3>
-              <p>Our church supports initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
+              <h3>Local, National & Foreign Missions</h3>
+              <p>We assist various missions prayerfully and financially, supporting initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
             </article>
           </div>
         </div>
@@ -655,10 +676,6 @@
 
         <div class="social-icons">
           <a href="https://www.facebook.com/share/1HX7yxFtiB/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
-        </div>
-
-        <div class="footer-links">
-          <a href="#">Career Opportunities</a>
         </div>
         
         <p class="developer-credit">Website developed by <a href="mailto:nickblanchardbusiness@gmail.com">Nick Blanchard</a></p>
