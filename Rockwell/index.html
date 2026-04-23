@@ -39,7 +39,7 @@
     h1, h2, h3, h4 {
       font-family: 'Alfa Slab One', serif;
       color: var(--primary);
-      font-weight: normal; /* Alfa Slab is naturally heavy */
+      font-weight: normal; 
       letter-spacing: 1px;
     }
 
@@ -80,7 +80,6 @@
       display: flex;
       flex-direction: column;
       line-height: 1.1;
-      /* Mimics the white outline and shadow from the logo sign */
       text-shadow: 
         -1px -1px 0 #fff,  
          1px -1px 0 #fff,
@@ -148,7 +147,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(44, 62, 45, 0.7); /* Hunter green overlay */
+      background: rgba(44, 62, 45, 0.7); 
     }
 
     .hero-content {
@@ -216,7 +215,7 @@
     }
 
     /* =========================================
-       MENU HIGHLIGHTS (NEW SECTION)
+       MENU VISUAL HIGHLIGHTS
        ========================================= */
     .section { padding: 80px 0; }
     
@@ -241,6 +240,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      margin-bottom: 60px;
     }
 
     .menu-card {
@@ -266,6 +266,127 @@
       font-size: 1.3rem;
       margin: 0;
       color: var(--primary);
+    }
+
+    /* =========================================
+       DYNAMIC FULL MENU
+       ========================================= */
+    .full-menu-wrapper {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid #e1e1e1;
+    }
+
+    /* Tabs */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--bg-alt);
+      border: 2px solid transparent;
+      padding: 10px 25px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: #e9e5db;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(44, 62, 45, 0.3);
+    }
+
+    /* Categories & Items */
+    .menu-category {
+      display: none; /* Hidden by default, JS controls visibility */
+      animation: fadeIn 0.4s ease;
+    }
+
+    .menu-category.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-title {
+      font-size: 2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      margin-top: 40px;
+    }
+
+    .category-title:first-child { margin-top: 0; }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 15px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+
+    .item-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .item-price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .fav-badge {
+      background-color: var(--accent);
+      color: white;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      vertical-align: middle;
     }
 
     /* =========================================
@@ -393,6 +514,8 @@
       .hero h1 { font-size: 2.2rem; }
       .section-header h2 { font-size: 2.2rem; }
       .footer-grid { text-align: center; }
+      .full-menu-wrapper { padding: 20px; }
+      .items-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -422,7 +545,7 @@
       <div class="hero-content container">
         <h1>DOWN HOME COUNTRY FARE</h1>
         <p>A classic diner and general store located in Hadley, NY serving fresh, steaming hot breakfast, lunch, and dinner.</p>
-        <a href="#reviews" class="btn" style="background-color: var(--bg-cream); color: var(--primary);">See What Locals Say</a>
+        <a href="#menu" class="btn" style="background-color: var(--bg-cream); color: var(--primary);">View Our Menu</a>
       </div>
     </section>
 
@@ -442,8 +565,9 @@
 
     <section class="section" id="menu">
       <div class="container">
+        
         <div class="section-header">
-          <h2>Menu Highlights</h2>
+          <h2>Our Menu</h2>
           <p>Everything is made to order and comes out steaming hot. Stop by for breakfast, lunch, or dinner.</p>
         </div>
 
@@ -461,7 +585,226 @@
             <h4>Classic Subs & Sandwiches</h4>
           </div>
         </div>
-      </div>
+
+        <div class="full-menu-wrapper">
+          
+          <div class="menu-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all')">All Menu Items</button>
+            <button class="tab-btn" onclick="filterMenu('breakfast')">Breakfast</button>
+            <button class="tab-btn" onclick="filterMenu('lunch')">Lunch & Subs</button>
+            <button class="tab-btn" onclick="filterMenu('dinner')">Dinner Menu</button>
+          </div>
+
+          <div class="menu-category breakfast active">
+            <h3 class="category-title">Egg Sandwiches</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header">
+                  <span class="item-name">One Egg & Cheese</span>
+                  <span class="item-price">$3.75</span>
+                </div>
+                <p class="item-desc">Choices include American, cheddar, swiss, provolone, pepper jack, feta, mozzarella. On a bagel add $1.00.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header">
+                  <span class="item-name">One Egg, Cheese & Meat</span>
+                  <span class="item-price">$5.50</span>
+                </div>
+                <p class="item-desc">Additional meats $1.50 each. On a bagel add $1.00.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header">
+                  <span class="item-name">Two Egg & Cheese</span>
+                  <span class="item-price">$4.50</span>
+                </div>
+                <p class="item-desc">Choices include American, cheddar, swiss, provolone, pepper jack. On a bagel add $1.00.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header">
+                  <span class="item-name">Two Egg, Cheese & Meat <span class="fav-badge">⭐ Local Favorite</span></span>
+                  <span class="item-price">$6.50</span>
+                </div>
+                <p class="item-desc">"The best bacon egg and cheese on a roll I have ever had!" Additional meats $1.50 each. On a bagel add $1.00.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">Omelets</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Gunslinger</span><span class="item-price">$10.95</span></div>
+                <p class="item-desc">Ham, pepper onion and cheddar cheese (includes toast & home fries).</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">The Hiker</span><span class="item-price">$11.95</span></div>
+                <p class="item-desc">Chicken, avocado, tomato salsa and cheddar cheese (includes toast & home fries).</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Greek</span><span class="item-price">$10.50</span></div>
+                <p class="item-desc">Feta cheese, tomato and black olives (includes toast & home fries).</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Meat Lovers</span><span class="item-price">$12.50</span></div>
+                <p class="item-desc">Includes sausage, bacon and ham (includes toast & home fries).</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Veggie</span><span class="item-price">$10.95</span></div>
+                <p class="item-desc">Onions, peppers, mushrooms, tomato and cheese (includes toast & home fries).</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Cheese Omelet</span><span class="item-price">$8.50</span></div>
+                <p class="item-desc">American, cheddar, swiss, provolone, or pepper-jack. Add meat +$2.00.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">Breakfast Plates & Sweets</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Single Egg & Toast</span><span class="item-price">$2.75</span></div>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Two Eggs & Toast</span><span class="item-price">$3.75</span></div>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Three Eggs & Toast</span><span class="item-price">$4.75</span></div>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Sausage Gravy & Biscuits</span><span class="item-price">$6.95</span></div>
+                <p class="item-desc">Served over 2 buttermilk biscuits.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Robin's Cheesy Eggs</span><span class="item-price">$3.75</span></div>
+                <p class="item-desc">Two scrambled eggs with cheddar cheese melted.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Linda's Pile Up</span><span class="item-price">$8.00</span></div>
+                <p class="item-desc">Home fries, peppers and sausage with American cheese.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">French Toast</span><span class="item-price">$3.00+</span></div>
+                <p class="item-desc">1 pc $3.00 | 2 pcs $6.00 | 3 pcs $8.00. Add fruit $1.50.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Waffles or Pancakes</span><span class="item-price">$3.00+</span></div>
+                <p class="item-desc">Huge pancakes! 1 pc $3.00 | 2 pcs $6.00 | 3 pcs $8.00. Add fruit $1.50.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">Breakfast Sides</h3>
+            <div class="items-grid">
+              <div class="menu-item"><div class="item-header"><span class="item-name">Home Fries</span><span class="item-price">$3.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Country Corned Beef Hash</span><span class="item-price">$4.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Sausage Patty / Links</span><span class="item-price">$3.00</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Bacon Slices</span><span class="item-price">$3.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Ham Slice</span><span class="item-price">$3.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Peanut Butter</span><span class="item-price">$0.75</span></div></div>
+            </div>
+          </div>
+
+          <div class="menu-category lunch active">
+            <h3 class="category-title">Sandwiches & Subs</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Classic Sandwich</span><span class="item-price">$8.95</span></div>
+                <p class="item-desc">Hot or cold. Lettuce, tomato, onion, side of Hadley chips. Choices: Turkey, Ham, Pastrami, Bologna, Roast Beef, Salami.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Full Sub</span><span class="item-price">$11.95</span></div>
+                <p class="item-desc">Hot or cold. Lettuce, tomato, onion, side of Hadley chips. Additional meats +$2.00.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">1/2 Sub</span><span class="item-price">$7.95</span></div>
+                <p class="item-desc">Hot or cold. Lettuce, tomato, onion, side of Hadley chips. Additional meats +$2.00.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Tuna Wrap</span><span class="item-price">$10.95</span></div>
+                <p class="item-desc">Served with homemade potato chips.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">2 Dogs w/ Works</span><span class="item-price">$9.95</span></div>
+                <p class="item-desc">Served with french fries.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">Specialty Tacos</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Fish Taco <span class="fav-badge">⭐ Local Favorite</span></span><span class="item-price">$13.95</span></div>
+                <p class="item-desc">Blackened haddock over lettuce with spicy aioli. Served with black beans and rice.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Ahi Tuna Taco</span><span class="item-price">$14.95</span></div>
+                <p class="item-desc">Blackened or sesame encrusted served rare over black bean corn salsa topped with sesame or spicy aioli.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Asian Chicken Taco</span><span class="item-price">$12.95</span></div>
+                <p class="item-desc">Pulled chicken tossed in carrot/ginger & general tso's sauce over shredded cabbage. Served with beans & rice.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Smoked Pulled Pork Taco</span><span class="item-price">$12.95</span></div>
+                <p class="item-desc">Served over apple slaw topped with barbecue. Includes black beans and rice.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">Appetizers & Sides</h3>
+            <div class="items-grid">
+              <div class="menu-item"><div class="item-header"><span class="item-name">Mozzarella Sticks (3) w/ Marinara</span><span class="item-price">$6.95</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">French Fries</span><span class="item-price">$4.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Onion Rings (Lg)</span><span class="item-price">$6.95</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Loaded Fries</span><span class="item-price">$7.95</span></div><p class="item-desc">Shredded cheddar, bacon, and onion.</p></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Sweet Potato Fries (w/ Melba)</span><span class="item-price">$5.95</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Cole Slaw / Hadley Chips</span><span class="item-price">$3.50</span></div></div>
+              <div class="menu-item"><div class="item-header"><span class="item-name">Soup Chicken Noodle</span><span class="item-price">$4.95</span></div></div>
+            </div>
+          </div>
+
+          <div class="menu-category dinner active">
+            <h3 class="category-title">Dinner Menu</h3>
+            <p style="margin-bottom: 20px; font-style: italic; color: var(--text-muted);">All dinners served with a house salad.</p>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Hot Roast Beef <span class="fav-badge">⭐ Local Favorite</span></span><span class="item-price">$15.95</span></div>
+                <p class="item-desc">Served with gravy over toasted bread and a baked potato. "Insane Roast beef with brown gravy!"</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Chicken Parmigiana Dinner</span><span class="item-price">$16.95</span></div>
+                <p class="item-desc">Served with pasta, red sauce, mozzarella cheese and garlic bread.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Crab Stuffed Haddock</span><span class="item-price">$18.95</span></div>
+                <p class="item-desc">With white wine garlic butter sauce served with choice of rice or potato.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Spaghetti And Sauce</span><span class="item-price">$12.95</span></div>
+                <p class="item-desc">Served with garlic bread.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Ham Steak w/ Mac & Cheese</span><span class="item-price">$14.95</span></div>
+                <p class="item-desc">Served with homemade macaroni & cheese.</p>
+              </div>
+            </div>
+
+            <h3 class="category-title">From Land And Sea</h3>
+            <div class="items-grid">
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Fish And Chips</span><span class="item-price">$14.95</span></div>
+                <p class="item-desc">Beer battered haddock, fries, slaw and tartar sauce.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Crab Cake Sliders (4 ct)</span><span class="item-price">$13.95</span></div>
+                <p class="item-desc">On hawaiian bun, shredded lettuce and spicy aioli.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Crab Cake Burger</span><span class="item-price">$14.95</span></div>
+                <p class="item-desc">On a brioche roll, shredded lettuce and spicy aioli.</p>
+              </div>
+              <div class="menu-item">
+                <div class="item-header"><span class="item-name">Chicken Parmigiana Sandwich</span><span class="item-price">$13.95</span></div>
+                <p class="item-desc">Served on brioche bun with sauce and provolone cheese and french fries.</p>
+              </div>
+            </div>
+          </div>
+
+        </div> </div>
     </section>
 
     <section class="section bg-alt" id="reviews">
@@ -601,6 +944,26 @@
   </footer>
 
   <script>
+    // Menu Tab Filtering Logic
+    function filterMenu(category) {
+      // Update active button state
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Hide all categories
+      document.querySelectorAll('.menu-category').forEach(cat => {
+        cat.classList.remove('active');
+      });
+
+      // Show selected category
+      if (category === 'all') {
+        document.querySelectorAll('.menu-category').forEach(cat => cat.classList.add('active'));
+      } else {
+        document.querySelectorAll('.menu-category.' + category).forEach(cat => cat.classList.add('active'));
+      }
+    }
+
+    // Number Counter Logic
     document.addEventListener("DOMContentLoaded", function() {
       function animateValue(obj, start, end, duration, isFloat) {
         let startTimestamp = null;
