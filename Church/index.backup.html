@@ -303,6 +303,393 @@
       .beliefs-list li { margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.6; }
       .beliefs-list strong { display: inline; font-size: 1.1rem; color: var(--accent); margin-top: 0; }
 
+      /* Ministries Panel */
+      .ministries-page {
+        background:
+          radial-gradient(circle at top right, rgba(26, 77, 63, 0.07), transparent 36rem),
+          var(--cream);
+      }
+
+      .ministries-hero {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 128px 20px 42px;
+      }
+
+      .ministries-hero h2 {
+        color: var(--accent);
+        font-size: clamp(2.8rem, 7vw, 5rem);
+        letter-spacing: 0.08em;
+        margin-bottom: 14px;
+      }
+
+      .ministries-hero p {
+        max-width: 680px;
+        margin: 0 auto;
+        color: #3b413c;
+        font-family: 'Lora', serif;
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+      }
+
+      .ministry-hero-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        max-width: 520px;
+        margin: 22px auto 0;
+        color: var(--accent);
+      }
+
+      .ministry-hero-divider::before,
+      .ministry-hero-divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: rgba(26, 77, 63, 0.5);
+      }
+
+      .ministry-hero-divider svg {
+        width: 23px;
+        height: 23px;
+        fill: currentColor;
+      }
+
+      .ministries-explorer {
+        padding-bottom: 74px;
+      }
+
+      .ministry-feature-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+        gap: clamp(1.25rem, 4vw, 3rem);
+        align-items: stretch;
+        background: #fffdf7;
+        border: 1px solid rgba(26, 77, 63, 0.42);
+        border-radius: 8px;
+        box-shadow: 0 18px 45px rgba(26, 77, 63, 0.13);
+        padding: clamp(1.25rem, 3vw, 2.25rem);
+        margin-bottom: 34px;
+        scroll-margin-top: 104px;
+      }
+
+      .ministry-feature-card.is-changing {
+        animation: ministrySwap 0.28s ease;
+      }
+
+      @keyframes ministrySwap {
+        from { opacity: 0.72; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .ministry-feature-label,
+      .ministry-card-label {
+        display: block;
+        color: var(--accent);
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .ministry-feature-title {
+        color: var(--accent);
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        line-height: 1.04;
+        margin: 12px 0 16px;
+      }
+
+      .ministry-feature-copy {
+        color: #303631;
+        font-family: 'Lora', serif;
+        font-size: 1.08rem;
+        max-width: 720px;
+      }
+
+      .ministry-feature-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .ministry-meta-item {
+        border-left: 2px solid rgba(26, 77, 63, 0.45);
+        padding-left: 12px;
+      }
+
+      .ministry-meta-item span {
+        display: block;
+        color: var(--accent);
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.84rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .ministry-meta-item strong {
+        display: block;
+        color: #202722;
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+
+      .ministry-feature-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 24px;
+        border-left: 1px solid rgba(26, 77, 63, 0.2);
+        padding-left: clamp(1rem, 3vw, 2rem);
+      }
+
+      .ministry-side-block h4 {
+        color: var(--accent);
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin: 0 0 12px;
+      }
+
+      .ministry-need-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .ministry-need-list li {
+        position: relative;
+        padding-left: 22px;
+        color: #303631;
+        line-height: 1.45;
+      }
+
+      .ministry-need-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent-light);
+      }
+
+      .ministry-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .ministry-btn {
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        padding: 0.86rem 1.35rem;
+        font-size: 0.95rem;
+      }
+
+      .ministry-btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .ministry-btn-primary:hover,
+      .ministry-btn-primary:focus-visible {
+        background: var(--accent-light);
+        border-color: var(--accent-light);
+        transform: translateY(-2px);
+      }
+
+      .ministry-btn-secondary {
+        background: #fffdf7;
+        color: var(--accent);
+      }
+
+      .ministry-btn-secondary:hover,
+      .ministry-btn-secondary:focus-visible {
+        background: rgba(26, 77, 63, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .ministry-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        margin: 18px 0 24px;
+        flex-wrap: wrap;
+      }
+
+      .ministry-toolbar h3 {
+        color: var(--accent);
+        font-size: clamp(1.7rem, 4vw, 2.6rem);
+        letter-spacing: 0.08em;
+      }
+
+      .ministry-filter-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .ministry-filter {
+        border: 1px solid rgba(26, 77, 63, 0.4);
+        border-radius: 999px;
+        background: #fffdf7;
+        color: var(--accent);
+        cursor: pointer;
+        font-family: 'Archivo', sans-serif;
+        font-size: 0.86rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        padding: 0.72rem 1rem;
+        text-transform: uppercase;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+      }
+
+      .ministry-filter:hover,
+      .ministry-filter:focus-visible,
+      .ministry-filter.is-active {
+        background: var(--accent);
+        color: #fffdf7;
+        transform: translateY(-2px);
+      }
+
+      .ministry-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      .ministry-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        border: 1px solid rgba(26, 77, 63, 0.38);
+        border-radius: 8px;
+        background: #fffdf7;
+        box-shadow: 0 12px 26px rgba(26, 77, 63, 0.11);
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        padding: 1.35rem;
+        text-align: left;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .ministry-card:hover,
+      .ministry-card:focus-visible,
+      .ministry-card.is-active {
+        transform: translateY(-6px);
+        border-color: rgba(76, 154, 69, 0.85);
+        box-shadow: 0 18px 38px rgba(26, 77, 63, 0.2);
+        outline: none;
+      }
+
+      .ministry-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .ministry-icon {
+        display: grid;
+        place-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 999px;
+        background: rgba(26, 77, 63, 0.1);
+        color: var(--accent);
+        flex: 0 0 auto;
+      }
+
+      .ministry-icon svg {
+        width: 25px;
+        height: 25px;
+        stroke: currentColor;
+      }
+
+      .ministry-card h4 {
+        color: var(--accent);
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.55rem;
+        letter-spacing: 0.04em;
+        line-height: 1.1;
+        margin: 0 0 12px;
+        text-transform: uppercase;
+      }
+
+      .ministry-card p {
+        color: #303631;
+        font-size: 1rem;
+      }
+
+      .ministry-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-top: 1px solid rgba(26, 77, 63, 0.14);
+        margin-top: auto;
+        padding-top: 18px;
+      }
+
+      .ministry-card-footer span {
+        color: #56615b;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .ministry-card-footer strong {
+        color: var(--accent-light);
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .ministry-serve-band {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1.5rem;
+        align-items: center;
+        margin-top: 34px;
+        padding: clamp(1.5rem, 4vw, 2.4rem);
+        border-radius: 8px;
+        background: var(--accent);
+        color: #fffdf7;
+        box-shadow: 0 16px 34px rgba(26, 77, 63, 0.18);
+      }
+
+      .ministry-serve-band h3 {
+        font-size: clamp(1.7rem, 4vw, 2.7rem);
+        margin-bottom: 8px;
+      }
+
+      .ministry-serve-band p {
+        color: rgba(255, 253, 247, 0.86);
+        font-family: 'Lora', serif;
+      }
+
+      .ministry-serve-band .btn {
+        background: #fffdf7;
+        border: 1px solid #fffdf7;
+        color: var(--accent);
+        white-space: nowrap;
+      }
+
+      .ministry-serve-band .btn:hover {
+        background: #12382d;
+        color: #fffdf7;
+        border-color: rgba(255, 253, 247, 0.65);
+      }
+
       /* Watch Panel */
       .watch-page {
         background:
@@ -725,6 +1112,10 @@
          ========================================= */
       @media (max-width: 900px) {
         .grid-2 { grid-template-columns: 1fr; }
+        .ministry-feature-card,
+        .ministry-serve-band { grid-template-columns: 1fr; }
+        .ministry-feature-side { border-left: 0; border-top: 1px solid rgba(26, 77, 63, 0.2); padding-left: 0; padding-top: 1.5rem; }
+        .ministry-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .featured-sermon-card { grid-template-columns: 1fr; }
         .message-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .home-block img { height: 250px; }
@@ -736,6 +1127,25 @@
       }
 
       @media (max-width: 620px) {
+        .ministries-hero {
+          padding: 118px 12px 36px;
+        }
+
+        .ministry-feature-meta,
+        .ministry-card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ministry-actions,
+        .ministry-btn,
+        .ministry-serve-band .btn {
+          width: 100%;
+        }
+
+        .ministry-toolbar {
+          align-items: flex-start;
+        }
+
         .watch-hero {
           padding: 118px 12px 44px;
         }
@@ -892,114 +1302,207 @@
         </section>
       </div>
 
-      <div id="events-view" class="view-section page-wrap">
-        <div class="shell">
-          <div class="page-header fade-up">
-            <h2>Events & What to Expect</h2>
-            <p>Reduce the unknowns around visiting, watching online, giving, or getting involved.</p>
+      <div id="events-view" class="view-section page-wrap ministries-page">
+        <section class="ministries-hero fade-up" aria-labelledby="events-title">
+          <h2 id="events-title">Events & Visits</h2>
+          <p>Plan your first Sunday, find recurring gatherings, and see the easiest path into church life.</p>
+          <div class="ministry-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.4 3.6C13.2 4 7.3 7.2 4.8 12.6c-1 2.2-.9 4.4.3 6.2 1.6-3.7 4.6-6.5 8.7-8.2-3.2 2.4-5.5 5.4-6.8 9.1 2.1.8 4.6.4 6.9-1.1 4.8-3.1 7.2-9 6.5-15z"/></svg>
           </div>
+        </section>
 
-          <div class="grid-2">
-            <article class="info-card fade-up">
-              <h3>Plan your visit</h3>
-              <p>Join us on Sundays at 10 AM. You will find our historic building right in the heart of Corinth. Parking is available on-site.</p>
-              <strong style="margin-top:15px; color:var(--accent);">199 Palmer Ave., Corinth, NY 12822</strong>
-            </article>
-            
-            <article class="info-card clickable-card fade-up" onclick="switchView('watch')">
-              <h3>Watch online</h3>
-              <p>Use livestream and recent sermons when you cannot be there in person. Click here to watch our latest message.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div id="next-steps-view" class="view-section page-wrap">
-        <div class="shell">
-          <div class="page-header fade-up">
-            <h2>Next Steps</h2>
-            <p>Make the most important church paths visible before you have to search.</p>
-          </div>
-
-          <div class="grid-3">
-            <article class="info-card clickable-card fade-up" onclick="switchView('im-new')">
-              <h3>Sunday worship</h3>
-              <p>Find the worship time, location, and what to expect when you walk through our doors.</p>
-            </article>
-            <article class="info-card clickable-card fade-up" onclick="switchView('watch')">
-              <h3>Sermons and livestream</h3>
-              <p>Make recent messages, live video, and YouTube links easy to reach without digging through the site.</p>
-            </article>
-            <article class="info-card clickable-card fade-up" onclick="switchView('ministries')">
-              <h3>Missions & community</h3>
-              <p>Show local outreach, mission work, groups, and ways people can get involved.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-
-      <div id="about-view" class="view-section page-wrap">
-        <div class="shell">
-          <div class="page-header fade-up">
-            <h2>About Us</h2>
-            <p>We believe faith is meant to be lived out together. Learn more about our community.</p>
-          </div>
-
-          <div class="grid-2">
-            <div class="info-card fade-up">
-              <h3>Worship Gathering</h3>
-              <p>Gather with us in the sanctuary for uplifting music, practical teaching, and a warm community. We are built on local roots.</p>
+        <div class="shell ministries-explorer">
+          <section class="ministry-feature-card fade-up" aria-labelledby="activeEventTitle">
+            <div>
+              <span class="ministry-feature-label" id="activeEventCategory">Sunday Morning</span>
+              <h3 class="ministry-feature-title" id="activeEventTitle">Sunday Worship</h3>
+              <p class="ministry-feature-copy" id="activeEventDescription">Join us Sundays at 10 AM for worship, prayer, Scripture, and a welcoming community.</p>
+              <div class="ministry-feature-meta">
+                <div class="ministry-meta-item"><span>When</span><strong id="activeEventTime">Sundays at 10 AM</strong></div>
+                <div class="ministry-meta-item"><span>Where</span><strong id="activeEventLocation">190 Palmer Ave.</strong></div>
+                <div class="ministry-meta-item"><span>Best For</span><strong id="activeEventAudience">Everyone</strong></div>
+              </div>
             </div>
-            <div class="info-card fade-up">
-              <h3>Our History</h3>
-              <p>First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus.</p>
+            <aside class="ministry-feature-side" aria-label="Selected event details">
+              <div class="ministry-side-block">
+                <h4>What to Expect</h4>
+                <ul class="ministry-need-list" id="activeEventNotes"></ul>
+              </div>
+              <div class="ministry-actions">
+                <a class="btn ministry-btn ministry-btn-primary" id="activeEventAction" href="mailto:grace@corinthfirstpres.org?subject=Sunday%20Visit">Ask a Question</a>
+                <button class="btn ministry-btn ministry-btn-secondary" type="button" onclick="switchView('watch')">Watch Online</button>
+              </div>
+            </aside>
+          </section>
+
+          <div class="ministry-toolbar fade-up">
+            <h3>Choose an Event</h3>
+            <div class="ministry-filter-list" aria-label="Filter events">
+              <button class="ministry-filter is-active" type="button" data-event-filter="all">All</button>
+              <button class="ministry-filter" type="button" data-event-filter="worship">Worship</button>
+              <button class="ministry-filter" type="button" data-event-filter="care">Care</button>
+              <button class="ministry-filter" type="button" data-event-filter="community">Community</button>
             </div>
           </div>
-
-          <div class="info-card fade-up" style="margin-top: 2rem;">
-            <h3>Our Beliefs</h3>
-            <p>Our mission at First Presbyterian Church of Corinth, NY, is to grow in relationship with God and to share the good news of Jesus Christ in word and deed.</p>
-            <p style="margin-top: 1.5rem;">As a member of the Covenant Order of Evangelical Presbyterians (ECO), First Presbyterian Church of Corinth affirms and is guided by the Essential Tenets of ECO, including:</p>
-            
-            <ul class="beliefs-list">
-              <li><strong>Our purpose:</strong> To glorify God and enjoy him forever.</li>
-              <li><strong>The Bible:</strong> We know this purpose through the Scriptures. We believe God reveals himself to us both in the infallible (without error) Scriptures of the Old and New Testament and also in the incarnation of his Son, Jesus.</li>
-              <li><strong>The Trinity:</strong> We worship the only true God - Father, Son, and Holy Spirit - who is both one essence and three persons. God created the world for his people to enjoy with him forever.</li>
-              <li><strong>Sin:</strong> We believe the world exists in its chaotic, broken state not because of Godâ€™s fault, but because of humanityâ€™s free, sinful rebellion against his will â€“ and due to that rebellion, we remain trapped in our sins and under Godâ€™s judgment.</li>
-              <li><strong>Jesus Christ:</strong> We believe Jesus, the Son of God, came to earth to live the perfect life no human could, and to die the death all humans deserved. Jesus, being fully God and fully human, took the penalty of our sin in his death on the cross, then triumphed over deathâ€™s power when God raised him from the dead through the Holy Spirit.</li>
-              <li><strong>Salvation:</strong> Only by the grace of Jesus can we be forgiven of our sin and brought into God's family. Those who put their faith in Jesus Christâ€™s sacrificial death and forgiven of the guilt of sin, and receive the gift of eternal life.</li>
-              <li><strong>Sanctification:</strong> By believing in Jesus, the believer is forgiven of their sins. When one believes in Jesus, they receive his Holy Spirit, who gives them power to begin to live a different life; further and further from sin, deeper and deeper into Godâ€™s holiness.</li>
-              <li><strong>The Holy Spirit:</strong> The Holy Spirit is sent to live within each person who believes in Jesus Christ; sanctifying them from sin and unifying them to be a part of Godâ€™s family, the Church.</li>
-            </ul>
-          </div>
+          <div class="ministry-card-grid" id="eventCards" aria-live="polite"></div>
         </div>
       </div>
 
-      <div id="ministries-view" class="view-section page-wrap">
-        <div class="shell">
-          <div class="page-header fade-up">
-            <h2>Ministries & Outreach</h2>
-            <p>Sharing the hope and healing of Jesus beyond the walls of our building.</p>
+      <div id="next-steps-view" class="view-section page-wrap ministries-page">
+        <section class="ministries-hero fade-up" aria-labelledby="next-steps-title">
+          <h2 id="next-steps-title">Next Steps</h2>
+          <p>Simple paths for visiting, watching, connecting, serving, and asking for care.</p>
+          <div class="ministry-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.4 3.6C13.2 4 7.3 7.2 4.8 12.6c-1 2.2-.9 4.4.3 6.2 1.6-3.7 4.6-6.5 8.7-8.2-3.2 2.4-5.5 5.4-6.8 9.1 2.1.8 4.6.4 6.9-1.1 4.8-3.1 7.2-9 6.5-15z"/></svg>
+          </div>
+        </section>
+
+        <div class="shell ministries-explorer">
+          <section class="ministry-feature-card fade-up" aria-labelledby="activeStepTitle">
+            <div>
+              <span class="ministry-feature-label" id="activeStepCategory">Start Here</span>
+              <h3 class="ministry-feature-title" id="activeStepTitle">Plan a Visit</h3>
+              <p class="ministry-feature-copy" id="activeStepDescription">Join us this Sunday and know what to expect before you walk through the doors.</p>
+              <div class="ministry-feature-meta">
+                <div class="ministry-meta-item"><span>Step</span><strong id="activeStepNumber">01</strong></div>
+                <div class="ministry-meta-item"><span>Time</span><strong id="activeStepTime">Sundays at 10 AM</strong></div>
+                <div class="ministry-meta-item"><span>Action</span><strong id="activeStepFocus">Visit</strong></div>
+              </div>
+            </div>
+            <aside class="ministry-feature-side" aria-label="Selected next step details">
+              <div class="ministry-side-block">
+                <h4>Helpful Details</h4>
+                <ul class="ministry-need-list" id="activeStepDetails"></ul>
+              </div>
+              <div class="ministry-actions">
+                <button class="btn ministry-btn ministry-btn-primary" id="activeStepAction" type="button">Open Step</button>
+                <a class="btn ministry-btn ministry-btn-secondary" href="mailto:grace@corinthfirstpres.org">Contact Us</a>
+              </div>
+            </aside>
+          </section>
+
+          <div class="ministry-toolbar fade-up">
+            <h3>Find Your Path</h3>
+            <div class="ministry-filter-list" aria-label="Filter next steps">
+              <button class="ministry-filter is-active" type="button" data-step-filter="all">All</button>
+              <button class="ministry-filter" type="button" data-step-filter="new">New</button>
+              <button class="ministry-filter" type="button" data-step-filter="grow">Grow</button>
+              <button class="ministry-filter" type="button" data-step-filter="serve">Serve</button>
+            </div>
+          </div>
+          <div class="ministry-card-grid" id="stepCards" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div id="about-view" class="view-section page-wrap ministries-page">
+        <section class="ministries-hero fade-up" aria-labelledby="about-title">
+          <h2 id="about-title">About Us</h2>
+          <p>Learn the story, beliefs, and rhythms that shape First Presbyterian Church in Corinth.</p>
+          <div class="ministry-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.4 3.6C13.2 4 7.3 7.2 4.8 12.6c-1 2.2-.9 4.4.3 6.2 1.6-3.7 4.6-6.5 8.7-8.2-3.2 2.4-5.5 5.4-6.8 9.1 2.1.8 4.6.4 6.9-1.1 4.8-3.1 7.2-9 6.5-15z"/></svg>
+          </div>
+        </section>
+
+        <div class="shell ministries-explorer">
+          <section class="ministry-feature-card fade-up" aria-labelledby="activeAboutTitle">
+            <div>
+              <span class="ministry-feature-label" id="activeAboutCategory">Our Mission</span>
+              <h3 class="ministry-feature-title" id="activeAboutTitle">Grow in Relationship with God</h3>
+              <p class="ministry-feature-copy" id="activeAboutDescription">Our mission is to grow in relationship with God and to share the good news of Jesus Christ in word and deed.</p>
+              <div class="ministry-feature-meta">
+                <div class="ministry-meta-item"><span>Rooted In</span><strong id="activeAboutRoot">Scripture</strong></div>
+                <div class="ministry-meta-item"><span>Expression</span><strong id="activeAboutExpression">Word and deed</strong></div>
+                <div class="ministry-meta-item"><span>Community</span><strong id="activeAboutCommunity">Corinth, NY</strong></div>
+              </div>
+            </div>
+            <aside class="ministry-feature-side" aria-label="Selected about details">
+              <div class="ministry-side-block">
+                <h4>Key Points</h4>
+                <ul class="ministry-need-list" id="activeAboutPoints"></ul>
+              </div>
+              <div class="ministry-actions">
+                <button class="btn ministry-btn ministry-btn-primary" type="button" onclick="switchView('im-new')">Visit Sunday</button>
+                <button class="btn ministry-btn ministry-btn-secondary" type="button" onclick="switchView('ministries')">See Ministries</button>
+              </div>
+            </aside>
+          </section>
+
+          <div class="ministry-toolbar fade-up">
+            <h3>Explore Our Church</h3>
+            <div class="ministry-filter-list" aria-label="Filter about topics">
+              <button class="ministry-filter is-active" type="button" data-about-filter="all">All</button>
+              <button class="ministry-filter" type="button" data-about-filter="story">Story</button>
+              <button class="ministry-filter" type="button" data-about-filter="belief">Beliefs</button>
+              <button class="ministry-filter" type="button" data-about-filter="life">Life</button>
+            </div>
+          </div>
+          <div class="ministry-card-grid" id="aboutCards" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div id="ministries-view" class="view-section page-wrap ministries-page">
+        <section class="ministries-hero fade-up" aria-labelledby="ministries-title">
+          <h2 id="ministries-title">Ministries & Outreach</h2>
+          <p>Sharing the hope and healing of Jesus through practical care, community partnership, and faithful mission.</p>
+          <div class="ministry-hero-divider" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.4 3.6C13.2 4 7.3 7.2 4.8 12.6c-1 2.2-.9 4.4.3 6.2 1.6-3.7 4.6-6.5 8.7-8.2-3.2 2.4-5.5 5.4-6.8 9.1 2.1.8 4.6.4 6.9-1.1 4.8-3.1 7.2-9 6.5-15z"/></svg>
+          </div>
+        </section>
+
+        <div class="shell ministries-explorer">
+          <section class="ministry-feature-card fade-up" aria-labelledby="activeMinistryTitle">
+            <div>
+              <span class="ministry-feature-label" id="activeMinistryCategory">Community Care</span>
+              <h3 class="ministry-feature-title" id="activeMinistryTitle">Corinth Community Cupboard</h3>
+              <p class="ministry-feature-copy" id="activeMinistryDescription">We work together with Corinth Community Churches to operate a food pantry serving neighbors from 6 4th Street.</p>
+
+              <div class="ministry-feature-meta">
+                <div class="ministry-meta-item">
+                  <span>Contact</span>
+                  <strong id="activeMinistryPhone">518-615-9564</strong>
+                </div>
+                <div class="ministry-meta-item">
+                  <span>Location</span>
+                  <strong id="activeMinistryLocation">6 4th Street</strong>
+                </div>
+                <div class="ministry-meta-item">
+                  <span>Focus</span>
+                  <strong id="activeMinistryFocus">Food support</strong>
+                </div>
+              </div>
+            </div>
+
+            <aside class="ministry-feature-side" aria-label="Selected ministry details">
+              <div class="ministry-side-block">
+                <h4>Ways to Help</h4>
+                <ul class="ministry-need-list" id="activeMinistryNeeds"></ul>
+              </div>
+              <div class="ministry-actions">
+                <a class="btn ministry-btn ministry-btn-primary" id="activeMinistryAction" href="tel:15186159564">Call Ministry</a>
+                <a class="btn ministry-btn ministry-btn-secondary" href="mailto:grace@corinthfirstpres.org">Ask a Question</a>
+              </div>
+            </aside>
+          </section>
+
+          <div class="ministry-toolbar fade-up">
+            <h3>Explore Ministries</h3>
+            <div class="ministry-filter-list" role="list" aria-label="Filter ministries">
+              <button class="ministry-filter is-active" type="button" data-filter="all">All</button>
+              <button class="ministry-filter" type="button" data-filter="care">Care</button>
+              <button class="ministry-filter" type="button" data-filter="community">Community</button>
+              <button class="ministry-filter" type="button" data-filter="mission">Mission</button>
+            </div>
           </div>
 
-          <div class="grid-3">
-            <article class="info-card fade-up">
-              <h3>Corinth Community Cupboard</h3>
-              <p>We work together with the Corinth Community Churches to operate a food pantry called the Corinth Community Cupboard. It is located at 6 4th Street. If you need assistance or have questions about donating, please call <strong>518-615-9564</strong> during open hours.</p>
-              <strong style="margin-top: 1.5rem;">Hours</strong>
-              <p>Tuesday: 2 - 5 PM<br>Wednesday: 6 - 8 PM<br>Thursday: 9 AM - 12 PM<br>Friday: 2 - 5 PM</p>
-            </article>
+          <div class="ministry-card-grid" id="ministryCards" aria-live="polite"></div>
 
-            <article class="info-card fade-up">
-              <h3>Share the Warmth</h3>
-              <p>We also join the Corinth Community Churches in operating a fund to help those struggling with the rising cost of heating their homes. If you live in the Corinth School District and would like to request assistance, please call the church at <strong>518-654-9432</strong>.</p>
-            </article>
-
-            <article class="info-card fade-up">
-              <h3>Local, National & Foreign Missions</h3>
-              <p>We assist various missions prayerfully and financially, supporting initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.</p>
-            </article>
-          </div>
+          <section class="ministry-serve-band fade-up">
+            <div>
+              <h3>Ready to serve?</h3>
+              <p>There are simple ways to help this week, from donating pantry items to joining prayer and mission support.</p>
+            </div>
+            <a class="btn" href="mailto:grace@corinthfirstpres.org?subject=I%20would%20like%20to%20serve">Start Serving</a>
+          </section>
         </div>
       </div>
 
@@ -1104,6 +1607,535 @@
     </footer>
     
     <script>
+      window.ministryItems = [
+        {
+          id: "cupboard",
+          title: "Corinth Community Cupboard",
+          category: "care",
+          categoryLabel: "Community Care",
+          focus: "Food support",
+          phone: "518-615-9564",
+          href: "tel:15186159564",
+          actionLabel: "Call Cupboard",
+          location: "6 4th Street",
+          schedule: "Tue 2-5 PM, Wed 6-8 PM, Thu 9 AM-12 PM, Fri 2-5 PM",
+          summary: "A shared food pantry operated with Corinth Community Churches for neighbors who need practical help.",
+          description: "We work together with Corinth Community Churches to operate a food pantry called the Corinth Community Cupboard. If you need assistance or have questions about donating, please call during open hours.",
+          needs: ["Shelf-stable food donations", "Volunteers during open hours", "Prayer for local families"],
+          icon: "basket"
+        },
+        {
+          id: "warmth",
+          title: "Share the Warmth",
+          category: "care",
+          categoryLabel: "Neighbor Support",
+          focus: "Heating assistance",
+          phone: "518-654-9432",
+          href: "tel:15186549432",
+          actionLabel: "Call Church",
+          location: "Corinth School District",
+          schedule: "Requests handled through the church office",
+          summary: "A local fund that helps households facing rising heating costs during colder seasons.",
+          description: "We join the Corinth Community Churches in operating a fund to help those struggling with the rising cost of heating their homes. If you live in the Corinth School District and would like to request assistance, please call the church.",
+          needs: ["Fuel assistance gifts", "Local referrals", "Confidential prayer and care"],
+          icon: "flame"
+        },
+        {
+          id: "missions",
+          title: "Local, National & Foreign Missions",
+          category: "mission",
+          categoryLabel: "Mission Partners",
+          focus: "Gospel outreach",
+          phone: "grace@corinthfirstpres.org",
+          href: "mailto:grace@corinthfirstpres.org?subject=Mission%20Partnerships",
+          actionLabel: "Email Church",
+          location: "Local and global partners",
+          schedule: "Supported throughout the year",
+          summary: "Prayerful and financial support for ministries sharing the Gospel and providing humanitarian aid.",
+          description: "We assist various missions prayerfully and financially, supporting initiatives dedicated to spreading the Gospel and providing humanitarian aid worldwide.",
+          needs: ["Prayer for mission partners", "Designated giving", "Awareness and encouragement"],
+          icon: "globe"
+        },
+        {
+          id: "small-groups",
+          title: "Small Groups",
+          category: "community",
+          categoryLabel: "Community Life",
+          focus: "Faith and friendship",
+          phone: "grace@corinthfirstpres.org",
+          href: "mailto:grace@corinthfirstpres.org?subject=Small%20Groups",
+          actionLabel: "Find a Group",
+          location: "Church and homes",
+          schedule: "Seasonal gatherings",
+          summary: "Smaller gatherings where people can study scripture, pray, and walk through life together.",
+          description: "Small groups help a church feel personal. Connect with others in a relaxed setting to share life, study scripture, and pray for one another.",
+          needs: ["Group hosts", "Discussion leaders", "People ready to connect"],
+          icon: "people"
+        },
+        {
+          id: "serving",
+          title: "Serving Teams",
+          category: "community",
+          categoryLabel: "Serving",
+          focus: "Volunteer teams",
+          phone: "grace@corinthfirstpres.org",
+          href: "mailto:grace@corinthfirstpres.org?subject=Serving%20Opportunities",
+          actionLabel: "Start Serving",
+          location: "Church and community",
+          schedule: "Flexible opportunities",
+          summary: "Practical ways to use your gifts inside the church and throughout the Corinth community.",
+          description: "God has given each person unique gifts to make a difference. Serving teams help people step into meaningful opportunities inside our walls and out in the Corinth community.",
+          needs: ["Sunday volunteers", "Community helpers", "Behind-the-scenes support"],
+          icon: "hands"
+        },
+        {
+          id: "prayer",
+          title: "Prayer & Care",
+          category: "care",
+          categoryLabel: "Pastoral Care",
+          focus: "Prayer support",
+          phone: "grace@corinthfirstpres.org",
+          href: "mailto:grace@corinthfirstpres.org?subject=Prayer%20Request",
+          actionLabel: "Request Prayer",
+          location: "First Presbyterian Church",
+          schedule: "Ongoing care",
+          summary: "A quiet, faithful way to share burdens, celebrate answered prayer, and care for one another.",
+          description: "Prayer and care are central to our life together. Share a request, ask for support, or let the church know how we can walk with you.",
+          needs: ["Prayer requests", "Care team volunteers", "Follow-up encouragement"],
+          icon: "leaf"
+        }
+      ];
+
+      window.escapeHtml = function(value) {
+        return String(value).replace(/[&<>"']/g, function(character) {
+          return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character];
+        });
+      };
+
+      window.ministryIcon = function(type) {
+        var icons = {
+          basket: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11h14l-1.4 8H6.4L5 11Z"></path><path d="M8 11 12 4l4 7"></path><path d="M9 15h.01M12 15h.01M15 15h.01"></path></svg>',
+          flame: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c3.5 0 6-2.5 6-5.8 0-2.8-1.6-4.7-3.2-6.5-.9-1-1.8-2-2.1-3.7-2.7 1.5-5.7 4.8-5.7 9.1C7 19.2 9.2 22 12 22Z"></path><path d="M12 22c1.5 0 2.7-1.1 2.7-2.6 0-1.2-.7-2-1.5-2.8-.4-.5-.9-1-1-1.8-1.2.7-2.6 2.2-2.6 4.1 0 1.9 1 3.1 2.4 3.1Z"></path></svg>',
+          globe: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>',
+          people: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-8 0v2"></path><circle cx="12" cy="8" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.9"></path><path d="M16.5 4.2a4 4 0 0 1 0 7.6"></path><path d="M2 21v-2a4 4 0 0 1 3-3.9"></path><path d="M7.5 4.2a4 4 0 0 0 0 7.6"></path></svg>',
+          hands: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a2 2 0 1 1 4 0v5"></path><path d="M11 10V5a2 2 0 1 1 4 0v8"></path><path d="M15 12V8a2 2 0 1 1 4 0v7c0 4-3 7-7 7h-1a7 7 0 0 1-7-7v-3a2 2 0 1 1 4 0v2"></path></svg>',
+          leaf: '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-7.5.3-12.9 3.8-14.7 9.4-.8 2.5-.2 4.8 1.5 6.4C8.1 15.4 11.4 12 16.5 10"></path><path d="M7 20c2.8-5.2 6.7-8.7 12-11"></path></svg>'
+        };
+        return icons[type] || icons.leaf;
+      };
+
+      window.eventItems = [
+        {
+          id: "sunday-worship",
+          title: "Sunday Worship",
+          category: "worship",
+          categoryLabel: "Sunday Morning",
+          time: "Sundays at 10 AM",
+          location: "190 Palmer Ave.",
+          audience: "Everyone",
+          summary: "Gather for music, prayer, Scripture, and a welcoming community.",
+          description: "Join us Sundays at 10 AM for worship, prayer, Scripture, and a welcoming community. Come as you are; there is room for you here.",
+          notes: ["Historic sanctuary worship", "Practical teaching from Scripture", "Friendly people ready to help you find your way"],
+          actionLabel: "Plan a Visit",
+          actionHref: "mailto:grace@corinthfirstpres.org?subject=Sunday%20Visit",
+          icon: "leaf"
+        },
+        {
+          id: "watch-online",
+          title: "Watch Online",
+          category: "worship",
+          categoryLabel: "Livestream",
+          time: "Sundays at 10 AM",
+          location: "YouTube",
+          audience: "Online viewers",
+          summary: "Join the livestream or catch up on recent messages from home.",
+          description: "Use the livestream and recent message library when you cannot be with us in person. The Watch tab keeps current and recent services easy to find.",
+          notes: ["Livestream access", "Recent message library", "Easy YouTube archive link"],
+          actionLabel: "Open Watch",
+          actionView: "watch",
+          icon: "globe"
+        },
+        {
+          id: "community-cupboard",
+          title: "Community Cupboard",
+          category: "care",
+          categoryLabel: "Community Care",
+          time: "Tue-Fri weekly",
+          location: "6 4th Street",
+          audience: "Neighbors needing food support",
+          summary: "A practical food pantry ministry operated with Corinth Community Churches.",
+          description: "The Corinth Community Cupboard provides food support for neighbors and gives the church a practical way to care for the community.",
+          notes: ["Tuesday 2-5 PM", "Wednesday 6-8 PM", "Thursday 9 AM-12 PM and Friday 2-5 PM"],
+          actionLabel: "See Ministries",
+          actionView: "ministries",
+          icon: "basket"
+        },
+        {
+          id: "small-groups-event",
+          title: "Small Groups",
+          category: "community",
+          categoryLabel: "Community Life",
+          time: "Seasonal gatherings",
+          location: "Church and homes",
+          audience: "People looking for connection",
+          summary: "Study scripture, pray, and share life in a smaller setting.",
+          description: "Small groups help people move from attending to belonging. They create space for prayer, scripture, friendship, and steady encouragement.",
+          notes: ["Relaxed group settings", "Scripture and prayer", "A natural next step after Sunday worship"],
+          actionLabel: "Ask About Groups",
+          actionHref: "mailto:grace@corinthfirstpres.org?subject=Small%20Groups",
+          icon: "people"
+        }
+      ];
+
+      window.stepItems = [
+        {
+          id: "visit",
+          title: "Plan a Visit",
+          category: "new",
+          categoryLabel: "Start Here",
+          number: "01",
+          time: "Sundays at 10 AM",
+          focus: "Visit",
+          summary: "Know the worship time, location, and what to expect before Sunday.",
+          description: "Join us this Sunday and know what to expect before you walk through the doors. This is the simplest first step if you are new.",
+          details: ["Worship begins at 10 AM", "The church is located at 190 Palmer Ave.", "You do not need to have everything figured out to come"],
+          actionLabel: "I'm New",
+          target: "im-new",
+          icon: "leaf"
+        },
+        {
+          id: "watch",
+          title: "Watch a Message",
+          category: "new",
+          categoryLabel: "Watch Online",
+          number: "02",
+          time: "Anytime",
+          focus: "Listen",
+          summary: "Explore recent sermons and livestreams before visiting in person.",
+          description: "The Watch page is a simple way to get a feel for worship, teaching, and the church before or between Sundays.",
+          details: ["Recent YouTube streams", "Featured message player", "Easy archive access"],
+          actionLabel: "Watch Online",
+          target: "watch",
+          icon: "globe"
+        },
+        {
+          id: "connect",
+          title: "Connect with People",
+          category: "grow",
+          categoryLabel: "Grow",
+          number: "03",
+          time: "Seasonally",
+          focus: "Belong",
+          summary: "Move from attending to belonging through groups, conversation, and prayer.",
+          description: "Faith grows best in community. Connect through small groups, Sunday conversations, and pastoral care.",
+          details: ["Small group opportunities", "Prayer and care", "A place to ask honest questions"],
+          actionLabel: "Explore Ministries",
+          target: "ministries",
+          icon: "people"
+        },
+        {
+          id: "serve",
+          title: "Start Serving",
+          category: "serve",
+          categoryLabel: "Serve",
+          number: "04",
+          time: "Flexible",
+          focus: "Help",
+          summary: "Use your gifts in worship, care, outreach, or behind-the-scenes support.",
+          description: "Serving is one of the clearest ways to become part of the life of the church and bless the wider Corinth community.",
+          details: ["Sunday volunteer teams", "Community outreach", "Practical support roles"],
+          actionLabel: "Serving Opportunities",
+          target: "ministries",
+          icon: "hands"
+        }
+      ];
+
+      window.aboutItems = [
+        {
+          id: "mission",
+          title: "Grow in Relationship with God",
+          category: "story",
+          categoryLabel: "Our Mission",
+          root: "Scripture",
+          expression: "Word and deed",
+          community: "Corinth, NY",
+          summary: "Our mission is to grow in relationship with God and share the good news of Jesus Christ.",
+          description: "Our mission is to grow in relationship with God and to share the good news of Jesus Christ in word and deed.",
+          points: ["Faith that shapes daily life", "Good news shared in word and deed", "A local church with a heart for Corinth"],
+          icon: "leaf"
+        },
+        {
+          id: "worship-gathering",
+          title: "Worship Gathering",
+          category: "life",
+          categoryLabel: "Church Life",
+          root: "Prayer",
+          expression: "Worship",
+          community: "Sunday gathering",
+          summary: "A warm Sunday gathering with music, prayer, Scripture, and practical teaching.",
+          description: "Gather with us in the sanctuary for uplifting music, practical teaching from the Word, and a warm community rooted in local life.",
+          points: ["Sunday worship at 10 AM", "Music and prayer", "Teaching from Scripture"],
+          icon: "people"
+        },
+        {
+          id: "history",
+          title: "Our History",
+          category: "story",
+          categoryLabel: "Our Story",
+          root: "Local roots",
+          expression: "Faithfulness",
+          community: "Corinth",
+          summary: "First Presbyterian Church has long been a local presence in Corinth, NY.",
+          description: "First Presbyterian Church has been a cornerstone of Corinth, NY. We are dedicated to sharing the hope and healing of Jesus in this community.",
+          points: ["Historic local presence", "A congregation shaped by place", "Continuing ministry in Corinth"],
+          icon: "basket"
+        },
+        {
+          id: "scripture",
+          title: "The Bible",
+          category: "belief",
+          categoryLabel: "Essential Beliefs",
+          root: "Old and New Testament",
+          expression: "God's revelation",
+          community: "ECO",
+          summary: "We believe God reveals himself through Scripture and through Jesus Christ.",
+          description: "We know our purpose through the Scriptures. We believe God reveals himself in the infallible Scriptures of the Old and New Testament and in the incarnation of his Son, Jesus.",
+          points: ["Scripture guides faith and life", "Jesus reveals God fully", "The Bible shapes teaching and worship"],
+          icon: "leaf"
+        },
+        {
+          id: "salvation",
+          title: "Grace in Jesus Christ",
+          category: "belief",
+          categoryLabel: "Essential Beliefs",
+          root: "Jesus Christ",
+          expression: "Grace",
+          community: "Church family",
+          summary: "Only by the grace of Jesus can we be forgiven and brought into God's family.",
+          description: "Only by the grace of Jesus can we be forgiven of sin and brought into God's family. Those who trust in Christ receive forgiveness and the gift of eternal life.",
+          points: ["Forgiveness through Christ", "New life by grace", "Welcome into God's family"],
+          icon: "flame"
+        }
+      ];
+
+      window.buildDynamicCard = function(kind, item, index) {
+        var dataName = "data-" + kind + "-id";
+        return [
+          '<button class="ministry-card fade-up' + (index === 0 ? ' is-active' : '') + '" type="button" ' + dataName + '="' + window.escapeHtml(item.id) + '">',
+            '<div class="ministry-card-top">',
+              '<span class="ministry-card-label">' + window.escapeHtml(item.categoryLabel) + '</span>',
+              '<span class="ministry-icon">' + window.ministryIcon(item.icon) + '</span>',
+            '</div>',
+            '<h4>' + window.escapeHtml(item.title) + '</h4>',
+            '<p>' + window.escapeHtml(item.summary) + '</p>',
+            '<div class="ministry-card-footer">',
+              '<span>' + window.escapeHtml(item.time || item.focus || item.root || item.schedule || "") + '</span>',
+              '<strong>View</strong>',
+            '</div>',
+          '</button>'
+        ].join("");
+      };
+
+      window.animateFeature = function(selector) {
+        var card = document.querySelector(selector);
+        if (!card) return;
+        card.classList.remove("is-changing");
+        void card.offsetWidth;
+        card.classList.add("is-changing");
+      };
+
+      window.selectEvent = function(eventId, shouldScroll) {
+        var item = window.eventItems.find(function(eventItem) { return eventItem.id === eventId; }) || window.eventItems[0];
+        document.getElementById("activeEventCategory").textContent = item.categoryLabel;
+        document.getElementById("activeEventTitle").textContent = item.title;
+        document.getElementById("activeEventDescription").textContent = item.description;
+        document.getElementById("activeEventTime").textContent = item.time;
+        document.getElementById("activeEventLocation").textContent = item.location;
+        document.getElementById("activeEventAudience").textContent = item.audience;
+        document.getElementById("activeEventNotes").innerHTML = item.notes.map(function(note) { return "<li>" + window.escapeHtml(note) + "</li>"; }).join("");
+
+        var action = document.getElementById("activeEventAction");
+        action.textContent = item.actionLabel;
+        action.href = item.actionHref || "javascript:void(0)";
+        action.onclick = item.actionView ? function(event) { event.preventDefault(); window.switchView(item.actionView); } : null;
+
+        document.querySelectorAll("#events-view .ministry-card").forEach(function(card) {
+          card.classList.toggle("is-active", card.getAttribute("data-event-id") === item.id);
+        });
+        window.animateFeature("#events-view .ministry-feature-card");
+        if (shouldScroll) document.querySelector("#events-view .ministry-feature-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      window.renderEventDirectory = function(filter) {
+        var grid = document.getElementById("eventCards");
+        if (!grid) return;
+        var items = filter && filter !== "all" ? window.eventItems.filter(function(item) { return item.category === filter; }) : window.eventItems;
+        grid.innerHTML = items.map(function(item, index) { return window.buildDynamicCard("event", item, index); }).join("");
+        if (items[0]) window.selectEvent(items[0].id, false);
+      };
+
+      window.selectStep = function(stepId, shouldScroll) {
+        var item = window.stepItems.find(function(stepItem) { return stepItem.id === stepId; }) || window.stepItems[0];
+        document.getElementById("activeStepCategory").textContent = item.categoryLabel;
+        document.getElementById("activeStepTitle").textContent = item.title;
+        document.getElementById("activeStepDescription").textContent = item.description;
+        document.getElementById("activeStepNumber").textContent = item.number;
+        document.getElementById("activeStepTime").textContent = item.time;
+        document.getElementById("activeStepFocus").textContent = item.focus;
+        document.getElementById("activeStepDetails").innerHTML = item.details.map(function(detail) { return "<li>" + window.escapeHtml(detail) + "</li>"; }).join("");
+
+        var action = document.getElementById("activeStepAction");
+        action.textContent = item.actionLabel;
+        action.onclick = function() { window.switchView(item.target); };
+
+        document.querySelectorAll("#next-steps-view .ministry-card").forEach(function(card) {
+          card.classList.toggle("is-active", card.getAttribute("data-step-id") === item.id);
+        });
+        window.animateFeature("#next-steps-view .ministry-feature-card");
+        if (shouldScroll) document.querySelector("#next-steps-view .ministry-feature-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      window.renderStepDirectory = function(filter) {
+        var grid = document.getElementById("stepCards");
+        if (!grid) return;
+        var items = filter && filter !== "all" ? window.stepItems.filter(function(item) { return item.category === filter; }) : window.stepItems;
+        grid.innerHTML = items.map(function(item, index) { return window.buildDynamicCard("step", item, index); }).join("");
+        if (items[0]) window.selectStep(items[0].id, false);
+      };
+
+      window.selectAbout = function(aboutId, shouldScroll) {
+        var item = window.aboutItems.find(function(aboutItem) { return aboutItem.id === aboutId; }) || window.aboutItems[0];
+        document.getElementById("activeAboutCategory").textContent = item.categoryLabel;
+        document.getElementById("activeAboutTitle").textContent = item.title;
+        document.getElementById("activeAboutDescription").textContent = item.description;
+        document.getElementById("activeAboutRoot").textContent = item.root;
+        document.getElementById("activeAboutExpression").textContent = item.expression;
+        document.getElementById("activeAboutCommunity").textContent = item.community;
+        document.getElementById("activeAboutPoints").innerHTML = item.points.map(function(point) { return "<li>" + window.escapeHtml(point) + "</li>"; }).join("");
+        document.querySelectorAll("#about-view .ministry-card").forEach(function(card) {
+          card.classList.toggle("is-active", card.getAttribute("data-about-id") === item.id);
+        });
+        window.animateFeature("#about-view .ministry-feature-card");
+        if (shouldScroll) document.querySelector("#about-view .ministry-feature-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      window.renderAboutDirectory = function(filter) {
+        var grid = document.getElementById("aboutCards");
+        if (!grid) return;
+        var items = filter && filter !== "all" ? window.aboutItems.filter(function(item) { return item.category === filter; }) : window.aboutItems;
+        grid.innerHTML = items.map(function(item, index) { return window.buildDynamicCard("about", item, index); }).join("");
+        if (items[0]) window.selectAbout(items[0].id, false);
+      };
+
+      window.setupDynamicSection = function(viewSelector, filterAttribute, renderFunction, selectFunction, cardAttribute) {
+        var view = document.querySelector(viewSelector);
+        if (!view) return;
+        var filterSelector = "[" + filterAttribute + "]";
+        renderFunction("all");
+        view.addEventListener("click", function(event) {
+          var filterButton = event.target.closest(filterSelector);
+          if (filterButton) {
+            view.querySelectorAll(filterSelector).forEach(function(button) { button.classList.remove("is-active"); });
+            filterButton.classList.add("is-active");
+            renderFunction(filterButton.getAttribute(filterAttribute));
+            return;
+          }
+          var card = event.target.closest("[" + cardAttribute + "]");
+          if (card) selectFunction(card.getAttribute(cardAttribute), true);
+        });
+      };
+
+      window.setupCoreDynamicSections = function() {
+        window.setupDynamicSection("#events-view", "data-event-filter", window.renderEventDirectory, window.selectEvent, "data-event-id");
+        window.setupDynamicSection("#next-steps-view", "data-step-filter", window.renderStepDirectory, window.selectStep, "data-step-id");
+        window.setupDynamicSection("#about-view", "data-about-filter", window.renderAboutDirectory, window.selectAbout, "data-about-id");
+      };
+
+      window.selectMinistry = function(ministryId, shouldScroll) {
+        var ministry = window.ministryItems.find(function(item) { return item.id === ministryId; }) || window.ministryItems[0];
+        var featureCard = document.querySelector("#ministries-view .ministry-feature-card");
+        var needsMarkup = ministry.needs.map(function(item) {
+          return "<li>" + window.escapeHtml(item) + "</li>";
+        }).join("");
+
+        document.getElementById("activeMinistryCategory").textContent = ministry.categoryLabel;
+        document.getElementById("activeMinistryTitle").textContent = ministry.title;
+        document.getElementById("activeMinistryDescription").textContent = ministry.description;
+        document.getElementById("activeMinistryPhone").textContent = ministry.phone;
+        document.getElementById("activeMinistryLocation").textContent = ministry.location;
+        document.getElementById("activeMinistryFocus").textContent = ministry.focus;
+        document.getElementById("activeMinistryNeeds").innerHTML = needsMarkup;
+
+        var action = document.getElementById("activeMinistryAction");
+        action.href = ministry.href;
+        action.textContent = ministry.actionLabel;
+
+        document.querySelectorAll("#ministries-view .ministry-card").forEach(function(card) {
+          card.classList.toggle("is-active", card.getAttribute("data-ministry-id") === ministry.id);
+        });
+
+        if (featureCard) {
+          featureCard.classList.remove("is-changing");
+          void featureCard.offsetWidth;
+          featureCard.classList.add("is-changing");
+        }
+
+        if (shouldScroll) {
+          document.querySelector("#ministries-view .ministry-feature-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+      window.renderMinistryDirectory = function(filter) {
+        var grid = document.getElementById("ministryCards");
+        if (!grid) return;
+
+        var activeFilter = filter || "all";
+        var items = activeFilter === "all"
+          ? window.ministryItems
+          : window.ministryItems.filter(function(item) { return item.category === activeFilter; });
+
+        grid.innerHTML = items.map(function(ministry, index) {
+          return [
+            '<button class="ministry-card fade-up' + (index === 0 ? ' is-active' : '') + '" type="button" data-ministry-id="' + ministry.id + '">',
+              '<div class="ministry-card-top">',
+                '<span class="ministry-card-label">' + window.escapeHtml(ministry.categoryLabel) + '</span>',
+                '<span class="ministry-icon">' + window.ministryIcon(ministry.icon) + '</span>',
+              '</div>',
+              '<h4>' + window.escapeHtml(ministry.title) + '</h4>',
+              '<p>' + window.escapeHtml(ministry.summary) + '</p>',
+              '<div class="ministry-card-footer">',
+                '<span>' + window.escapeHtml(ministry.schedule) + '</span>',
+                '<strong>View</strong>',
+              '</div>',
+            '</button>'
+          ].join("");
+        }).join("");
+
+        if (items[0]) window.selectMinistry(items[0].id, false);
+      };
+
+      window.setupMinistryInteractions = function() {
+        var grid = document.getElementById("ministryCards");
+        var filters = document.querySelectorAll("#ministries-view .ministry-filter");
+        if (!grid) return;
+
+        window.renderMinistryDirectory("all");
+
+        grid.addEventListener("click", function(event) {
+          var card = event.target.closest(".ministry-card");
+          if (!card) return;
+          window.selectMinistry(card.getAttribute("data-ministry-id"), true);
+        });
+
+        filters.forEach(function(button) {
+          button.addEventListener("click", function() {
+            filters.forEach(function(item) { item.classList.remove("is-active"); });
+            button.classList.add("is-active");
+            window.renderMinistryDirectory(button.getAttribute("data-filter"));
+          });
+        });
+      };
+
       // Video library sourced from:
       // https://www.youtube.com/@corinthfirstpresbyterian5467/streams
       // Static HTML cannot scrape YouTube in-browser without an API key, so update this list when new streams are posted.
@@ -1264,6 +2296,12 @@
 
         // Build the Watch page stream library from the YouTube streams list above.
         window.renderMessageLibrary();
+
+        // Build the dynamic Events, Next Steps, and About explorers.
+        window.setupCoreDynamicSections();
+
+        // Build the dynamic Ministries explorer.
+        window.setupMinistryInteractions();
         
         // Bind scroll event to header logic
         window.addEventListener("scroll", window.updateHeaderState);
