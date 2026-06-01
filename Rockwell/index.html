@@ -570,11 +570,11 @@
     }
 
     .section {
-      padding: 76px 0;
+      padding: 68px 0;
     }
 
     .section-tight {
-      padding: 60px 0;
+      padding: 54px 0;
     }
 
     .section-title {
@@ -709,6 +709,56 @@
       height: 42px;
     }
 
+    .specials-callout {
+      padding: 22px 0;
+      color: var(--black);
+      background:
+        linear-gradient(90deg, rgba(245, 185, 31, 0.96), rgba(255, 212, 92, 0.92)),
+        var(--gold);
+      border-bottom: 4px solid var(--black);
+    }
+
+    .specials-callout-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .specials-callout-copy {
+      display: grid;
+      gap: 4px;
+      max-width: 720px;
+    }
+
+    .specials-callout-kicker,
+    .facebook-note {
+      color: var(--rust);
+      font-family: "Oswald", Impact, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .specials-callout h2 {
+      color: var(--pine);
+      font-size: 1.72rem;
+    }
+
+    .specials-callout p {
+      margin: 0;
+      color: #2b261f;
+      font-weight: 700;
+    }
+
+    .specials-callout .btn {
+      flex: 0 0 auto;
+      min-height: 46px;
+      color: var(--paper);
+      background: var(--pine);
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
     .food-3d-showcase {
       color: var(--ink);
       background:
@@ -716,6 +766,10 @@
         var(--paper);
       border-top: 4px solid var(--black);
       border-bottom: 4px solid var(--black);
+    }
+
+    .food-3d-showcase.section {
+      padding: 60px 0;
     }
 
     .food-3d-head {
@@ -740,7 +794,7 @@
     .food-3d-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      gap: 20px;
     }
 
     .food-3d-card {
@@ -754,8 +808,8 @@
 
     .food-3d-stage {
       position: relative;
-      min-height: 260px;
-      aspect-ratio: 1.12;
+      min-height: 224px;
+      aspect-ratio: 1.35;
       background:
         radial-gradient(circle at 50% 58%, rgba(245, 185, 31, 0.34), transparent 36%),
         radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.94), rgba(239, 228, 207, 0.6) 64%),
@@ -773,7 +827,7 @@
     .food-3d-body {
       display: grid;
       gap: 8px;
-      padding: 18px;
+      padding: 16px;
     }
 
     .food-3d-body h3 {
@@ -1143,15 +1197,21 @@
     }
 
     .facebook-copy p {
-      margin: 16px 0 24px;
+      margin: 12px 0 18px;
       color: rgba(255, 249, 236, 0.86);
       font-size: 1.05rem;
       font-weight: 700;
     }
 
+    .facebook-note {
+      display: block;
+      margin: 0 0 18px;
+      color: var(--gold);
+    }
+
     .fb-frame {
       overflow: hidden;
-      min-height: 420px;
+      min-height: 390px;
       display: grid;
       place-items: center;
       padding: 14px;
@@ -1469,19 +1529,19 @@
 
     .specials-toast {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
+      right: 14px;
+      bottom: 14px;
       z-index: 2000;
-      width: min(380px, calc(100% - 36px));
+      width: min(320px, calc(100% - 28px));
       display: none;
       grid-template-columns: 1fr auto;
-      gap: 12px;
-      padding: 18px;
+      gap: 10px;
+      padding: 13px 14px;
       color: var(--paper);
       background: var(--black);
       border: 3px solid var(--gold);
       border-radius: 8px;
-      box-shadow: 7px 7px 0 rgba(17, 16, 14, 0.45);
+      box-shadow: 5px 5px 0 rgba(17, 16, 14, 0.42);
     }
 
     .specials-toast.show {
@@ -1491,14 +1551,14 @@
     .specials-toast h2 {
       color: var(--gold);
       font-family: "Oswald", Impact, sans-serif;
-      font-size: 1.1rem;
+      font-size: 0.98rem;
       font-weight: 700;
     }
 
     .specials-toast p {
-      margin: 6px 0 12px;
+      margin: 4px 0 8px;
       color: rgba(247, 239, 224, 0.82);
-      font-size: 0.92rem;
+      font-size: 0.82rem;
       font-weight: 700;
     }
 
@@ -1566,8 +1626,19 @@
       .favorites-layout,
       .facebook-layout,
       .location-grid,
+      .specials-callout-inner,
       .story-grid {
         grid-template-columns: 1fr;
+      }
+
+      .specials-callout-inner {
+        display: grid;
+        align-items: start;
+        gap: 12px;
+      }
+
+      .specials-callout-copy {
+        gap: 3px;
       }
 
       .order-board {
@@ -1682,12 +1753,25 @@
         font-size: 0.96rem;
       }
 
+      .specials-callout {
+        padding: 18px 0;
+      }
+
+      .specials-callout h2 {
+        font-size: 1.45rem;
+      }
+
+      .specials-callout .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
       .section {
-        padding: 54px 0;
+        padding: 46px 0;
       }
 
       .section-tight {
-        padding: 46px 0;
+        padding: 40px 0;
       }
 
       .section-title h2,
@@ -1701,6 +1785,38 @@
         font-size: 1.55rem;
       }
 
+      .story-grid {
+        gap: 28px;
+      }
+
+      .story-polaroid {
+        padding: 10px 10px 18px;
+      }
+
+      .falls-card {
+        min-height: 330px;
+        padding: 20px;
+      }
+
+      .falls-label {
+        padding: 10px 12px;
+        font-size: 0.92rem;
+      }
+
+      .story-copy p {
+        margin-top: 14px;
+      }
+
+      .story-points {
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .story-point {
+        min-height: 82px;
+        padding: 12px;
+      }
+
       .story-points,
       .featured-grid,
       .food-3d-grid,
@@ -1711,11 +1827,21 @@
 
       .food-3d-head {
         display: grid;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .food-3d-showcase.section {
+        padding: 42px 0;
       }
 
       .food-3d-stage {
-        min-height: 246px;
+        min-height: 204px;
+        aspect-ratio: 1.48;
+      }
+
+      .food-3d-body {
+        padding: 14px 16px 16px;
       }
 
       .menu-item {
@@ -1733,6 +1859,24 @@
         min-height: 0;
       }
 
+      .food-card-media {
+        aspect-ratio: 1.75;
+      }
+
+      .food-card-body {
+        gap: 10px;
+        padding: 15px;
+      }
+
+      .order-board-header,
+      .order-total {
+        padding: 15px;
+      }
+
+      .order-lines {
+        padding: 12px 15px;
+      }
+
       .fb-frame {
         min-height: 320px;
       }
@@ -1744,6 +1888,13 @@
 
       .form-grid {
         grid-template-columns: 1fr;
+      }
+
+      .specials-toast {
+        right: 10px;
+        bottom: 10px;
+        width: min(296px, calc(100% - 20px));
+        padding: 11px 12px;
       }
     }
 
@@ -1829,6 +1980,31 @@
       .visit-card,
       .modal-body {
         padding: 18px;
+      }
+
+      .food-card-body {
+        padding: 14px;
+      }
+
+      .specials-callout {
+        padding: 16px 0;
+      }
+
+      .specials-callout h2 {
+        font-size: 1.24rem;
+      }
+
+      .specials-callout p {
+        font-size: 0.94rem;
+      }
+
+      .food-3d-stage {
+        min-height: 190px;
+        aspect-ratio: 1.68;
+      }
+
+      .specials-toast p {
+        display: none;
       }
     }
 
@@ -2020,6 +2196,20 @@
         </div>
       </div>
 
+      <section class="specials-callout" aria-labelledby="specials-callout-title">
+        <div class="container specials-callout-inner">
+          <div class="specials-callout-copy">
+            <p class="specials-callout-kicker">Daily specials move fast</p>
+            <h2 id="specials-callout-title">Check Facebook before you head over.</h2>
+            <p>Rockwell posts today's deals, fresh plates, and last-minute updates there first.</p>
+          </div>
+          <a class="btn" href="https://www.facebook.com/RockwellFallsGeneralStore/" target="_blank" rel="noopener">
+            Open Facebook
+            <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
+          </a>
+        </div>
+      </section>
+
       <section class="section story" aria-labelledby="story-title">
         <div class="container story-grid">
           <div class="story-polaroid">
@@ -2140,8 +2330,9 @@
         <div class="container facebook-layout">
           <div class="facebook-copy">
             <p class="script-line">Daily specials and deals</p>
-            <h2 id="facebook-title">Posted on Facebook</h2>
-            <p>Rockwell Falls posts specials, deals, fresh bakes, and last-minute updates on Facebook so regulars can see what is hot today.</p>
+            <h2 id="facebook-title">Fresh Posts from Rockwell</h2>
+            <p>Specials, fresh bakes, and same-day updates live on Facebook, so the feed below is the best place to check before you call or stop in.</p>
+            <span class="facebook-note">Newest posts load from Facebook</span>
             <a class="btn" href="https://www.facebook.com/RockwellFallsGeneralStore/" target="_blank" rel="noopener">
               Follow on Facebook
               <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
@@ -2307,8 +2498,8 @@
 
   <div class="specials-toast" data-specials-toast aria-live="polite">
     <div>
-      <h2>Today&apos;s specials are on Facebook</h2>
-      <p>Deals and daily plates change fast, so check the Facebook page before you head over.</p>
+      <h2>Specials are on Facebook</h2>
+      <p>Check today&apos;s posts before you head over.</p>
       <a href="https://www.facebook.com/RockwellFallsGeneralStore/" target="_blank" rel="noopener">Open Facebook</a>
     </div>
     <button class="toast-close" type="button" data-close-toast aria-label="Close Facebook specials notice">X</button>
@@ -2748,7 +2939,7 @@
       if (!sessionStorage.getItem("rockwellSpecialsClosed")) {
         window.setTimeout(() => {
           document.querySelector("[data-specials-toast]").classList.add("show");
-        }, 5200);
+        }, 8200);
       }
     });
 
@@ -2891,7 +3082,7 @@
       const foodType = canvas.getAttribute("data-food-3d");
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 50);
-      camera.position.set(0, 2.85, 4.45);
+      camera.position.set(0, 2.72, 4.2);
       camera.lookAt(0, 0.22, 0);
 
       const renderer = new THREE.WebGLRenderer({
@@ -2914,7 +3105,8 @@
       scene.add(fillLight);
 
       const model = createFoodModel(foodType);
-      model.scale.setScalar(1.08);
+      const modelScale = { burger: 1.12, pizza: 1.16, breakfast: 1.1 }[foodType] || 1.08;
+      model.scale.setScalar(modelScale);
       model.rotation.x = -0.18;
       model.rotation.y = index * 0.9;
       scene.add(model);
