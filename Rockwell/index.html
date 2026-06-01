@@ -798,9 +798,11 @@
     }
 
     .food-3d-card {
+      position: relative;
       min-width: 0;
       overflow: hidden;
-      background: var(--white);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 249, 236, 0.98));
       border: 3px solid var(--black);
       border-radius: 8px;
       box-shadow: 7px 7px 0 var(--rust);
@@ -811,13 +813,28 @@
       min-height: 224px;
       aspect-ratio: 1.35;
       background:
-        radial-gradient(circle at 50% 58%, rgba(245, 185, 31, 0.34), transparent 36%),
-        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.94), rgba(239, 228, 207, 0.6) 64%),
+        radial-gradient(ellipse at 50% 73%, rgba(17, 16, 14, 0.16), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(245, 185, 31, 0.32), transparent 37%),
+        radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.96), rgba(239, 228, 207, 0.62) 66%),
         var(--paper-2);
       border-bottom: 3px solid var(--black);
     }
 
+    .food-3d-stage::before {
+      content: "";
+      position: absolute;
+      left: 22%;
+      right: 22%;
+      bottom: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(17, 16, 14, 0.16);
+      filter: blur(9px);
+    }
+
     .food-3d-stage canvas {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 100%;
       display: block;
@@ -2003,8 +2020,28 @@
         aspect-ratio: 1.68;
       }
 
+      .specials-toast {
+        right: max(8px, env(safe-area-inset-right));
+        bottom: max(8px, env(safe-area-inset-bottom));
+        width: min(238px, calc(100% - 20px));
+        grid-template-columns: 1fr 36px;
+        gap: 8px;
+        padding: 9px 10px;
+      }
+
+      .specials-toast h2,
+      .specials-toast a {
+        font-size: 0.8rem;
+        line-height: 1.1;
+      }
+
       .specials-toast p {
         display: none;
+      }
+
+      .specials-toast .toast-close {
+        width: 36px;
+        height: 36px;
       }
     }
 
@@ -2962,33 +2999,52 @@
       rust: "#a33b19",
       gold: "#f5b91f",
       crust: "#d9943a",
+      crustDark: "#b86f24",
       cheese: "#ffd45c",
       sauce: "#b82f1d",
       patty: "#5a2d18",
       bacon: "#9f2f1a",
-      egg: "#fff8dc"
+      egg: "#fff8dc",
+      tomato: "#d74028",
+      pickle: "#6f8f2f",
+      onion: "#f4efe8",
+      fry: "#e5aa3a",
+      sesame: "#fff0bf",
+      herb: "#2f6d35"
     };
 
-    const material = (color, roughness = 0.7, metalness = 0.02) => (
-      new THREE.MeshStandardMaterial({ color, roughness, metalness })
+    const material = (color, roughness = 0.7, metalness = 0.02, options = {}) => (
+      new THREE.MeshStandardMaterial({ color, roughness, metalness, ...options })
     );
 
     const materials = {
       plate: material(palette.paper, 0.58),
       rim: material(palette.white, 0.52),
       shadow: material("#d8c9ad", 0.85),
+      plateShadow: material("#c7b58f", 0.9),
       bun: material(palette.crust, 0.76),
+      bunDark: material(palette.crustDark, 0.82),
       patty: material(palette.patty, 0.9),
       cheese: material(palette.cheese, 0.62),
       lettuce: material("#3f7f39", 0.78),
+      tomato: material(palette.tomato, 0.72),
+      onion: material(palette.onion, 0.48),
+      pickle: material(palette.pickle, 0.76),
       sauce: material(palette.sauce, 0.7),
       pepperoni: material("#a3281d", 0.8),
+      crust: material(palette.crust, 0.78),
+      crustDark: material(palette.crustDark, 0.84),
       pancake: material("#c7833a", 0.72),
       syrup: material("#6f3518", 0.5),
       butter: material("#ffe483", 0.42),
       eggWhite: material(palette.egg, 0.52),
       yolk: material(palette.gold, 0.45),
       bacon: material(palette.bacon, 0.78),
+      baconFat: material("#f1b26a", 0.74),
+      fry: material(palette.fry, 0.75),
+      sesame: material(palette.sesame, 0.54),
+      herb: material(palette.herb, 0.72),
+      char: material("#24150e", 0.96),
       green: material(palette.pine, 0.78)
     };
 
@@ -3002,29 +3058,118 @@
       return shape;
     }
 
+    function wavyDiscGeometry(radius = 1, height = 0.06, waves = 12, amplitude = 0.04) {
+      const shape = new THREE.Shape();
+      const steps = 72;
+
+      for (let i = 0; i < steps; i += 1) {
+        const angle = (i / steps) * Math.PI * 2;
+        const ripple = Math.sin(angle * waves) * amplitude + Math.cos(angle * 5) * amplitude * 0.35;
+        const r = radius + ripple;
+        const x = Math.cos(angle) * r;
+        const y = Math.sin(angle) * r;
+        if (i === 0) shape.moveTo(x, y);
+        else shape.lineTo(x, y);
+      }
+
+      shape.closePath();
+      const geometry = new THREE.ExtrudeGeometry(shape, {
+        depth: height,
+        bevelEnabled: true,
+        bevelSize: height * 0.16,
+        bevelThickness: height * 0.12,
+        bevelSegments: 1
+      });
+      geometry.center();
+      geometry.rotateX(-Math.PI / 2);
+      return geometry;
+    }
+
+    function addCylinderBetween(group, start, end, radius, mat, segments = 10) {
+      const startVec = new THREE.Vector3(...start);
+      const endVec = new THREE.Vector3(...end);
+      const direction = endVec.clone().sub(startVec);
+      const length = direction.length();
+      const tube = mesh(new THREE.CylinderGeometry(radius, radius, length, segments), mat);
+      tube.position.copy(startVec.add(endVec).multiplyScalar(0.5));
+      tube.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+      group.add(tube);
+      return tube;
+    }
+
+    function addLeaf(group, position, rotation = [0, 0, 0], scale = [1, 0.12, 0.45]) {
+      group.add(mesh(new THREE.SphereGeometry(0.12, 18, 10), materials.herb, position, rotation, scale));
+    }
+
+    function addBaconStrip(group, position, rotationY = 0, mirror = 1) {
+      const strip = new THREE.Group();
+      strip.position.set(...position);
+      strip.rotation.set(0.04, rotationY, mirror * 0.08);
+      strip.add(mesh(new THREE.BoxGeometry(0.15, 0.045, 0.84), materials.bacon, [0, 0, 0]));
+      strip.add(mesh(new THREE.BoxGeometry(0.024, 0.049, 0.76), materials.baconFat, [-0.045, 0.008, 0.02]));
+      strip.add(mesh(new THREE.BoxGeometry(0.018, 0.049, 0.72), materials.baconFat, [0.044, 0.009, -0.02]));
+      strip.add(mesh(new THREE.BoxGeometry(0.13, 0.05, 0.1), materials.char, [0, 0.014, -0.24], [0, 0.2, 0]));
+      group.add(strip);
+    }
+
     function createPlate() {
       const group = new THREE.Group();
       group.add(mesh(new THREE.CylinderGeometry(1.5, 1.62, 0.12, 72), materials.plate, [0, 0, 0]));
       group.add(mesh(new THREE.TorusGeometry(1.38, 0.09, 14, 72), materials.rim, [0, 0.09, 0], [Math.PI / 2, 0, 0]));
-      group.add(mesh(new THREE.TorusGeometry(0.72, 0.035, 10, 54), materials.shadow, [0, -0.04, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.TorusGeometry(0.76, 0.035, 10, 54), materials.shadow, [0, -0.04, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(1.36, 1.46, 0.03, 72), materials.plateShadow, [0, -0.09, 0]));
       return group;
     }
 
     function addSesameSeeds(group) {
-      const seedGeometry = new THREE.SphereGeometry(0.035, 10, 6);
-      [[-0.22, 0.02], [0.04, -0.08], [0.26, 0.08], [-0.02, 0.18], [0.18, -0.23]].forEach(([x, z]) => {
-        group.add(mesh(seedGeometry, materials.plate, [x, 0.93, z], [0, 0, 0], [1, 0.35, 0.62]));
+      const seedGeometry = new THREE.SphereGeometry(0.035, 12, 7);
+      [
+        [-0.26, 0.01, -0.25],
+        [-0.12, 0.2, 0.18],
+        [0.04, -0.11, 0.2],
+        [0.18, 0.08, -0.18],
+        [0.28, -0.17, 0.12],
+        [0.02, 0.27, -0.05],
+        [-0.31, -0.16, 0.18]
+      ].forEach(([x, z, turn]) => {
+        group.add(mesh(seedGeometry, materials.sesame, [x, 1.035, z], [0.16, turn, -0.08], [1.08, 0.32, 0.6]));
       });
     }
 
     function createBurgerPlate() {
       const group = createPlate();
-      group.add(mesh(new THREE.CylinderGeometry(0.58, 0.62, 0.18, 48), materials.bun, [0, 0.22, 0]));
-      group.add(mesh(new THREE.CylinderGeometry(0.62, 0.58, 0.15, 48), materials.lettuce, [0, 0.37, 0], [0, 0.18, 0], [1.08, 1, 0.92]));
-      group.add(mesh(new THREE.CylinderGeometry(0.56, 0.58, 0.18, 48), materials.patty, [0, 0.51, 0]));
-      group.add(mesh(new THREE.BoxGeometry(1.05, 0.055, 1.05), materials.cheese, [0, 0.63, 0], [0, 0.33, 0]));
-      group.add(mesh(new THREE.SphereGeometry(0.58, 40, 18), materials.bun, [0, 0.82, 0], [0, 0, 0], [1, 0.34, 0.86]));
-      addSesameSeeds(group);
+      const burger = new THREE.Group();
+      burger.position.set(-0.12, 0, 0.03);
+      burger.add(mesh(new THREE.CylinderGeometry(0.58, 0.64, 0.16, 48), materials.bunDark, [0, 0.2, 0]));
+      burger.add(mesh(new THREE.CylinderGeometry(0.57, 0.6, 0.14, 48), materials.patty, [0, 0.34, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(1.06, 0.045, 1.06), materials.cheese, [0, 0.43, 0], [0, 0.32, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(0.16, 0.045, 0.2), materials.cheese, [0.5, 0.405, 0.08], [0, 0.18, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(0.18, 0.045, 0.16), materials.cheese, [-0.42, 0.405, -0.2], [0, -0.3, 0]));
+      burger.add(mesh(wavyDiscGeometry(0.64, 0.05, 15, 0.052), materials.lettuce, [0, 0.49, 0], [0, 0.18, 0], [1.08, 1, 0.92]));
+      burger.add(mesh(wavyDiscGeometry(0.5, 0.04, 8, 0.018), materials.tomato, [0, 0.56, 0.01], [0, -0.12, 0], [1.02, 1, 0.94]));
+      burger.add(mesh(new THREE.TorusGeometry(0.26, 0.018, 8, 34), materials.onion, [0.14, 0.61, 0.04], [Math.PI / 2, 0, 0]));
+      burger.add(mesh(new THREE.TorusGeometry(0.2, 0.016, 8, 30), materials.onion, [-0.17, 0.61, -0.08], [Math.PI / 2, 0.2, 0]));
+      burger.add(mesh(new THREE.SphereGeometry(0.6, 44, 18), materials.bun, [0, 0.82, 0], [0, 0, 0], [1, 0.36, 0.84]));
+      burger.add(mesh(new THREE.TorusGeometry(0.53, 0.035, 8, 48), materials.bunDark, [0, 0.62, 0], [Math.PI / 2, 0, 0], [1, 0.7, 0.9]));
+      burger.add(mesh(new THREE.BoxGeometry(0.4, 0.018, 0.035), materials.char, [-0.16, 0.415, 0.58], [0, 0.18, 0.1]));
+      burger.add(mesh(new THREE.BoxGeometry(0.3, 0.018, 0.032), materials.char, [0.24, 0.39, 0.58], [0, -0.1, -0.1]));
+      addSesameSeeds(burger);
+      group.add(burger);
+
+      const fryGeometry = new THREE.BoxGeometry(0.08, 0.08, 0.78);
+      [
+        [0.78, 0.2, -0.45, -0.55],
+        [0.92, 0.23, -0.36, -0.28],
+        [1.02, 0.2, -0.18, 0.05],
+        [0.77, 0.18, -0.2, -0.02],
+        [0.92, 0.19, -0.58, -0.78]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(fryGeometry, materials.fry, [x, y, z], [0.1, turn, 0.06]));
+      });
+
+      const pickleGeometry = new THREE.CylinderGeometry(0.14, 0.14, 0.035, 28);
+      group.add(mesh(pickleGeometry, materials.pickle, [-0.86, 0.13, 0.52], [0, 0.12, 0], [1, 1, 0.66]));
+      group.add(mesh(pickleGeometry, materials.pickle, [-0.64, 0.14, 0.65], [0, -0.12, 0], [1, 1, 0.72]));
       return group;
     }
 
@@ -3042,33 +3187,78 @@
 
     function createPizzaPlate() {
       const group = createPlate();
-      group.add(mesh(new THREE.CylinderGeometry(0.82, 0.86, 0.14, 64), materials.crust, [0, 0.22, 0]));
-      group.add(mesh(new THREE.CylinderGeometry(0.74, 0.76, 0.045, 64), materials.sauce, [0, 0.32, 0]));
-      group.add(mesh(new THREE.CylinderGeometry(0.69, 0.71, 0.045, 64), materials.cheese, [0, 0.37, 0]));
-      group.add(mesh(pizzaSliceGeometry(0.45), materials.cheese, [0.46, 0.46, -0.32], [0, -0.5, 0], [1, 1, 1]));
-      group.add(mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.045, 24), materials.pepperoni, [-0.34, 0.43, 0.26]));
-      group.add(mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.045, 24), materials.pepperoni, [0.28, 0.43, 0.2]));
-      group.add(mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.045, 24), materials.pepperoni, [0.04, 0.43, -0.34]));
-      group.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.045, 24), materials.pepperoni, [-0.22, 0.43, -0.08]));
-      group.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.045, 24), materials.pepperoni, [0.38, 0.43, -0.24]));
+      group.add(mesh(new THREE.CylinderGeometry(0.92, 0.98, 0.13, 72), materials.crust, [0, 0.2, 0]));
+      group.add(mesh(new THREE.TorusGeometry(0.88, 0.08, 14, 72), materials.crustDark, [0, 0.3, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(0.78, 0.8, 0.04, 72), materials.sauce, [0, 0.32, 0]));
+      group.add(mesh(wavyDiscGeometry(0.72, 0.046, 18, 0.018), materials.cheese, [0, 0.38, 0], [0, 0.18, 0]));
+      [
+        [0, 0.44, 0, 0],
+        [0, 0.445, 0, 2.09],
+        [0, 0.445, 0, -2.09]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(new THREE.BoxGeometry(0.018, 0.016, 0.9), materials.sauce, [x, y, z], [0, turn, 0]));
+      });
+
+      [
+        [-0.38, 0.47, 0.24, 0.13],
+        [0.3, 0.47, 0.24, 0.12],
+        [0.05, 0.47, -0.3, 0.11],
+        [-0.26, 0.47, -0.1, 0.1],
+        [0.43, 0.47, -0.18, 0.1],
+        [-0.03, 0.47, 0.42, 0.09]
+      ].forEach(([x, y, z, radius]) => {
+        group.add(mesh(new THREE.CylinderGeometry(radius, radius, 0.038, 26), materials.pepperoni, [x, y, z]));
+      });
+      addLeaf(group, [-0.48, 0.49, -0.18], [0.2, 0.9, -0.1], [0.8, 0.1, 0.42]);
+      addLeaf(group, [0.35, 0.49, 0.02], [0.1, -0.8, 0.2], [0.72, 0.1, 0.38]);
+      addLeaf(group, [-0.08, 0.49, 0.1], [0.1, 0.2, -0.2], [0.58, 0.09, 0.34]);
+
+      const slice = new THREE.Group();
+      slice.position.set(0.58, 0.12, -0.42);
+      slice.rotation.y = -0.5;
+      slice.add(mesh(pizzaSliceGeometry(0.54), materials.crust, [0, 0.17, 0], [0, 0, 0], [1.08, 1, 1.08]));
+      slice.add(mesh(pizzaSliceGeometry(0.48), materials.sauce, [0, 0.24, 0.02], [0, 0, 0], [1, 1, 1]));
+      slice.add(mesh(pizzaSliceGeometry(0.46), materials.cheese, [0, 0.29, 0.03], [0, 0, 0], [1, 1, 1]));
+      slice.add(mesh(new THREE.BoxGeometry(0.42, 0.06, 0.07), materials.crustDark, [0, 0.36, -0.4]));
+      slice.add(mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.034, 24), materials.pepperoni, [-0.13, 0.38, -0.05]));
+      slice.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.034, 24), materials.pepperoni, [0.16, 0.38, -0.2]));
+      addLeaf(slice, [0.08, 0.4, 0.14], [0.18, -0.45, 0], [0.56, 0.08, 0.32]);
+      group.add(slice);
+
+      addCylinderBetween(group, [0.25, 0.49, -0.18], [0.5, 0.58, -0.34], 0.018, materials.cheese, 8);
+      addCylinderBetween(group, [0.18, 0.48, -0.34], [0.43, 0.56, -0.46], 0.014, materials.cheese, 8);
+      addCylinderBetween(group, [0.44, 0.49, -0.08], [0.62, 0.56, -0.28], 0.013, materials.cheese, 8);
       return group;
     }
 
     function createBreakfastPlate() {
       const group = createPlate();
-      [-0.02, 0.1, 0.22].forEach((height, index) => {
-        group.add(mesh(
-          new THREE.CylinderGeometry(0.54 - index * 0.02, 0.56, 0.1, 48),
-          materials.pancake,
-          [-0.18, 0.22 + height, -0.1]
-        ));
+      [
+        [-0.27, 0.19, -0.08, 0.08, 0.62],
+        [-0.21, 0.29, -0.11, -0.12, 0.58],
+        [-0.25, 0.4, -0.08, 0.16, 0.54]
+      ].forEach(([x, y, z, turn, radius]) => {
+        group.add(mesh(wavyDiscGeometry(radius, 0.095, 11, 0.024), materials.pancake, [x, y, z], [0, turn, 0], [1, 1, 0.95]));
       });
-      group.add(mesh(new THREE.BoxGeometry(0.24, 0.08, 0.22), materials.butter, [-0.17, 0.54, -0.1], [0.08, 0.3, 0.05]));
-      group.add(mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.04, 30), materials.syrup, [-0.17, 0.48, -0.1], [0, 0, 0], [1, 1, 0.72]));
-      group.add(mesh(new THREE.SphereGeometry(0.32, 28, 12), materials.eggWhite, [0.58, 0.24, 0.2], [0, 0, 0], [1.25, 0.09, 0.82]));
-      group.add(mesh(new THREE.SphereGeometry(0.12, 24, 12), materials.yolk, [0.58, 0.3, 0.2], [0, 0, 0], [1, 0.45, 1]));
-      group.add(mesh(new THREE.BoxGeometry(0.12, 0.055, 0.8), materials.bacon, [0.38, 0.26, -0.45], [0, 0.28, 0.08]));
-      group.add(mesh(new THREE.BoxGeometry(0.12, 0.055, 0.78), materials.bacon, [0.66, 0.27, -0.43], [0, 0.18, -0.08]));
+      group.add(mesh(wavyDiscGeometry(0.27, 0.032, 8, 0.018), materials.syrup, [-0.25, 0.49, -0.08], [0, 0.18, 0], [1.05, 1, 0.78]));
+      group.add(mesh(new THREE.CylinderGeometry(0.035, 0.045, 0.24, 18), materials.syrup, [-0.63, 0.39, -0.04]));
+      group.add(mesh(new THREE.CylinderGeometry(0.03, 0.04, 0.2, 18), materials.syrup, [0.12, 0.37, -0.2]));
+      group.add(mesh(new THREE.BoxGeometry(0.24, 0.08, 0.22), materials.butter, [-0.22, 0.56, -0.08], [0.08, 0.3, 0.05]));
+
+      group.add(mesh(wavyDiscGeometry(0.43, 0.035, 9, 0.052), materials.eggWhite, [0.56, 0.2, 0.27], [0, -0.2, 0], [1.36, 1, 0.9]));
+      group.add(mesh(new THREE.SphereGeometry(0.135, 28, 14), materials.yolk, [0.56, 0.29, 0.27], [0, 0, 0], [1, 0.52, 1]));
+      addBaconStrip(group, [0.42, 0.205, -0.58], 0.23, 1);
+      addBaconStrip(group, [0.72, 0.21, -0.48], 0.08, -1);
+
+      const hashGeometry = new THREE.BoxGeometry(0.06, 0.035, 0.34);
+      [
+        [0.92, 0.18, 0.2, 0.7],
+        [0.78, 0.17, 0.38, -0.2],
+        [0.98, 0.19, 0.42, 1.1],
+        [0.72, 0.18, 0.12, 0.3]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(hashGeometry, materials.fry, [x, y, z], [0.04, turn, 0.08]));
+      });
       return group;
     }
 
