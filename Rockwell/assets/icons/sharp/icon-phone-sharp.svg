@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>:root{--pine: #123323;--black: #11100e;--paper: #fff9ec;--rust: #a33b19;--gold: #f5b91f;--white: #ffffff;}</style>
+  <path d="M23 11c-4 1-7 5-7 9 0 17 16 32 33 32 4 0 8-3 9-7l-2-12-12-3-6 6c-5-3-8-6-11-11l6-6-3-12-7 4z" fill="var(--rust)" opacity=".9"></path>
+      <path d="M19 8c-4 1-7 5-7 9 0 17 16 32 33 32 4 0 8-3 9-7l-2-12-12-3-6 6c-5-3-8-6-11-11l6-6-3-12-7 4z" fill="var(--gold)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M18 16c2 12 12 22 24 26" fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"></path>
+</svg>

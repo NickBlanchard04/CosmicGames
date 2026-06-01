@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>:root{--pine: #123323;--black: #11100e;--paper: #fff9ec;--rust: #a33b19;--gold: #f5b91f;--white: #ffffff;}</style>
+  <ellipse cx="35" cy="42" rx="24" ry="12" fill="var(--rust)"></ellipse>
+      <ellipse cx="30" cy="38" rx="24" ry="12" fill="var(--paper)" stroke="var(--black)" stroke-width="4"></ellipse>
+      <circle cx="25" cy="36" r="9" fill="var(--white)" stroke="var(--black)" stroke-width="3"></circle>
+      <circle cx="25" cy="36" r="4" fill="var(--gold)"></circle>
+      <path d="M35 18h12v15c0 4-2 7-6 7s-6-3-6-7z" fill="var(--pine)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M36 24h10" stroke="var(--paper)" stroke-width="3" stroke-linecap="round"></path>
+</svg>

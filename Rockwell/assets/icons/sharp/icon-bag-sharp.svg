@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>:root{--pine: #123323;--black: #11100e;--paper: #fff9ec;--rust: #a33b19;--gold: #f5b91f;--white: #ffffff;}</style>
+  <path d="M18 18h34l4 36H15z" fill="var(--rust)" opacity=".95"></path>
+      <path d="M13 15h34l4 36H10z" fill="var(--gold)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M22 20c0-8 4-12 11-12s11 4 11 12" fill="none" stroke="var(--black)" stroke-width="4" stroke-linecap="round"></path>
+      <path d="M22 29h17" stroke="var(--paper)" stroke-width="4" stroke-linecap="round"></path>
+      <path d="M22 38h11" stroke="var(--paper)" stroke-width="4" stroke-linecap="round"></path>
+</svg>

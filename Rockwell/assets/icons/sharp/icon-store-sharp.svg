@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>:root{--pine: #123323;--black: #11100e;--paper: #fff9ec;--rust: #a33b19;--gold: #f5b91f;--white: #ffffff;}</style>
+  <path d="M12 50h42v8H12z" fill="var(--rust)"></path>
+      <path d="M10 46h42v8H10z" fill="var(--paper)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M15 46V29l12-12 12 12v17" fill="var(--gold)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M34 46V24l8-10 8 10v22" fill="var(--pine)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <path d="M17 31h20" stroke="var(--paper)" stroke-width="4" stroke-linecap="round"></path>
+      <path d="M41 27h9" stroke="var(--gold)" stroke-width="4" stroke-linecap="round"></path>
+</svg>

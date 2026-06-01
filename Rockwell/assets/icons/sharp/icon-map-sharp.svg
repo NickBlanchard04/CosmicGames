@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>:root{--pine: #123323;--black: #11100e;--paper: #fff9ec;--rust: #a33b19;--gold: #f5b91f;--white: #ffffff;}</style>
+  <path d="M36 60s18-20 18-34c0-12-8-21-22-21S10 14 10 26c0 14 18 34 18 34h8z" fill="var(--rust)"></path>
+      <path d="M32 57S50 37 50 23C50 11 42 2 32 2S14 11 14 23c0 14 18 34 18 34z" fill="var(--gold)" stroke="var(--black)" stroke-width="4" stroke-linejoin="round"></path>
+      <circle cx="32" cy="23" r="8" fill="var(--paper)" stroke="var(--black)" stroke-width="4"></circle>
+</svg>
