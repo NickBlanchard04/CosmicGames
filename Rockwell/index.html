@@ -709,6 +709,85 @@
       height: 42px;
     }
 
+    .food-3d-showcase {
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(245, 185, 31, 0.09), rgba(255, 249, 236, 0.88)),
+        var(--paper);
+      border-top: 4px solid var(--black);
+      border-bottom: 4px solid var(--black);
+    }
+
+    .food-3d-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .food-3d-head .section-title {
+      margin-bottom: 0;
+    }
+
+    .food-3d-head p:last-child {
+      max-width: 390px;
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .food-3d-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .food-3d-card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 8px;
+      box-shadow: 7px 7px 0 var(--rust);
+    }
+
+    .food-3d-stage {
+      position: relative;
+      min-height: 260px;
+      aspect-ratio: 1.12;
+      background:
+        radial-gradient(circle at 50% 58%, rgba(245, 185, 31, 0.34), transparent 36%),
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.94), rgba(239, 228, 207, 0.6) 64%),
+        var(--paper-2);
+      border-bottom: 3px solid var(--black);
+    }
+
+    .food-3d-stage canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+    }
+
+    .food-3d-body {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+    }
+
+    .food-3d-body h3 {
+      color: var(--pine);
+      font-size: 1.42rem;
+    }
+
+    .food-3d-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
     .favorites {
       color: var(--paper);
       background:
@@ -1624,9 +1703,19 @@
 
       .story-points,
       .featured-grid,
+      .food-3d-grid,
       .menu-list,
       .footer-grid {
         grid-template-columns: 1fr;
+      }
+
+      .food-3d-head {
+        display: grid;
+        gap: 12px;
+      }
+
+      .food-3d-stage {
+        min-height: 246px;
       }
 
       .menu-item {
@@ -1948,6 +2037,50 @@
               <span class="story-point"><svg class="sharp-icon" aria-hidden="true"><use href="#icon-sub-sharp"></use></svg>Lunch and subs</span>
               <span class="story-point"><svg class="sharp-icon" aria-hidden="true"><use href="#icon-dinner-sharp"></use></svg>Dinner plates</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section food-3d-showcase" aria-labelledby="food-3d-title">
+        <div class="container">
+          <div class="food-3d-head">
+            <div class="section-title">
+              <p class="overline">Fresh off the grill</p>
+              <h2 id="food-3d-title">Three Local Plates</h2>
+            </div>
+            <p>Burger plates, hot pizza, and breakfast favorites are the kind of orders that keep the counter moving.</p>
+          </div>
+
+          <div class="food-3d-grid">
+            <article class="food-3d-card">
+              <div class="food-3d-stage">
+                <canvas data-food-3d="burger" aria-label="Rotating burger plate"></canvas>
+              </div>
+              <div class="food-3d-body">
+                <h3>Burger Plate</h3>
+                <p>Griddle patty, melted cheese, and a toasted bun on a diner plate.</p>
+              </div>
+            </article>
+
+            <article class="food-3d-card">
+              <div class="food-3d-stage">
+                <canvas data-food-3d="pizza" aria-label="Rotating pizza plate"></canvas>
+              </div>
+              <div class="food-3d-body">
+                <h3>Fresh Pizza</h3>
+                <p>A cheesy slice with pepperoni, baked hot and ready to share.</p>
+              </div>
+            </article>
+
+            <article class="food-3d-card">
+              <div class="food-3d-stage">
+                <canvas data-food-3d="breakfast" aria-label="Rotating breakfast plate"></canvas>
+              </div>
+              <div class="food-3d-body">
+                <h3>Breakfast Plate</h3>
+                <p>Pancakes, egg, and bacon for the morning stop before the day starts.</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -2622,6 +2755,214 @@
     renderFeatured();
     renderMenu();
     renderCart();
+  </script>
+
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js";
+
+    const foodCanvases = Array.from(document.querySelectorAll("[data-food-3d]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const palette = {
+      black: "#11100e",
+      pine: "#123323",
+      paper: "#fff9ec",
+      white: "#ffffff",
+      rust: "#a33b19",
+      gold: "#f5b91f",
+      crust: "#d9943a",
+      cheese: "#ffd45c",
+      sauce: "#b82f1d",
+      patty: "#5a2d18",
+      bacon: "#9f2f1a",
+      egg: "#fff8dc"
+    };
+
+    const material = (color, roughness = 0.7, metalness = 0.02) => (
+      new THREE.MeshStandardMaterial({ color, roughness, metalness })
+    );
+
+    const materials = {
+      plate: material(palette.paper, 0.58),
+      rim: material(palette.white, 0.52),
+      shadow: material("#d8c9ad", 0.85),
+      bun: material(palette.crust, 0.76),
+      patty: material(palette.patty, 0.9),
+      cheese: material(palette.cheese, 0.62),
+      lettuce: material("#3f7f39", 0.78),
+      sauce: material(palette.sauce, 0.7),
+      pepperoni: material("#a3281d", 0.8),
+      pancake: material("#c7833a", 0.72),
+      syrup: material("#6f3518", 0.5),
+      butter: material("#ffe483", 0.42),
+      eggWhite: material(palette.egg, 0.52),
+      yolk: material(palette.gold, 0.45),
+      bacon: material(palette.bacon, 0.78),
+      green: material(palette.pine, 0.78)
+    };
+
+    function mesh(geometry, mat, position = [0, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1]) {
+      const shape = new THREE.Mesh(geometry, mat);
+      shape.position.set(...position);
+      shape.rotation.set(...rotation);
+      shape.scale.set(...scale);
+      shape.castShadow = true;
+      shape.receiveShadow = true;
+      return shape;
+    }
+
+    function createPlate() {
+      const group = new THREE.Group();
+      group.add(mesh(new THREE.CylinderGeometry(1.5, 1.62, 0.12, 72), materials.plate, [0, 0, 0]));
+      group.add(mesh(new THREE.TorusGeometry(1.38, 0.09, 14, 72), materials.rim, [0, 0.09, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.TorusGeometry(0.72, 0.035, 10, 54), materials.shadow, [0, -0.04, 0], [Math.PI / 2, 0, 0]));
+      return group;
+    }
+
+    function addSesameSeeds(group) {
+      const seedGeometry = new THREE.SphereGeometry(0.035, 10, 6);
+      [[-0.22, 0.02], [0.04, -0.08], [0.26, 0.08], [-0.02, 0.18], [0.18, -0.23]].forEach(([x, z]) => {
+        group.add(mesh(seedGeometry, materials.plate, [x, 0.93, z], [0, 0, 0], [1, 0.35, 0.62]));
+      });
+    }
+
+    function createBurgerPlate() {
+      const group = createPlate();
+      group.add(mesh(new THREE.CylinderGeometry(0.58, 0.62, 0.18, 48), materials.bun, [0, 0.22, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(0.62, 0.58, 0.15, 48), materials.lettuce, [0, 0.37, 0], [0, 0.18, 0], [1.08, 1, 0.92]));
+      group.add(mesh(new THREE.CylinderGeometry(0.56, 0.58, 0.18, 48), materials.patty, [0, 0.51, 0]));
+      group.add(mesh(new THREE.BoxGeometry(1.05, 0.055, 1.05), materials.cheese, [0, 0.63, 0], [0, 0.33, 0]));
+      group.add(mesh(new THREE.SphereGeometry(0.58, 40, 18), materials.bun, [0, 0.82, 0], [0, 0, 0], [1, 0.34, 0.86]));
+      addSesameSeeds(group);
+      return group;
+    }
+
+    function pizzaSliceGeometry(scale = 1) {
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0.92 * scale);
+      shape.lineTo(-0.78 * scale, -0.78 * scale);
+      shape.lineTo(0.78 * scale, -0.78 * scale);
+      shape.closePath();
+      const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.1, bevelEnabled: false });
+      geometry.center();
+      geometry.rotateX(-Math.PI / 2);
+      return geometry;
+    }
+
+    function createPizzaPlate() {
+      const group = createPlate();
+      group.add(mesh(new THREE.CylinderGeometry(0.82, 0.86, 0.14, 64), materials.crust, [0, 0.22, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(0.74, 0.76, 0.045, 64), materials.sauce, [0, 0.32, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(0.69, 0.71, 0.045, 64), materials.cheese, [0, 0.37, 0]));
+      group.add(mesh(pizzaSliceGeometry(0.45), materials.cheese, [0.46, 0.46, -0.32], [0, -0.5, 0], [1, 1, 1]));
+      group.add(mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.045, 24), materials.pepperoni, [-0.34, 0.43, 0.26]));
+      group.add(mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.045, 24), materials.pepperoni, [0.28, 0.43, 0.2]));
+      group.add(mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.045, 24), materials.pepperoni, [0.04, 0.43, -0.34]));
+      group.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.045, 24), materials.pepperoni, [-0.22, 0.43, -0.08]));
+      group.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.045, 24), materials.pepperoni, [0.38, 0.43, -0.24]));
+      return group;
+    }
+
+    function createBreakfastPlate() {
+      const group = createPlate();
+      [-0.02, 0.1, 0.22].forEach((height, index) => {
+        group.add(mesh(
+          new THREE.CylinderGeometry(0.54 - index * 0.02, 0.56, 0.1, 48),
+          materials.pancake,
+          [-0.18, 0.22 + height, -0.1]
+        ));
+      });
+      group.add(mesh(new THREE.BoxGeometry(0.24, 0.08, 0.22), materials.butter, [-0.17, 0.54, -0.1], [0.08, 0.3, 0.05]));
+      group.add(mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.04, 30), materials.syrup, [-0.17, 0.48, -0.1], [0, 0, 0], [1, 1, 0.72]));
+      group.add(mesh(new THREE.SphereGeometry(0.32, 28, 12), materials.eggWhite, [0.58, 0.24, 0.2], [0, 0, 0], [1.25, 0.09, 0.82]));
+      group.add(mesh(new THREE.SphereGeometry(0.12, 24, 12), materials.yolk, [0.58, 0.3, 0.2], [0, 0, 0], [1, 0.45, 1]));
+      group.add(mesh(new THREE.BoxGeometry(0.12, 0.055, 0.8), materials.bacon, [0.38, 0.26, -0.45], [0, 0.28, 0.08]));
+      group.add(mesh(new THREE.BoxGeometry(0.12, 0.055, 0.78), materials.bacon, [0.66, 0.27, -0.43], [0, 0.18, -0.08]));
+      return group;
+    }
+
+    function createFoodModel(type) {
+      if (type === "burger") return createBurgerPlate();
+      if (type === "pizza") return createPizzaPlate();
+      return createBreakfastPlate();
+    }
+
+    function createScene(canvas, index) {
+      const foodType = canvas.getAttribute("data-food-3d");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 50);
+      camera.position.set(0, 2.85, 4.45);
+      camera.lookAt(0, 0.22, 0);
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+        preserveDrawingBuffer: true,
+        powerPreference: "high-performance"
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      scene.add(new THREE.HemisphereLight(0xfff4dd, 0x123323, 1.8));
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+      keyLight.position.set(3.2, 5, 4);
+      scene.add(keyLight);
+      const fillLight = new THREE.DirectionalLight(0xf5b91f, 0.9);
+      fillLight.position.set(-3, 2.6, -2);
+      scene.add(fillLight);
+
+      const model = createFoodModel(foodType);
+      model.scale.setScalar(1.08);
+      model.rotation.x = -0.18;
+      model.rotation.y = index * 0.9;
+      scene.add(model);
+
+      return { canvas, camera, renderer, scene, model, type: foodType };
+    }
+
+    function resizeFoodScene(item) {
+      const width = Math.max(1, Math.floor(item.canvas.clientWidth));
+      const height = Math.max(1, Math.floor(item.canvas.clientHeight));
+      if (item.canvas.width !== width || item.canvas.height !== height) {
+        item.renderer.setSize(width, height, false);
+        item.camera.aspect = width / height;
+        item.camera.updateProjectionMatrix();
+      }
+    }
+
+    const foodScenes = foodCanvases.map(createScene);
+    const resizeObserver = new ResizeObserver(() => foodScenes.forEach(resizeFoodScene));
+    foodCanvases.forEach((canvas) => resizeObserver.observe(canvas));
+
+    function renderFood(now = 0) {
+      foodScenes.forEach((item, index) => {
+        resizeFoodScene(item);
+        if (!reduceMotion && !document.hidden) {
+          item.model.rotation.y = index * 0.9 + now * 0.0007;
+          item.model.rotation.x = -0.18 + Math.sin(now * 0.001 + index) * 0.035;
+        }
+        item.renderer.render(item.scene, item.camera);
+      });
+
+      if (!reduceMotion) {
+        window.requestAnimationFrame(renderFood);
+      }
+    }
+
+    renderFood();
+
+    window.__rockwell3DFood = {
+      count: foodScenes.length,
+      getState: () => foodScenes.map((item) => ({
+        type: item.type,
+        width: item.canvas.width,
+        height: item.canvas.height,
+        rotationY: Number(item.model.rotation.y.toFixed(4)),
+        dataUrlLength: item.canvas.toDataURL("image/png").length
+      }))
+    };
   </script>
 </body>
 </html>
