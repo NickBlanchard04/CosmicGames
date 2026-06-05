@@ -802,6 +802,8 @@
       position: relative;
       min-width: 0;
       overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 249, 236, 0.98));
       border: 3px solid var(--black);
@@ -814,6 +816,7 @@
       display: grid;
       place-items: center;
       isolation: isolate;
+      cursor: grab;
       min-height: 224px;
       aspect-ratio: 1.35;
       background:
@@ -822,6 +825,10 @@
         radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.96), rgba(239, 228, 207, 0.62) 66%),
         var(--paper-2);
       border-bottom: 3px solid var(--black);
+    }
+
+    .food-3d-stage.is-interacting {
+      cursor: grabbing;
     }
 
     .food-3d-stage::before {
@@ -845,6 +852,29 @@
       place-items: center;
       width: 100%;
       height: 100%;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+    }
+
+    .food-3d-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      touch-action: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .food-3d-stage.is-3d-ready .food-3d-canvas {
+      opacity: 1;
+    }
+
+    .food-3d-stage.is-3d-ready picture {
+      opacity: 0;
+      transform: scale(0.985);
     }
 
     .food-plate-icon {
@@ -2295,6 +2325,7 @@
           <div class="food-3d-grid">
             <article class="food-3d-card">
               <div class="food-3d-stage">
+                <canvas class="food-3d-canvas" data-food-3d="burger" role="img" aria-label="Interactive 3D burger plate"></canvas>
                 <picture>
                   <source srcset="assets/food-icons/food-plate-burger.webp" type="image/webp">
                   <img class="food-plate-icon" src="assets/food-icons/food-plate-burger.png" alt="Burger plate with fries and pickles">
@@ -2308,6 +2339,7 @@
 
             <article class="food-3d-card">
               <div class="food-3d-stage">
+                <canvas class="food-3d-canvas" data-food-3d="pizza" role="img" aria-label="Interactive 3D pepperoni pizza plate"></canvas>
                 <picture>
                   <source srcset="assets/food-icons/food-plate-pizza.webp" type="image/webp">
                   <img class="food-plate-icon" src="assets/food-icons/food-plate-pizza.png" alt="Pepperoni pizza plate with a lifted slice">
@@ -2321,6 +2353,7 @@
 
             <article class="food-3d-card">
               <div class="food-3d-stage">
+                <canvas class="food-3d-canvas" data-food-3d="breakfast" role="img" aria-label="Interactive 3D breakfast plate"></canvas>
                 <picture>
                   <source srcset="assets/food-icons/food-plate-breakfast.webp" type="image/webp">
                   <img class="food-plate-icon" src="assets/food-icons/food-plate-breakfast.png" alt="Breakfast plate with pancakes, egg, and bacon">
@@ -3006,6 +3039,439 @@
     renderFeatured();
     renderMenu();
     renderCart();
+  </script>
+
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js";
+
+    const foodCanvases = Array.from(document.querySelectorAll("[data-food-3d]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const foodStartedAt = performance.now();
+
+    const palette = {
+      black: "#11100e",
+      pine: "#123323",
+      paper: "#fff9ec",
+      white: "#ffffff",
+      rust: "#a33b19",
+      gold: "#f5b91f",
+      crust: "#d9943a",
+      crustDark: "#b86f24",
+      cheese: "#ffd45c",
+      sauce: "#b82f1d",
+      patty: "#5a2d18",
+      bacon: "#9f2f1a",
+      egg: "#fff8dc",
+      tomato: "#d74028",
+      pickle: "#6f8f2f",
+      onion: "#f4efe8",
+      fry: "#e5aa3a",
+      sesame: "#fff0bf",
+      herb: "#2f6d35"
+    };
+
+    const material = (color, roughness = 0.7, metalness = 0.02, options = {}) => (
+      new THREE.MeshStandardMaterial({ color, roughness, metalness, ...options })
+    );
+
+    const materials = {
+      plate: material(palette.paper, 0.58),
+      rim: material(palette.white, 0.52),
+      shadow: material("#d8c9ad", 0.85),
+      plateShadow: material("#c7b58f", 0.9),
+      bun: material(palette.crust, 0.76),
+      bunDark: material(palette.crustDark, 0.82),
+      patty: material(palette.patty, 0.9),
+      cheese: material(palette.cheese, 0.62),
+      lettuce: material("#3f7f39", 0.78),
+      tomato: material(palette.tomato, 0.72),
+      onion: material(palette.onion, 0.48),
+      pickle: material(palette.pickle, 0.76),
+      sauce: material(palette.sauce, 0.7),
+      pepperoni: material("#a3281d", 0.8),
+      crust: material(palette.crust, 0.78),
+      crustDark: material(palette.crustDark, 0.84),
+      pancake: material("#c7833a", 0.72),
+      syrup: material("#6f3518", 0.5),
+      butter: material("#ffe483", 0.42),
+      eggWhite: material(palette.egg, 0.52),
+      yolk: material(palette.gold, 0.45),
+      bacon: material(palette.bacon, 0.78),
+      baconFat: material("#f1b26a", 0.74),
+      fry: material(palette.fry, 0.75),
+      sesame: material(palette.sesame, 0.54),
+      herb: material(palette.herb, 0.72),
+      char: material("#24150e", 0.96)
+    };
+
+    function mesh(geometry, mat, position = [0, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1]) {
+      const shape = new THREE.Mesh(geometry, mat);
+      shape.position.set(...position);
+      shape.rotation.set(...rotation);
+      shape.scale.set(...scale);
+      return shape;
+    }
+
+    function wavyDiscGeometry(radius = 1, height = 0.06, waves = 12, amplitude = 0.04) {
+      const shape = new THREE.Shape();
+      const steps = 72;
+
+      for (let i = 0; i < steps; i += 1) {
+        const angle = (i / steps) * Math.PI * 2;
+        const ripple = Math.sin(angle * waves) * amplitude + Math.cos(angle * 5) * amplitude * 0.35;
+        const r = radius + ripple;
+        const x = Math.cos(angle) * r;
+        const y = Math.sin(angle) * r;
+        if (i === 0) shape.moveTo(x, y);
+        else shape.lineTo(x, y);
+      }
+
+      shape.closePath();
+      const geometry = new THREE.ExtrudeGeometry(shape, {
+        depth: height,
+        bevelEnabled: true,
+        bevelSize: height * 0.16,
+        bevelThickness: height * 0.12,
+        bevelSegments: 1
+      });
+      geometry.center();
+      geometry.rotateX(-Math.PI / 2);
+      return geometry;
+    }
+
+    function addCylinderBetween(group, start, end, radius, mat, segments = 10) {
+      const startVec = new THREE.Vector3(...start);
+      const endVec = new THREE.Vector3(...end);
+      const direction = endVec.clone().sub(startVec);
+      const length = direction.length();
+      const tube = mesh(new THREE.CylinderGeometry(radius, radius, length, segments), mat);
+      tube.position.copy(startVec.add(endVec).multiplyScalar(0.5));
+      tube.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+      group.add(tube);
+    }
+
+    function addLeaf(group, position, rotation = [0, 0, 0], scale = [1, 0.12, 0.45]) {
+      group.add(mesh(new THREE.SphereGeometry(0.12, 18, 10), materials.herb, position, rotation, scale));
+    }
+
+    function addBaconStrip(group, position, rotationY = 0, mirror = 1) {
+      const strip = new THREE.Group();
+      strip.position.set(...position);
+      strip.rotation.set(0.04, rotationY, mirror * 0.08);
+      strip.add(mesh(new THREE.BoxGeometry(0.15, 0.045, 0.84), materials.bacon, [0, 0, 0]));
+      strip.add(mesh(new THREE.BoxGeometry(0.024, 0.049, 0.76), materials.baconFat, [-0.045, 0.008, 0.02]));
+      strip.add(mesh(new THREE.BoxGeometry(0.018, 0.049, 0.72), materials.baconFat, [0.044, 0.009, -0.02]));
+      strip.add(mesh(new THREE.BoxGeometry(0.13, 0.05, 0.1), materials.char, [0, 0.014, -0.24], [0, 0.2, 0]));
+      group.add(strip);
+    }
+
+    function createPlate() {
+      const group = new THREE.Group();
+      group.add(mesh(new THREE.CylinderGeometry(1.5, 1.62, 0.12, 72), materials.plate, [0, 0, 0]));
+      group.add(mesh(new THREE.TorusGeometry(1.38, 0.09, 14, 72), materials.rim, [0, 0.09, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.TorusGeometry(0.76, 0.035, 10, 54), materials.shadow, [0, -0.04, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(1.36, 1.46, 0.03, 72), materials.plateShadow, [0, -0.09, 0]));
+      return group;
+    }
+
+    function addSesameSeeds(group) {
+      const seedGeometry = new THREE.SphereGeometry(0.035, 12, 7);
+      [
+        [-0.26, 0.01, -0.25],
+        [-0.12, 0.2, 0.18],
+        [0.04, -0.11, 0.2],
+        [0.18, 0.08, -0.18],
+        [0.28, -0.17, 0.12],
+        [0.02, 0.27, -0.05],
+        [-0.31, -0.16, 0.18]
+      ].forEach(([x, z, turn]) => {
+        group.add(mesh(seedGeometry, materials.sesame, [x, 1.035, z], [0.16, turn, -0.08], [1.08, 0.32, 0.6]));
+      });
+    }
+
+    function createBurgerPlate() {
+      const group = createPlate();
+      const burger = new THREE.Group();
+      burger.position.set(-0.12, 0, 0.03);
+      burger.add(mesh(new THREE.CylinderGeometry(0.58, 0.64, 0.16, 48), materials.bunDark, [0, 0.2, 0]));
+      burger.add(mesh(new THREE.CylinderGeometry(0.57, 0.6, 0.14, 48), materials.patty, [0, 0.34, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(1.06, 0.045, 1.06), materials.cheese, [0, 0.43, 0], [0, 0.32, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(0.16, 0.045, 0.2), materials.cheese, [0.5, 0.405, 0.08], [0, 0.18, 0]));
+      burger.add(mesh(new THREE.BoxGeometry(0.18, 0.045, 0.16), materials.cheese, [-0.42, 0.405, -0.2], [0, -0.3, 0]));
+      burger.add(mesh(wavyDiscGeometry(0.64, 0.05, 15, 0.052), materials.lettuce, [0, 0.49, 0], [0, 0.18, 0], [1.08, 1, 0.92]));
+      burger.add(mesh(wavyDiscGeometry(0.5, 0.04, 8, 0.018), materials.tomato, [0, 0.56, 0.01], [0, -0.12, 0], [1.02, 1, 0.94]));
+      burger.add(mesh(new THREE.TorusGeometry(0.26, 0.018, 8, 34), materials.onion, [0.14, 0.61, 0.04], [Math.PI / 2, 0, 0]));
+      burger.add(mesh(new THREE.TorusGeometry(0.2, 0.016, 8, 30), materials.onion, [-0.17, 0.61, -0.08], [Math.PI / 2, 0.2, 0]));
+      burger.add(mesh(new THREE.SphereGeometry(0.6, 44, 18), materials.bun, [0, 0.82, 0], [0, 0, 0], [1, 0.36, 0.84]));
+      burger.add(mesh(new THREE.TorusGeometry(0.53, 0.035, 8, 48), materials.bunDark, [0, 0.62, 0], [Math.PI / 2, 0, 0], [1, 0.7, 0.9]));
+      burger.add(mesh(new THREE.BoxGeometry(0.4, 0.018, 0.035), materials.char, [-0.16, 0.415, 0.58], [0, 0.18, 0.1]));
+      burger.add(mesh(new THREE.BoxGeometry(0.3, 0.018, 0.032), materials.char, [0.24, 0.39, 0.58], [0, -0.1, -0.1]));
+      addSesameSeeds(burger);
+      group.add(burger);
+
+      const fryGeometry = new THREE.BoxGeometry(0.08, 0.08, 0.78);
+      [
+        [0.78, 0.2, -0.45, -0.55],
+        [0.92, 0.23, -0.36, -0.28],
+        [1.02, 0.2, -0.18, 0.05],
+        [0.77, 0.18, -0.2, -0.02],
+        [0.92, 0.19, -0.58, -0.78]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(fryGeometry, materials.fry, [x, y, z], [0.1, turn, 0.06]));
+      });
+
+      const pickleGeometry = new THREE.CylinderGeometry(0.14, 0.14, 0.035, 28);
+      group.add(mesh(pickleGeometry, materials.pickle, [-0.86, 0.13, 0.52], [0, 0.12, 0], [1, 1, 0.66]));
+      group.add(mesh(pickleGeometry, materials.pickle, [-0.64, 0.14, 0.65], [0, -0.12, 0], [1, 1, 0.72]));
+      return group;
+    }
+
+    function pizzaSliceGeometry(scale = 1) {
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0.92 * scale);
+      shape.lineTo(-0.78 * scale, -0.78 * scale);
+      shape.lineTo(0.78 * scale, -0.78 * scale);
+      shape.closePath();
+      const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.1, bevelEnabled: false });
+      geometry.center();
+      geometry.rotateX(-Math.PI / 2);
+      return geometry;
+    }
+
+    function createPizzaPlate() {
+      const group = createPlate();
+      group.add(mesh(new THREE.CylinderGeometry(0.92, 0.98, 0.13, 72), materials.crust, [0, 0.2, 0]));
+      group.add(mesh(new THREE.TorusGeometry(0.88, 0.08, 14, 72), materials.crustDark, [0, 0.3, 0], [Math.PI / 2, 0, 0]));
+      group.add(mesh(new THREE.CylinderGeometry(0.78, 0.8, 0.04, 72), materials.sauce, [0, 0.32, 0]));
+      group.add(mesh(wavyDiscGeometry(0.72, 0.046, 18, 0.018), materials.cheese, [0, 0.38, 0], [0, 0.18, 0]));
+      [
+        [0, 0.44, 0, 0],
+        [0, 0.445, 0, 2.09],
+        [0, 0.445, 0, -2.09]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(new THREE.BoxGeometry(0.018, 0.016, 0.9), materials.sauce, [x, y, z], [0, turn, 0]));
+      });
+
+      [
+        [-0.38, 0.47, 0.24, 0.13],
+        [0.3, 0.47, 0.24, 0.12],
+        [0.05, 0.47, -0.3, 0.11],
+        [-0.26, 0.47, -0.1, 0.1],
+        [0.43, 0.47, -0.18, 0.1],
+        [-0.03, 0.47, 0.42, 0.09]
+      ].forEach(([x, y, z, radius]) => {
+        group.add(mesh(new THREE.CylinderGeometry(radius, radius, 0.038, 26), materials.pepperoni, [x, y, z]));
+      });
+      addLeaf(group, [-0.48, 0.49, -0.18], [0.2, 0.9, -0.1], [0.8, 0.1, 0.42]);
+      addLeaf(group, [0.35, 0.49, 0.02], [0.1, -0.8, 0.2], [0.72, 0.1, 0.38]);
+      addLeaf(group, [-0.08, 0.49, 0.1], [0.1, 0.2, -0.2], [0.58, 0.09, 0.34]);
+
+      const slice = new THREE.Group();
+      slice.position.set(0.58, 0.12, -0.42);
+      slice.rotation.y = -0.5;
+      slice.add(mesh(pizzaSliceGeometry(0.54), materials.crust, [0, 0.17, 0], [0, 0, 0], [1.08, 1, 1.08]));
+      slice.add(mesh(pizzaSliceGeometry(0.48), materials.sauce, [0, 0.24, 0.02], [0, 0, 0], [1, 1, 1]));
+      slice.add(mesh(pizzaSliceGeometry(0.46), materials.cheese, [0, 0.29, 0.03], [0, 0, 0], [1, 1, 1]));
+      slice.add(mesh(new THREE.BoxGeometry(0.42, 0.06, 0.07), materials.crustDark, [0, 0.36, -0.4]));
+      slice.add(mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.034, 24), materials.pepperoni, [-0.13, 0.38, -0.05]));
+      slice.add(mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.034, 24), materials.pepperoni, [0.16, 0.38, -0.2]));
+      addLeaf(slice, [0.08, 0.4, 0.14], [0.18, -0.45, 0], [0.56, 0.08, 0.32]);
+      group.add(slice);
+
+      addCylinderBetween(group, [0.25, 0.49, -0.18], [0.5, 0.58, -0.34], 0.018, materials.cheese, 8);
+      addCylinderBetween(group, [0.18, 0.48, -0.34], [0.43, 0.56, -0.46], 0.014, materials.cheese, 8);
+      addCylinderBetween(group, [0.44, 0.49, -0.08], [0.62, 0.56, -0.28], 0.013, materials.cheese, 8);
+      return group;
+    }
+
+    function createBreakfastPlate() {
+      const group = createPlate();
+      [
+        [-0.27, 0.19, -0.08, 0.08, 0.62],
+        [-0.21, 0.29, -0.11, -0.12, 0.58],
+        [-0.25, 0.4, -0.08, 0.16, 0.54]
+      ].forEach(([x, y, z, turn, radius]) => {
+        group.add(mesh(wavyDiscGeometry(radius, 0.095, 11, 0.024), materials.pancake, [x, y, z], [0, turn, 0], [1, 1, 0.95]));
+      });
+      group.add(mesh(wavyDiscGeometry(0.27, 0.032, 8, 0.018), materials.syrup, [-0.25, 0.49, -0.08], [0, 0.18, 0], [1.05, 1, 0.78]));
+      group.add(mesh(new THREE.CylinderGeometry(0.035, 0.045, 0.24, 18), materials.syrup, [-0.63, 0.39, -0.04]));
+      group.add(mesh(new THREE.CylinderGeometry(0.03, 0.04, 0.2, 18), materials.syrup, [0.12, 0.37, -0.2]));
+      group.add(mesh(new THREE.BoxGeometry(0.24, 0.08, 0.22), materials.butter, [-0.22, 0.56, -0.08], [0.08, 0.3, 0.05]));
+
+      group.add(mesh(wavyDiscGeometry(0.43, 0.035, 9, 0.052), materials.eggWhite, [0.56, 0.2, 0.27], [0, -0.2, 0], [1.36, 1, 0.9]));
+      group.add(mesh(new THREE.SphereGeometry(0.135, 28, 14), materials.yolk, [0.56, 0.29, 0.27], [0, 0, 0], [1, 0.52, 1]));
+      addBaconStrip(group, [0.42, 0.205, -0.58], 0.23, 1);
+      addBaconStrip(group, [0.72, 0.21, -0.48], 0.08, -1);
+
+      const hashGeometry = new THREE.BoxGeometry(0.06, 0.035, 0.34);
+      [
+        [0.92, 0.18, 0.2, 0.7],
+        [0.78, 0.17, 0.38, -0.2],
+        [0.98, 0.19, 0.42, 1.1],
+        [0.72, 0.18, 0.12, 0.3]
+      ].forEach(([x, y, z, turn]) => {
+        group.add(mesh(hashGeometry, materials.fry, [x, y, z], [0.04, turn, 0.08]));
+      });
+      return group;
+    }
+
+    function createFoodModel(type) {
+      if (type === "burger") return createBurgerPlate();
+      if (type === "pizza") return createPizzaPlate();
+      return createBreakfastPlate();
+    }
+
+    function installPointerInteraction(item) {
+      const stage = item.canvas.closest(".food-3d-stage");
+      const state = item.interaction;
+
+      const updateTarget = (event) => {
+        if (event.cancelable) event.preventDefault();
+        const rect = item.canvas.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) - 0.5;
+        const y = ((event.clientY - rect.top) / rect.height) - 0.5;
+        state.targetY = Math.max(-0.5, Math.min(0.5, x)) * 0.95;
+        state.targetX = Math.max(-0.5, Math.min(0.5, y)) * -0.42;
+        state.active = true;
+      };
+
+      item.canvas.addEventListener("pointerdown", (event) => {
+        item.canvas.setPointerCapture(event.pointerId);
+        stage.classList.add("is-interacting");
+        updateTarget(event);
+      });
+
+      item.canvas.addEventListener("pointermove", updateTarget);
+
+      item.canvas.addEventListener("pointerup", (event) => {
+        if (event.cancelable) event.preventDefault();
+        if (item.canvas.hasPointerCapture(event.pointerId)) item.canvas.releasePointerCapture(event.pointerId);
+        stage.classList.remove("is-interacting");
+      });
+
+      item.canvas.addEventListener("pointercancel", (event) => {
+        if (event.cancelable) event.preventDefault();
+        stage.classList.remove("is-interacting");
+        state.active = false;
+      });
+
+      item.canvas.addEventListener("pointerleave", () => {
+        stage.classList.remove("is-interacting");
+        state.active = false;
+      });
+    }
+
+    function createScene(canvas, index) {
+      const foodType = canvas.getAttribute("data-food-3d");
+      const stage = canvas.closest(".food-3d-stage");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 50);
+      camera.position.set(0, 2.72, 4.2);
+      camera.lookAt(0, 0.22, 0);
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+        preserveDrawingBuffer: true,
+        powerPreference: "high-performance"
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      scene.add(new THREE.HemisphereLight(0xfff4dd, 0x123323, 1.8));
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+      keyLight.position.set(3.2, 5, 4);
+      scene.add(keyLight);
+      const fillLight = new THREE.DirectionalLight(0xf5b91f, 0.9);
+      fillLight.position.set(-3, 2.6, -2);
+      scene.add(fillLight);
+
+      const model = createFoodModel(foodType);
+      const modelScale = { burger: 1.12, pizza: 1.16, breakfast: 1.1 }[foodType] || 1.08;
+      model.scale.setScalar(modelScale);
+      model.rotation.x = -0.18;
+      model.rotation.y = index * 0.9;
+      scene.add(model);
+
+      const item = {
+        canvas,
+        camera,
+        renderer,
+        scene,
+        model,
+        type: foodType,
+        ready: false,
+        interaction: {
+          active: false,
+          targetX: 0,
+          targetY: 0,
+          offsetX: 0,
+          offsetY: 0
+        }
+      };
+
+      installPointerInteraction(item);
+      resizeFoodScene(item);
+      renderer.render(scene, camera);
+      stage.classList.add("is-3d-ready");
+      stage.querySelector("picture")?.setAttribute("aria-hidden", "true");
+      item.ready = true;
+
+      return item;
+    }
+
+    function resizeFoodScene(item) {
+      const width = Math.max(1, Math.floor(item.canvas.clientWidth));
+      const height = Math.max(1, Math.floor(item.canvas.clientHeight));
+      if (item.canvas.width !== width || item.canvas.height !== height) {
+        item.renderer.setSize(width, height, false);
+        item.camera.aspect = width / height;
+        item.camera.updateProjectionMatrix();
+      }
+    }
+
+    const foodScenes = foodCanvases.map(createScene);
+    const resizeObserver = new ResizeObserver(() => foodScenes.forEach(resizeFoodScene));
+    foodCanvases.forEach((canvas) => resizeObserver.observe(canvas));
+
+    function renderFood(now = 0) {
+      const elapsed = Math.max(0, now - foodStartedAt);
+      foodScenes.forEach((item, index) => {
+        resizeFoodScene(item);
+        const interaction = item.interaction;
+        const drift = reduceMotion ? 0 : (elapsed * 0.0007) % (Math.PI * 2);
+        const idleX = reduceMotion ? -0.18 : -0.18 + Math.sin(elapsed * 0.001 + index) * 0.035;
+        const targetX = interaction.active ? -0.18 + interaction.targetX : idleX;
+        const targetY = index * 0.9 + drift + (interaction.active ? interaction.targetY : 0);
+
+        interaction.offsetX += (targetX - interaction.offsetX) * 0.12;
+        interaction.offsetY += (targetY - interaction.offsetY) * 0.12;
+        item.model.rotation.x = interaction.offsetX;
+        item.model.rotation.y = interaction.offsetY;
+        item.renderer.render(item.scene, item.camera);
+      });
+
+      window.requestAnimationFrame(renderFood);
+    }
+
+    if (foodScenes.length) {
+      window.requestAnimationFrame(renderFood);
+    }
+
+    window.__rockwell3DFood = {
+      count: foodScenes.length,
+      getState: () => foodScenes.map((item) => ({
+        type: item.type,
+        ready: item.ready,
+        width: item.canvas.width,
+        height: item.canvas.height,
+        rotationX: Number(item.model.rotation.x.toFixed(4)),
+        rotationY: Number(item.model.rotation.y.toFixed(4)),
+        dataUrlLength: item.canvas.toDataURL("image/png").length
+      }))
+    };
   </script>
 
 </body>
