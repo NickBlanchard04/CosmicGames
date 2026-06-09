@@ -129,7 +129,8 @@
     }
 
     body.cart-open,
-    body.modal-open {
+    body.modal-open,
+    body.directions-open {
       overflow: hidden;
     }
 
@@ -1783,6 +1784,103 @@
       display: none;
     }
 
+    .directions-sheet {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      z-index: 2300;
+      width: min(560px, 100%);
+      display: none;
+      color: var(--ink);
+      background: var(--paper);
+      border: 4px solid var(--black);
+      border-bottom: 0;
+      transform: translateX(-50%);
+      box-shadow: 0 -8px 24px rgba(17, 16, 14, 0.24);
+    }
+
+    .directions-sheet.open {
+      display: block;
+    }
+
+    .directions-sheet header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      color: var(--paper);
+      background: var(--pine);
+      border-bottom: 3px solid var(--black);
+    }
+
+    .directions-sheet h2 {
+      color: inherit;
+      font-size: 1.45rem;
+    }
+
+    .directions-sheet p {
+      margin: 0;
+      color: rgba(247, 239, 224, 0.78);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .directions-options {
+      display: grid;
+      gap: 8px;
+      padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+    }
+
+    .directions-option {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      background: var(--paper-2);
+      border: 2px solid var(--black);
+      border-radius: 6px;
+      font-family: "Oswald", Impact, sans-serif;
+      font-weight: 700;
+    }
+
+    .directions-option:hover,
+    .directions-option:focus-visible {
+      color: var(--paper);
+      background: var(--rust);
+      outline: 3px solid var(--gold);
+      outline-offset: 1px;
+    }
+
+    .directions-option .sharp-icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .directions-option span {
+      display: grid;
+      line-height: 1.15;
+    }
+
+    .directions-option small {
+      margin-top: 4px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .directions-option strong {
+      color: var(--rust);
+      font-size: 1.15rem;
+    }
+
+    .directions-option:hover strong,
+    .directions-option:focus-visible strong {
+      color: var(--gold);
+    }
+
     @media (max-width: 1100px) {
       .nav {
         grid-template-columns: auto 1fr auto auto;
@@ -2217,7 +2315,8 @@
         box-shadow: 0 -4px 14px rgba(17, 16, 14, 0.28);
       }
 
-      .mobile-actions a {
+      .mobile-actions a,
+      .mobile-actions button {
         min-width: 0;
         min-height: 50px;
         display: grid;
@@ -2226,6 +2325,8 @@
         gap: 2px;
         padding: 4px;
         color: var(--paper);
+        background: transparent;
+        border: 0;
         border-right: 1px solid rgba(247, 239, 224, 0.22);
         font-family: "Oswald", Impact, sans-serif;
         font-size: 0.78rem;
@@ -2234,7 +2335,8 @@
         text-transform: uppercase;
       }
 
-      .mobile-actions a:last-child {
+      .mobile-actions a:last-child,
+      .mobile-actions button:last-child {
         border-right: 0;
       }
 
@@ -2349,7 +2451,8 @@
         aspect-ratio: 1.68;
       }
 
-      .mobile-actions a {
+      .mobile-actions a,
+      .mobile-actions button {
         font-size: 0.74rem;
       }
     }
@@ -2835,21 +2938,48 @@
   </div>
 
   <nav class="mobile-actions" aria-label="Quick actions">
-    <a href="tel:+15186964443" data-track="phone_call">
-      <svg class="sharp-icon" aria-hidden="true"><use href="#icon-phone-sharp"></use></svg>
-      Call
-    </a>
     <a href="#menu">
       <svg class="sharp-icon" aria-hidden="true"><use href="#icon-menu-sharp"></use></svg>
       Menu
     </a>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=4123%20Rockwell%20St%2C%20Hadley%2C%20NY%2012835" target="_blank" rel="noopener" data-track="directions">
+    <a href="tel:+15186964443" data-track="phone_call">
+      <svg class="sharp-icon" aria-hidden="true"><use href="#icon-phone-sharp"></use></svg>
+      Call
+    </a>
+    <button type="button" data-open-directions aria-haspopup="dialog" aria-controls="directions-chooser" data-track="directions_prompt">
       <svg class="sharp-icon" aria-hidden="true"><use href="#icon-map-sharp"></use></svg>
       Directions
-    </a>
+    </button>
   </nav>
 
   <div class="overlay" data-overlay></div>
+
+  <section class="directions-sheet" id="directions-chooser" data-directions-sheet role="dialog" aria-modal="true" aria-labelledby="directions-title" aria-hidden="true">
+    <header>
+      <div>
+        <h2 id="directions-title">Choose a map app</h2>
+        <p>Directions to 4123 Rockwell St, Hadley</p>
+      </div>
+      <button class="drawer-close" type="button" data-close-directions aria-label="Close directions chooser">X</button>
+    </header>
+    <div class="directions-options">
+      <a class="directions-option" href="https://maps.apple.com/?daddr=Rockwell%20Falls%20General%20Store%2C%204123%20Rockwell%20St%2C%20Hadley%2C%20NY%2012835&amp;dirflg=d" target="_blank" rel="noopener external" data-direction-link data-track="directions_apple">
+        <svg class="sharp-icon" aria-hidden="true"><use href="#icon-map-sharp"></use></svg>
+        <span>Apple Maps<small>Best for iPhone and iPad</small></span>
+        <strong aria-hidden="true">&rarr;</strong>
+      </a>
+      <a class="directions-option" href="https://www.google.com/maps/dir/?api=1&amp;destination=4123%20Rockwell%20St%2C%20Hadley%2C%20NY%2012835" target="_blank" rel="noopener external" data-direction-link data-track="directions_google">
+        <svg class="sharp-icon" aria-hidden="true"><use href="#icon-map-sharp"></use></svg>
+        <span>Google Maps<small>Open in the app or browser</small></span>
+        <strong aria-hidden="true">&rarr;</strong>
+      </a>
+      <a class="directions-option" href="https://www.waze.com/ul?ll=43.3173043%2C-73.8481202&amp;navigate=yes" target="_blank" rel="noopener external" data-direction-link data-track="directions_waze">
+        <svg class="sharp-icon" aria-hidden="true"><use href="#icon-map-sharp"></use></svg>
+        <span>Waze<small>Live traffic and road alerts</small></span>
+        <strong aria-hidden="true">&rarr;</strong>
+      </a>
+    </div>
+  </section>
 
   <aside class="cart-drawer" data-cart-drawer aria-label="Pickup order cart" aria-hidden="true">
     <header>
@@ -3109,9 +3239,11 @@
     const cartCountEls = document.querySelectorAll("[data-cart-count]");
     const overlay = document.querySelector("[data-overlay]");
     const drawer = document.querySelector("[data-cart-drawer]");
+    const directionsSheet = document.querySelector("[data-directions-sheet]");
     const checkoutModal = document.querySelector("[data-checkout-modal]");
     const checkoutSummary = document.querySelector("[data-checkout-summary]");
     const checkoutStatus = document.querySelector("[data-square-status]");
+    let directionsTrigger;
 
     function formatPrice(price) {
       return money.format(price);
@@ -3248,6 +3380,24 @@
       document.body.classList.remove("cart-open");
     }
 
+    function openDirections(trigger) {
+      closeCart();
+      directionsTrigger = trigger;
+      directionsSheet.classList.add("open");
+      directionsSheet.setAttribute("aria-hidden", "false");
+      overlay.classList.add("show");
+      document.body.classList.add("directions-open");
+      window.requestAnimationFrame(() => directionsSheet.querySelector("[data-direction-link]")?.focus());
+    }
+
+    function closeDirections(restoreFocus = true) {
+      directionsSheet.classList.remove("open");
+      directionsSheet.setAttribute("aria-hidden", "true");
+      overlay.classList.remove("show");
+      document.body.classList.remove("directions-open");
+      if (restoreFocus) directionsTrigger?.focus();
+    }
+
     function openCheckout() {
       if (!cart.size) {
         openCart(true);
@@ -3338,8 +3488,30 @@
         return;
       }
 
-      if (event.target.closest("[data-close-cart]") || event.target === overlay) {
+      const directionsButton = event.target.closest("[data-open-directions]");
+      if (directionsButton) {
+        openDirections(directionsButton);
+        return;
+      }
+
+      if (event.target.closest("[data-direction-link]")) {
+        closeDirections(false);
+        return;
+      }
+
+      if (event.target.closest("[data-close-directions]")) {
+        closeDirections();
+        return;
+      }
+
+      if (event.target.closest("[data-close-cart]")) {
         closeCart();
+        return;
+      }
+
+      if (event.target === overlay) {
+        closeCart();
+        closeDirections();
         return;
       }
 
@@ -3394,6 +3566,7 @@
       if (event.key === "Escape") {
         closeCart();
         closeCheckout();
+        closeDirections();
       }
     });
 
