@@ -5,7 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Rockwell Falls General Store | Hadley, NY</title>
   <meta name="description" content="Rockwell Falls General Store in Hadley, NY serves fresh breakfast, lunch, dinner, pizza, subs, and daily specials near Rockwell Falls and the Bridge of Hope." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="google-analytics-id" content="" />
   <meta name="theme-color" content="#123323" />
+  <meta name="geo.region" content="US-NY" />
+  <meta name="geo.placename" content="Hadley, New York" />
+  <meta name="geo.position" content="43.3173043;-73.8481202" />
+  <meta name="ICBM" content="43.3173043, -73.8481202" />
+  <link rel="canonical" href="https://cosmicgames.info/Rockwell/" />
+  <link rel="sitemap" type="application/xml" href="https://cosmicgames.info/Rockwell/sitemap.xml" />
+
+  <meta property="og:type" content="restaurant.restaurant" />
+  <meta property="og:site_name" content="Rockwell Falls General Store" />
+  <meta property="og:title" content="Rockwell Falls General Store | Hadley, NY" />
+  <meta property="og:description" content="Fresh breakfast, lunch, dinner, pizza, subs, and daily specials near Rockwell Falls and the Bridge of Hope." />
+  <meta property="og:url" content="https://cosmicgames.info/Rockwell/" />
+  <meta property="og:image" content="https://cosmicgames.info/Rockwell/assets/featured-pizza.jpg" />
+  <meta property="og:image:alt" content="Fresh baked pizza from Rockwell Falls General Store" />
+  <meta property="restaurant:contact_info:street_address" content="4123 Rockwell St" />
+  <meta property="restaurant:contact_info:locality" content="Hadley" />
+  <meta property="restaurant:contact_info:region" content="NY" />
+  <meta property="restaurant:contact_info:postal_code" content="12835" />
+  <meta property="restaurant:contact_info:country_name" content="United States" />
+  <meta property="restaurant:contact_info:phone_number" content="+15186964443" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rockwell Falls General Store | Hadley, NY" />
+  <meta name="twitter:description" content="Fresh breakfast, lunch, dinner, pizza, subs, and daily specials near Rockwell Falls and the Bridge of Hope." />
+  <meta name="twitter:image" content="https://cosmicgames.info/Rockwell/assets/featured-pizza.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "@id": "https://cosmicgames.info/Rockwell/#restaurant",
+    "name": "Rockwell Falls General Store",
+    "description": "A hometown general store and American restaurant in Hadley, New York serving fresh breakfast, lunch, dinner, pizza, subs, and daily specials.",
+    "url": "https://cosmicgames.info/Rockwell/",
+    "telephone": "+15186964443",
+    "priceRange": "$",
+    "image": [
+      "https://cosmicgames.info/Rockwell/assets/featured-pizza.jpg",
+      "https://cosmicgames.info/Rockwell/assets/featured-breakfast-sandwich.jpg",
+      "https://cosmicgames.info/Rockwell/assets/featured-wedge-salad.jpg"
+    ],
+    "servesCuisine": ["American", "Breakfast", "Deli", "Pizza"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4123 Rockwell St",
+      "addressLocality": "Hadley",
+      "addressRegion": "NY",
+      "postalCode": "12835",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.3173043,
+      "longitude": -73.8481202
+    },
+    "hasMap": "https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202",
+    "menu": "https://cosmicgames.info/Rockwell/#menu",
+    "sameAs": [
+      "https://www.facebook.com/RockwellFallsGeneralStore/",
+      "https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday"],
+        "opens": "07:00",
+        "closes": "16:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "07:00",
+        "closes": "19:00"
+      }
+    ]
+  }
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23123323'/%3E%3Cpath d='M12 46h42v8H12z' fill='%23fff9ec' stroke='%2311100e' stroke-width='4'/%3E%3Cpath d='M18 46V29l12-12 12 12v17' fill='%23f5b91f' stroke='%2311100e' stroke-width='4'/%3E%3Cpath d='M36 46V26l8-10 8 10v20' fill='%23a33b19' stroke='%2311100e' stroke-width='4'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1287,6 +1366,73 @@
       max-width: 100%;
     }
 
+    .reviews {
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(247, 239, 224, 0.96), rgba(247, 239, 224, 0.96)),
+        repeating-linear-gradient(45deg, rgba(163, 59, 25, 0.08) 0 2px, transparent 2px 22px);
+      border-bottom: 4px solid var(--black);
+    }
+
+    .review-platforms {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .review-platform {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 24px;
+      background: var(--white);
+      border: 3px solid var(--black);
+      border-radius: 8px;
+      box-shadow: 7px 7px 0 var(--rust);
+    }
+
+    .review-platform-mark {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      color: var(--paper);
+      background: var(--pine);
+      border: 3px solid var(--black);
+      border-radius: 7px;
+      font-family: "Oswald", Impact, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .review-platform h3 {
+      color: var(--pine);
+      font-family: "Oswald", Impact, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .review-platform p {
+      margin: 6px 0 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .review-platform .btn {
+      min-height: 44px;
+    }
+
+    .review-note {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
     .location {
       background:
         linear-gradient(rgba(255, 249, 236, 0.94), rgba(255, 249, 236, 0.94)),
@@ -1687,6 +1833,7 @@
       .favorites-layout,
       .facebook-layout,
       .location-grid,
+      .review-platforms,
       .specials-callout-inner,
       .story-grid {
         grid-template-columns: 1fr;
@@ -1840,6 +1987,10 @@
       .facebook-copy h2,
       .visit-card h2 {
         font-size: 2.34rem;
+      }
+
+      .review-platform {
+        grid-template-columns: 1fr;
       }
 
       .story-copy h2 span {
@@ -2194,7 +2345,7 @@
   <div class="page-shell">
     <div class="top-strip">
       <div class="container">
-        <a class="strip-link" href="tel:+15186964443" aria-label="Call Rockwell Falls General Store">
+        <a class="strip-link" href="tel:+15186964443" aria-label="Call Rockwell Falls General Store" data-track="phone_call">
           <svg class="sharp-icon strip-icon" aria-hidden="true"><use href="#icon-phone-sharp"></use></svg>
           Call ahead: <strong>(518) 696-4443</strong>
         </a>
@@ -2218,6 +2369,7 @@
           <a href="#menu">Menu</a>
           <a href="#order">Order</a>
           <a href="#facebook">Facebook</a>
+          <a href="#reviews">Reviews</a>
           <a href="#location">Location</a>
         </div>
 
@@ -2450,6 +2602,44 @@
         </div>
       </section>
 
+      <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+        <div class="container">
+          <div class="section-title center">
+            <p class="overline">Guest feedback</p>
+            <h2 id="reviews-title">Reviews and Recommendations</h2>
+            <p>Read recent guest feedback or share your experience on the platform you already use.</p>
+          </div>
+
+          <div class="review-platforms">
+            <article class="review-platform">
+              <span class="review-platform-mark" aria-hidden="true">G</span>
+              <div>
+                <h3>Google Reviews</h3>
+                <p>See current Google ratings, photos, and guest reviews for Rockwell Falls General Store.</p>
+                <a class="btn" href="https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202" target="_blank" rel="noopener external" data-track="google_reviews">
+                  Open Google Reviews
+                  <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="review-platform">
+              <span class="review-platform-mark" aria-hidden="true">f</span>
+              <div>
+                <h3>Facebook Reviews</h3>
+                <p>View Facebook recommendations and leave one after your next breakfast, lunch, or dinner visit.</p>
+                <a class="btn" href="https://www.facebook.com/RockwellFallsGeneralStore/reviews" target="_blank" rel="noopener external" data-track="facebook_reviews">
+                  Open Facebook Reviews
+                  <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <p class="review-note">Review content and ratings are maintained by Google and Facebook and open on their respective platforms.</p>
+        </div>
+      </section>
+
       <section class="section location" id="location" aria-labelledby="location-title">
         <div class="container location-grid">
           <div class="visit-card">
@@ -2482,7 +2672,7 @@
               </div>
             </div>
 
-            <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=4123%20Rockwell%20St%2C%20Hadley%2C%20NY%2012835" target="_blank" rel="noopener">
+            <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=4123%20Rockwell%20St%2C%20Hadley%2C%20NY%2012835" target="_blank" rel="noopener" data-track="directions">
               Get Directions
               <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
             </a>
@@ -2509,11 +2699,12 @@
           <h3>Quick links</h3>
           <p><a href="#menu">Menu</a></p>
           <p><a href="#order">Order Online</a></p>
+          <p><a href="#reviews">Reviews</a></p>
           <p><a href="#location">Location</a></p>
         </div>
         <div>
           <h3>Contact</h3>
-          <p><a href="tel:+15186964443">(518) 696-4443</a></p>
+          <p><a href="tel:+15186964443" data-track="phone_call">(518) 696-4443</a></p>
           <p>4123 Rockwell St</p>
           <p>Hadley, NY 12835</p>
           <p>Mon-Wed: 7 AM-4 PM</p>
@@ -2522,6 +2713,8 @@
         <div>
           <h3>Stay connected</h3>
           <p><a href="https://www.facebook.com/RockwellFallsGeneralStore/" target="_blank" rel="noopener">Facebook specials and deals</a></p>
+          <p><a href="https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202" target="_blank" rel="noopener external" data-track="google_reviews">Google reviews</a></p>
+          <p><a href="https://www.facebook.com/RockwellFallsGeneralStore/reviews" target="_blank" rel="noopener external" data-track="facebook_reviews">Facebook reviews</a></p>
         </div>
       </div>
       <div class="copyright">&copy; 2026 Rockwell Falls General Store. Site by <a href="mailto:nickblanchardbusiness@gmail.com">Nick Blanchard</a>.</div>
@@ -2602,6 +2795,30 @@
     const TAX_RATE = 0.08;
     // Set this to the live Square Online checkout URL or a backend Square Checkout API endpoint.
     const SQUARE_CHECKOUT_URL = "";
+    const GA_MEASUREMENT_ID = document.querySelector('meta[name="google-analytics-id"]')?.content.trim() || "";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+
+    if (/^G-[A-Z0-9]+$/i.test(GA_MEASUREMENT_ID)) {
+      const analyticsScript = document.createElement("script");
+      analyticsScript.async = true;
+      analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+      document.head.appendChild(analyticsScript);
+      gtag("js", new Date());
+      gtag("config", GA_MEASUREMENT_ID);
+    }
+
+    document.addEventListener("click", (event) => {
+      const trackedLink = event.target.closest("[data-track]");
+      if (!trackedLink) return;
+      gtag("event", trackedLink.dataset.track, {
+        link_url: trackedLink.href || "",
+        link_text: trackedLink.textContent.trim().replace(/\s+/g, " ")
+      });
+    });
 
     const menuItems = [
       {
