@@ -263,10 +263,31 @@ h3 {
 
 .hero-copy {
   max-width: 650px;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   color: rgba(255, 249, 236, 0.88);
   font-size: 1.06rem;
   font-weight: 600;
+}
+
+.local-motto {
+  width: fit-content;
+  display: flex;
+  gap: 7px;
+  margin-bottom: 24px;
+  padding: 7px 11px;
+  color: var(--paper);
+  background: var(--rust);
+  border: 2px solid var(--black);
+  font-family: "Oswald", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: rotate(-1deg);
+}
+
+.local-motto strong {
+  color: var(--gold);
 }
 
 .hero-meta {
@@ -287,6 +308,7 @@ h3 {
 }
 
 .hero-photo {
+  position: relative;
   min-height: 420px;
   overflow: hidden;
   border: 3px solid var(--black);
@@ -298,6 +320,33 @@ h3 {
   height: 100%;
   min-height: 420px;
   object-fit: cover;
+}
+
+.hero-photo figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  padding: 9px 13px;
+  color: var(--black);
+  background: var(--paper);
+  border: 2px solid var(--black);
+  box-shadow: 4px 4px 0 var(--rust);
+  font-family: "Oswald", sans-serif;
+  line-height: 1.1;
+  text-align: right;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+
+.hero-photo figcaption span {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-photo figcaption strong {
+  color: var(--rust);
+  font-size: 1rem;
 }
 
 .reviews {
@@ -599,6 +648,11 @@ h3 {
   border-left: 1px solid var(--line);
 }
 
+.menu-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  padding-right: 0;
+}
+
 .menu-item p {
   margin-bottom: 0;
   color: var(--muted);
@@ -750,6 +804,20 @@ footer p {
 .directions-option:hover small,
 .directions-option:focus-visible small {
   color: var(--paper);
+}
+
+@media (min-width: 901px) {
+  .featured-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .food-card {
+    grid-column: span 2;
+  }
+
+  .food-card:nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
 }
 
 @media (max-width: 900px) {
