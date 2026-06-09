@@ -1368,70 +1368,111 @@
     }
 
     .reviews {
-      color: var(--ink);
+      overflow: hidden;
+      color: var(--paper);
       background:
-        linear-gradient(rgba(247, 239, 224, 0.96), rgba(247, 239, 224, 0.96)),
-        repeating-linear-gradient(45deg, rgba(163, 59, 25, 0.08) 0 2px, transparent 2px 22px);
+        linear-gradient(rgba(18, 51, 35, 0.97), rgba(18, 51, 35, 0.97)),
+        repeating-linear-gradient(45deg, rgba(255, 249, 236, 0.05) 0 2px, transparent 2px 20px);
+      border-top: 4px solid var(--black);
       border-bottom: 4px solid var(--black);
     }
 
-    .review-platforms {
+    .review-funnel {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 28px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 24px;
     }
 
-    .review-platform {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: start;
-      padding: 24px;
-      background: var(--white);
-      border: 3px solid var(--black);
-      border-radius: 8px;
-      box-shadow: 7px 7px 0 var(--rust);
-    }
-
-    .review-platform-mark {
-      width: 52px;
-      height: 52px;
-      display: grid;
-      place-items: center;
+    .review-funnel h2 {
+      max-width: 720px;
       color: var(--paper);
-      background: var(--pine);
-      border: 3px solid var(--black);
-      border-radius: 7px;
-      font-family: "Oswald", Impact, sans-serif;
-      font-size: 1.5rem;
+      font-size: clamp(2rem, 4vw, 3.05rem);
+      text-shadow: 3px 3px 0 var(--black);
+    }
+
+    .review-funnel p {
+      max-width: 660px;
+      margin: 8px 0 0;
+      color: rgba(255, 249, 236, 0.84);
+      font-size: 1.04rem;
       font-weight: 700;
     }
 
-    .review-platform h3 {
-      color: var(--pine);
+    .review-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: end;
+      gap: 10px;
+    }
+
+    .review-marquee {
+      overflow: hidden;
+      margin-top: 24px;
+      padding: 2px 0 7px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+
+    .review-track {
+      width: max-content;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      animation: review-flow 14s linear infinite;
+      scrollbar-width: none;
+      will-change: transform;
+    }
+
+    .review-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .review-marquee:hover .review-track,
+    .review-marquee:focus-within .review-track {
+      animation-play-state: paused;
+    }
+
+    .review-card {
+      width: clamp(260px, 27vw, 320px);
+      min-height: 116px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 3px solid var(--black);
+      border-top-color: var(--gold);
+      border-radius: 7px;
+      box-shadow: 4px 4px 0 var(--rust);
+    }
+
+    .review-card blockquote {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 750;
+      line-height: 1.42;
+    }
+
+    .review-card cite {
+      color: var(--rust);
       font-family: "Oswald", Impact, sans-serif;
-      font-size: 1.55rem;
+      font-size: 0.9rem;
+      font-style: normal;
       font-weight: 700;
       text-transform: uppercase;
     }
 
-    .review-platform p {
-      margin: 6px 0 16px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .review-platform .btn {
-      min-height: 44px;
-    }
-
-    .review-note {
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 700;
-      text-align: center;
+    @keyframes review-flow {
+      to {
+        transform: translateX(calc(-50% - 6px));
+      }
     }
 
     .location {
@@ -1935,7 +1976,6 @@
       .favorites-layout,
       .facebook-layout,
       .location-grid,
-      .review-platforms,
       .specials-callout-inner,
       .story-grid {
         grid-template-columns: 1fr;
@@ -2140,8 +2180,12 @@
         font-size: 2.34rem;
       }
 
-      .review-platform {
+      .review-funnel {
         grid-template-columns: 1fr;
+      }
+
+      .review-actions {
+        justify-content: start;
       }
 
       .story-copy h2 span {
@@ -2154,6 +2198,46 @@
 
       .story-polaroid {
         display: none;
+      }
+
+      .review-funnel {
+        gap: 16px;
+      }
+
+      .review-funnel h2 {
+        font-size: 1.9rem;
+      }
+
+      .review-funnel p {
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+
+      .review-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .review-actions .btn {
+        min-height: 44px;
+        padding: 8px 10px;
+        font-size: 0.86rem;
+        box-shadow: 3px 3px 0 var(--black);
+      }
+
+      .review-marquee {
+        margin-top: 18px;
+      }
+
+      .review-card {
+        width: 250px;
+        min-height: 110px;
+        padding: 14px 15px;
+      }
+
+      .review-card blockquote {
+        font-size: 0.95rem;
       }
 
       .falls-card {
@@ -2465,6 +2549,11 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+      }
+
+      .review-track {
+        width: auto;
+        overflow-x: auto;
       }
     }
   </style>
@@ -2818,41 +2907,61 @@
         </div>
       </section>
 
-      <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+      <section class="section-tight reviews" id="reviews" aria-labelledby="reviews-title">
         <div class="container">
-          <div class="section-title center">
-            <p class="overline">Guest feedback</p>
-            <h2 id="reviews-title">Reviews and Recommendations</h2>
-            <p>Read recent guest feedback or share your experience on the platform you already use.</p>
+          <div class="review-funnel">
+            <div>
+              <h2 id="reviews-title">What Are People Saying About Us?</h2>
+              <p>Fresh food, friendly service, and the kind of local stop people keep coming back to.</p>
+            </div>
+            <div class="review-actions" aria-label="Choose your next step">
+              <a class="btn" href="#menu">
+                See the Menu
+                <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
+              </a>
+              <a class="btn btn-secondary" href="tel:+15186964443" data-track="phone_call">
+                Call Ahead
+                <svg class="sharp-icon" aria-hidden="true"><use href="#icon-phone-sharp"></use></svg>
+              </a>
+            </div>
           </div>
 
-          <div class="review-platforms">
-            <article class="review-platform">
-              <span class="review-platform-mark" aria-hidden="true">G</span>
-              <div>
-                <h3>Google Reviews</h3>
-                <p>See current Google ratings, photos, and guest reviews for Rockwell Falls General Store.</p>
-                <a class="btn" href="https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202" target="_blank" rel="noopener external" data-track="google_reviews">
-                  Open Google Reviews
-                  <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
-                </a>
-              </div>
-            </article>
-
-            <article class="review-platform">
-              <span class="review-platform-mark" aria-hidden="true">f</span>
-              <div>
-                <h3>Facebook Reviews</h3>
-                <p>View Facebook recommendations and leave one after your next breakfast, lunch, or dinner visit.</p>
-                <a class="btn" href="https://www.facebook.com/RockwellFallsGeneralStore/reviews" target="_blank" rel="noopener external" data-track="facebook_reviews">
-                  Open Facebook Reviews
-                  <svg class="sharp-icon" aria-hidden="true"><use href="#icon-arrow-sharp"></use></svg>
-                </a>
-              </div>
-            </article>
+          <div class="review-marquee" tabindex="0" aria-label="Guest comments. Focus or hover to pause.">
+            <ul class="review-track">
+              <li class="review-card">
+                <blockquote>“Great food, great staff, and coffee worth coming back for.”</blockquote>
+                <cite>Kathy Hayes-Tuthill</cite>
+              </li>
+              <li class="review-card">
+                <blockquote>“Wonderful food and service. Cozy, friendly, and easy to recommend.”</blockquote>
+                <cite>Natalie Fabey</cite>
+              </li>
+              <li class="review-card">
+                <blockquote>“Small-town Adirondack feel, genuinely friendly people, and really good food.”</blockquote>
+                <cite>Buddy Ball</cite>
+              </li>
+              <li class="review-card">
+                <blockquote>“Fresh food, generous portions, amazing pies, and prices that make it easy to come back.”</blockquote>
+                <cite>Jess Argent</cite>
+              </li>
+              <li class="review-card" aria-hidden="true">
+                <blockquote>“Great food, great staff, and coffee worth coming back for.”</blockquote>
+                <cite>Kathy Hayes-Tuthill</cite>
+              </li>
+              <li class="review-card" aria-hidden="true">
+                <blockquote>“Wonderful food and service. Cozy, friendly, and easy to recommend.”</blockquote>
+                <cite>Natalie Fabey</cite>
+              </li>
+              <li class="review-card" aria-hidden="true">
+                <blockquote>“Small-town Adirondack feel, genuinely friendly people, and really good food.”</blockquote>
+                <cite>Buddy Ball</cite>
+              </li>
+              <li class="review-card" aria-hidden="true">
+                <blockquote>“Fresh food, generous portions, amazing pies, and prices that make it easy to come back.”</blockquote>
+                <cite>Jess Argent</cite>
+              </li>
+            </ul>
           </div>
-
-          <p class="review-note">Review content and ratings are maintained by Google and Facebook and open on their respective platforms.</p>
         </div>
       </section>
 
@@ -2929,8 +3038,6 @@
         <div>
           <h3>Stay connected</h3>
           <p><a href="https://www.facebook.com/RockwellFallsGeneralStore/" target="_blank" rel="noopener">Facebook specials and deals</a></p>
-          <p><a href="https://www.google.com/maps/place/Rockwell+Falls+General+Store/@43.3173043,-73.8481202,17z/data=!4m6!3m5!1s0x89dfb5fc072ac905:0x74f19c80636425d2!8m2!3d43.3173043!4d-73.8481202" target="_blank" rel="noopener external" data-track="google_reviews">Google reviews</a></p>
-          <p><a href="https://www.facebook.com/RockwellFallsGeneralStore/reviews" target="_blank" rel="noopener external" data-track="facebook_reviews">Facebook reviews</a></p>
         </div>
       </div>
       <div class="copyright">&copy; 2026 Rockwell Falls General Store. Site by <a href="mailto:nickblanchardbusiness@gmail.com">Nick Blanchard</a>.</div>
