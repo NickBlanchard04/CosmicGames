@@ -5,7 +5,7 @@ The website code is prepared for local search, reviews, Search Console, and GA4.
 ## Google Analytics 4
 
 1. Create or select the Rockwell Falls General Store GA4 property.
-2. Create a web data stream for `https://cosmicgames.info/Rockwell/`.
+2. Create a web data stream for `https://builtbyblanch.com/Rockwell/`.
 3. Copy the measurement ID beginning with `G-`.
 4. Set that value in `index.html`:
 
@@ -17,16 +17,16 @@ The site automatically tracks page views plus clicks to Google reviews, Facebook
 
 ## Google Search Console
 
-1. Add the URL-prefix property `https://cosmicgames.info/Rockwell/`.
+1. Add the URL-prefix property `https://builtbyblanch.com/Rockwell/`.
 2. Verify it using the installed GA4 tag or Google's HTML verification tag.
-3. Submit `https://cosmicgames.info/Rockwell/sitemap.xml`.
-4. Inspect `https://cosmicgames.info/Rockwell/` and request indexing.
+3. Submit `https://builtbyblanch.com/Rockwell/sitemap.xml`.
+4. Inspect `https://builtbyblanch.com/Rockwell/` and request indexing.
 
 ## Google Business Profile
 
 The Google Maps listing currently points to Facebook. In the owner-managed Business Profile, update the website field to:
 
-`https://cosmicgames.info/Rockwell/`
+`https://builtbyblanch.com/Rockwell/`
 
 Keep the business name, address, phone number, and hours aligned with the website:
 
